@@ -1,0 +1,8 @@
+node_modules
+.git
+.vercel
+*.zip
+*.tar.gz
+.DS_Store
+WhatsApp_files
+WhatsApp.html
