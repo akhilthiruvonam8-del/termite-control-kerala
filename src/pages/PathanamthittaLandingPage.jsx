@@ -29,7 +29,9 @@ import {
   Camera,
   Users,
   Shield,
-  ExternalLink
+  ExternalLink,
+  Eye,
+  CheckCircle
 } from 'lucide-react';
 import { PATHANAMTHITTA_DATA } from '../data/pathanamthittaData';
 import { updateMetaTags } from '../utils/seo';
@@ -205,11 +207,21 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. HERO SECTION (Simple, Fast, High-Intent Conversion with Single H1) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-emerald-950 text-white pt-8 pb-14 lg:py-18">
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+      {/* 1. HERO SECTION (Visually Rich Background Image + Gradient Overlay + Single H1) */}
+      <section className="relative overflow-hidden bg-slate-950 text-white pt-8 pb-16 lg:py-20">
+        
+        {/* Background Image with Deep Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/hero-technician.jpg" 
+            alt="Professional Termite Treatment in Pathanamthitta" 
+            className="w-full h-full object-cover object-center opacity-25 filter blur-[1px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-emerald-950/80"></div>
+          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 mb-4 text-xs">
@@ -218,24 +230,24 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
             <a href="/#locations" className="text-slate-400 hover:text-white transition">Kerala Pest Control</a>
             <span className="text-slate-500">/</span>
             <span className="text-emerald-400 font-semibold">Termite Control Pathanamthitta</span>
-            <span className="ml-auto inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 font-bold">
+            <span className="ml-auto inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/40 text-emerald-300 font-bold">
               <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Mezhuveli Service Hub • Rapid District Dispatch</span>
+              <span>Mezhuveli Hub • Rapid District Dispatch</span>
             </span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             
             {/* Left Column */}
             <div className="lg:col-span-7 space-y-5 text-left">
               
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
                 <Sparkles className="w-4 h-4 text-amber-400" />
                 <span>Professional Pest & Anti-Termite Management</span>
               </div>
 
               {/* Strict Single H1 Tag */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-display tracking-tight text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-tight">
                 Termite Control Pathanamthitta
               </h1>
 
@@ -248,8 +260,8 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
                 Certified termite inspection, subterranean white ant colony eradication, and long-term chemical barriers for homes, luxury NRI villas, and commercial properties. Odorless transfer chemistry and stage-wise foundation soil protection with up to 10 years warranty.
               </p>
 
-              {/* Pathanamthitta Office Dispatch Strip */}
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-xs sm:text-sm text-slate-200 space-y-2">
+              {/* Pathanamthitta Office Dispatch Glassmorphic Strip */}
+              <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-xs sm:text-sm text-slate-200 space-y-2 shadow-lg">
                 <div className="flex items-start space-x-2">
                   <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
                   <div>
@@ -270,7 +282,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
               <div className="flex flex-wrap gap-3 sm:gap-4 items-center pt-1">
                 <button
                   onClick={() => handlePhoneClick('pathanamthitta_hero_call')}
-                  className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-xl transition flex items-center space-x-2"
+                  className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-xl transition flex items-center space-x-2 group"
                 >
                   <Phone className="w-5 h-5 animate-pulse" />
                   <span>CALL NOW ({PRIMARY_PHONE_DISPLAY})</span>
@@ -320,12 +332,14 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
 
             {/* Right Column: High-Conversion Simple Lead Form */}
             <div className="lg:col-span-5">
-              <LeadForm
-                title="GET FREE CONSULTATION"
-                subtitle="Same-day technician inspection across Thiruvalla, Adoor, Kumbanad & Mezhuveli"
-                defaultLocation="Pathanamthitta District"
-                source="pathanamthitta_landing_hero"
-              />
+              <div className="shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/20">
+                <LeadForm
+                  title="GET FREE CONSULTATION"
+                  subtitle="Same-day technician inspection across Thiruvalla, Adoor, Kumbanad & Mezhuveli"
+                  defaultLocation="Pathanamthitta District"
+                  source="pathanamthitta_landing_hero"
+                />
+              </div>
             </div>
 
           </div>
@@ -366,7 +380,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 3. "SEEING THESE SIGNS? (TERMITE PROBLEM?)" SECTION */}
+      {/* 3. "SEEING THESE SIGNS? (TERMITE PROBLEM?)" SECTION WITH REAL DAMAGE IMAGES */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -381,6 +395,48 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
             <p className="text-sm text-slate-600 mt-2">
               Subterranean termites silently destroy wooden structures from the inside. Look out for these early warning signs:
             </p>
+          </div>
+
+          {/* Real Damage Visual Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8 max-w-5xl mx-auto">
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+              <img 
+                src="/images/termite-damage.jpg" 
+                alt="Active Termite Mud Tubes on Walls in Kerala" 
+                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div className="p-3 bg-white">
+                <p className="font-bold text-xs text-slate-900">1. Subterranean Mud Tubes</p>
+                <p className="text-[11px] text-slate-500">Brown soil pathways running over walls & skirting</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+              <img 
+                src="/images/wood-borer.jpg" 
+                alt="Wood Borer and Termite Damaged Door Frames" 
+                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div className="p-3 bg-white">
+                <p className="font-bold text-xs text-slate-900">2. Hollowed Door Jambs & Frass</p>
+                <p className="text-[11px] text-slate-500">Fine wood powder & hollow timber sound</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group bg-white">
+              <img 
+                src="/images/before-after1.jpg" 
+                alt="Termite Damaged Kitchen Cabinets Before Treatment" 
+                className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+              <div className="p-3 bg-white">
+                <p className="font-bold text-xs text-slate-900">3. Wardrobes & Modular Kitchens</p>
+                <p className="text-[11px] text-slate-500">Plywood backing eaten away from inside</p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
@@ -458,14 +514,14 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
             <div className="flex justify-center gap-3 mt-3">
               <button
                 onClick={() => handlePhoneClick('pathanamthitta_signs_call')}
-                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center space-x-1.5"
+                className="px-5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center space-x-1.5 shadow"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call {PRIMARY_PHONE_DISPLAY}</span>
               </button>
               <button
                 onClick={() => handleWhatsAppClick('pathanamthitta_signs_whatsapp', { problem: 'Noticed termite signs' })}
-                className="px-5 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold transition flex items-center space-x-1.5"
+                className="px-5 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs font-bold transition flex items-center space-x-1.5 shadow"
               >
                 <MessageCircle className="w-4 h-4 fill-white" />
                 <span>WhatsApp Us</span>
@@ -476,59 +532,70 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 4. HIGH PRIORITY: NRI & VACANT HOUSE TERMITE CONTROL SECTION */}
-      <section className="py-14 bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 4. HIGH PRIORITY: NRI & VACANT LUXURY VILLA PROTECTION WITH RICH BACKGROUND */}
+      <section className="relative py-16 lg:py-20 bg-slate-950 text-white overflow-hidden border-b border-slate-800">
+        
+        {/* Luxury Villa Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/pest13.jpg" 
+            alt="NRI Luxury Villa Termite Protection in Kumbanad & Thiruvalla" 
+            className="w-full h-full object-cover object-center opacity-20 filter blur-[1px]"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-emerald-950/90 to-slate-950/95"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div className="max-w-3xl mb-8">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-3">
-                <Home className="w-4 h-4 text-amber-400" />
-                <span>High-Value Niche • NRI Property Protection</span>
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold font-display tracking-tight text-white">
-                {PATHANAMTHITTA_DATA.nriService.title}
-              </h2>
-              <p className="mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                {PATHANAMTHITTA_DATA.nriService.subtitle}
-              </p>
+          <div className="max-w-3xl mb-10">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-extrabold uppercase tracking-wider mb-3">
+              <Home className="w-4 h-4 text-amber-400" />
+              <span>High-Value Niche • NRI Property Protection</span>
             </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold font-display tracking-tight text-white">
+              {PATHANAMTHITTA_DATA.nriService.title}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed">
+              {PATHANAMTHITTA_DATA.nriService.subtitle}
+            </p>
+          </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {PATHANAMTHITTA_DATA.nriService.features.map((item, idx) => (
-                <div key={idx} className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl border border-white/10 space-y-2">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">
-                    0{idx + 1}
-                  </div>
-                  <h3 className="font-bold text-white text-sm">{item.title}</h3>
-                  <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {PATHANAMTHITTA_DATA.nriService.features.map((item, idx) => (
+              <div key={idx} className="bg-white/10 backdrop-blur-md p-5 rounded-3xl border border-white/20 hover:border-emerald-400/50 transition-all duration-300 space-y-3 shadow-xl">
+                <div className="w-10 h-10 rounded-2xl bg-emerald-500/30 border border-emerald-400/40 text-emerald-300 flex items-center justify-center font-extrabold text-sm">
+                  0{idx + 1}
                 </div>
-              ))}
-            </div>
-
-            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-3 items-center justify-between">
-              <p className="text-xs text-amber-300 font-semibold">
-                ✈️ Are you an NRI property owner? We coordinate directly with your local caretakers in Pathanamthitta.
-              </p>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => onOpenLeadModal({ service: "NRI Termite Inspection Pathanamthitta", propertyType: "NRI Villa" })}
-                  className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow transition"
-                >
-                  Book NRI Inspection
-                </button>
-                <button
-                  onClick={() => handleWhatsAppClick('pathanamthitta_nri_whatsapp', { problem: 'NRI Locked Villa Inspection' })}
-                  className="px-4 py-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-1"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                  <span>WhatsApp Coordination</span>
-                </button>
+                <h3 className="font-bold text-white text-base font-display">{item.title}</h3>
+                <p className="text-xs text-slate-300 leading-relaxed">{item.desc}</p>
               </div>
-            </div>
+            ))}
+          </div>
 
+          <div className="mt-10 p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 flex flex-wrap gap-4 items-center justify-between shadow-2xl">
+            <div className="space-y-1">
+              <p className="text-sm font-bold text-amber-300">
+                ✈️ Overseas Property Owner in Gulf, USA, UK or Europe?
+              </p>
+              <p className="text-xs text-slate-300">
+                We coordinate key collection, inspection, and warranty certificates directly with your caretakers in Thiruvalla, Kumbanad, or Adoor.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <button
+                onClick={() => onOpenLeadModal({ service: "NRI Termite Inspection Pathanamthitta", propertyType: "NRI Villa" })}
+                className="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded-xl shadow-lg transition"
+              >
+                Book NRI Inspection
+              </button>
+              <button
+                onClick={() => handleWhatsAppClick('pathanamthitta_nri_whatsapp', { problem: 'NRI Locked Villa Inspection' })}
+                className="px-5 py-2.5 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center space-x-1.5"
+              >
+                <MessageCircle className="w-4 h-4 fill-white" />
+                <span>WhatsApp Coordination</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -555,7 +622,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
             {PATHANAMTHITTA_DATA.mainServices.map((svc) => (
               <div 
                 key={svc.id}
-                className="bg-white rounded-3xl p-6 border border-slate-200 hover:border-emerald-300 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group relative"
+                className="bg-white rounded-3xl p-6 border border-slate-200 hover:border-emerald-300 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative"
               >
                 <span className="absolute -top-3 right-6 bg-emerald-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow">
                   {svc.badge}
