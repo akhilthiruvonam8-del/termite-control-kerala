@@ -93,8 +93,18 @@ export default function App() {
       );
     }
 
-    // Pathanamthitta Dedicated Landing Page
-    if (cleanPath === 'termite-control-pathanamthitta' || cleanPath === 'termite-control-pathanam-thitta' || cleanPath === 'pathanamthitta' || cleanPath === 'pathanam-thitta' || cleanPath === 'termite-control/pathanamthitta' || cleanPath === 'termite-control/pathanam-thitta') {
+    // Pathanamthitta Dedicated Landing Page (District + Sub-Towns & NRI Villa Belts)
+    const pathanamthittaTowns = [
+      'pathanamthitta', 'pathanam-thitta', 'adoor', 'thiruvalla', 'ranni', 
+      'pandalam', 'konni', 'kozhencherry', 'kozhancherry', 'mallappally', 
+      'aranmula', 'kumbanad', 'pullad', 'kulanada', 'mezhuveli'
+    ];
+    const isPathanamthittaRoute = 
+      pathanamthittaTowns.some(town => cleanPath === `termite-control-${town}` || cleanPath === `termite-control/${town}` || cleanPath === town) ||
+      cleanPath.startsWith('termite-control/pathanamthitta/') ||
+      cleanPath.startsWith('termite-control-pathanamthitta/');
+
+    if (isPathanamthittaRoute) {
       return (
         <PathanamthittaLandingPage
           onOpenLeadModal={openLeadModal}
