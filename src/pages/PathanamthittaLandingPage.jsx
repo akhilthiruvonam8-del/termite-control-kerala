@@ -697,6 +697,181 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
+      {/* 7.5. PROFESSIONAL CREATIVE CAMPAIGN SHOWCASE (5 BRANDED POSTERS) */}
+      <section className="py-16 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center space-x-1.5 px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-extrabold uppercase tracking-wider mb-3">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Visual Termite Awareness Campaign</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white font-display tracking-tight">
+              Why Early Termite Protection Matters
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-300">
+              Subterranean termites never take a break. See how we protect Pathanamthitta villas, homes, and woodwork with guaranteed chemistry before costly damage happens.
+            </p>
+          </div>
+
+          {/* 5-Card Responsive Creative Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            
+            {/* Poster 1: Small Today Costly Tomorrow */}
+            <div className="group rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-emerald-500 transition-all duration-300 shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between">
+              <div className="overflow-hidden relative aspect-square">
+                <img
+                  src="/images/poster-small-today-costly.jpg"
+                  alt="Small today. Costly tomorrow. Stop termites early."
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-[10px] bg-emerald-700 text-white font-bold px-2 py-0.5 rounded uppercase">Early Detection</span>
+                    <h3 className="text-sm sm:text-base font-bold text-white mt-1">Small today. Costly tomorrow.</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-xs text-slate-400">Save more. Stress less.</span>
+                <button
+                  onClick={() => onOpenLeadModal({ problem: "Early Termite Inspection" })}
+                  className="text-xs text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1"
+                >
+                  <span>Book Checkup</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Poster 2: Stronger Protection */}
+            <div className="group rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-emerald-500 transition-all duration-300 shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between">
+              <div className="overflow-hidden relative aspect-square">
+                <img
+                  src="/images/poster-stronger-protection.jpg"
+                  alt="Stronger protection. Peace of mind. Expert termite solutions."
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded uppercase">Door & Timber Defense</span>
+                    <h3 className="text-sm sm:text-base font-bold text-white mt-1">Stronger protection. Peace of mind.</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-xs text-slate-400">Don't wait for the damage.</span>
+                <button
+                  onClick={() => onOpenLeadModal({ service: "Door Frame Protection" })}
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center space-x-1"
+                >
+                  <span>Protect Timber</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Poster 3: Termites Don't Take Holidays */}
+            <div className="group rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-emerald-500 transition-all duration-300 shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between">
+              <div className="overflow-hidden relative aspect-square">
+                <img
+                  src="/images/poster-no-holidays.jpg"
+                  alt="Termites don't take holidays. Neither do we."
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-[10px] bg-emerald-700 text-white font-bold px-2 py-0.5 rounded uppercase">NRI Homes & Villas</span>
+                    <h3 className="text-sm sm:text-base font-bold text-white mt-1">Termites don't take holidays. Neither do we.</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-xs text-slate-400">24/7 Protection across Kerala</span>
+                <button
+                  onClick={() => handleWhatsAppClick('pathanamthitta_poster_whatsapp', { problem: 'NRI Villa Protection' })}
+                  className="text-xs text-emerald-400 hover:text-emerald-300 font-bold flex items-center space-x-1"
+                >
+                  <span>WhatsApp Us</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Poster 4: Pack Your Bags */}
+            <div className="group rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-emerald-500 transition-all duration-300 shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between">
+              <div className="overflow-hidden relative aspect-square">
+                <img
+                  src="/images/poster-pack-bags.jpg"
+                  alt="Pack your bags... You're not welcome here! We evict termites."
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-5">
+                  <div>
+                    <span className="text-[10px] bg-amber-600 text-white font-bold px-2 py-0.5 rounded uppercase">Termite Eviction</span>
+                    <h3 className="text-sm sm:text-base font-bold text-white mt-1">Pack your bags... You're not welcome here!</h3>
+                  </div>
+                </div>
+              </div>
+              <div className="p-4 border-t border-slate-800/80 flex items-center justify-between">
+                <span className="text-xs text-slate-400">Complete colony eviction</span>
+                <button
+                  onClick={() => onOpenLeadModal({ service: "Colony Eviction" })}
+                  className="text-xs text-amber-400 hover:text-amber-300 font-bold flex items-center space-x-1"
+                >
+                  <span>Evict Termites</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Poster 5: They Don't Die Naturally */}
+            <div className="group rounded-3xl overflow-hidden bg-slate-950 border border-slate-800 hover:border-emerald-500 transition-all duration-300 shadow-xl hover:shadow-emerald-950/50 flex flex-col justify-between sm:col-span-2 lg:col-span-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 h-full items-center">
+                <div className="overflow-hidden relative h-64 sm:h-full">
+                  <img
+                    src="/images/poster-die-naturally.jpg"
+                    alt="They don't DIE naturally. We make sure of it."
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 sm:p-8 space-y-3 flex flex-col justify-center">
+                  <span className="text-[10px] bg-emerald-500/20 text-emerald-300 font-bold px-2.5 py-1 rounded-full uppercase inline-block w-max border border-emerald-400/30">
+                    Queen Eradication
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-black text-white font-display">
+                    They don't DIE naturally. We make sure of it.
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Termites never stop eating wood on their own. Our scientific transfer chemistry spreads through the underground queen, permanently wiping out the colony beneath your foundation.
+                  </p>
+                  <div className="pt-2 flex flex-wrap gap-2">
+                    <button
+                      onClick={() => handlePhoneClick('pathanamthitta_poster_call')}
+                      className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-1"
+                    >
+                      <Phone className="w-3.5 h-3.5" />
+                      <span>Call 9020040009</span>
+                    </button>
+                    <button
+                      onClick={() => handleWhatsAppClick('pathanamthitta_poster_whatsapp', { problem: 'Colony Eradication' })}
+                      className="px-4 py-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs rounded-xl shadow transition flex items-center space-x-1"
+                    >
+                      <MessageCircle className="w-3.5 h-3.5 fill-white" />
+                      <span>WhatsApp Expert</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
       {/* 8. GENUINE CUSTOMER REVIEWS FROM PATHANAMTHITTA */}
       <section className="py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
