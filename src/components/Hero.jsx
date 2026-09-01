@@ -1,129 +1,205 @@
-import React from 'react';
-import { Phone, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, FileCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, MessageCircle, ShieldCheck, MapPin, Award, CheckCircle2, FileCheck, Volume2, VolumeX, Users, Shield } from 'lucide-react';
 import { PRIMARY_PHONE_DISPLAY, handlePhoneClick, handleWhatsAppClick } from '../utils/analytics';
 import LeadForm from './LeadForm';
 
 export default function Hero({ onOpenInspectionModal }) {
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
+
+  const handlePlayAudio = () => {
+    if ('speechSynthesis' in window) {
+      if (isPlayingAudio) {
+        window.speechSynthesis.cancel();
+        setIsPlayingAudio(false);
+      } else {
+        window.speechSynthesis.cancel();
+        const text = "Welcome to TermiteControl.me by Eco Pest India. We provide professional anti-termite treatment, white ant eradication, and pre-construction soil protection for homes, luxury villas, and commercial properties across Kerala with up to 10 years warranty. Call us at 9020040009 for a free property inspection.";
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        utterance.onend = () => setIsPlayingAudio(false);
+        utterance.onerror = () => setIsPlayingAudio(false);
+        setIsPlayingAudio(true);
+        window.speechSynthesis.speak(utterance);
+      }
+    } else {
+      alert("Audio playback: Call 9020040009 for direct phone assistance.");
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-emerald-950 text-white pt-8 pb-16 lg:py-20">
-      {/* Subtle background texture overlay */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+    <>
+      {/* 1. Main Split Hero Section */}
+      <section className="relative overflow-hidden bg-[#062419] text-white pt-6 pb-12 lg:pt-10 lg:pb-16">
+        
+        {/* Ambient glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Left Column: Headings, Badges, CTAs, Trust Proof */}
-          <div className="lg:col-span-7 space-y-6 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
-            {/* Top Serving Badge */}
-            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs sm:text-sm font-semibold tracking-wide">
-              <MapPin className="w-4 h-4 text-emerald-400 animate-pulse" />
-              <span>Serving All 14 Kerala Districts • Rapid Dispatch</span>
-            </div>
+            {/* Left Column: Heading, Sub-heading, 5 Green Square Trust Points & CTAs */}
+            <div className="lg:col-span-6 space-y-4 text-left">
+              
+              <div className="text-amber-400 font-bold text-xs sm:text-sm tracking-widest uppercase font-mono">
+                PROFESSIONAL TERMITE & WOOD BORER TREATMENT
+              </div>
 
-            {/* H1 Heading */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight font-display text-white leading-tight">
-              Professional Termite Control & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">Anti-Termite Treatment</span> in Kerala
-            </h1>
+              {/* Main Heading */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white leading-tight">
+                Professional Termite Control Services in Kerala
+              </h1>
 
-            {/* Sub-tagline */}
-            <div className="space-y-2">
-              <p className="text-lg sm:text-xl font-bold text-amber-300">
-                Protect Your Home. Protect Your Property.
+              {/* Sub-heading */}
+              <p className="text-base sm:text-lg font-semibold text-slate-200 leading-snug">
+                Effective Anti-Termite Treatment for Homes, Villas, Apartments & Commercial Buildings
               </p>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                Professional termite control, anti-termite treatment and wood borer treatment for homes, villas, apartments, offices and commercial properties across Kerala.
-              </p>
+
+              {/* 5 Green Square Trust Points (Matching termitecontrol.me) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-slate-200">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Professional Pest Control Team</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Safe & Effective Treatment</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Residential & Commercial Services</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Kerala Service Coverage</span>
+                </div>
+                <div className="flex items-center space-x-2.5 sm:col-span-2">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Inspection & Treatment Support</span>
+                </div>
+              </div>
+
+              {/* Two Large Action Buttons */}
+              <div className="flex flex-wrap gap-3 items-center pt-2">
+                <button
+                  onClick={() => handlePhoneClick('hero_call')}
+                  className="px-6 py-3 rounded-lg bg-[#C69C3D] hover:bg-[#b58c32] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
+                >
+                  <Phone className="w-4 h-4 fill-slate-950" />
+                  <span>CALL NOW</span>
+                </button>
+
+                <button
+                  onClick={() => handleWhatsAppClick('hero_whatsapp')}
+                  className="px-6 py-3 rounded-lg bg-transparent hover:bg-white/10 text-white border border-[#25D366] font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
+                >
+                  <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
+                  <span>WHATSAPP NOW</span>
+                </button>
+              </div>
+
+              {/* Tap to Play Audio Button */}
+              <div className="pt-1">
+                <button
+                  onClick={handlePlayAudio}
+                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-xs font-semibold transition"
+                >
+                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5 text-amber-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+                  <span>{isPlayingAudio ? "Stop Audio Playback" : "🔊 Tap here to play audio"}</span>
+                </button>
+              </div>
+
             </div>
 
-            {/* CTA Buttons Row */}
-            <div className="pt-2 flex flex-wrap gap-3 sm:gap-4 items-center">
-              {/* Primary Call */}
-              <button
-                onClick={() => handlePhoneClick('hero_call')}
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-extrabold text-base shadow-xl hover:shadow-emerald-600/30 transition transform active:scale-95 group"
-              >
-                <Phone className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
-                <span>Call {PRIMARY_PHONE_DISPLAY}</span>
-              </button>
-
-              {/* WhatsApp Button */}
-              <button
-                onClick={() => handleWhatsAppClick('hero_whatsapp')}
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-base shadow-xl transition transform active:scale-95"
-              >
-                <MessageCircle className="w-5 h-5 mr-2 fill-white" />
-                <span>WhatsApp Now</span>
-              </button>
-
-              {/* Request Inspection */}
-              <button
-                onClick={onOpenInspectionModal}
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-sm sm:text-base shadow-xl transition transform active:scale-95"
-              >
-                <FileCheck className="w-5 h-5 mr-2" />
-                <span>Request Inspection</span>
-              </button>
-            </div>
-
-            {/* Trust Badges Bar */}
-            <div className="pt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-slate-800">
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>100% Odorless</span>
-              </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Up to 10 Yr Warranty</span>
-              </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <Award className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Govt. Approved</span>
-              </div>
-              <div className="flex items-center space-x-2 text-xs text-slate-300">
-                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>Kozhikode & Kochi Hubs</span>
-              </div>
-            </div>
-
-            {/* Hero Image Showcase */}
-            <div className="pt-3">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-700/60 group">
-                <img
-                  src="/images/hero-technician.jpg"
-                  alt="Professional pest control technician inspecting property for termites in Kerala"
-                  className="w-full h-48 sm:h-56 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            {/* Right Column: High Quality Technician Photo in Action with Gradient Blend */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-emerald-800/40 group">
+                <img 
+                  src="/images/hero-technician.jpg" 
+                  alt="Eco Pest India Certified Technician Treating Termites in Kerala" 
+                  className="w-full h-80 sm:h-96 lg:h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="eager"
                   fetchPriority="high"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=80";
-                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex items-end p-4">
-                  <div className="flex items-center justify-between w-full">
-                    <div>
-                      <p className="text-white text-xs sm:text-sm font-bold">Certified Termite Inspection Team</p>
-                      <p className="text-emerald-300 text-[11px]">Precision Drill-Inject-Seal Technology (IS:6313 Standard)</p>
-                    </div>
-                    <span className="text-[10px] bg-emerald-600/90 text-white font-bold px-2 py-1 rounded">Kerala Wide</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#062419] via-transparent to-transparent opacity-80"></div>
+                
+                {/* Floating On-Site Dispatch Badge */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md rounded-xl border border-white/20 text-xs text-slate-200">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <p className="font-bold text-white text-xs">
+                      Eco Pest India Technician on Site in Kerala
+                    </p>
                   </div>
+                  <p className="text-[11px] text-emerald-300 mt-0.5">
+                    Odorless, Non-Repellent Chemical Injections for Luxury Woodwork & Foundations
+                  </p>
                 </div>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: High-Converting Lead Form */}
-          <div className="lg:col-span-5">
-            <LeadForm 
-              title="GET A TERMITE INSPECTION"
-              subtitle="Get free expert assessment & quotation in 15 mins"
-              source="hero_quick_form"
-            />
+        </div>
+      </section>
+
+      {/* 2. FIVE ICON HIGHLIGHT RIBBON (Matching termitecontrol.me Floating Ribbon) */}
+      <section className="bg-white py-6 border-b border-slate-200 shadow-sm relative -mt-3 max-w-6xl mx-auto rounded-2xl z-20 px-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+          
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Award className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Govt. Certified</p>
+            <p className="text-[10px] text-slate-500">CIB&RC Approved Chemicals</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Users className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">1,920+ Protected</p>
+            <p className="text-[10px] text-slate-500">Homes, Villas & Offices</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Shield className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">100% Odorless</p>
+            <p className="text-[10px] text-slate-500">No Evacuation Needed</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Rapid Dispatch</p>
+            <p className="text-[10px] text-slate-500">All 14 Kerala Districts</p>
+          </div>
+
+          <div className="p-2 space-y-1 col-span-2 sm:col-span-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Up to 10 Yrs Warranty</p>
+            <p className="text-[10px] text-slate-500">Free Re-service Guarantee</p>
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

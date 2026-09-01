@@ -30,8 +30,11 @@ import {
   Users,
   Shield,
   ExternalLink,
-  Eye,
-  CheckCircle
+  Volume2,
+  VolumeX,
+  Hotel,
+  Warehouse,
+  CheckSquare
 } from 'lucide-react';
 import { PATHANAMTHITTA_DATA } from '../data/pathanamthittaData';
 import { updateMetaTags } from '../utils/seo';
@@ -42,6 +45,7 @@ import PrimaryBottomCTA from '../components/PrimaryBottomCTA';
 export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspectionModal }) {
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
+  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
   useEffect(() => {
     // Generate Schema Graph containing FAQPage, PestControlService, and BreadcrumbList
@@ -152,6 +156,27 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
     setOpenFaqIndex(openFaqIndex === index ? -1 : index);
   };
 
+  const handlePlayAudio = () => {
+    if ('speechSynthesis' in window) {
+      if (isPlayingAudio) {
+        window.speechSynthesis.cancel();
+        setIsPlayingAudio(false);
+      } else {
+        window.speechSynthesis.cancel();
+        const text = "Welcome to Termite Control Pathanamthitta by Eco Pest India. We provide professional anti-termite treatment, white ant eradication, and pre-construction soil protection for homes, NRI villas, and commercial buildings across Pathanamthitta district with up to 10 years warranty. Call us at 9020040009 for a free inspection.";
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.95;
+        utterance.pitch = 1.0;
+        utterance.onend = () => setIsPlayingAudio(false);
+        utterance.onerror = () => setIsPlayingAudio(false);
+        setIsPlayingAudio(true);
+        window.speechSynthesis.speak(utterance);
+      }
+    } else {
+      alert("Audio playback: Call 9020040009 for direct phone assistance.");
+    }
+  };
+
   // Real Justdial verified customer reviews from link https://jsdl.in/RSL-HFQ1788244801
   const justdialReviews = [
     {
@@ -207,138 +232,136 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
   return (
     <div className="bg-slate-50 min-h-screen">
       
-      {/* 1. HERO SECTION (Visually Rich Background Image + Gradient Overlay + Single H1) */}
-      <section className="relative overflow-hidden bg-slate-950 text-white pt-8 pb-16 lg:py-20">
+      {/* 1. HERO SECTION (Exact Split Layout from termitecontrol.me with Technician Photo & Forest Green Theme) */}
+      <section className="relative overflow-hidden bg-[#062419] text-white pt-6 pb-12 lg:pt-10 lg:pb-16">
         
-        {/* Background Image with Deep Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/hero-technician.jpg" 
-            alt="Professional Termite Treatment in Pathanamthitta" 
-            className="w-full h-full object-cover object-center opacity-25 filter blur-[1px]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-emerald-950/80"></div>
-          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
-        </div>
+        {/* Ambient glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 mb-4 text-xs">
-            <a href="/" className="text-slate-400 hover:text-white transition">Home</a>
-            <span className="text-slate-500">/</span>
-            <a href="/#locations" className="text-slate-400 hover:text-white transition">Kerala Pest Control</a>
-            <span className="text-slate-500">/</span>
-            <span className="text-emerald-400 font-semibold">Termite Control Pathanamthitta</span>
-            <span className="ml-auto inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 backdrop-blur-md border border-emerald-400/40 text-emerald-300 font-bold">
-              <MapPin className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Mezhuveli Hub • Rapid District Dispatch</span>
+            <a href="/" className="text-emerald-300 hover:text-white transition">Home</a>
+            <span className="text-emerald-600">/</span>
+            <a href="/#locations" className="text-emerald-300 hover:text-white transition">Kerala Pest Control</a>
+            <span className="text-emerald-600">/</span>
+            <span className="text-amber-300 font-semibold">Termite Control Pathanamthitta</span>
+            <span className="ml-auto inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-900/60 border border-emerald-500/30 text-emerald-200 font-bold text-[11px]">
+              <MapPin className="w-3 h-3 text-amber-400" />
+              <span>Mezhuveli Hub • Rapid Dispatch Across District</span>
             </span>
           </nav>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
             
-            {/* Left Column */}
-            <div className="lg:col-span-7 space-y-5 text-left">
+            {/* Left Column: Heading, Sub-heading, 5 Green Square Trust Points & CTAs */}
+            <div className="lg:col-span-6 space-y-4 text-left">
               
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 backdrop-blur-md border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>Professional Pest & Anti-Termite Management</span>
+              <div className="text-amber-400 font-bold text-xs sm:text-sm tracking-widest uppercase font-mono">
+                PROFESSIONAL TERMITE & WOOD BORER TREATMENT
               </div>
 
-              {/* Strict Single H1 Tag */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-display tracking-tight text-white leading-tight">
+              {/* Strict Single H1 Tag in Elegant Typography */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white leading-tight">
                 Termite Control Pathanamthitta
               </h1>
 
               {/* Sub-heading */}
-              <p className="text-base sm:text-lg font-bold text-amber-300 leading-snug">
-                Effective Anti-Termite Treatment for Homes, Villas, Apartments & Commercial Buildings in Thiruvalla, Adoor & Kumbanad
+              <p className="text-base sm:text-lg font-semibold text-slate-200 leading-snug">
+                Effective Anti-Termite Treatment for Homes, Villas, Apartments & Commercial Buildings
               </p>
 
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                Certified termite inspection, subterranean white ant colony eradication, and long-term chemical barriers for homes, luxury NRI villas, and commercial properties. Odorless transfer chemistry and stage-wise foundation soil protection with up to 10 years warranty.
-              </p>
-
-              {/* Pathanamthitta Office Dispatch Glassmorphic Strip */}
-              <div className="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-xs sm:text-sm text-slate-200 space-y-2 shadow-lg">
-                <div className="flex items-start space-x-2">
-                  <MapPin className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-bold text-white text-sm">
-                      Pathanamthitta Central Office: Mezhuveli P.O.
-                    </p>
-                    <p className="text-slate-300 text-xs">
-                      Eco Pest India, Mezhuveli P.O., Pathanamthitta - 689507
-                    </p>
-                    <p className="text-[11px] text-emerald-300 font-semibold mt-0.5">
-                      Fast Dispatch: Thiruvalla, Adoor, Kumbanad, Kozhencherry, Ranni, Pandalam, Konni, Mezhuveli & all 38+ panchayats.
-                    </p>
+              {/* 5 Green Square Trust Points (Matching termitecontrol.me) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-slate-200">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
                   </div>
+                  <span className="font-medium">Professional Pest Control Team</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Safe & Effective Treatment</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Residential & Commercial Services</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Kerala Service Coverage</span>
+                </div>
+                <div className="flex items-center space-x-2.5 sm:col-span-2">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold">
+                    ✓
+                  </div>
+                  <span className="font-medium">Inspection & Treatment Support</span>
                 </div>
               </div>
 
-              {/* Large Hero CTA Buttons */}
-              <div className="flex flex-wrap gap-3 sm:gap-4 items-center pt-1">
+              {/* Two Large Action Buttons */}
+              <div className="flex flex-wrap gap-3 items-center pt-2">
                 <button
                   onClick={() => handlePhoneClick('pathanamthitta_hero_call')}
-                  className="px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-base shadow-xl transition flex items-center space-x-2 group"
+                  className="px-6 py-3 rounded-lg bg-[#C69C3D] hover:bg-[#b58c32] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
                 >
-                  <Phone className="w-5 h-5 animate-pulse" />
-                  <span>CALL NOW ({PRIMARY_PHONE_DISPLAY})</span>
+                  <Phone className="w-4 h-4 fill-slate-950" />
+                  <span>CALL NOW</span>
                 </button>
 
                 <button
                   onClick={() => handleWhatsAppClick('pathanamthitta_hero_whatsapp', { location: 'Pathanamthitta (Mezhuveli)' })}
-                  className="px-5 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-extrabold text-base shadow-xl transition flex items-center space-x-2"
+                  className="px-6 py-3 rounded-lg bg-transparent hover:bg-white/10 text-white border border-[#25D366] font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
                 >
-                  <MessageCircle className="w-5 h-5 fill-white" />
+                  <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
                   <span>WHATSAPP NOW</span>
-                </button>
-
-                <button
-                  onClick={() => onOpenLeadModal({ location: 'Pathanamthitta' })}
-                  className="px-4 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow transition"
-                >
-                  <span>GET A QUOTE</span>
                 </button>
               </div>
 
-              {/* 5 Simple Trust Points Immediately Below Heading */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-3 border-t border-slate-800 text-xs text-slate-200">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>Professional Pest Control Team</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>Safe & Effective Odorless Treatment</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>Residential & Commercial Services</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                  <span>Kerala & Pathanamthitta Service Coverage</span>
-                </div>
-                <div className="flex items-center space-x-2 sm:col-span-2">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                  <span>Free Inspection & Quotation Support (1,920+ Sites Protected)</span>
-                </div>
+              {/* Tap to Play Audio Button */}
+              <div className="pt-1">
+                <button
+                  onClick={handlePlayAudio}
+                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-xs font-semibold transition"
+                >
+                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5 text-amber-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+                  <span>{isPlayingAudio ? "Stop Audio Playback" : "🔊 Tap here to play audio"}</span>
+                </button>
               </div>
 
             </div>
 
-            {/* Right Column: High-Conversion Simple Lead Form */}
-            <div className="lg:col-span-5">
-              <div className="shadow-2xl rounded-3xl overflow-hidden ring-1 ring-white/20">
-                <LeadForm
-                  title="GET FREE CONSULTATION"
-                  subtitle="Same-day technician inspection across Thiruvalla, Adoor, Kumbanad & Mezhuveli"
-                  defaultLocation="Pathanamthitta District"
-                  source="pathanamthitta_landing_hero"
+            {/* Right Column: High Quality Technician Photo in Action with Gradient Blend */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-emerald-800/40 group">
+                <img 
+                  src="/images/hero-technician.jpg" 
+                  alt="Eco Pest India Certified Technician Treating Termites in Kerala" 
+                  className="w-full h-80 sm:h-96 lg:h-[420px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  loading="eager"
+                  fetchPriority="high"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#062419] via-transparent to-transparent opacity-80"></div>
+                
+                {/* Floating On-Site Dispatch Badge */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 bg-slate-950/80 backdrop-blur-md rounded-xl border border-white/20 text-xs text-slate-200">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <p className="font-bold text-white text-xs">
+                      Eco Pest India Technician on Site: Mezhuveli P.O., Pathanamthitta
+                    </p>
+                  </div>
+                  <p className="text-[11px] text-emerald-300 mt-0.5">
+                    Odorless, Non-Repellent Chemical Injections for Luxury Woodwork & Foundations
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -347,7 +370,164 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 2. ANSWER ENGINE OPTIMIZATION (AEO) DIRECT ANSWER SECTION */}
+      {/* 2. FIVE ICON HIGHLIGHT RIBBON (Matching termitecontrol.me Floating Ribbon) */}
+      <section className="bg-white py-6 border-b border-slate-200 shadow-sm relative -mt-3 max-w-6xl mx-auto rounded-2xl z-20 px-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+          
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Award className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Govt. Certified</p>
+            <p className="text-[10px] text-slate-500">CIB&RC Approved Chemicals</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Users className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">1,920+ Protected</p>
+            <p className="text-[10px] text-slate-500">Homes, Villas & Offices</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <Shield className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">100% Odorless</p>
+            <p className="text-[10px] text-slate-500">No Evacuation Needed</p>
+          </div>
+
+          <div className="p-2 space-y-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <MapPin className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Rapid Dispatch</p>
+            <p className="text-[10px] text-slate-500">Mezhuveli & All 38+ Towns</p>
+          </div>
+
+          <div className="p-2 space-y-1 col-span-2 sm:col-span-1">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-700 font-bold">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <p className="font-bold text-xs text-slate-900">Up to 10 Yrs Warranty</p>
+            <p className="text-[10px] text-slate-500">Free Re-service Guarantee</p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. "PROPERTIES WE SERVE" SECTION (Exact Match to User Screenshot 1) */}
+      <section className="py-16 bg-[#F9F9F7] border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0C3B2E] tracking-tight">
+              Properties We Serve
+            </h2>
+            <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
+              Homes, Businesses & Everything In Between
+            </p>
+          </div>
+
+          {/* 5-Card Image Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 max-w-6xl mx-auto">
+            
+            {/* 1. Residential */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 group flex flex-col justify-between">
+              <div className="overflow-hidden h-40">
+                <img 
+                  src="/images/pest4.jpg" 
+                  alt="Residential Termite Control in Pathanamthitta" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="font-serif font-bold text-base text-[#0C3B2E]">Residential</h3>
+                <p className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">HOMES & APARTMENTS</p>
+              </div>
+            </div>
+
+            {/* 2. Villas */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 group flex flex-col justify-between">
+              <div className="overflow-hidden h-40">
+                <img 
+                  src="/images/pest13.jpg" 
+                  alt="NRI Luxury Villa Termite Protection in Kumbanad" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="font-serif font-bold text-base text-[#C69C3D]">Villas</h3>
+                <p className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">INDEPENDENT HOUSES</p>
+              </div>
+            </div>
+
+            {/* 3. Commercial */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 group flex flex-col justify-between">
+              <div className="overflow-hidden h-40">
+                <img 
+                  src="/images/pest5.jpg" 
+                  alt="Commercial Office Termite Treatment" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="font-serif font-bold text-base text-[#0C3B2E]">Commercial</h3>
+                <p className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">OFFICES & BUILDINGS</p>
+              </div>
+            </div>
+
+            {/* 4. Hotels */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 group flex flex-col justify-between">
+              <div className="overflow-hidden h-40">
+                <img 
+                  src="/images/pest6.jpg" 
+                  alt="Hotels & Resorts Woodwork Protection" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="font-serif font-bold text-base text-[#0C3B2E]">Hotels</h3>
+                <p className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">RESORTS & GUEST HOUSES</p>
+              </div>
+            </div>
+
+            {/* 5. Warehouses */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 group flex flex-col justify-between">
+              <div className="overflow-hidden h-40">
+                <img 
+                  src="/images/pest7.jpg" 
+                  alt="Industrial Warehouses & Godown Pest Control" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h3 className="font-serif font-bold text-base text-[#0C3B2E]">Warehouses</h3>
+                <p className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mt-0.5">FACTORIES & GODOWNS</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => onOpenLeadModal({ problem: "Property Inspection Booking" })}
+              className="px-6 py-2.5 rounded-xl bg-[#0C3B2E] hover:bg-[#08281f] text-white font-bold text-xs shadow-md transition"
+            >
+              Book Inspection For Your Property Type
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. ANSWER ENGINE OPTIMIZATION (AEO) DIRECT ANSWER SECTION */}
       <section className="py-12 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -380,7 +560,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 3. "SEEING THESE SIGNS? (TERMITE PROBLEM?)" SECTION WITH REAL DAMAGE IMAGES */}
+      {/* 5. "SEEING THESE SIGNS? (TERMITE PROBLEM?)" SECTION WITH REAL DAMAGE IMAGES */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -532,7 +712,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 4. HIGH PRIORITY: NRI & VACANT LUXURY VILLA PROTECTION WITH RICH BACKGROUND */}
+      {/* 6. HIGH PRIORITY: NRI & VACANT LUXURY VILLA PROTECTION WITH RICH BACKGROUND */}
       <section className="relative py-16 lg:py-20 bg-slate-950 text-white overflow-hidden border-b border-slate-800">
         
         {/* Luxury Villa Background Image */}
@@ -601,7 +781,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 5. 6 MAIN CORE SERVICES IN PATHANAMTHITTA */}
+      {/* 7. 6 MAIN CORE SERVICES IN PATHANAMTHITTA */}
       <section className="py-14 sm:py-18 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -677,7 +857,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 6. 5 BRANDED CREATIVE CAMPAIGN POSTERS SHOWCASE */}
+      {/* 8. 5 BRANDED CREATIVE CAMPAIGN POSTERS SHOWCASE */}
       <section className="py-16 bg-slate-900 text-white border-b border-slate-800 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
 
@@ -857,7 +1037,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 7. 4-STEP TREATMENT PROCESS */}
+      {/* 9. 4-STEP TREATMENT PROCESS */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -919,7 +1099,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 8. PATHANAMTHITTA CENTRAL OFFICE & SERVICE DESK (MEZHUVELI) */}
+      {/* 10. PATHANAMTHITTA CENTRAL OFFICE & SERVICE DESK (MEZHUVELI) */}
       <section className="py-14 sm:py-18 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -991,7 +1171,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 9. TRANSPARENT COST & PRICING GUIDE */}
+      {/* 11. TRANSPARENT COST & PRICING GUIDE */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -1044,7 +1224,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 10. JUSTDIAL VERIFIED REVIEWS & RATINGS (4.8 ★ / 1,153+ RATINGS) */}
+      {/* 12. JUSTDIAL VERIFIED REVIEWS & RATINGS (4.8 ★ / 1,153+ RATINGS) */}
       <section className="py-14 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -1107,7 +1287,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 11. ALL 38+ PATHANAMTHITTA LOCALITIES & TOWNS */}
+      {/* 13. ALL 38+ PATHANAMTHITTA LOCALITIES & TOWNS */}
       <section className="py-14 bg-slate-50 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -1148,7 +1328,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 12. COMPLETE 30-QUESTION FAQ ACCORDION SECTION (VISIBLE & INDEXABLE) */}
+      {/* 14. COMPLETE 30-QUESTION FAQ ACCORDION SECTION (VISIBLE & INDEXABLE) */}
       <section id="pathanamthitta-faq" className="py-14 sm:py-18 bg-white border-b border-slate-200">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -1217,7 +1397,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 13. INTERNAL LINKING HUB TO OTHER KERALA DISTRICTS */}
+      {/* 15. INTERNAL LINKING HUB TO OTHER KERALA DISTRICTS */}
       <section className="py-10 bg-slate-100 border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
@@ -1258,7 +1438,7 @@ export default function PathanamthittaLandingPage({ onOpenLeadModal, onOpenInspe
         </div>
       </section>
 
-      {/* 14. FINAL HIGH-CONVERTING CLOSING CTA */}
+      {/* 16. FINAL HIGH-CONVERTING CLOSING CTA */}
       <PrimaryBottomCTA 
         onOpenInspectionModal={onOpenInspectionModal} 
       />
