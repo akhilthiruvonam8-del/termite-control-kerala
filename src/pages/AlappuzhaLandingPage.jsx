@@ -38,7 +38,8 @@ import {
   Layers,
   Compass,
   ArrowUpRight,
-  Send
+  Send,
+  Eye
 } from 'lucide-react';
 import { ALAPPUZHA_DATA } from '../data/alappuzhaData';
 import { updateMetaTags } from '../utils/seo';
@@ -52,7 +53,6 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
   const [selectedBlock, setSelectedBlock] = useState('all');
   const [panchayatSearch, setPanchayatSearch] = useState('');
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [activeTab, setActiveTab] = useState('all');
 
   useEffect(() => {
     // Generate Schema Graph containing FAQPage, PestControlService, and BreadcrumbList
@@ -207,29 +207,19 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
   return (
     <div className="bg-[#FAF9F6] text-slate-900 min-h-screen font-sans selection:bg-emerald-800 selection:text-white">
       
-      {/* 1. HERO SECTION (Cinematic Backwater Sunset & Luxury Waterfront Villa Aesthetic) */}
-      <section className="relative overflow-hidden bg-[#051F16] text-white pt-8 pb-16 lg:pt-14 lg:pb-24 border-b border-emerald-950">
+      {/* 1. HERO SECTION (Split Layout Featuring the Specific Alappuzha Backwaters & Waterfront Villa Poster) */}
+      <section className="relative overflow-hidden bg-[#051F16] text-white pt-6 pb-12 lg:pt-10 lg:pb-16 border-b border-emerald-950">
         
-        {/* Cinematic Backdrop Image with Deep Architectural Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/alappuzha-hero-backwater.jpg" 
-            alt="Termite Control in Alappuzha - Luxury Waterfront Villa and Backwaters" 
-            className="w-full h-full object-cover object-center opacity-40 filter contrast-105"
-            loading="eager"
-            fetchPriority="high"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#051F16] via-[#051F16]/85 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#051F16] via-transparent to-transparent"></div>
-        </div>
+        {/* Subtle Ambient Light Glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Breadcrumb Navigation */}
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 mb-6 text-xs">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 mb-4 text-xs">
             <a href="/" className="text-emerald-300/80 hover:text-white transition">Home</a>
             <span className="text-emerald-700">/</span>
-            <a href="/#locations" className="text-emerald-300/80 hover:text-white transition">Kerala Service Hub</a>
+            <a href="/#locations" className="text-emerald-300/80 hover:text-white transition">Kerala Pest Control</a>
             <span className="text-emerald-700">/</span>
             <span className="text-amber-300 font-semibold tracking-wide">Alappuzha District</span>
             <span className="ml-auto inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-900/60 backdrop-blur-md border border-emerald-500/30 text-emerald-200 text-[11px] font-medium">
@@ -238,65 +228,122 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
             </span>
           </nav>
 
-          <div className="max-w-3xl space-y-5 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
             
-            {/* Brand Eyebrow Tag */}
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 backdrop-blur-md border border-amber-400/30 text-amber-300 text-xs font-mono font-bold tracking-widest uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>TERMITEControl.me • Alappuzha District</span>
+            {/* Left Column: Heading, Sub-heading, 5 Green Square Trust Points & CTAs */}
+            <div className="lg:col-span-6 space-y-4 text-left">
+              
+              <div className="text-amber-400 font-mono font-bold text-xs sm:text-sm tracking-widest uppercase">
+                ALAPPUZHA'S TRUSTED TERMITE CONTROL EXPERTS
+              </div>
+
+              {/* Strict Single H1 Tag */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+                Termite Control in Alappuzha, Kerala
+              </h1>
+
+              {/* Sub-heading */}
+              <p className="text-base sm:text-lg font-serif italic text-emerald-200 leading-snug">
+                "Protecting What You’ve Built."
+              </p>
+
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-xl">
+                Stronger protection for your valuable spaces — homes, luxury waterfront villas, backwater resorts, and commercial properties across Alappuzha District.
+              </p>
+
+              {/* 5 Green Square Trust Points (Matching User Creative Badges) */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-slate-200">
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold shadow">
+                    ✓
+                  </div>
+                  <span className="font-medium">Advanced Treatment Technology</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold shadow">
+                    ✓
+                  </div>
+                  <span className="font-medium">Long Lasting Protection (10 Yrs)</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold shadow">
+                    ✓
+                  </div>
+                  <span className="font-medium">Safe for Your Family & Pets</span>
+                </div>
+                <div className="flex items-center space-x-2.5">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold shadow">
+                    ✓
+                  </div>
+                  <span className="font-medium">Certified & Experienced Technicians</span>
+                </div>
+                <div className="flex items-center space-x-2.5 sm:col-span-2">
+                  <div className="w-5 h-5 rounded bg-[#10b981] flex items-center justify-center flex-shrink-0 text-white text-xs font-bold shadow">
+                    ✓
+                  </div>
+                  <span className="font-medium">Residential & Commercial Spaces (All 72 Panchayats)</span>
+                </div>
+              </div>
+
+              {/* Two Large Action Buttons */}
+              <div className="flex flex-wrap gap-3 items-center pt-2">
+                <button
+                  onClick={() => handlePhoneClick('alappuzha_hero_call')}
+                  className="px-6 py-3 rounded-lg bg-[#C69C3D] hover:bg-[#b58c32] text-slate-950 font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
+                >
+                  <Phone className="w-4 h-4 fill-slate-950" />
+                  <span>CALL NOW (9020040009)</span>
+                </button>
+
+                <button
+                  onClick={() => handleWhatsAppClick('alappuzha_hero_whatsapp', { location: 'Alappuzha' })}
+                  className="px-6 py-3 rounded-lg bg-transparent hover:bg-white/10 text-white border border-[#25D366] font-extrabold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
+                >
+                  <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
+                  <span>WHATSAPP NOW</span>
+                </button>
+              </div>
+
+              {/* Tap to Play Audio Button */}
+              <div className="pt-1">
+                <button
+                  onClick={handlePlayAudio}
+                  className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 text-xs font-semibold transition"
+                >
+                  {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5 text-amber-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
+                  <span>{isPlayingAudio ? "Stop Audio Introduction" : "🔊 Tap here to play audio introduction"}</span>
+                </button>
+              </div>
+
             </div>
 
-            {/* Primary Tagline */}
-            <h2 className="text-amber-400 font-serif italic text-xl sm:text-2xl font-normal tracking-wide">
-              Protecting What You’ve Built.
-            </h2>
-
-            {/* Strict Single H1 Tag */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.15]">
-              Termite Control in Alappuzha, Kerala
-            </h1>
-
-            {/* Hero Copy (Minimal, Elegant, Architectural) */}
-            <p className="text-base sm:text-lg text-slate-200 font-normal leading-relaxed max-w-2xl">
-              Professional termite inspection, treatment and prevention solutions across Alappuzha District, Kerala. Designed around coastal soil dynamics, high water tables, and high-value timber structures.
-            </p>
-
-            {/* CTA Buttons Row */}
-            <div className="pt-3 flex flex-wrap gap-3.5 items-center">
-              <button
-                onClick={() => onOpenInspectionModal()}
-                className="px-7 py-3.5 rounded-xl bg-[#C69C3D] hover:bg-[#b58c32] active:bg-[#a37c2b] text-slate-950 font-extrabold text-sm sm:text-base shadow-xl transition transform active:scale-95 flex items-center space-x-2"
-              >
-                <CalendarIcon className="w-4 h-4" />
-                <span>BOOK A TERMITE INSPECTION</span>
-              </button>
-
-              <button
-                onClick={() => handlePhoneClick('alappuzha_hero_call')}
-                className="px-6 py-3.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-extrabold text-sm sm:text-base shadow-xl transition flex items-center space-x-2 border border-emerald-600/50"
-              >
-                <Phone className="w-4 h-4" />
-                <span>CALL {PRIMARY_PHONE_DISPLAY}</span>
-              </button>
-
-              <button
-                onClick={() => handleWhatsAppClick('alappuzha_hero_whatsapp', { location: 'Alappuzha District' })}
-                className="px-5 py-3.5 rounded-xl bg-transparent hover:bg-white/10 text-emerald-300 border border-[#25D366] font-bold text-sm sm:text-base shadow-lg transition flex items-center space-x-2"
-              >
-                <MessageCircle className="w-4 h-4 fill-[#25D366] text-[#25D366]" />
-                <span>WHATSAPP US</span>
-              </button>
-            </div>
-
-            {/* Tap to Play Audio Button */}
-            <div className="pt-2">
-              <button
-                onClick={handlePlayAudio}
-                className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-400/30 text-xs font-semibold transition"
-              >
-                {isPlayingAudio ? <VolumeX className="w-3.5 h-3.5 text-amber-400" /> : <Volume2 className="w-3.5 h-3.5 text-amber-400 animate-pulse" />}
-                <span>{isPlayingAudio ? "Stop Audio Introduction" : "🔊 Tap here to play audio introduction"}</span>
-              </button>
+            {/* Right Column: User-Provided Specific Alappuzha Poster in Full High-Definition Showcase */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-500/40 group bg-slate-900">
+                <img 
+                  src="/images/alappuzha-hero-backwater.jpg" 
+                  alt="Eco Pest India - Alappuzha's Trusted Termite Control Experts Campaign" 
+                  className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                
+                {/* Subtle Floating Banner */}
+                <div className="absolute bottom-3 left-3 right-3 p-3 bg-slate-950/85 backdrop-blur-md rounded-xl border border-white/20 text-xs text-slate-200">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                      <p className="font-bold text-white text-xs">
+                        Eco Pest India • Alappuzha Central Service
+                      </p>
+                    </div>
+                    <span className="text-[10px] bg-emerald-700 text-white font-bold px-2 py-0.5 rounded">Verified Official</span>
+                  </div>
+                  <p className="text-[11px] text-emerald-300 mt-0.5">
+                    Waterfront Villas • Kuttanad Homes • Backwater Resorts • IS:6313 Soil Defense
+                  </p>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -310,7 +357,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
           
           <div className="p-2 space-y-1">
-            <div className="w-10 h-10 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800">
               <Shield className="w-5 h-5" />
             </div>
             <p className="font-bold text-xs text-slate-900">Advanced Technology</p>
@@ -318,7 +365,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
           </div>
 
           <div className="p-2 space-y-1">
-            <div className="w-10 h-10 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800">
               <Clock className="w-5 h-5" />
             </div>
             <p className="font-bold text-xs text-slate-900">Long Lasting Protection</p>
@@ -326,7 +373,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
           </div>
 
           <div className="p-2 space-y-1">
-            <div className="w-10 h-10 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800">
               <Sparkles className="w-5 h-5" />
             </div>
             <p className="font-bold text-xs text-slate-900">Family & Pet Safe</p>
@@ -334,7 +381,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
           </div>
 
           <div className="p-2 space-y-1">
-            <div className="w-10 h-10 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800">
               <Award className="w-5 h-5" />
             </div>
             <p className="font-bold text-xs text-slate-900">Certified Technicians</p>
@@ -342,7 +389,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
           </div>
 
           <div className="p-2 space-y-1 col-span-2 sm:col-span-1">
-            <div className="w-10 h-10 mx-auto rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800">
+            <div className="w-10 h-10 mx-auto rounded-full bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800">
               <Building2 className="w-5 h-5" />
             </div>
             <p className="font-bold text-xs text-slate-900">Residential & Commercial</p>
@@ -352,69 +399,86 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
         </div>
       </section>
 
-      {/* 3. SECTION 02: THE PROBLEM ("Termites Work Quietly.") */}
+      {/* 3. SECTION 02: THE PROBLEM (Showcasing the Second Specific Picture: "Protecting Structures From The Ground Up") */}
       <section className="py-16 sm:py-20 bg-[#FAF9F6] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             
-            {/* Left Column: Creative Poster Showcase */}
+            {/* Left Column: Specific Structural Protection Creative Poster in Full Portrait View */}
             <div className="lg:col-span-5 relative">
-              <div className="rounded-3xl overflow-hidden shadow-2xl border border-slate-300/80 bg-white group">
+              <div className="rounded-3xl overflow-hidden shadow-2xl border-2 border-emerald-800/30 bg-white group">
                 <img 
                   src="/images/alappuzha-structure-protection.jpg" 
-                  alt="Termite Management - Protecting Structures from the Ground Up" 
+                  alt="Termite Management - Protecting Structures from the Ground Up (Eco Pest India)" 
                   className="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
             </div>
 
-            {/* Right Column: Architectural Narrative */}
-            <div className="lg:col-span-7 space-y-6">
+            {/* Right Column: Architectural Solutions Narrative */}
+            <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold uppercase tracking-wider">
-                <span>The Invisible Threat</span>
+                <span>Ground-Up Engineering</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#0C3B2E] tracking-tight leading-tight">
-                Termites Work Quietly.
+                Termites Work Quietly. Protecting Structures From the Ground Up.
               </h2>
 
-              <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
-                Termites can remain hidden while gradually affecting wooden elements and structural components of a property. In Alappuzha’s coastal terrain and Kuttanad backwaters, subterranean colonies thrive beneath the high water table, feeding on door frames, roof trusses, and modular kitchens undetected.
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                Termites can remain hidden while gradually affecting wooden elements and structural components of a property. ECO PEST INDIA provides professional termite-management solutions designed around the property, construction type, and infestation condition in Alappuzha.
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
-                    01
+              {/* 4 Solutions from User Creative */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-base">⛑️</span>
+                    <h3 className="font-serif font-bold text-slate-900 text-sm">PRE-CONSTRUCTION PROTECTION</h3>
                   </div>
-                  <h3 className="font-serif font-bold text-slate-900 text-base">Early Inspection</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Identify hidden subterranean entry paths and acoustic nesting before structural timber fails.</p>
+                  <p className="text-xs text-slate-600 leading-relaxed">Planned termite protection during the construction stage as per IS:6313 specifications.</p>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold text-sm">
-                    02
+                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-base">🏠</span>
+                    <h3 className="font-serif font-bold text-slate-900 text-sm">POST-CONSTRUCTION TREATMENT</h3>
                   </div>
-                  <h3 className="font-serif font-bold text-slate-900 text-base">Professional Treatment</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">Non-repellent transfer chemistry injected into foundations to permanently eradicate the queen.</p>
+                  <p className="text-xs text-slate-600 leading-relaxed">Precision drill-inject-seal treatment solutions for existing and occupied properties.</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-base">🎯</span>
+                    <h3 className="font-serif font-bold text-slate-900 text-sm">TARGETED TREATMENT</h3>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">Appropriate micro-intervention based on live infestation condition and timber vulnerability.</p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                  <div className="flex items-center space-x-2">
+                    <span className="text-base">🛡️</span>
+                    <h3 className="font-serif font-bold text-slate-900 text-sm">PREVENTIVE MANAGEMENT</h3>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">Continuous strategies and warranty audits designed to reduce future subterranean termite activity.</p>
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center space-x-4">
+              <div className="pt-2 flex flex-wrap gap-3 items-center">
                 <button
                   onClick={() => onOpenInspectionModal()}
-                  className="px-6 py-3 rounded-xl bg-[#0C3B2E] hover:bg-[#08281f] text-white font-bold text-sm shadow-md transition"
+                  className="px-6 py-3 rounded-xl bg-[#0C3B2E] hover:bg-[#08281f] text-white font-bold text-xs sm:text-sm shadow-md transition"
                 >
                   Schedule Ground-Up Assessment
                 </button>
                 <button
                   onClick={() => handleWhatsAppClick('alappuzha_problem_whatsapp', { problem: 'Suspected termite damage in wood' })}
-                  className="px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-sm shadow-md transition flex items-center space-x-1.5"
+                  className="px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs sm:text-sm shadow-md transition flex items-center space-x-1.5"
                 >
                   <MessageCircle className="w-4 h-4 fill-white" />
-                  <span>Send Photos for Diagnosis</span>
+                  <span>Send Photos for Instant Diagnosis</span>
                 </button>
               </div>
 
@@ -491,7 +555,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
         </div>
       </section>
 
-      {/* 5. SECTION 04: "Built for Kerala Homes." */}
+      {/* 5. SECTION 04: "Built for Kerala Homes." (Featuring User's Specific Pictures) */}
       <section className="py-16 sm:py-20 bg-[#F4F1EA] border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -541,27 +605,28 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
               </div>
             </div>
 
+            {/* Right Column: User Specific Photos (Modern Waterfront Villa & Traditional House) */}
             <div className="lg:col-span-6 grid grid-cols-2 gap-4">
-              <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-300">
+              <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-300 bg-white">
                 <img 
-                  src="/images/pest13.jpg" 
-                  alt="Luxury Modern Villa in Alappuzha" 
+                  src="/images/alappuzha-waterfront-villa.jpg" 
+                  alt="Modern Waterfront Villa in Alappuzha (Eco Pest India)" 
                   className="w-full h-56 object-cover"
                   loading="lazy"
                 />
-                <div className="p-3 bg-white text-center">
+                <div className="p-3 text-center">
                   <p className="font-serif font-bold text-xs text-[#0C3B2E]">Modern Waterfront Villas</p>
                 </div>
               </div>
 
-              <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-300">
+              <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-300 bg-white">
                 <img 
-                  src="/images/pest4.jpg" 
-                  alt="Traditional Kerala Residential Architecture" 
+                  src="/images/alappuzha-traditional-house.jpg" 
+                  alt="Traditional Kerala Tharavad Heritage House" 
                   className="w-full h-56 object-cover"
                   loading="lazy"
                 />
-                <div className="p-3 bg-white text-center">
+                <div className="p-3 text-center">
                   <p className="font-serif font-bold text-xs text-[#0C3B2E]">Traditional Kerala Homes</p>
                 </div>
               </div>
@@ -760,7 +825,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
         </div>
       </section>
 
-      {/* 8. SECTION 07: "For Every Property Worth Protecting." (4-Image Layout) */}
+      {/* 8. SECTION 07: "For Every Property Worth Protecting." (Using Specific User-Provided Images) */}
       <section className="py-16 sm:py-20 bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -769,18 +834,18 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
               For Every Property Worth Protecting.
             </h2>
             <p className="mt-2 text-base text-slate-600">
-              Customized treatment protocols matched to architectural scale and building use.
+              Customized treatment protocols matched to architectural scale and building use in Alappuzha.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             
-            {/* 1. HOME */}
+            {/* 1. HOME (Traditional House 2) */}
             <div className="bg-[#FAF9F6] rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
               <div className="h-44 overflow-hidden">
                 <img 
-                  src="/images/pest4.jpg" 
-                  alt="Residential Homes & Apartments" 
+                  src="/images/alappuzha-traditional-house2.jpg" 
+                  alt="Traditional Kerala Residential Homes in Alappuzha" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
@@ -791,51 +856,51 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
               </div>
             </div>
 
-            {/* 2. BUSINESS */}
+            {/* 2. WATERFRONT VILLA (Modern Waterfront Villa) */}
             <div className="bg-[#FAF9F6] rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
               <div className="h-44 overflow-hidden">
                 <img 
-                  src="/images/pest5.jpg" 
-                  alt="Commercial Properties & Offices" 
+                  src="/images/alappuzha-waterfront-villa.jpg" 
+                  alt="Modern Waterfront Villa Protection" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
               <div className="p-4 text-center">
-                <h3 className="font-serif font-bold text-lg text-[#0C3B2E]">BUSINESS</h3>
-                <p className="text-xs text-slate-600 mt-1">Offices, retail showrooms, coir units & godowns.</p>
+                <h3 className="font-serif font-bold text-lg text-[#0C3B2E]">VILLAS</h3>
+                <p className="text-xs text-slate-600 mt-1">Luxury backwater villas, independent estates & homes.</p>
               </div>
             </div>
 
-            {/* 3. RESORT / HOSPITALITY */}
+            {/* 3. RESORT / HOSPITALITY (Pest Control Cottage Resort) */}
             <div className="bg-[#FAF9F6] rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
               <div className="h-44 overflow-hidden">
                 <img 
-                  src="/images/pest6.jpg" 
-                  alt="Waterfront Resorts & Backwater Homestays" 
+                  src="/images/alappuzha-cottage-resort.jpg" 
+                  alt="Waterfront Resorts & Backwater Homestay Cottages" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
               <div className="p-4 text-center">
                 <h3 className="font-serif font-bold text-lg text-[#0C3B2E]">HOSPITALITY</h3>
-                <p className="text-xs text-slate-600 mt-1">Backwater eco-resorts, homestays & cottages.</p>
+                <p className="text-xs text-slate-600 mt-1">Backwater eco-resorts, homestays & wooden cottages.</p>
               </div>
             </div>
 
-            {/* 4. NEW BUILD */}
+            {/* 4. HERITAGE / TRADITIONAL (Traditional House 1) */}
             <div className="bg-[#FAF9F6] rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
               <div className="h-44 overflow-hidden">
                 <img 
-                  src="/images/pre-construction.jpg" 
-                  alt="Pre-Construction Foundation Protection" 
+                  src="/images/alappuzha-traditional-house.jpg" 
+                  alt="Heritage Wooden Tharavads & Nalukettu Homes" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
               </div>
               <div className="p-4 text-center">
-                <h3 className="font-serif font-bold text-lg text-[#0C3B2E]">NEW BUILD</h3>
-                <p className="text-xs text-slate-600 mt-1">Pre-construction IS:6313 stage-wise soil barriers.</p>
+                <h3 className="font-serif font-bold text-lg text-[#0C3B2E]">HERITAGE</h3>
+                <p className="text-xs text-slate-600 mt-1">Heritage timber tharavads, wooden ceilings & temples.</p>
               </div>
             </div>
 
@@ -904,7 +969,7 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
         </div>
       </section>
 
-      {/* 10. SECTION 09: ALAPPUZHA VISUAL STORY & CLIMATE DEFENSE */}
+      {/* 10. SECTION 09: ALAPPUZHA VISUAL STORY & CLIMATE DEFENSE (Featuring User's Backwater & Cottage Photos) */}
       <section className="py-16 sm:py-20 bg-[#051F16] text-white border-b border-emerald-950 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
 
@@ -948,11 +1013,12 @@ export default function AlappuzhaLandingPage({ onOpenLeadModal, onOpenInspection
               </div>
             </div>
 
+            {/* Right Column: User's Cottage/Homes Showcase Photo */}
             <div className="lg:col-span-6">
               <div className="rounded-3xl overflow-hidden border border-emerald-800/40 shadow-2xl relative group">
                 <img 
-                  src="/images/alappuzha-hero-backwater.jpg" 
-                  alt="Termite Control Across Alappuzha District Kerala" 
+                  src="/images/alappuzha-cottage-homes.jpg" 
+                  alt="Termite Control for Lakeshore Cottages & Homes Across Alappuzha" 
                   className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
