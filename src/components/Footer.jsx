@@ -187,9 +187,9 @@ export default function Footer({ currentPath = '/', onNavigate, onOpenCrmModal }
                 <button
                   key={d.id}
                   onClick={() => onNavigate(`/${d.slug}`)}
-                  className={`hover:text-emerald-400 transition text-left text-[11px] ${d.id === 'kozhikode' ? 'text-amber-400 font-bold' : ''}`}
+                  className="text-slate-400 hover:text-emerald-400 transition text-left text-[11px]"
                 >
-                  {d.name} {d.id === 'kozhikode' ? '⭐' : ''}
+                  {d.name}
                 </button>
               ))}
             </div>

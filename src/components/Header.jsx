@@ -35,11 +35,9 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
     { 
       name: 'Locations', 
       type: 'dropdown',
-      highlight: 'Kozhikode',
       items: DISTRICTS.map(d => ({
-        name: d.name + (d.id === 'kozhikode' ? ' (Pavamani Rd)' : ''),
-        path: `/${d.slug}`,
-        isHub: d.id === 'kozhikode' || d.id === 'ernakulam'
+        name: d.name,
+        path: `/${d.slug}`
       }))
     },
     { name: 'Signs of Termites', path: '/#signs' },
@@ -104,13 +102,21 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
                 <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
                 <span>Palakkad Office: Chandra Nagar HQ</span>
               </button>
-            ) : (
+            ) : currentPath.includes('kozhikode') || currentPath.includes('calicut') ? (
               <button 
                 onClick={() => handleLinkClick('/termite-control-kozhikode')}
                 className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
               >
                 <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
                 <span>Kozhikode Office: Pavamani Rd</span>
+              </button>
+            ) : (
+              <button 
+                onClick={() => handleLinkClick('/#locations')}
+                className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
+                <span>Kerala Service: All 14 Districts Covered</span>
               </button>
             )}
             <span className="text-slate-600 hidden md:inline">|</span>
@@ -209,96 +215,21 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
                   <span className="ml-1 text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded-full">14 Districts</span>
                   <ChevronDown className="w-4 h-4 ml-1 text-slate-400 group-hover:text-emerald-700 transition-transform group-hover:rotate-180" />
                 </button>
-                <div className="absolute left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-slate-200 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="px-3 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center">
-                    <span>Select District</span>
-                    <span className="text-[11px] text-emerald-700 font-semibold cursor-pointer" onClick={(e) => handleLinkClick('/#locations', e)}>View All</span>
+                <div className="absolute left-0 mt-1 w-80 bg-white rounded-xl shadow-xl border border-slate-200 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="px-2 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider flex justify-between items-center border-b border-slate-100 mb-1">
+                    <span>Select District (14 Covered)</span>
+                    <span className="text-[11px] text-emerald-700 font-semibold cursor-pointer hover:underline" onClick={(e) => handleLinkClick('/#locations', e)}>View Hub</span>
                   </div>
 
-                  {/* Kozhikode Priority Spotlight */}
-                  <div className="p-2 bg-emerald-50/70 border-y border-emerald-100 my-1">
-                    <button 
-                      onClick={(e) => handleLinkClick('/termite-control-kozhikode', e)}
-                      className="w-full text-left px-3 py-2 text-sm font-bold text-emerald-950 hover:bg-emerald-100/70 rounded-lg transition flex items-center justify-between"
-                    >
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 text-emerald-700 mr-2 flex-shrink-0" />
-                        <div>
-                          <p className="leading-tight">Kozhikode (Calicut)</p>
-                          <p className="text-[11px] text-emerald-700 font-normal">Pavamani Rd • Fast Dispatch</p>
-                        </div>
-                      </div>
-                      <span className="text-[10px] bg-emerald-700 text-white px-2 py-0.5 rounded-full font-bold">Office</span>
-                    </button>
-                  </div>
-
-                  {/* Palakkad Priority Spotlight */}
-                  <div className="px-2 py-1">
-                    <button 
-                      onClick={(e) => handleLinkClick('/termite-control-palakkad', e)}
-                      className="w-full text-left px-3 py-1.5 text-xs font-bold text-amber-900 bg-amber-50/80 hover:bg-amber-100/80 rounded-md transition flex items-center justify-between border border-amber-200/60"
-                    >
-                      <div className="flex items-center">
-                        <MapPin className="w-3.5 h-3.5 text-amber-700 mr-1.5 flex-shrink-0" />
-                        <span>Palakkad District</span>
-                      </div>
-                      <span className="text-[10px] bg-amber-600 text-white px-1.5 py-0.5 rounded font-bold">Featured</span>
-                    </button>
-                  </div>
-
-                  {/* Thrissur Priority Spotlight */}
-                  <div className="px-2 py-1">
-                    <button 
-                      onClick={(e) => handleLinkClick('/termite-control-thrissur', e)}
-                      className="w-full text-left px-3 py-1.5 text-xs font-bold text-emerald-950 bg-emerald-50 hover:bg-emerald-100 rounded-md transition flex items-center justify-between border border-emerald-200"
-                    >
-                      <div className="flex items-center">
-                        <MapPin className="w-3.5 h-3.5 text-emerald-700 mr-1.5 flex-shrink-0" />
-                        <div>
-                          <span>Thrissur District</span>
-                          <span className="block text-[10px] text-emerald-700 font-normal">Kuttoor / Pamboor Desk</span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] bg-emerald-700 text-white px-1.5 py-0.5 rounded font-bold">Office</span>
-                    </button>
-                  </div>
-
-                  {/* Pathanamthitta Priority Spotlight */}
-                  <div className="px-2 py-1">
-                    <button 
-                      onClick={(e) => handleLinkClick('/termite-control-pathanamthitta', e)}
-                      className="w-full text-left px-3 py-1.5 text-xs font-bold text-emerald-950 bg-emerald-50 hover:bg-emerald-100 rounded-md transition flex items-center justify-between border border-emerald-200"
-                    >
-                      <div className="flex items-center">
-                        <MapPin className="w-3.5 h-3.5 text-emerald-700 mr-1.5 flex-shrink-0" />
-                        <div>
-                          <span>Pathanamthitta District</span>
-                          <span className="block text-[10px] text-emerald-700 font-normal">Mezhuveli Branch Desk</span>
-                        </div>
-                      </div>
-                      <span className="text-[10px] bg-emerald-700 text-white px-1.5 py-0.5 rounded font-bold">Office</span>
-                    </button>
-                  </div>
-
-                  {/* Ernakulam Spotlight */}
-                  <div className="px-2 py-1">
-                    <button 
-                      onClick={(e) => handleLinkClick('/termite-control-ernakulam', e)}
-                      className="w-full text-left px-3 py-1.5 text-xs font-semibold text-slate-800 hover:bg-slate-100 rounded-md transition flex items-center justify-between"
-                    >
-                      <span>Kochi / Ernakulam</span>
-                      <span className="text-[10px] text-slate-500">Kakkanad / Aluva</span>
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-0.5 px-2 pt-1 border-t border-slate-100 max-h-48 overflow-y-auto">
-                    {DISTRICTS.filter(d => d.id !== 'kozhikode' && d.id !== 'ernakulam' && d.id !== 'palakkad' && d.id !== 'thrissur' && d.id !== 'pathanamthitta').map(d => (
+                  <div className="grid grid-cols-2 gap-1 max-h-72 overflow-y-auto p-1">
+                    {DISTRICTS.map(d => (
                       <button
                         key={d.id}
                         onClick={(e) => handleLinkClick(`/${d.slug}`, e)}
-                        className="text-left px-2.5 py-1.5 text-xs text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 rounded transition"
+                        className="text-left px-2.5 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-emerald-800 rounded-lg transition flex items-center space-x-1.5"
                       >
-                        {d.name}
+                        <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                        <span className="truncate">{d.name}</span>
                       </button>
                     ))}
                   </div>
@@ -392,22 +323,6 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 shadow-2xl animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
           <div className="px-4 pt-3 pb-6 space-y-3">
-            
-            {/* Kozhikode Priority Banner in Mobile */}
-            <div 
-              onClick={(e) => handleLinkClick('/termite-control-kozhikode', e)}
-              className="p-3 bg-emerald-50 rounded-xl border border-emerald-200 flex items-center justify-between cursor-pointer"
-            >
-              <div className="flex items-center space-x-2">
-                <MapPin className="w-5 h-5 text-emerald-700" />
-                <div>
-                  <div className="font-bold text-sm text-emerald-950">Kozhikode District Page</div>
-                  <div className="text-xs text-emerald-700">Pavamani Road (Near Malabar Gold)</div>
-                </div>
-              </div>
-              <span className="text-xs bg-emerald-700 text-white font-bold px-2 py-1 rounded">View</span>
-            </div>
-
             <div className="grid grid-cols-2 gap-2 pt-1">
               <button
                 onClick={(e) => handleLinkClick('/', e)}
@@ -457,9 +372,9 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
                   <button
                     key={d.id}
                     onClick={(e) => handleLinkClick(`/${d.slug}`, e)}
-                    className={`text-left px-2.5 py-1.5 rounded text-xs font-medium transition ${d.id === 'kozhikode' ? 'bg-emerald-100 text-emerald-900 font-bold' : 'bg-slate-50 text-slate-700 hover:bg-slate-100'}`}
+                    className="text-left px-2.5 py-1.5 rounded text-xs font-medium bg-slate-50 text-slate-700 hover:bg-slate-100 transition"
                   >
-                    {d.name} {d.id === 'kozhikode' ? '⭐' : ''}
+                    {d.name}
                   </button>
                 ))}
               </div>

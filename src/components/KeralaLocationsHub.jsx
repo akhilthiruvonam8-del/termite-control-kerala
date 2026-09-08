@@ -141,39 +141,29 @@ export default function KeralaLocationsHub({ onNavigate, onOpenLeadModal }) {
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-            {DISTRICTS.map((d) => {
-              const isKozhikode = d.id === 'kozhikode';
-              return (
-                <button
-                  key={d.id}
-                  onClick={() => onNavigate(`/${d.slug}`)}
-                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 group flex flex-col justify-between ${
-                    isKozhikode 
-                      ? 'bg-emerald-50 border-emerald-300 ring-2 ring-emerald-500/20 shadow-sm' 
-                      : 'bg-slate-50 border-slate-200 hover:bg-white hover:border-emerald-300 hover:shadow-md'
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <MapPin className={`w-4 h-4 ${isKozhikode ? 'text-emerald-700' : 'text-slate-400 group-hover:text-emerald-600'}`} />
-                      {isKozhikode && (
-                        <span className="text-[9px] font-extrabold bg-emerald-700 text-white px-1.5 py-0.5 rounded">Hub</span>
-                      )}
-                    </div>
-                    <p className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-800">
-                      {d.name}
-                    </p>
-                    <p className="text-[10px] text-slate-500 mt-0.5 line-clamp-1">
-                      {d.altName || d.name} District
-                    </p>
+            {DISTRICTS.map((d) => (
+              <button
+                key={d.id}
+                onClick={() => onNavigate(`/${d.slug}`)}
+                className="p-3.5 rounded-2xl border text-left transition-all duration-200 group flex flex-col justify-between bg-slate-50 border-slate-200 hover:bg-white hover:border-emerald-300 hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <MapPin className="w-4 h-4 text-slate-400 group-hover:text-emerald-600" />
                   </div>
-                  <div className="mt-2 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-emerald-700">
-                    <span>Inspect</span>
-                    <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                </button>
-              );
-            })}
+                  <p className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-emerald-800">
+                    {d.name}
+                  </p>
+                  <p className="text-[10px] text-slate-500 mt-0.5 line-clamp-1">
+                    {d.altName || d.name} District
+                  </p>
+                </div>
+                <div className="mt-2 pt-2 border-t border-slate-200/50 flex items-center justify-between text-[10px] font-bold text-emerald-700">
+                  <span>Inspect</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </button>
+            ))}
           </div>
         </div>
 
