@@ -7,6 +7,7 @@ import KozhikodeLandingPage from './pages/KozhikodeLandingPage';
 import PalakkadLandingPage from './pages/PalakkadLandingPage';
 import ThrissurLandingPage from './pages/ThrissurLandingPage';
 import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
+import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
 import DistrictLandingPage from './pages/DistrictLandingPage';
 import CostCalculatorModal from './components/CostCalculatorModal';
 import LeadManagerModal from './components/LeadManagerModal';
@@ -62,6 +63,31 @@ export default function App() {
   // Determine which page to render based on URL slug
   const renderCurrentPage = () => {
     const cleanPath = currentPath.replace(/^\/|\/$/g, '');
+
+    // Alappuzha Dedicated Master Landing Page (6 Municipalities, 12 Blocks, 72 Panchayats)
+    const alappuzhaTowns = [
+      'alappuzha', 'alleppey', 'cherthala', 'chengannur', 'kayamkulam', 
+      'mavelikara', 'harippad', 'haripad', 'kuttanad', 'kainakary', 
+      'champakkulam', 'edathua', 'nedumudi', 'thakazhy', 'thalavady', 
+      'kavalam', 'pulincunnu', 'veliyanad', 'aroor', 'mararikkulam', 
+      'thanneermukkam', 'ambalappuzha', 'punnapra', 'purakkad', 'mannanchery',
+      'muhamma', 'muthukulam', 'chettikulangara', 'mannar', 'nooranad', 'vallikunnam'
+    ];
+    const isAlappuzhaRoute = 
+      alappuzhaTowns.some(town => cleanPath === `termite-control-${town}` || cleanPath === `termite-control/${town}` || cleanPath === town || cleanPath === `locations/${town}` || cleanPath === `locations/${town}/`) ||
+      cleanPath === 'termite-control-alappuzha' ||
+      cleanPath.startsWith('termite-control/alappuzha') ||
+      cleanPath.startsWith('locations/alappuzha') ||
+      cleanPath.startsWith('termite-control-alappuzha/');
+
+    if (isAlappuzhaRoute) {
+      return (
+        <AlappuzhaLandingPage
+          onOpenLeadModal={openLeadModal}
+          onOpenInspectionModal={() => openLeadModal({ location: 'Alappuzha District' })}
+        />
+      );
+    }
 
     // Kozhikode Priority Landing Page
     if (cleanPath === 'termite-control-kozhikode' || cleanPath === 'kozhikode' || cleanPath === 'termite-control/kozhikode') {
@@ -139,10 +165,17 @@ export default function App() {
 
   // Determine current location context for WhatsApp / sticky bar
   let currentLocationContext = 'Kerala';
-  if (currentPath.includes('kozhikode')) currentLocationContext = 'Kozhikode';
-  if (currentPath.includes('palakkad')) currentLocationContext = 'Palakkad';
-  if (currentPath.includes('thrissur') || currentPath.includes('trissur')) currentLocationContext = 'Thrissur';
-  if (currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta')) currentLocationContext = 'Pathanamthitta';
+  if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
+    currentLocationContext = 'Alappuzha';
+  } else if (currentPath.includes('kozhikode')) {
+    currentLocationContext = 'Kozhikode';
+  } else if (currentPath.includes('palakkad')) {
+    currentLocationContext = 'Palakkad';
+  } else if (currentPath.includes('thrissur') || currentPath.includes('trissur')) {
+    currentLocationContext = 'Thrissur';
+  } else if (currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta')) {
+    currentLocationContext = 'Pathanamthitta';
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
@@ -187,7 +220,7 @@ export default function App() {
             <LeadForm
               title={leadModalState.initialData.title || "REQUEST TERMITE INSPECTION"}
               subtitle="Free on-site assessment across all Kerala districts"
-              defaultLocation={leadModalState.initialData.location || (currentPath.includes('kozhikode') ? 'Kozhikode (Pavamani Rd)' : '')}
+              defaultLocation={leadModalState.initialData.location || (currentPath.includes('alappuzha') ? 'Alappuzha District' : (currentPath.includes('kozhikode') ? 'Kozhikode (Pavamani Rd)' : ''))}
               defaultProblem={leadModalState.initialData.problem || ''}
               defaultProperty={leadModalState.initialData.propertyType || ''}
               source="popup_inspection_modal"

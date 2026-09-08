@@ -112,11 +112,13 @@ export const DISTRICTS = [
     name: "Alappuzha",
     altName: "Alleppey",
     slug: "termite-control-alappuzha",
+    hub: true,
+    office: "Alappuzha District Central Dispatch, Kerala - 688001",
     phone: "9020040009",
-    metaTitle: "Termite Control in Alappuzha | Alleppey Anti-Termite Treatment",
-    metaDescription: "Water-resistant termite control and wood borer treatment in Alappuzha, Cherthala, Kayamkulam, Mavelikkara, Haripad. Call 9020040009.",
-    majorAreas: ["Alappuzha Town", "Cherthala", "Kayamkulam", "Mavelikkara", "Haripad", "Ambalapuzha", "Chengannur", "Aroor", "Kuttanad"],
-    intro: "Specialized termite solutions engineered for high-water-table and coastal timber structures across Alleppey."
+    metaTitle: "Termite Control in Alappuzha, Kerala | TermiteControl.me",
+    metaDescription: "Professional termite control, termite inspection and termite treatment services across Alappuzha, Kerala. Residential, commercial, pre-construction and post-construction solutions.",
+    majorAreas: ["Alappuzha Town", "Cherthala", "Chengannur", "Kayamkulam", "Mavelikara", "Harippad", "Kuttanad", "Kainakary", "Champakkulam", "Edathua", "Nedumudi", "Aroor", "Mararikkulam", "Thanneermukkam", "Ambalappuzha", "Punnapra", "Muhamma", "Mannanchery"],
+    intro: "Premier termite control, anti-termite soil barriers, and wood borer treatment across Alappuzha district with rapid on-site inspection for homes, luxury waterfront villas, resorts, and commercial spaces."
   },
   {
     id: "pathanamthitta",

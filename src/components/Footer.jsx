@@ -9,8 +9,10 @@ export default function Footer({ currentPath = '/', onNavigate, onOpenCrmModal }
   };
 
   // Determine local office address based on current page
-  let officeAddress = "Offices: Kozhikode (Pavamani Rd) • Thrissur (Kuttoor) • Palakkad (Chandra Nagar) • Pathanamthitta (Mezhuveli)";
-  if (currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta')) {
+  let officeAddress = "Offices: Kozhikode (Pavamani Rd) • Thrissur (Kuttoor) • Palakkad (Chandra Nagar) • Pathanamthitta (Mezhuveli) • Alappuzha District Hub";
+  if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
+    officeAddress = "Alappuzha District Office: Eco Pest India, Alappuzha Central Dispatch (Serving All 6 Municipalities & 72 Panchayats), Kerala - 688001";
+  } else if (currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta')) {
     officeAddress = "Pathanamthitta Office: Eco Pest India, Mezhuveli P.O., Pathanamthitta District, Kerala - 689507";
   } else if (currentPath.includes('thrissur') || currentPath.includes('trissur')) {
     officeAddress = "Thrissur Office: Veluthath Building, Pamboor, Kuttoor P.O., Thrissur, Kerala - 680013";

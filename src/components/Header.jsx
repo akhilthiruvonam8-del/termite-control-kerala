@@ -72,7 +72,15 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
           </div>
           
           <div className="flex items-center space-x-4">
-            {currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta') ? (
+            {currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad') ? (
+              <button 
+                onClick={() => handleLinkClick('/termite-control-alappuzha')}
+                className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
+                <span>Alappuzha Hub: Central Dispatch (All 6 Municipalities)</span>
+              </button>
+            ) : currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta') ? (
               <button 
                 onClick={() => handleLinkClick('/termite-control-pathanamthitta')}
                 className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
