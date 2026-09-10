@@ -8,6 +8,7 @@ import PalakkadLandingPage from './pages/PalakkadLandingPage';
 import ThrissurLandingPage from './pages/ThrissurLandingPage';
 import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
 import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
+import KollamLandingPage from './pages/KollamLandingPage';
 import DistrictLandingPage from './pages/DistrictLandingPage';
 import CostCalculatorModal from './components/CostCalculatorModal';
 import LeadManagerModal from './components/LeadManagerModal';
@@ -135,6 +136,40 @@ export default function App() {
         <PathanamthittaLandingPage
           onOpenLeadModal={openLeadModal}
           onOpenInspectionModal={() => openLeadModal({ location: 'Pathanamthitta District (Mezhuveli / Thiruvalla)' })}
+        />
+      );
+    }
+
+    // Kollam Dedicated Master Landing Page (Corporation, 4 Municipalities, 11 Blocks, 68 Panchayats)
+    const kollamTowns = [
+      'kollam', 'quilon', 'karunagappally', 'kottarakkara', 'punalur', 'paravur', 
+      'anchal', 'kundara', 'chavara', 'sasthamcotta', 'oachira', 'pathanapuram', 
+      'chathannur', 'mayyanad', 'thenmala', 'kulathupuzha', 'neendakara', 'poothakkulam', 
+      'kalluvathukkal', 'kadakkal', 'chadayamangalam', 'mundrothuruthu', 'munroe-island', 
+      'perinad', 'ezhukone', 'veliyam', 'elampalloor', 'kottamkara', 'nedumpana', 
+      'thrikkovilvattom', 'thevalakkara', 'panmana', 'kizhakkekallada', 'panayam', 
+      'perayam', 'thrikkaruva', 'adichanallur', 'chirakkara', 'pooyappally', 'kareepra', 
+      'neduvathoor', 'kulasekharapuram', 'thazhava', 'clappana', 'alappad', 'thodiyoor', 
+      'vilakkudy', 'thalavoor', 'piravanthur', 'pattazhi', 'poruvazhy', 'sooranadu', 
+      'sooranadu-north', 'sooranadu-south', 'west-kallada', 'kunnathur', 'mynagappally', 
+      'vettikkavala', 'melila', 'mylam', 'kulakkada', 'pavithreswaram', 'ummannur', 
+      'eroor', 'alayamon', 'aryankavu', 'edamulakkal', 'karavaloor', 'chithara', 
+      'ittiva', 'elamadu', 'nilamel', 'velinallur', 'kummil', 'thekkumbhagom',
+      'polayathodu', 'chinnakkada', 'asramam', 'thevally', 'kadappakada', 'mundakkal',
+      'kavanad', 'sakthikulangara', 'tangasseri', 'thirumullavaram', 'ayathil', 'kilikollur'
+    ];
+    const isKollamRoute = 
+      kollamTowns.some(town => cleanPath === `termite-control-${town}` || cleanPath === `termite-control/${town}` || cleanPath === town || cleanPath === `locations/${town}` || cleanPath === `locations/${town}/`) ||
+      cleanPath === 'termite-control-kollam' ||
+      cleanPath.startsWith('termite-control/kollam') ||
+      cleanPath.startsWith('locations/kollam') ||
+      cleanPath.startsWith('termite-control-kollam/');
+
+    if (isKollamRoute) {
+      return (
+        <KollamLandingPage
+          onOpenLeadModal={openLeadModal}
+          onOpenInspectionModal={() => openLeadModal({ location: 'Kollam District (Polayathodu Desk)' })}
         />
       );
     }

@@ -70,7 +70,15 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
           </div>
           
           <div className="flex items-center space-x-4">
-            {currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad') ? (
+            {currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur') ? (
+              <button 
+                onClick={() => handleLinkClick('/termite-control-kollam')}
+                className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
+                <span>Kollam Office: Polayathodu (Near DYFI Youth Centre)</span>
+              </button>
+            ) : currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad') ? (
               <button 
                 onClick={() => handleLinkClick('/termite-control-alappuzha')}
                 className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"

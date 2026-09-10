@@ -78,11 +78,12 @@ export const DISTRICTS = [
     name: "Kollam",
     altName: "Quilon",
     slug: "termite-control-kollam",
+    office: "Near DYFI Youth Centre, Polayathodu, Kollam, Kerala 691001",
     phone: "9020040009",
     metaTitle: "Termite Control in Kollam | Professional Anti-Termite Treatment",
     metaDescription: "Residential & commercial termite control in Kollam, Karunagappally, Kottarakkara, Punalur, Paravur. Call 9020040009.",
-    majorAreas: ["Chinnakada", "Asramam", "Karunagappally", "Kottarakkara", "Punalur", "Paravur", "Anchal", "Kundara", "Chathannoor", "Sasthamkotta"],
-    intro: "Guaranteed termite control and wood borer protection for residential and commercial establishments in Kollam."
+    majorAreas: ["Polayathodu", "Chinnakada", "Asramam", "Thevally", "Karunagappally", "Kottarakkara", "Punalur", "Paravur", "Anchal", "Kundara", "Chathannoor", "Sasthamkotta"],
+    intro: "Guaranteed termite control, drill-fill-seal barriers, and wood borer protection for residential and commercial establishments in Kollam."
   },
   {
     id: "kottayam",
