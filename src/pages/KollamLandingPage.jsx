@@ -43,7 +43,9 @@ import {
   Crosshair,
   BadgeCheck,
   Flame,
-  Info
+  Info,
+  ImageIcon,
+  Maximize2
 } from 'lucide-react';
 import { KOLLAM_DATA } from '../data/kollamData';
 import { updateMetaTags } from '../utils/seo';
@@ -56,7 +58,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [selectedBlock, setSelectedBlock] = useState('all');
   const [panchayatSearch, setPanchayatSearch] = useState('');
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeGalleryFilter, setActiveGalleryFilter] = useState('all');
 
   useEffect(() => {
     // Generate Schema Graph containing FAQPage, PestControlService, LocalBusiness, and BreadcrumbList
@@ -226,7 +228,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </div>
 
-      {/* 2. HERO SECTION */}
+      {/* 2. HERO SECTION WITH RICH VISUAL SHOWCASE */}
       <section className="relative pt-8 pb-16 md:pt-14 md:pb-24 overflow-hidden border-b border-slate-800">
         {/* Ambient Gradient Glows */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -235,7 +237,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            {/* Left Column: Localized Content */}
+            {/* Left Column: Localized Content & CTAs */}
             <div className="lg:col-span-7 space-y-6">
               
               <div className="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/30 rounded-full px-3.5 py-1.5 text-xs text-emerald-300 backdrop-blur shadow-inner">
@@ -326,16 +328,42 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
 
             </div>
 
-            {/* Right Column: Lead Form Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-slate-800/90 border border-slate-700 rounded-2xl p-6 shadow-2xl backdrop-blur relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-                <div className="mb-4">
-                  <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">Fast Response Desk</span>
-                  <h3 className="text-xl font-bold text-white mt-1">Book Kollam Termite Inspection</h3>
-                  <p className="text-xs text-slate-400 mt-1">
-                    Direct booking with local Polayathodu squad for homes, villas, commercial & construction sites.
-                  </p>
+            {/* Right Column: Hero High-Res Technician Visual + Fast Lead Booking */}
+            <div className="lg:col-span-5 space-y-4">
+              
+              {/* Technician Image Card with Floating Badges */}
+              <div className="relative rounded-2xl overflow-hidden border border-emerald-500/30 shadow-2xl bg-slate-950 group">
+                <img 
+                  src="/images/hero-technician.jpg" 
+                  alt="TermiteControl.me Certified Pest Control Specialist in Kollam" 
+                  className="w-full h-56 sm:h-64 object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-90"
+                  loading="eager"
+                  fetchPriority="high"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                
+                {/* Floating Micro-Badge */}
+                <div className="absolute top-3 left-3 bg-slate-950/85 backdrop-blur-md px-3 py-1.5 rounded-xl border border-emerald-500/30 text-xs flex items-center space-x-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span className="text-white font-bold text-[11px]">Eco Pest India • Polayathodu Desk</span>
+                </div>
+
+                <div className="absolute bottom-3 left-3 right-3 p-3 bg-slate-900/90 backdrop-blur-md rounded-xl border border-slate-700/80 flex items-center justify-between text-xs">
+                  <div>
+                    <p className="text-white font-bold text-xs">Certified Inspection Squad</p>
+                    <p className="text-[11px] text-emerald-400">Drill-Fill-Seal & Pre-Construction</p>
+                  </div>
+                  <span className="px-2.5 py-1 bg-emerald-600 text-slate-950 text-[10px] font-black rounded-lg uppercase">
+                    Ready to Deploy
+                  </span>
+                </div>
+              </div>
+
+              {/* Fast Form Card */}
+              <div className="bg-slate-800/90 border border-slate-700 rounded-2xl p-5 shadow-xl backdrop-blur relative">
+                <div className="mb-3">
+                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">Fast Response Desk</span>
+                  <h3 className="text-base font-bold text-white">Book Kollam Termite Inspection</h3>
                 </div>
                 <LeadForm 
                   defaultLocation="Kollam (Polayathodu / Chinnakkada)"
@@ -343,13 +371,251 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
                   buttonText="Request Free Inspection"
                 />
               </div>
+
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* 3. KOLLAM ADMINISTRATIVE & GEOGRAPHIC OVERVIEW */}
+      {/* 3. KOLLAM ARCHITECTURAL PROPERTY SHOWCASE GALLERY (NEW PREMIUM VISUAL SECTION) */}
+      <section className="py-16 bg-slate-950 border-b border-slate-800" id="property-gallery">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest flex items-center justify-center space-x-1.5">
+              <Camera className="w-4 h-4 text-emerald-400" />
+              <span>Kollam Property Defense Gallery</span>
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-display">
+              Protecting Valuable Spaces Across Kollam District
+            </h2>
+            <p className="text-sm text-slate-400">
+              High-resolution photo showcase of the diverse architectural properties we safeguard against subterranean termites and timber-boring beetles.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            
+            {/* 1. Ashtamudi Waterfront Villas */}
+            <div className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition shadow-xl group flex flex-col justify-between">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/images/alappuzha-waterfront-villa.jpg" 
+                  alt="Termite protection for Ashtamudi Lake waterfront luxury villas in Kollam" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-[10px] font-bold text-emerald-400 border border-emerald-500/30">
+                  Ashtamudi Waterfront
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition">
+                    Lakefront & Waterfront Villas
+                  </h3>
+                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                    Thevally, Asramam, Perinad & Munroe Island. High-humidity subterranean chemical barriers resisting wet soil erosion.
+                  </p>
+                </div>
+                <button
+                  onClick={() => onOpenLeadModal({ propertyType: 'Waterfront Villa', location: 'Thevally, Kollam' })}
+                  className="mt-3 w-full py-1.5 bg-slate-800 hover:bg-emerald-600 hover:text-slate-950 text-emerald-400 text-xs font-bold rounded-lg transition text-center"
+                >
+                  Protect Waterfront Home
+                </button>
+              </div>
+            </div>
+
+            {/* 2. Traditional Wooden Tharavads */}
+            <div className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition shadow-xl group flex flex-col justify-between">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/images/alappuzha-traditional-house.jpg" 
+                  alt="Heritage teak woodwork and timber preservation in Kollam traditional Tharavads" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-[10px] font-bold text-amber-400 border border-amber-500/30">
+                  Heritage Timber
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition">
+                    Traditional Teak Tharavads
+                  </h3>
+                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                    Kottarakkara, Poothakkulam, Pattazhi & Thalavoor. Preserving carved wooden ceilings, teak doors, and antique machans without aesthetic harm.
+                  </p>
+                </div>
+                <button
+                  onClick={() => onOpenLeadModal({ propertyType: 'Traditional Kerala Wooden House', location: 'Kottarakkara, Kollam' })}
+                  className="mt-3 w-full py-1.5 bg-slate-800 hover:bg-emerald-600 hover:text-slate-950 text-emerald-400 text-xs font-bold rounded-lg transition text-center"
+                >
+                  Preserve Heritage Wood
+                </button>
+              </div>
+            </div>
+
+            {/* 3. Pre-Construction IS 6313 Foundation Soil Treatment */}
+            <div className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition shadow-xl group flex flex-col justify-between">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/images/pre-construction.jpg" 
+                  alt="Pre-construction foundation soil chemical barrier as per IS 6313 in Kollam" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-[10px] font-bold text-teal-400 border border-teal-500/30">
+                  Construction Stage
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition">
+                    Pre-Construction Soil Barrier
+                  </h3>
+                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                    4-Stage foundation soil spraying as per IS 6313 (Part 2) for new residential homes and commercial complexes. 10-Year Certificate.
+                  </p>
+                </div>
+                <button
+                  onClick={() => onOpenLeadModal({ service: 'Pre-Construction Termite Treatment', location: 'Kollam' })}
+                  className="mt-3 w-full py-1.5 bg-slate-800 hover:bg-emerald-600 hover:text-slate-950 text-emerald-400 text-xs font-bold rounded-lg transition text-center"
+                >
+                  Book 10-Yr Foundation Barrier
+                </button>
+              </div>
+            </div>
+
+            {/* 4. Luxury Estate & Hillside Bungalows */}
+            <div className="rounded-2xl overflow-hidden bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition shadow-xl group flex flex-col justify-between">
+              <div className="relative overflow-hidden aspect-[4/3]">
+                <img 
+                  src="/images/alappuzha-cottage-resort.jpg" 
+                  alt="Termite and wood borer defense for luxury estate residences and hillside homes in Kollam" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                <span className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-slate-950/80 backdrop-blur text-[10px] font-bold text-blue-400 border border-blue-500/30">
+                  Estate Residences
+                </span>
+              </div>
+              <div className="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-sm font-bold text-white group-hover:text-emerald-300 transition">
+                    Midland & Foothill Bungalows
+                  </h3>
+                  <p className="text-[11px] text-slate-400 mt-1 leading-relaxed">
+                    Anchal, Thenmala, Punalur & Pathanapuram. Heavy-duty subterranean barrier shielding buildings against plantation termite colonies.
+                  </p>
+                </div>
+                <button
+                  onClick={() => onOpenLeadModal({ propertyType: 'Plantation Bungalow / Modern Villa', location: 'Punalur / Anchal, Kollam' })}
+                  className="mt-3 w-full py-1.5 bg-slate-800 hover:bg-emerald-600 hover:text-slate-950 text-emerald-400 text-xs font-bold rounded-lg transition text-center"
+                >
+                  Safeguard Estate Home
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. REAL TREATMENT PROOF: BEFORE & AFTER VISUAL SHOWCASE */}
+      <section className="py-16 bg-slate-900 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest flex items-center justify-center space-x-1.5">
+              <Eye className="w-4 h-4 text-emerald-400" />
+              <span>Real Treatment Evidence</span>
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-display">
+              Before & After Termite Eradication Showcase
+            </h2>
+            <p className="text-sm text-slate-400">
+              See how our scientific non-repellent transfer chemistry completely destroys subterranean colonies and stops timber degradation without destroying aesthetics.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            
+            {/* Visual 1: Structural Timber Before & After */}
+            <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="rounded-xl overflow-hidden border border-slate-800 relative">
+                <img 
+                  src="/images/before-after.jpg" 
+                  alt="Before and after termite treatment on wooden door frame in Kollam" 
+                  className="w-full h-auto object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-base font-bold text-white">Teak Wood Door Frame & Wardrobe Restoration</h3>
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  Active subterranean termite mud tube trails eradicated and injected with wood-nourishing termiticide. Micro-drilled holes sealed invisibly with color-matched epoxy compound.
+                </p>
+              </div>
+            </div>
+
+            {/* Visual 2: Termite vs Wood Borer Macro Diagnosis */}
+            <div className="p-5 rounded-2xl bg-slate-950 border border-slate-800 space-y-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl overflow-hidden border border-slate-800 relative group">
+                  <img 
+                    src="/images/termite-damage.jpg" 
+                    alt="Subterranean termite mud tubes and wood damage" 
+                    className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 bg-slate-950/85 px-2 py-1 rounded text-[10px] font-bold text-red-400 border border-red-500/30">
+                    🐜 Subterranean Termites
+                  </div>
+                </div>
+
+                <div className="rounded-xl overflow-hidden border border-slate-800 relative group">
+                  <img 
+                    src="/images/wood-borer.jpg" 
+                    alt="Wood borer beetle pinholes and fine yellow powder" 
+                    className="w-full h-44 object-cover group-hover:scale-105 transition duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute bottom-2 left-2 right-2 bg-slate-950/85 px-2 py-1 rounded text-[10px] font-bold text-amber-400 border border-amber-500/30">
+                    🪵 Powder-Post Wood Borer
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-xs">
+                <h3 className="text-base font-bold text-white">Visual Identification: Termite vs Wood Borer</h3>
+                <div className="grid grid-cols-2 gap-2 text-[11px]">
+                  <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <strong className="text-red-400 block">Termite Symptoms:</strong>
+                    <span className="text-slate-400">Brown mud tubes on walls, hollow wood sound, discarded wings.</span>
+                  </div>
+                  <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800">
+                    <strong className="text-amber-400 block">Wood Borer Symptoms:</strong>
+                    <span className="text-slate-400">Tiny 1mm round holes, fine flour-like yellow dust falling continuously.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. KOLLAM ADMINISTRATIVE & GEOGRAPHIC OVERVIEW */}
       <section className="py-14 bg-slate-950 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -459,7 +725,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 4. INTERACTIVE 11 BLOCKS & 68 GRAMA PANCHAYATS DIRECTORY */}
+      {/* 6. INTERACTIVE 11 BLOCKS & 68 GRAMA PANCHAYATS DIRECTORY */}
       <section className="py-16 bg-slate-900 border-b border-slate-800" id="panchayats">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -564,7 +830,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 5. 14 DEDICATED TERMITE SERVICES */}
+      {/* 7. 14 DEDICATED TERMITE SERVICES */}
       <section className="py-16 bg-slate-950 border-b border-slate-800" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -637,55 +903,8 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 6. KOLLAM PROPERTY ARCHETYPES & TERRAIN DEFENSE MATRIX */}
+      {/* 8. PRE-CONSTRUCTION VS POST-CONSTRUCTION COMPARISON */}
       <section className="py-16 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">Environment & Architecture</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white font-display">
-              Kollam Property Defense Solutions
-            </h2>
-            <p className="text-sm text-slate-400">
-              Different micro-climates across Kollam require distinct chemical transfer barriers and moisture-proof termite protocols.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {KOLLAM_DATA.propertyProfiles.map((p, idx) => (
-              <div key={idx} className="p-6 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-base font-bold text-white">{p.title}</h3>
-                  <p className="text-xs text-emerald-400 font-semibold mt-1">Covering: {p.locations}</p>
-
-                  <div className="mt-4 space-y-3 text-xs">
-                    <div className="p-3 rounded-xl bg-red-950/20 border border-red-900/30 text-red-200">
-                      <span className="font-bold block text-red-400 mb-0.5">⚠️ Vulnerability Challenge:</span>
-                      {p.challenge}
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-emerald-950/20 border border-emerald-900/30 text-emerald-200">
-                      <span className="font-bold block text-emerald-400 mb-0.5">🛡️ Scientific Solution:</span>
-                      {p.solution}
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => onOpenLeadModal({ propertyType: p.title, location: 'Kollam' })}
-                  className="mt-5 w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl border border-slate-700 transition"
-                >
-                  Protect This Property Type
-                </button>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 7. PRE-CONSTRUCTION VS POST-CONSTRUCTION COMPARISON */}
-      <section className="py-16 bg-slate-950 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
@@ -701,7 +920,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             {/* Pre-Construction Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-emerald-500/40 shadow-xl relative overflow-hidden">
+            <div className="p-6 sm:p-8 rounded-2xl bg-slate-950 border border-emerald-500/40 shadow-xl relative overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold border border-emerald-500/30">
                   New Construction Stage
@@ -715,19 +934,19 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
               </p>
 
               <div className="mt-6 space-y-3 text-xs">
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-emerald-400 font-bold block">Stage 1: Trench Excavation</span>
                   <p className="text-slate-400 mt-0.5">Bottom and vertical sides of foundation trenches treated with 5 Litres/sq.m of emulsion.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-emerald-400 font-bold block">Stage 2: Backfilled Soil</span>
                   <p className="text-slate-400 mt-0.5">Sub-surface soil along retaining walls treated with 7.5 Litres/linear metre.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-emerald-400 font-bold block">Stage 3: Under-Floor Plinth Bed</span>
                   <p className="text-slate-400 mt-0.5">Complete consolidated gravel/sand bed sprayed prior to laying PCC floor slab.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-emerald-400 font-bold block">Stage 4: External Perimeter Rodding</span>
                   <p className="text-slate-400 mt-0.5">Final perimeter trenching along building apron to block horizontal foraging termites.</p>
                 </div>
@@ -745,7 +964,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
             </div>
 
             {/* Post-Construction Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl relative overflow-hidden">
+            <div className="p-6 sm:p-8 rounded-2xl bg-slate-950 border border-slate-800 shadow-xl relative overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <span className="px-3 py-1 rounded-full bg-slate-800 text-teal-400 text-xs font-bold border border-slate-700">
                   Existing Occupied Homes & Buildings
@@ -759,19 +978,19 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
               </p>
 
               <div className="mt-6 space-y-3 text-xs">
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-teal-400 font-bold block">Step 1: 12mm Precision Micro-Drilling</span>
                   <p className="text-slate-400 mt-0.5">Tiny holes drilled 1 foot apart along inner wall junctions and door frames.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-teal-400 font-bold block">Step 2: Pressurized Chemical Injection</span>
                   <p className="text-slate-400 mt-0.5">Odorless non-repellent termiticide pumped into sub-slab soil to destroy underground colonies.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-teal-400 font-bold block">Step 3: Color-Matched Sealing</span>
                   <p className="text-slate-400 mt-0.5">Holes cleanly sealed with color-matching waterproof epoxy compound leaving no scar.</p>
                 </div>
-                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                <div className="p-3 bg-slate-900 rounded-xl border border-slate-800">
                   <span className="text-teal-400 font-bold block">Step 4: Woodwork & Wardrobe Defense</span>
                   <p className="text-slate-400 mt-0.5">Anti-fungal and borer-inhibiting formulation applied to door jambs and cabinetry backs.</p>
                 </div>
@@ -793,8 +1012,8 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 8. 36 AEO / AI SEARCH DIRECT-ANSWER FAQS */}
-      <section className="py-16 bg-slate-900 border-b border-slate-800" id="faqs">
+      {/* 9. 36 AEO / AI SEARCH DIRECT-ANSWER FAQS */}
+      <section className="py-16 bg-slate-950 border-b border-slate-800" id="faqs">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center space-y-3 mb-10">
@@ -814,7 +1033,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
                 value={faqSearchQuery}
                 onChange={(e) => setFaqSearchQuery(e.target.value)}
                 placeholder="Search questions (e.g. cost, safety, borers, Polayathodu)..."
-                className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
+                className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"
               />
             </div>
           </div>
@@ -828,8 +1047,8 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
                     key={idx}
                     className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                       isOpen 
-                        ? 'bg-slate-950 border-emerald-500/50 shadow-md' 
-                        : 'bg-slate-950/60 border-slate-800/80 hover:border-slate-700'
+                        ? 'bg-slate-900 border-emerald-500/50 shadow-md' 
+                        : 'bg-slate-900/60 border-slate-800/80 hover:border-slate-700'
                     }`}
                   >
                     <button
@@ -866,11 +1085,11 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 9. KOLLAM LOCAL OFFICE SPOTLIGHT */}
-      <section className="py-16 bg-slate-950 border-b border-slate-800">
+      {/* 10. KOLLAM LOCAL OFFICE SPOTLIGHT */}
+      <section className="py-16 bg-slate-900 border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+          <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-950 via-slate-950 to-slate-900 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               
               <div className="lg:col-span-8 space-y-4">
@@ -888,13 +1107,13 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
-                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                  <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
                     <span className="text-slate-400 block font-medium">Physical Address:</span>
                     <strong className="text-white block mt-0.5">{KOLLAM_DATA.brand.officeAddress.line1}</strong>
                     <span className="text-slate-400">{KOLLAM_DATA.brand.officeAddress.city}, Kerala - {KOLLAM_DATA.brand.officeAddress.pincode}</span>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60">
+                  <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
                     <span className="text-slate-400 block font-medium">Service Timings & Helpline:</span>
                     <strong className="text-emerald-400 block mt-0.5">{KOLLAM_DATA.brand.officeAddress.timing}</strong>
                     <span className="text-white font-bold">Helpline: {PRIMARY_PHONE_DISPLAY}</span>
@@ -906,7 +1125,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
                     href={googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center space-x-1.5 transition"
+                    className="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl border border-slate-700 flex items-center space-x-1.5 transition"
                   >
                     <Navigation className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Get Directions on Google Maps</span>
@@ -924,7 +1143,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
               </div>
 
               <div className="lg:col-span-4">
-                <div className="p-6 rounded-2xl bg-slate-950/90 border border-slate-800 text-center space-y-3">
+                <div className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 text-center space-y-3 shadow-xl">
                   <div className="inline-flex p-3 rounded-full bg-emerald-500/10 text-emerald-400 mb-1">
                     <CheckCircle className="w-8 h-8" />
                   </div>
@@ -947,8 +1166,8 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 10. CUSTOMER REVIEWS */}
-      <section className="py-16 bg-slate-900 border-b border-slate-800" id="reviews">
+      {/* 11. CUSTOMER REVIEWS */}
+      <section className="py-16 bg-slate-950 border-b border-slate-800" id="reviews">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
@@ -966,7 +1185,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {KOLLAM_DATA.reviews.map((rev, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-slate-950 border border-slate-800 flex flex-col justify-between">
+              <div key={idx} className="p-5 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex text-amber-400">
@@ -994,7 +1213,7 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 11. FINAL HIGH IMPACT CTA */}
+      {/* 12. FINAL HIGH IMPACT CTA */}
       <section className="py-16 bg-gradient-to-b from-slate-950 to-slate-900 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="inline-flex items-center space-x-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 text-xs text-emerald-300">
