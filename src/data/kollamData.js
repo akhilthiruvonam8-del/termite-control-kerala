@@ -440,7 +440,7 @@ export const KOLLAM_DATA = {
       slug: "termite-prevention",
       tagline: "Proactive Monitoring & Annual Maintenance",
       icon: "Compass",
-      image: "/images/service-cashew.jpg",
+      image: "/images/service-prevention-amc.jpg",
       description: "Scheduled preventative inspections, perimeter barrier maintenance, and moisture control consultations to ensure permanent termite-free property status.",
       method: "Biannual acoustic audits, exterior perimeter top-ups, and plumbing leak risk assessments.",
       warranty: "Continuous Active Protection Warranty",
