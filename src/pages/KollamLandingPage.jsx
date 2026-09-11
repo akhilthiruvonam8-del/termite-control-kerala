@@ -100,8 +100,8 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </div>
 
-      {/* 2. NATURE HERO SECTION (WITH NATURE WALLPAPER BACKGROUND) */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-8 pb-16 lg:py-20 border-b border-emerald-950 bg-[#020b08] text-white">
+      {/* 2. NATURE HERO SECTION (EXPANDED FULL-WIDTH NATURE VIEW) */}
+      <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center pt-12 pb-20 lg:py-24 border-b border-emerald-950 bg-[#020b08] text-white">
         
         {/* Hero Nature Visual Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -112,132 +112,107 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
             loading="eager"
             fetchPriority="high"
           />
-          {/* Cinematic Gradient Mask */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#020b08]/95 via-[#020b08]/85 to-[#020b08]/40 lg:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020b08] via-transparent to-[#020b08]/70" />
+          {/* Subtle cinematic gradient so nature photo is vibrant and clearly visible */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020b08]/90 via-[#020b08]/60 to-[#020b08]/30 lg:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020b08]/95 via-transparent to-[#020b08]/60" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center lg:text-left">
+          
+          <div className="space-y-6 max-w-3xl mx-auto lg:mx-0">
             
-            {/* Left Column: Reference-Styled Typography & CTAs */}
-            <div className="lg:col-span-7 space-y-6 text-left">
-              
-              {/* Pill Tag */}
-              <div className="inline-flex items-center space-x-2 bg-emerald-950/90 border border-emerald-500/40 rounded-full px-4 py-1.5 text-xs text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/50">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="font-bold tracking-wider uppercase text-[11px]">
-                  PROFESSIONAL TERMITE CONTROL • KOLLAM DISTRICT
-                </span>
-              </div>
-
-              {/* Elegant Serif & Modern Sans Hybrid Headline */}
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.12]">
-                  Beautiful Spaces with <br />
-                  <span className="italic font-light text-emerald-400 font-serif">Termite-Free</span> Protection
-                </h1>
-                
-                {/* Secondary SEO Sub-headline */}
-                <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-emerald-400/90 font-mono">
-                  Termite Control. Local Expertise. Kollam Coverage.
-                </p>
-              </div>
-
-              <p className="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl text-shadow-sm">
-                From lush Ashtamudi backwater gardens to luxury modern villas, we provide odorless, IS:6313 certified subterranean termite & wood borer defense across 
-                <strong className="text-white font-semibold"> Kollam Corporation, 4 Municipalities & All 68 Grama Panchayats</strong>.
-              </p>
-
-              {/* 4 Checkpoint Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm text-slate-200">
-                <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
-                    ✓
-                  </div>
-                  <span className="font-medium text-slate-100">100% Odorless & Pet-Safe</span>
-                </div>
-                <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
-                    ✓
-                  </div>
-                  <span className="font-medium text-slate-100">Up to 10-Year Written Guarantee</span>
-                </div>
-                <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
-                    ✓
-                  </div>
-                  <span className="font-medium text-slate-100">IS:6313 BIS Standard Compliance</span>
-                </div>
-                <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
-                    ✓
-                  </div>
-                  <span className="font-medium text-slate-100">Same-Day Local Inspection</span>
-                </div>
-              </div>
-
-              {/* Glowing CTA Action Buttons */}
-              <div className="pt-3 flex flex-wrap items-center gap-3.5">
-                <button
-                  onClick={() => onOpenInspectionModal()}
-                  className="px-7 py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-sm sm:text-base flex items-center space-x-2 shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 transform active:scale-95"
-                >
-                  <span>Book Free Inspection</span>
-                  <ArrowRight className="w-4 h-4 text-slate-950 font-bold" />
-                </button>
-
-                <button
-                  onClick={() => handlePhoneClick('kollam_hero')}
-                  className="px-6 py-3.5 rounded-full bg-black/60 hover:bg-black/80 text-white font-bold text-sm sm:text-base border border-emerald-500/40 backdrop-blur-md flex items-center space-x-2 transition"
-                >
-                  <Phone className="w-4 h-4 text-emerald-400" />
-                  <span>Call: {PRIMARY_PHONE_DISPLAY}</span>
-                </button>
-
-                <button
-                  onClick={() => handleWhatsAppClick('kollam_hero', { location: 'Kollam District' })}
-                  className="px-5 py-3.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/50 text-[#25D366] font-bold text-sm sm:text-base flex items-center space-x-2 backdrop-blur-md transition"
-                >
-                  <MessageCircle className="w-4 h-4 fill-[#25D366]" />
-                  <span>WhatsApp</span>
-                </button>
-              </div>
-
-              {/* Local Desk Floating Badge */}
-              <div className="p-3.5 bg-black/60 rounded-2xl border border-emerald-500/20 backdrop-blur-md flex items-start space-x-3 text-xs text-slate-300 max-w-xl">
-                <MapPin className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-white font-bold">Kollam Office Desk:</span> {KOLLAM_DATA.brand.officeAddress.line1}, {KOLLAM_DATA.brand.officeAddress.city}, Kerala - {KOLLAM_DATA.brand.officeAddress.pincode}
-                  <span className="block text-[11px] text-emerald-400 font-medium mt-0.5">{KOLLAM_DATA.brand.officeAddress.timing}</span>
-                </div>
-              </div>
-
+            {/* Pill Tag */}
+            <div className="inline-flex items-center space-x-2 bg-emerald-950/90 border border-emerald-500/40 rounded-full px-4 py-1.5 text-xs text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/50">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span className="font-bold tracking-wider uppercase text-[11px]">
+                PROFESSIONAL TERMITE CONTROL • KOLLAM DISTRICT
+              </span>
             </div>
 
-            {/* Right Column: Lead Booking Form Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-[#03150e]/95 border border-emerald-500/35 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-2xl relative overflow-hidden text-white">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
-                <div className="mb-4">
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest flex items-center space-x-1">
-                    <Sparkles className="w-3 h-3" />
-                    <span>Instant Dispatch Desk</span>
-                  </span>
-                  <h3 className="text-xl font-bold text-white mt-1">Book Kollam Termite Inspection</h3>
-                  <p className="text-xs text-slate-300 mt-1">
-                    Direct booking with local Polayathodu technicians. 100% free site evaluation.
-                  </p>
+            {/* Elegant Serif & Modern Sans Hybrid Headline */}
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.12]">
+                Beautiful Spaces with <br />
+                <span className="italic font-light text-emerald-400 font-serif">Termite-Free</span> Protection
+              </h1>
+              
+              {/* Secondary SEO Sub-headline */}
+              <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-emerald-400/90 font-mono">
+                Termite Control. Local Expertise. Kollam Coverage.
+              </p>
+            </div>
+
+            <p className="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl text-shadow-sm">
+              From lush Ashtamudi backwater gardens to luxury modern villas, we provide odorless, IS:6313 certified subterranean termite & wood borer defense across 
+              <strong className="text-white font-semibold"> Kollam Corporation, 4 Municipalities & All 68 Grama Panchayats</strong>.
+            </p>
+
+            {/* 4 Checkpoint Badges */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm text-slate-200 max-w-2xl">
+              <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
+                  ✓
                 </div>
-                <LeadForm 
-                  defaultLocation="Kollam (Polayathodu / Chinnakkada)"
-                  source="kollam_landing_hero"
-                  buttonText="Request Inspection Now"
-                />
+                <span className="font-medium text-slate-100">100% Odorless & Pet-Safe</span>
+              </div>
+              <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
+                  ✓
+                </div>
+                <span className="font-medium text-slate-100">Up to 10-Year Written Guarantee</span>
+              </div>
+              <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
+                  ✓
+                </div>
+                <span className="font-medium text-slate-100">IS:6313 BIS Standard Compliance</span>
+              </div>
+              <div className="flex items-center space-x-2.5 bg-black/50 backdrop-blur-md p-2 rounded-xl border border-emerald-500/20 shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center flex-shrink-0 text-slate-950 text-xs font-black shadow">
+                  ✓
+                </div>
+                <span className="font-medium text-slate-100">Same-Day Local Inspection</span>
+              </div>
+            </div>
+
+            {/* Glowing CTA Action Buttons */}
+            <div className="pt-3 flex flex-wrap items-center justify-center lg:justify-start gap-3.5">
+              <a
+                href="#dispatch-desk"
+                className="px-7 py-3.5 rounded-full bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-extrabold text-sm sm:text-base flex items-center space-x-2 shadow-xl shadow-emerald-500/30 hover:shadow-emerald-500/50 transition-all duration-300 transform active:scale-95 cursor-pointer"
+              >
+                <span>Book Free Inspection</span>
+                <ArrowRight className="w-4 h-4 text-slate-950 font-bold" />
+              </a>
+
+              <button
+                onClick={() => handlePhoneClick('kollam_hero')}
+                className="px-6 py-3.5 rounded-full bg-black/60 hover:bg-black/80 text-white font-bold text-sm sm:text-base border border-emerald-500/40 backdrop-blur-md flex items-center space-x-2 transition"
+              >
+                <Phone className="w-4 h-4 text-emerald-400" />
+                <span>Call: {PRIMARY_PHONE_DISPLAY}</span>
+              </button>
+
+              <button
+                onClick={() => handleWhatsAppClick('kollam_hero', { location: 'Kollam District' })}
+                className="px-5 py-3.5 rounded-full bg-[#25D366]/20 hover:bg-[#25D366]/30 border border-[#25D366]/50 text-[#25D366] font-bold text-sm sm:text-base flex items-center space-x-2 backdrop-blur-md transition"
+              >
+                <MessageCircle className="w-4 h-4 fill-[#25D366]" />
+                <span>WhatsApp</span>
+              </button>
+            </div>
+
+            {/* Local Desk Floating Badge */}
+            <div className="p-3.5 bg-black/60 rounded-2xl border border-emerald-500/20 backdrop-blur-md flex items-start space-x-3 text-xs text-slate-300 max-w-xl text-left">
+              <MapPin className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <span className="text-white font-bold">Kollam Office Desk:</span> {KOLLAM_DATA.brand.officeAddress.line1}, {KOLLAM_DATA.brand.officeAddress.city}, Kerala - {KOLLAM_DATA.brand.officeAddress.pincode}
+                <span className="block text-[11px] text-emerald-400 font-medium mt-0.5">{KOLLAM_DATA.brand.officeAddress.timing}</span>
               </div>
             </div>
 
           </div>
+
         </div>
       </section>
 
@@ -265,7 +240,88 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
         </div>
       </section>
 
-      {/* 4. KOLLAM ARCHITECTURAL PROPERTY SHOWCASE (WHITE THEME) */}
+      {/* 4. DEDICATED INSTANT LOCAL DISPATCH DESK SECTION */}
+      <section id="dispatch-desk" className="py-16 sm:py-20 bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Dispatch Desk Details */}
+            <div className="lg:col-span-6 space-y-5">
+              <div className="inline-flex items-center space-x-2 bg-emerald-100 border border-emerald-300 rounded-full px-3.5 py-1 text-xs text-emerald-900 font-bold uppercase tracking-wider">
+                <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                <span>Instant Local Dispatch Desk</span>
+              </div>
+              
+              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-slate-900 leading-tight">
+                Schedule a Free Termite Site Inspection in Kollam
+              </h2>
+              
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Our certified technical squad from Polayathodu central office is ready for rapid on-site diagnosis. We inspect hidden mud tubes, foundation slab voids, door frames, and roof woodwork using non-destructive moisture and thermal sensors.
+              </p>
+
+              <div className="space-y-3 pt-2">
+                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-[#F8FAF8] border border-slate-200">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-xs sm:text-sm font-bold text-slate-900 block">100% Free Site Evaluation & Quote</strong>
+                    <span className="text-xs text-slate-600">No obligation. Transparent linear/sq.ft estimation as per IS:6313 chemical standards.</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-[#F8FAF8] border border-slate-200">
+                  <Clock className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-xs sm:text-sm font-bold text-slate-900 block">2-Hour Rapid Response Dispatch</strong>
+                    <span className="text-xs text-slate-600">Same-day technician visit across Kollam Corporation, Kottarakkara, Karunagappally & all 11 Blocks.</span>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3 p-3.5 rounded-2xl bg-[#F8FAF8] border border-slate-200">
+                  <ShieldCheck className="w-5 h-5 text-emerald-700 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-xs sm:text-sm font-bold text-slate-900 block">Written Multi-Year Warranty Certificate</strong>
+                    <span className="text-xs text-slate-600">Up to 10-Year guarantee for pre-construction and up to 5-Year for drill-fill post-construction.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-600">
+                <span className="flex items-center text-emerald-800 font-bold">
+                  <PhoneCall className="w-4 h-4 mr-1.5 text-emerald-700" />
+                  Direct Helpline: {PRIMARY_PHONE_DISPLAY}
+                </span>
+                <span className="hidden sm:inline">•</span>
+                <span>Mon-Sun: 8:00 AM - 8:00 PM</span>
+              </div>
+            </div>
+
+            {/* Right Column: High-Converting White Card Lead Form */}
+            <div className="lg:col-span-6">
+              <div className="bg-[#FBFBF9] border border-emerald-300 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                <div className="mb-4">
+                  <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-widest flex items-center space-x-1">
+                    <Sparkles className="w-3 h-3 text-emerald-700" />
+                    <span>Quick Booking Form</span>
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mt-1">Book Your Termite Inspection</h3>
+                  <p className="text-xs text-slate-600 mt-1">
+                    Fill out the quick form below. Our Polayathodu coordinator will call back within 15 minutes.
+                  </p>
+                </div>
+                <LeadForm 
+                  defaultLocation="Kollam (Polayathodu / Chinnakkada)"
+                  source="kollam_landing_dispatch_desk"
+                  buttonText="Request Inspection Now"
+                />
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 5. KOLLAM ARCHITECTURAL PROPERTY SHOWCASE (WHITE THEME) */}
       <section className="py-16 sm:py-20 border-b border-slate-200 bg-[#F8FAF8]" id="property-gallery">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
