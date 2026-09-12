@@ -9,6 +9,7 @@ import ThrissurLandingPage from './pages/ThrissurLandingPage';
 import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
 import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
 import KollamLandingPage from './pages/KollamLandingPage';
+import WayanadLandingPage from './pages/WayanadLandingPage';
 import DistrictLandingPage from './pages/DistrictLandingPage';
 import CostCalculatorModal from './components/CostCalculatorModal';
 import LeadManagerModal from './components/LeadManagerModal';
@@ -174,6 +175,36 @@ export default function App() {
       );
     }
 
+    // Wayanad Dedicated Master Landing Page (3 Taluks, 4 Urban Hubs, 4 Blocks, 23 Panchayats & Resorts)
+    const wayanadTowns = [
+      'wayanad', 'sultan-bathery', 'sulthan-bathery', 'bathery', 'kuppadi', 'kalpetta', 
+      'mananthavady', 'vythiri', 'meppadi', 'panamaram', 'ambalavayal', 'pulpally', 
+      'noolpuzha', 'nenmeni', 'poothadi', 'kenichira', 'muppainad', 'edavaka', 
+      'thavinhal', 'thondernad', 'vellamunda', 'kottathara', 'kaniyambetta', 'meenangadi', 
+      'beenachi', 'koleri', 'cheengode', 'cheeral', 'mullankolly', 'irulam', 
+      'krishnagiri', 'naikatty', 'vadakkanad', 'karapuzha', 'arappatta', 'chundale', 
+      'kakkavayal', 'lakkidi', 'pookode', 'thirunelly', 'banasura', 'kuruva', 
+      'padinjarathara', 'thariyode', 'vengappally', 'pozhuthana', 'muttil', 'bavali',
+      'chooralmala', 'kattikulam', 'perikalloor', 'cherukattoor', 'kayakkunnu'
+    ];
+    const isWayanadRoute = 
+      wayanadTowns.some(town => cleanPath === `termite-control-${town}` || cleanPath === `termite-treatment-${town}` || cleanPath === `pest-control-${town}` || cleanPath === `termite-control/${town}` || cleanPath === town || cleanPath === `locations/${town}` || cleanPath === `locations/${town}/`) ||
+      cleanPath === 'termite-control-wayanad' ||
+      cleanPath === 'termite-treatment-wayanad' ||
+      cleanPath === 'pest-control-wayanad' ||
+      cleanPath.startsWith('termite-control/wayanad') ||
+      cleanPath.startsWith('locations/wayanad') ||
+      cleanPath.startsWith('termite-control-wayanad/');
+
+    if (isWayanadRoute) {
+      return (
+        <WayanadLandingPage
+          onOpenLeadModal={openLeadModal}
+          onOpenInspectionModal={() => openLeadModal({ location: 'Wayanad District (Sultan Bathery Hub)' })}
+        />
+      );
+    }
+
     // Check if path matches any other Kerala district
     const matchingDistrict = DISTRICTS.find(
       d => d.slug === cleanPath || d.id === cleanPath
@@ -200,7 +231,9 @@ export default function App() {
 
   // Determine current location context for WhatsApp / sticky bar
   let currentLocationContext = 'Kerala';
-  if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
+  if (currentPath.includes('wayanad') || currentPath.includes('bathery') || currentPath.includes('kalpetta') || currentPath.includes('mananthavady') || currentPath.includes('vythiri') || currentPath.includes('meppadi')) {
+    currentLocationContext = 'Wayanad';
+  } else if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
     currentLocationContext = 'Alappuzha';
   } else if (currentPath.includes('kozhikode')) {
     currentLocationContext = 'Kozhikode';

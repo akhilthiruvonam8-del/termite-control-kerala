@@ -70,7 +70,15 @@ export default function Header({ currentPath, onNavigate, onOpenLeadModal, onOpe
           </div>
           
           <div className="flex items-center space-x-4">
-            {currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur') ? (
+            {currentPath.includes('wayanad') || currentPath.includes('bathery') || currentPath.includes('kalpetta') || currentPath.includes('mananthavady') || currentPath.includes('vythiri') || currentPath.includes('meppadi') ? (
+              <button 
+                onClick={() => handleLinkClick('/termite-control-wayanad')}
+                className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"
+              >
+                <MapPin className="w-3.5 h-3.5 mr-1 text-amber-400" />
+                <span>Wayanad Office: Near St. Mary's College, Kuppadi, Sultan Bathery</span>
+              </button>
+            ) : currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur') ? (
               <button 
                 onClick={() => handleLinkClick('/termite-control-kollam')}
                 className="flex items-center text-amber-300 hover:text-amber-200 font-medium transition"

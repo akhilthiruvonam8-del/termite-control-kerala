@@ -9,8 +9,10 @@ export default function Footer({ currentPath = '/', onNavigate, onOpenCrmModal }
   };
 
   // Determine local office address based on current page
-  let officeAddress = "Offices: Kollam (Polayathodu) • Alappuzha (Central) • Thrissur (Kuttoor) • Palakkad (Chandra Nagar) • Pathanamthitta (Mezhuveli) • Kozhikode (Pavamani Rd)";
-  if (currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur')) {
+  let officeAddress = "Offices: Wayanad (Sultan Bathery) • Kollam (Polayathodu) • Alappuzha (Central) • Thrissur (Kuttoor) • Palakkad (Chandra Nagar) • Pathanamthitta (Mezhuveli) • Kozhikode (Pavamani Rd)";
+  if (currentPath.includes('wayanad') || currentPath.includes('bathery') || currentPath.includes('kalpetta') || currentPath.includes('mananthavady') || currentPath.includes('vythiri') || currentPath.includes('meppadi')) {
+    officeAddress = "Wayanad District Office: Eco Pest India, Near St. Mary's College, Kuppadi, Sultan Bathery, Wayanad, Kerala - 673592";
+  } else if (currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur')) {
     officeAddress = "Kollam District Office: Eco Pest India, Near DYFI Youth Centre, Polayathodu, Kollam, Kerala - 691001";
   } else if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
     officeAddress = "Alappuzha District Office: Eco Pest India, Alappuzha Central Dispatch (Serving All 6 Municipalities & 72 Panchayats), Kerala - 688001";

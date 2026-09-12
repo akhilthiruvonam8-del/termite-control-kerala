@@ -147,11 +147,17 @@ export const DISTRICTS = [
     id: "wayanad",
     name: "Wayanad",
     slug: "termite-control-wayanad",
+    hub: true,
+    office: "Near St. Mary's College, Kuppadi, Sultan Bathery, Wayanad, Kerala - 673592",
     phone: "9020040009",
-    metaTitle: "Termite Control in Wayanad | Anti-Termite & Wood Borer Treatment",
-    metaDescription: "Termite and wood borer treatment for resorts, homestays, and houses in Wayanad, Kalpetta, Sulthan Bathery, Mananthavady. Call 9020040009.",
-    majorAreas: ["Kalpetta", "Sulthan Bathery", "Mananthavady", "Vythiri", "Meppadi", "Ambalavayal", "Pulpally"],
-    intro: "Eco-conscious wood borer and termite treatment specifically tailored for high-altitude timber cottages, resorts, and homes in Wayanad."
+    metaTitle: "Termite Control in Wayanad | Anti-Termite & Pest Control Sultan Bathery, Kalpetta, Resorts",
+    metaDescription: "Best termite control, anti-termite treatment & general pest control in Wayanad. Central service desk near St. Mary's College, Kuppadi, Sultan Bathery. IS:6313 certified, odorless & eco-safe for homes, luxury resorts & homestays. Call 9020040009.",
+    majorAreas: [
+      "Sultan Bathery", "Kalpetta", "Mananthavady", "Vythiri", "Meppadi", "Panamaram", 
+      "Ambalavayal", "Pulpally", "Kuppadi", "Lakkidi", "Pookode", "Thirunelly", 
+      "Meenangadi", "Padinjarathara", "Noolpuzha", "Nenmeni", "Poothadi", "Mullankolly"
+    ],
+    intro: "Premier termite control, anti-termite soil barriers, wood borer eradication & general pest control across Wayanad district with 45-minute dispatch from our Sultan Bathery Kuppadi central desk."
   },
   {
     id: "idukki",
