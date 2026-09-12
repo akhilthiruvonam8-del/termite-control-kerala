@@ -129,12 +129,21 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
             {/* Left Column: Premium Brand Messaging */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               
-              {/* Luxury Pill Tag */}
-              <div className="inline-flex items-center space-x-2 bg-black/50 border border-emerald-500/40 rounded-full px-4 py-1.5 text-xs text-emerald-300 backdrop-blur-xl shadow-xl shadow-emerald-950/60">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span className="font-bold tracking-widest uppercase text-[11px] font-mono">
-                  PREMIUM TERMITE & TIMBER DEFENSE • WAYANAD
-                </span>
+              {/* Luxury Pill Tag & NRI Malayalam Badge */}
+              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-2.5">
+                <div className="inline-flex items-center space-x-2 bg-black/60 border border-emerald-500/40 rounded-full px-3.5 py-1.5 text-xs text-emerald-300 backdrop-blur-xl shadow-xl shadow-emerald-950/60">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span className="font-bold tracking-widest uppercase text-[10px] sm:text-[11px] font-mono">
+                    PREMIUM TERMITE & TIMBER DEFENSE • WAYANAD
+                  </span>
+                </div>
+
+                <div className="inline-flex items-center space-x-1.5 bg-amber-950/70 border border-amber-500/40 rounded-full px-3.5 py-1.5 text-xs text-amber-200 backdrop-blur-xl shadow-lg">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                  <span className="text-[11px] font-medium">
+                    വിദേശത്തുള്ള പ്രവാസികൾക്കും നാട്ടിലെ റിസോർട്ടുകൾക്കും വിശ്വസിക്കാവുന്ന സേവനം
+                  </span>
+                </div>
               </div>
 
               {/* Majestic Headline */}
@@ -187,7 +196,7 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
                 </a>
 
                 <button
-                  onClick={() => handlePhoneClick(WAYANAD_DATA.brand.phone, 'wayanad_hero_call')}
+                  onClick={() => handlePhoneClick('wayanad_hero_call')}
                   className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-xl transition text-sm"
                 >
                   <PhoneCall className="w-4 h-4 text-emerald-400" />
@@ -195,8 +204,8 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
                 </button>
 
                 <button
-                  onClick={() => handleWhatsAppClick(WAYANAD_DATA.brand.whatsappNumber, 'wayanad_hero_wa', 'Hi, I need termite and pest control inspection in Wayanad.')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold px-5 py-3.5 rounded-xl border border-emerald-500/40 backdrop-blur-xl transition text-sm"
+                  onClick={() => handleWhatsAppClick('wayanad_hero_wa', { message: 'Hi TermiteControl.me, I need termite/pest inspection for my property in Wayanad (Sultan Bathery/Kalpetta/Vythiri). Please share details.' })}
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold px-5 py-3.5 rounded-xl border border-emerald-500/40 backdrop-blur-xl transition text-sm shadow-lg"
                 >
                   <MessageCircle className="w-4 h-4 text-emerald-400" />
                   <span>WhatsApp Desk</span>
@@ -204,7 +213,7 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
               </div>
 
               {/* Micro Trust Strip */}
-              <div className="pt-2 text-xs text-slate-300 flex items-center justify-center lg:justify-start space-x-3">
+              <div className="pt-2 text-xs text-slate-300 flex flex-wrap items-center justify-center lg:justify-start gap-3">
                 <span className="flex items-center text-amber-300 font-bold">
                   <Star className="w-3.5 h-3.5 fill-amber-300 mr-1" />
                   {WAYANAD_DATA.brand.justdialRating}
@@ -212,7 +221,7 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
                 <span>•</span>
                 <span>{WAYANAD_DATA.brand.justdialReviewsCount} across Wayanad</span>
                 <span>•</span>
-                <span className="text-emerald-300 font-medium">Zero Guest Evacuation</span>
+                <span className="text-emerald-300 font-medium">Live Video Report for NRI Owners</span>
               </div>
 
             </div>
