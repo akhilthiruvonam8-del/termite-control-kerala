@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Shield, 
   ShieldCheck, 
@@ -34,10 +34,15 @@ import {
   Flame,
   ShieldAlert,
   Trees,
-  Utensils
+  Utensils,
+  Share2,
+  Copy,
+  Check,
+  Send
 } from 'lucide-react';
 import { WAYANAD_DATA } from '../data/wayanadData';
 import { PRIMARY_PHONE_DISPLAY, handlePhoneClick, handleWhatsAppClick } from '../utils/analytics';
+import { updateMetaTags } from '../utils/seo';
 import LeadForm from '../components/LeadForm';
 import PrimaryBottomCTA from '../components/PrimaryBottomCTA';
 
@@ -47,6 +52,72 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
   const [panchayatSearch, setPanchayatSearch] = useState('');
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  // Sync OpenGraph Meta Tags & Rich Social Previews for Wayanad
+  useEffect(() => {
+    updateMetaTags({
+      title: "Termite Control Wayanad | Kerala's Premier Resort & Villa Pest Protection",
+      description: "Specialized anti-termite & wood borer defense for luxury resorts, plantation villas, treehouses & NRI homes in Sultan Bathery, Kalpetta, Vythiri & Wayanad. IS:6313 certified with written warranty.",
+      keywords: "termite control wayanad, sultan bathery pest control, kalpetta termite treatment, vythiri resort pest control, meppadi wood borer control, nri villa termite protection wayanad, luxury resort termite control kerala",
+      canonicalUrl: `${window.location.origin}/termite-control-wayanad`,
+      image: `${window.location.origin}/images/wayanad-luxury-hero.jpg`,
+      imageAlt: "TermiteControl.me Wayanad - Luxury Resort & Villa Pest Protection",
+      schema: {
+        "@context": "https://schema.org",
+        "@type": "PestControlService",
+        "name": "TermiteControl.me Wayanad - Unit of Eco Pest India",
+        "url": `${window.location.origin}/termite-control-wayanad`,
+        "image": `${window.location.origin}/images/wayanad-luxury-hero.jpg`,
+        "telephone": "+91-9020040009",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Near St. Mary's College, Kuppadi",
+          "addressLocality": "Sultan Bathery",
+          "addressRegion": "Wayanad, Kerala",
+          "postalCode": "673592",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "11.6625",
+          "longitude": "76.2570"
+        },
+        "priceRange": "₹₹",
+        "areaServed": WAYANAD_DATA.urbanHubs.map(h => ({
+          "@type": "AdministrativeArea",
+          "name": h.name
+        }))
+      }
+    });
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleCopyLink = () => {
+    const url = typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/termite-control-wayanad';
+    navigator.clipboard.writeText(url).then(() => {
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2500);
+    });
+  };
+
+  const handleShareWhatsApp = () => {
+    const shareText = `🌲 *TermiteControl.me Wayanad - Luxury Resort & Villa Pest Protection*\n\nPreserving Wayanad's finest estates, treehouses, homestays and timber villas with IS:6313 certified treatments and 10-year warranty.\n\n📍 Central Hub: Near St. Mary's College, Kuppadi, Sultan Bathery\n📞 Call/WhatsApp: +91 9020040009\n\n👉 View Plan & Book Inspection: https://termitecontrol.me/termite-control-wayanad`;
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleNativeShare = () => {
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      navigator.share({
+        title: "Termite Control Wayanad | Kerala's Premier Resort & Villa Protection",
+        text: "Specialized anti-termite & wood borer defense for luxury resorts, plantation villas, treehouses & homes in Wayanad.",
+        url: typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/termite-control-wayanad'
+      }).catch(() => {});
+    } else {
+      handleShareWhatsApp();
+    }
+  };
 
   // Filter FAQs based on search
   const filteredFaqs = useMemo(() => {
@@ -962,6 +1033,149 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
                 </div>
               </div>
             ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 12B. WHATSAPP & SOCIAL MEDIA RICH PREVIEW (OPENGRAPH CARD SHOWCASE) */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-slate-900 via-[#031510] to-slate-950 text-white border-b border-emerald-950/60 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Left Column: Share Description & Quick Action Buttons */}
+            <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
+              
+              <div className="inline-flex items-center space-x-2 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+                <Share2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>WhatsApp & Social Share • Rich Preview Card</span>
+              </div>
+
+              <div className="space-y-3">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-snug">
+                  Share This Wayanad Defense Plan With Family or Resort Team
+                </h2>
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Easily send this comprehensive timber & termite protection page to NRI property owners in the Gulf/UK, resort general managers, or on-site caretakers in Wayanad.
+                </p>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-[#25D366] hover:bg-[#20ba59] text-slate-950 font-bold px-6 py-3.5 rounded-xl text-sm transition shadow-lg shadow-emerald-950/50 cursor-pointer active:scale-98"
+                >
+                  <MessageCircle className="w-4 h-4 fill-slate-950 text-slate-950" />
+                  <span>Share on WhatsApp (With Preview)</span>
+                </button>
+
+                <button
+                  onClick={handleCopyLink}
+                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 px-5 py-3.5 rounded-xl text-sm font-semibold transition cursor-pointer"
+                >
+                  {copiedLink ? (
+                    <>
+                      <Check className="w-4 h-4 text-emerald-400" />
+                      <span className="text-emerald-300 font-bold">Link Copied to Clipboard!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 text-slate-400" />
+                      <span>Copy Direct Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Trust Tag */}
+              <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-400">
+                <span className="flex items-center space-x-1.5 text-emerald-400">
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  <span>High-Res Villa Photo Attached</span>
+                </span>
+                <span className="flex items-center space-x-1.5 text-emerald-400">
+                  <CheckCircle className="w-3.5 h-3.5" />
+                  <span>IS:6313 Guarantee Summary Included</span>
+                </span>
+              </div>
+
+            </div>
+
+            {/* Right Column: Simulated WhatsApp Rich Card Preview */}
+            <div className="lg:col-span-6 flex justify-center">
+              
+              <div className="w-full max-w-md bg-[#0b141a] rounded-3xl p-4 sm:p-5 border border-slate-800 shadow-2xl relative">
+                
+                {/* Chat Header */}
+                <div className="flex items-center space-x-3 pb-3 border-b border-slate-800 text-xs text-slate-300">
+                  <div className="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-white font-bold text-xs">
+                    TC
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-white truncate flex items-center space-x-1">
+                      <span>TermiteControl.me (Wayanad Desk)</span>
+                      <span className="text-emerald-400 text-[10px]">✓</span>
+                    </div>
+                    <div className="text-[10px] text-emerald-400 truncate">Online • Sultan Bathery Central Office</div>
+                  </div>
+                  <div className="text-[10px] text-slate-500 font-mono">16:40</div>
+                </div>
+
+                {/* WhatsApp Chat Bubble */}
+                <div className="mt-3 bg-[#1f2c34] rounded-2xl overflow-hidden border border-slate-700/60 text-left shadow-lg">
+                  
+                  {/* Rich OpenGraph Image */}
+                  <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-900">
+                    <img 
+                      src="/images/wayanad-luxury-hero.jpg" 
+                      alt="TermiteControl.me Wayanad Luxury Villa Preview" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2.5 right-2.5 bg-black/70 backdrop-blur-md text-[10px] font-bold text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/40">
+                      IS:6313 Certified
+                    </div>
+                    <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-2">
+                      <span className="text-[10px] text-slate-300 font-mono tracking-wider">
+                        termitecontrol.me/termite-control-wayanad
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Rich OpenGraph Card Content */}
+                  <div className="p-3.5 space-y-1.5 bg-[#1f2c34]">
+                    <h4 className="text-xs sm:text-sm font-bold text-white leading-tight">
+                      TermiteControl.me Wayanad | Kerala's Premier Resort & Villa Protection
+                    </h4>
+                    <p className="text-[11px] text-slate-300 leading-snug">
+                      Specialized anti-termite & wood borer defense for luxury resorts, plantation villas, treehouses & NRI estates. 10-Yr Warranty & live video audit.
+                    </p>
+                    <div className="pt-2 flex items-center justify-between text-[10px] text-slate-400 border-t border-slate-700/50">
+                      <span className="text-emerald-400 font-semibold">Central Hub: Kuppadi, Sultan Bathery</span>
+                      <span className="text-emerald-400 flex items-center space-x-0.5">
+                        <span>Read</span>
+                        <span className="text-sky-400 font-bold text-xs">✓✓</span>
+                      </span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div className="mt-3 text-center">
+                  <span className="text-[11px] text-slate-400 font-medium">
+                    ✨ Automatically renders when shared on WhatsApp, iMessage & Facebook
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>

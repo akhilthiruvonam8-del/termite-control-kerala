@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   Shield, 
   ShieldCheck, 
@@ -33,6 +33,7 @@ import {
 } from 'lucide-react';
 import { KOLLAM_DATA } from '../data/kollamData';
 import { PRIMARY_PHONE_DISPLAY, handlePhoneClick, handleWhatsAppClick } from '../utils/analytics';
+import { updateMetaTags } from '../utils/seo';
 import LeadForm from '../components/LeadForm';
 import PrimaryBottomCTA from '../components/PrimaryBottomCTA';
 
@@ -42,6 +43,18 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
   const [panchayatSearch, setPanchayatSearch] = useState('');
   const [faqSearchQuery, setFaqSearchQuery] = useState('');
   const [openFaqIndex, setOpenFaqIndex] = useState(0);
+
+  useEffect(() => {
+    updateMetaTags({
+      title: "Termite Control Kollam | Anti-Termite & Wood Borer Treatment",
+      description: "IS:6313 certified termite control & wood borer defense across Kollam District. Covering Kollam City, Karunagappally, Kottarakkara, Punalur & Ashtamudi waterfront properties.",
+      keywords: "termite control kollam, anti termite treatment kollam, wood borer kollam, pest control karunagappally, kottarakkara termite control, ashtamudi resort pest control",
+      canonicalUrl: `${window.location.origin}/termite-control-kollam`,
+      image: `${window.location.origin}/images/service-ashtamudi-villa.jpg`,
+      imageAlt: "TermiteControl.me Kollam - Anti Termite & Timber Defense"
+    });
+    window.scrollTo(0, 0);
+  }, []);
 
   // Filter FAQs based on search
   const filteredFaqs = useMemo(() => {
