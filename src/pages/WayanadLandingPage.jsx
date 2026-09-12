@@ -84,7 +84,7 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
           "longitude": "76.2570"
         },
         "priceRange": "₹₹",
-        "areaServed": WAYANAD_DATA.urbanHubs.map(h => ({
+        "areaServed": (WAYANAD_DATA.majorHubs || []).map(h => ({
           "@type": "AdministrativeArea",
           "name": h.name
         }))
