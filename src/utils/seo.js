@@ -2,103 +2,126 @@
  * SEO & OpenGraph / Social Metadata Helper for TermiteControl.me
  */
 
-const setMetaTag = (attrName, attrVal, content) => {
-  if (!content || typeof document === 'undefined') return;
-  let element = document.querySelector(`meta[${attrName}="${attrVal}"]`);
-  if (!element) {
-    element = document.createElement('meta');
-    element.setAttribute(attrName, attrVal);
-    document.head.appendChild(element);
-  }
-  element.setAttribute('content', content);
-};
-
-export const updateMetaTags = ({
-  title,
-  description,
-  keywords,
-  canonicalUrl,
-  image,
-  imageAlt,
-  imageWidth = '1200',
-  imageHeight = '630',
-  type = 'website',
-  siteName = 'TermiteControl.me - A Unit of Eco Pest India',
-  locale = 'en_IN',
-  schema
-}) => {
+export const updateMetaTags = (options = {}) => {
   if (typeof document === 'undefined') return;
 
-  const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/');
-  const defaultImage = typeof window !== 'undefined' 
-    ? `${window.location.origin}/images/wayanad-luxury-hero.jpg` 
-    : 'https://termitecontrol.me/images/wayanad-luxury-hero.jpg';
-  const ogImage = image || defaultImage;
+  try {
+    const {
+      title,
+      description,
+      keywords,
+      canonicalUrl,
+      image,
+      imageAlt,
+      imageWidth = '1200',
+      imageHeight = '630',
+      type = 'website',
+      siteName = 'TermiteControl.me - A Unit of Eco Pest India',
+      locale = 'en_IN',
+      schema
+    } = options;
 
-  // Title
-  if (title) {
-    document.title = title;
-    setMetaTag('name', 'title', title);
-    setMetaTag('property', 'og:title', title);
-    setMetaTag('name', 'twitter:title', title);
-    setMetaTag('property', 'twitter:title', title);
-  }
+    const currentUrl = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/');
+    const defaultImage = typeof window !== 'undefined' 
+      ? `${window.location.origin}/images/wayanad-luxury-hero.jpg` 
+      : 'https://termitecontrol.me/images/wayanad-luxury-hero.jpg';
+    const ogImage = image || defaultImage;
 
-  // Description
-  if (description) {
-    setMetaTag('name', 'description', description);
-    setMetaTag('property', 'og:description', description);
-    setMetaTag('name', 'twitter:description', description);
-    setMetaTag('property', 'twitter:description', description);
-  }
+    const setMeta = (attrName, attrVal, content) => {
+      if (!content) return;
+      try {
+        const metas = document.getElementsByTagName('meta');
+        let found = false;
+        for (let i = 0; i < metas.length; i++) {
+          if (metas[i].getAttribute(attrName) === attrVal) {
+            metas[i].setAttribute('content', content);
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          const meta = document.createElement('meta');
+          meta.setAttribute(attrName, attrVal);
+          meta.setAttribute('content', content);
+          document.head.appendChild(meta);
+        }
+      } catch (err) {}
+    };
 
-  // Keywords
-  if (keywords) {
-    setMetaTag('name', 'keywords', keywords);
-  }
-
-  // URLs & Site
-  setMetaTag('property', 'og:url', currentUrl);
-  setMetaTag('name', 'twitter:url', currentUrl);
-  setMetaTag('property', 'og:type', type);
-  setMetaTag('property', 'og:site_name', siteName);
-  setMetaTag('property', 'og:locale', locale);
-
-  // Social Images (WhatsApp, Facebook, Twitter, iMessage)
-  setMetaTag('property', 'og:image', ogImage);
-  setMetaTag('property', 'og:image:secure_url', ogImage);
-  setMetaTag('property', 'og:image:width', String(imageWidth));
-  setMetaTag('property', 'og:image:height', String(imageHeight));
-  setMetaTag('property', 'og:image:type', ogImage.endsWith('.png') ? 'image/png' : 'image/jpeg');
-  if (imageAlt) {
-    setMetaTag('property', 'og:image:alt', imageAlt);
-  }
-
-  // Twitter Card
-  setMetaTag('name', 'twitter:card', 'summary_large_image');
-  setMetaTag('property', 'twitter:card', 'summary_large_image');
-  setMetaTag('name', 'twitter:image', ogImage);
-  setMetaTag('property', 'twitter:image', ogImage);
-
-  // Canonical
-  let canonical = document.querySelector('link[rel="canonical"]');
-  if (!canonical) {
-    canonical = document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    document.head.appendChild(canonical);
-  }
-  canonical.setAttribute('href', currentUrl);
-
-  // Dynamic Schema Injection
-  if (schema) {
-    let schemaScript = document.getElementById('dynamic-page-schema');
-    if (!schemaScript) {
-      schemaScript = document.createElement('script');
-      schemaScript.id = 'dynamic-page-schema';
-      schemaScript.type = 'application/ld+json';
-      document.head.appendChild(schemaScript);
+    // Title
+    if (title) {
+      document.title = title;
+      setMeta('name', 'title', title);
+      setMeta('property', 'og:title', title);
+      setMeta('name', 'twitter:title', title);
+      setMeta('property', 'twitter:title', title);
     }
-    schemaScript.textContent = JSON.stringify(schema);
+
+    // Description
+    if (description) {
+      setMeta('name', 'description', description);
+      setMeta('property', 'og:description', description);
+      setMeta('name', 'twitter:description', description);
+      setMeta('property', 'twitter:description', description);
+    }
+
+    // Keywords
+    if (keywords) {
+      setMeta('name', 'keywords', keywords);
+    }
+
+    // URLs & Site
+    setMeta('property', 'og:url', currentUrl);
+    setMeta('name', 'twitter:url', currentUrl);
+    setMeta('property', 'og:type', type);
+    setMeta('property', 'og:site_name', siteName);
+    setMeta('property', 'og:locale', locale);
+
+    // Social Images (WhatsApp, Facebook, Twitter, iMessage)
+    if (ogImage) {
+      setMeta('property', 'og:image', ogImage);
+      setMeta('property', 'og:image:secure_url', ogImage);
+      setMeta('property', 'og:image:width', String(imageWidth));
+      setMeta('property', 'og:image:height', String(imageHeight));
+      setMeta('property', 'og:image:type', typeof ogImage === 'string' && ogImage.endsWith('.png') ? 'image/png' : 'image/jpeg');
+      if (imageAlt) {
+        setMeta('property', 'og:image:alt', imageAlt);
+      }
+
+      // Twitter Card
+      setMeta('name', 'twitter:card', 'summary_large_image');
+      setMeta('property', 'twitter:card', 'summary_large_image');
+      setMeta('name', 'twitter:image', ogImage);
+      setMeta('property', 'twitter:image', ogImage);
+    }
+
+    // Canonical Link
+    try {
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', currentUrl);
+    } catch (err) {}
+
+    // Dynamic Schema Injection
+    if (schema) {
+      try {
+        let schemaScript = document.getElementById('dynamic-page-schema');
+        if (!schemaScript) {
+          schemaScript = document.createElement('script');
+          schemaScript.id = 'dynamic-page-schema';
+          schemaScript.type = 'application/ld+json';
+          document.head.appendChild(schemaScript);
+        }
+        schemaScript.textContent = JSON.stringify(schema);
+      } catch (err) {}
+    }
+  } catch (err) {
+    console.error('Error updating meta tags:', err);
   }
 };
+
 

@@ -17,8 +17,49 @@ import LeadForm from './components/LeadForm';
 import { DISTRICTS } from './data/districts';
 import { X, Shield } from 'lucide-react';
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-slate-900 text-white p-6 text-center">
+          <div className="max-w-md space-y-4 bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl">
+            <h2 className="text-2xl font-serif font-bold text-emerald-400">TermiteControl.me</h2>
+            <p className="text-sm text-slate-300">
+              We experienced a temporary view issue. Click below to return to the home page.
+            </p>
+            <div className="pt-2">
+              <button
+                onClick={() => {
+                  window.location.href = '/';
+                }}
+                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl text-sm transition"
+              >
+                Reload Home Page
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 export default function App() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
+  const [currentPath, setCurrentPath] = useState(typeof window !== 'undefined' ? window.location.pathname || '/' : '/');
   const [leadModalState, setLeadModalState] = useState({ open: false, initialData: {} });
   const [crmModalOpen, setCrmModalOpen] = useState(false);
   const [calculatorModalOpen, setCalculatorModalOpen] = useState(false);
@@ -246,75 +287,77 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
-      
-      {/* 1. Global Header */}
-      <Header
-        currentPath={currentPath}
-        onNavigate={navigate}
-        onOpenLeadModal={() => openLeadModal({})}
-        onOpenCrmModal={() => setCrmModalOpen(true)}
-      />
+    <ErrorBoundary>
+      <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 font-sans">
+        
+        {/* 1. Global Header */}
+        <Header
+          currentPath={currentPath}
+          onNavigate={navigate}
+          onOpenLeadModal={() => openLeadModal({})}
+          onOpenCrmModal={() => setCrmModalOpen(true)}
+        />
 
-      {/* 2. Main Page Content */}
-      <main className="flex-grow">
-        {renderCurrentPage()}
-      </main>
+        {/* 2. Main Page Content */}
+        <main className="flex-grow">
+          {renderCurrentPage()}
+        </main>
 
-      {/* 3. Global Footer */}
-      <Footer
-        currentPath={currentPath}
-        onNavigate={navigate}
-        onOpenCrmModal={() => setCrmModalOpen(true)}
-      />
+        {/* 3. Global Footer */}
+        <Footer
+          currentPath={currentPath}
+          onNavigate={navigate}
+          onOpenCrmModal={() => setCrmModalOpen(true)}
+        />
 
-      {/* 4. Sticky Bottom Action Bar for Mobile Visitors */}
-      <StickyMobileBar
-        onOpenLeadModal={() => openLeadModal({})}
-        locationContext={currentLocationContext}
-      />
+        {/* 4. Sticky Bottom Action Bar for Mobile Visitors */}
+        <StickyMobileBar
+          onOpenLeadModal={() => openLeadModal({})}
+          locationContext={currentLocationContext}
+        />
 
-      {/* MODAL 1: Free Inspection / Quick Lead Modal */}
-      {leadModalState.open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-2 relative shadow-2xl max-h-[95vh] overflow-y-auto">
-            <button
-              onClick={closeLeadModal}
-              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition"
-              aria-label="Close modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <LeadForm
-              title={leadModalState.initialData.title || "REQUEST TERMITE INSPECTION"}
-              subtitle="Free on-site assessment across all Kerala districts"
-              defaultLocation={leadModalState.initialData.location || (currentPath.includes('alappuzha') ? 'Alappuzha District' : (currentPath.includes('kozhikode') ? 'Kozhikode (Pavamani Rd)' : ''))}
-              defaultProblem={leadModalState.initialData.problem || ''}
-              defaultProperty={leadModalState.initialData.propertyType || ''}
-              source="popup_inspection_modal"
-              onSuccess={() => {
-                setTimeout(() => {
-                  // Keep open briefly so user sees the reference ID
-                }, 2000);
-              }}
-            />
+        {/* MODAL 1: Free Inspection / Quick Lead Modal */}
+        {leadModalState.open && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white rounded-3xl max-w-lg w-full p-2 relative shadow-2xl max-h-[95vh] overflow-y-auto">
+              <button
+                onClick={closeLeadModal}
+                className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center justify-center transition"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+              <LeadForm
+                title={leadModalState.initialData.title || "REQUEST TERMITE INSPECTION"}
+                subtitle="Free on-site assessment across all Kerala districts"
+                defaultLocation={leadModalState.initialData.location || (currentPath.includes('alappuzha') ? 'Alappuzha District' : (currentPath.includes('kozhikode') ? 'Kozhikode (Pavamani Rd)' : ''))}
+                defaultProblem={leadModalState.initialData.problem || ''}
+                defaultProperty={leadModalState.initialData.propertyType || ''}
+                source="popup_inspection_modal"
+                onSuccess={() => {
+                  setTimeout(() => {
+                    // Keep open briefly so user sees the reference ID
+                  }, 2000);
+                }}
+              />
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* MODAL 2: Interactive Treatment Cost Estimator */}
-      <CostCalculatorModal
-        isOpen={calculatorModalOpen}
-        onClose={() => setCalculatorModalOpen(false)}
-        initialData={{ location: currentLocationContext }}
-      />
+        {/* MODAL 2: Interactive Treatment Cost Estimator */}
+        <CostCalculatorModal
+          isOpen={calculatorModalOpen}
+          onClose={() => setCalculatorModalOpen(false)}
+          initialData={{ location: currentLocationContext }}
+        />
 
-      {/* MODAL 3: Embedded CRM Database Lead Viewer for Admin */}
-      <LeadManagerModal
-        isOpen={crmModalOpen}
-        onClose={() => setCrmModalOpen(false)}
-      />
+        {/* MODAL 3: Embedded CRM Database Lead Viewer for Admin */}
+        <LeadManagerModal
+          isOpen={crmModalOpen}
+          onClose={() => setCrmModalOpen(false)}
+        />
 
-    </div>
+      </div>
+    </ErrorBoundary>
   );
 }

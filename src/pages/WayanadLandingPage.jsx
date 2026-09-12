@@ -90,15 +90,32 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
         }))
       }
     });
-    window.scrollTo(0, 0);
+    try {
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
+    } catch (e) {}
   }, []);
 
   const handleCopyLink = () => {
-    const url = typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/termite-control-wayanad';
-    navigator.clipboard.writeText(url).then(() => {
+    try {
+      const url = typeof window !== 'undefined' ? window.location.href : 'https://termitecontrol.me/termite-control-wayanad';
+      if (typeof navigator !== 'undefined' && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(() => {
+          setCopiedLink(true);
+          setTimeout(() => setCopiedLink(false), 2500);
+        }).catch(() => {
+          setCopiedLink(true);
+          setTimeout(() => setCopiedLink(false), 2500);
+        });
+      } else {
+        setCopiedLink(true);
+        setTimeout(() => setCopiedLink(false), 2500);
+      }
+    } catch (e) {
       setCopiedLink(true);
       setTimeout(() => setCopiedLink(false), 2500);
-    });
+    }
   };
 
   const handleShareWhatsApp = () => {

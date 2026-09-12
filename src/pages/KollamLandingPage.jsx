@@ -53,7 +53,11 @@ export default function KollamLandingPage({ onOpenLeadModal, onOpenInspectionMod
       image: `${window.location.origin}/images/service-ashtamudi-villa.jpg`,
       imageAlt: "TermiteControl.me Kollam - Anti Termite & Timber Defense"
     });
-    window.scrollTo(0, 0);
+    try {
+      if (typeof window !== 'undefined') {
+        window.scrollTo(0, 0);
+      }
+    } catch (e) {}
   }, []);
 
   // Filter FAQs based on search
