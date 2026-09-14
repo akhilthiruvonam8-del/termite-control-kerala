@@ -194,175 +194,119 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
       </div>
 
       {/* 2. NATURE HERO SECTION (EXPANDED PANORAMIC WAYANAD HILLS & RAINFOREST VIEW) */}
-      <section className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center justify-center pt-10 pb-20 lg:py-24 border-b border-emerald-950 bg-[#020b08] text-white overflow-hidden">
+      <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center pt-10 pb-20 lg:py-24 border-b border-emerald-950 bg-[#020b08] text-white overflow-hidden">
         
         {/* Breathtaking Background Visual Layer */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/wayanad-luxury-hero.jpg" 
             alt="Ultra luxury modern villa nestled in misty green Wayanad tea plantations and mountains" 
-            className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center scale-100 transition-transform duration-1000 ease-out"
             loading="eager"
             fetchPriority="high"
           />
-          {/* Subtle cinematic gradient so sunrise and villa stay vivid while text is razor-sharp */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#020b08]/95 via-[#020b08]/75 to-[#020b08]/30 lg:to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020b08]/95 via-transparent to-[#020b08]/60" />
+          {/* Subtle cinematic gradient so sunrise, hills and villa stay vivid while text is razor-sharp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#020b08]/92 via-[#020b08]/65 to-[#020b08]/15 lg:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#020b08]/90 via-transparent to-[#020b08]/45" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="max-w-2xl lg:max-w-3xl space-y-6 text-center lg:text-left">
             
-            {/* Left Column: Premium Brand Messaging */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              
-              {/* Luxury Pill Tag & NRI Malayalam Badge */}
-              <div className="flex flex-col sm:flex-row items-center lg:items-start gap-2.5">
-                <div className="inline-flex items-center space-x-2 bg-black/60 border border-emerald-500/40 rounded-full px-3.5 py-1.5 text-xs text-emerald-300 backdrop-blur-xl shadow-xl shadow-emerald-950/60">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span className="font-bold tracking-widest uppercase text-[10px] sm:text-[11px] font-mono">
-                    PREMIUM TERMITE & TIMBER DEFENSE • WAYANAD
-                  </span>
-                </div>
-
-                <div className="inline-flex items-center space-x-1.5 bg-amber-950/70 border border-amber-500/40 rounded-full px-3.5 py-1.5 text-xs text-amber-200 backdrop-blur-xl shadow-lg">
-                  <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span className="text-[11px] font-medium">
-                    വിദേശത്തുള്ള പ്രവാസികൾക്കും നാട്ടിലെ റിസോർട്ടുകൾക്കും വിശ്വസിക്കാവുന്ന സേവനം
-                  </span>
-                </div>
-              </div>
-
-              {/* Majestic Headline */}
-              <div className="space-y-2">
-                <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.12]">
-                  Preserving Wayanad's <br />
-                  <span className="italic font-light bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent font-serif">
-                    Finest Estates & Timber
-                  </span>
-                </h1>
-                
-                <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-emerald-400/90 font-mono">
-                  Sultan Bathery • Kalpetta • Mananthavady • Vythiri • Resorts & Homestays
-                </p>
-              </div>
-
-              <p className="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl text-shadow-sm mx-auto lg:mx-0">
-                Odorless, IS:6313 certified subterranean termite elimination, deep wood borer eradication & annual protection for 
-                <strong className="text-white font-semibold"> luxury rainforest resorts, plantation bungalows, modern villas, and commercial properties</strong> across Wayanad.
-              </p>
-
-              {/* 4 Checkpoint Badges (Frosted Glass) */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
-                <div className="flex items-center space-x-2 bg-black/45 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-[11px] font-semibold text-slate-100">Kuppadi Central Hub</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-black/45 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
-                  <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-[11px] font-semibold text-slate-100">45-Min Fast Dispatch</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-black/45 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
-                  <Award className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-[11px] font-semibold text-slate-100">IS:6313 Certified</span>
-                </div>
-                <div className="flex items-center space-x-2 bg-black/45 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
-                  <Trees className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span className="text-[11px] font-semibold text-slate-100">Eco-Safe & Odorless</span>
-                </div>
-              </div>
-
-              {/* Hero CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-3">
-                <a
-                  href="#dispatch-desk"
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 text-slate-950 font-extrabold px-7 py-3.5 rounded-xl shadow-xl shadow-emerald-500/30 hover:shadow-emerald-400/50 transition-all transform hover:-translate-y-0.5 text-sm"
-                >
-                  <Search className="w-4 h-4" />
-                  <span>Book Free Wayanad Inspection</span>
-                </a>
-
-                <button
-                  onClick={() => handlePhoneClick('wayanad_hero_call')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-xl transition text-sm"
-                >
-                  <PhoneCall className="w-4 h-4 text-emerald-400" />
-                  <span>Call: {WAYANAD_DATA.brand.phoneDisplay}</span>
-                </button>
-
-                <button
-                  onClick={() => handleWhatsAppClick('wayanad_hero_wa', { message: 'Hi TermiteControl.me, I need termite/pest inspection for my property in Wayanad (Sultan Bathery/Kalpetta/Vythiri). Please share details.' })}
-                  className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold px-5 py-3.5 rounded-xl border border-emerald-500/40 backdrop-blur-xl transition text-sm shadow-lg"
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  <span>WhatsApp Desk</span>
-                </button>
-              </div>
-
-              {/* Micro Trust Strip */}
-              <div className="pt-2 text-xs text-slate-300 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                <span className="flex items-center text-amber-300 font-bold">
-                  <Star className="w-3.5 h-3.5 fill-amber-300 mr-1" />
-                  {WAYANAD_DATA.brand.justdialRating}
+            {/* Luxury Pill Tag & NRI Malayalam Badge */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-2.5">
+              <div className="inline-flex items-center space-x-2 bg-black/60 border border-emerald-500/40 rounded-full px-3.5 py-1.5 text-xs text-emerald-300 backdrop-blur-xl shadow-xl shadow-emerald-950/60">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="font-bold tracking-widest uppercase text-[10px] sm:text-[11px] font-mono">
+                  PREMIUM TERMITE & TIMBER DEFENSE • WAYANAD
                 </span>
-                <span>•</span>
-                <span>{WAYANAD_DATA.brand.justdialReviewsCount} across Wayanad</span>
-                <span>•</span>
-                <span className="text-emerald-300 font-medium">Live Video Report for NRI Owners</span>
               </div>
 
+              <div className="inline-flex items-center space-x-1.5 bg-amber-950/70 border border-amber-500/40 rounded-full px-3.5 py-1.5 text-xs text-amber-200 backdrop-blur-xl shadow-lg">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                <span className="text-[11px] font-medium">
+                  വിദേശത്തുള്ള പ്രവാസികൾക്കും നാട്ടിലെ റിസോർട്ടുകൾക്കും വിശ്വസിക്കാവുന്ന സേവനം
+                </span>
+              </div>
             </div>
 
-            {/* Right Column: Floating Luxury Feature Card (Visible on lg screens) */}
-            <div className="hidden lg:block lg:col-span-5">
-              <div className="bg-black/50 backdrop-blur-2xl border border-white/15 rounded-3xl p-7 shadow-2xl space-y-5 text-left relative overflow-hidden">
-                <div className="absolute -top-10 -right-10 w-36 h-36 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none" />
-                
-                <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">EXCELLENCE IN TIMBER DEFENSE</div>
-                    <div className="text-lg font-serif font-bold text-white mt-0.5">Wayanad Hospitality & Villa Protocol</div>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300">
-                    <Hotel className="w-5 h-5" />
-                  </div>
-                </div>
+            {/* Majestic Headline */}
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-[1.12]">
+                Preserving Wayanad's <br />
+                <span className="italic font-light bg-gradient-to-r from-emerald-300 via-emerald-400 to-teal-300 bg-clip-text text-transparent font-serif">
+                  Finest Estates & Timber
+                </span>
+              </h1>
+              
+              <p className="text-xs sm:text-sm font-semibold tracking-widest uppercase text-emerald-400/90 font-mono">
+                Sultan Bathery • Kalpetta • Mananthavady • Vythiri • Resorts & Homestays
+              </p>
+            </div>
 
-                <div className="space-y-3.5 text-xs">
-                  <div className="flex items-start space-x-3 bg-white/5 p-3 rounded-xl border border-white/10">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold text-white">Rainforest Resort & Homestay Specialist</div>
-                      <div className="text-slate-300 text-[11px] mt-0.5">Zero guest room evacuation, 100% odorless, eco-safe for forest biospheres.</div>
-                    </div>
-                  </div>
+            <p className="text-slate-200 text-sm sm:text-base lg:text-lg leading-relaxed font-normal max-w-2xl text-shadow-sm mx-auto lg:mx-0">
+              Odorless, IS:6313 certified subterranean termite elimination, deep wood borer eradication & annual protection for 
+              <strong className="text-white font-semibold"> luxury rainforest resorts, plantation bungalows, modern villas, and commercial properties</strong> across Wayanad.
+            </p>
 
-                  <div className="flex items-start space-x-3 bg-white/5 p-3 rounded-xl border border-white/10">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold text-white">Heritage Teak & Anjili Timber Preservation</div>
-                      <div className="text-slate-300 text-[11px] mt-0.5">Surgical micro-syringe injection into wood borer exit holes without surface staining.</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3 bg-white/5 p-3 rounded-xl border border-white/10">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold text-white">IS:6313 Certified 10-Year Soil Barrier</div>
-                      <div className="text-slate-300 text-[11px] mt-0.5">Transfer chemistry eliminating subterranean termite colonies & the queen.</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs">
-                  <span className="text-slate-300">Sultan Bathery Base: <strong className="text-white">Kuppadi</strong></span>
-                  <a href="#dispatch-desk" className="text-emerald-400 font-bold hover:underline inline-flex items-center space-x-1">
-                    <span>View Desk</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
+            {/* 4 Checkpoint Badges (Frosted Glass) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 max-w-2xl">
+              <div className="flex items-center space-x-2 bg-black/50 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-[11px] font-semibold text-slate-100">Kuppadi Central Hub</span>
               </div>
+              <div className="flex items-center space-x-2 bg-black/50 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
+                <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-[11px] font-semibold text-slate-100">45-Min Fast Dispatch</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-black/50 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
+                <Award className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-[11px] font-semibold text-slate-100">IS:6313 Certified</span>
+              </div>
+              <div className="flex items-center space-x-2 bg-black/50 backdrop-blur-xl border border-white/15 rounded-xl p-2.5 shadow-lg">
+                <Trees className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span className="text-[11px] font-semibold text-slate-100">Eco-Safe & Odorless</span>
+              </div>
+            </div>
+
+            {/* Hero CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-3">
+              <a
+                href="#dispatch-desk"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400 text-slate-950 font-extrabold px-7 py-3.5 rounded-xl shadow-xl shadow-emerald-500/30 hover:shadow-emerald-400/50 transition-all transform hover:-translate-y-0.5 text-sm"
+              >
+                <Search className="w-4 h-4" />
+                <span>Book Free Wayanad Inspection</span>
+              </a>
+
+              <button
+                onClick={() => handlePhoneClick('wayanad_hero_call')}
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-xl transition text-sm"
+              >
+                <PhoneCall className="w-4 h-4 text-emerald-400" />
+                <span>Call: {WAYANAD_DATA.brand.phoneDisplay}</span>
+              </button>
+
+              <button
+                onClick={() => handleWhatsAppClick('wayanad_hero_wa', { message: 'Hi TermiteControl.me, I need termite/pest inspection for my property in Wayanad (Sultan Bathery/Kalpetta/Vythiri). Please share details.' })}
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 font-semibold px-5 py-3.5 rounded-xl border border-emerald-500/40 backdrop-blur-xl transition text-sm shadow-lg"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <span>WhatsApp Desk</span>
+              </button>
+            </div>
+
+            {/* Micro Trust Strip */}
+            <div className="pt-2 text-xs text-slate-300 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+              <span className="flex items-center text-amber-300 font-bold">
+                <Star className="w-3.5 h-3.5 fill-amber-300 mr-1" />
+                {WAYANAD_DATA.brand.justdialRating}
+              </span>
+              <span>•</span>
+              <span>{WAYANAD_DATA.brand.justdialReviewsCount} across Wayanad</span>
+              <span>•</span>
+              <span className="text-emerald-300 font-medium">Live Video Report for NRI Owners</span>
             </div>
 
           </div>
@@ -627,7 +571,7 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
       <section className="py-16 sm:py-20 bg-slate-900 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3 mb-12">
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
             <div className="inline-flex items-center space-x-2 bg-emerald-950 border border-emerald-500/40 text-emerald-300 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
               <Hotel className="w-3.5 h-3.5 text-emerald-400" />
               <span>Specialized Hospitality & Tourism Focus</span>
@@ -638,6 +582,81 @@ export default function WayanadLandingPage({ onOpenLeadModal, onOpenInspectionMo
             <p className="text-slate-300 text-sm sm:text-base">
               Targeted odorless, eco-safe pest solutions for over 1,500+ luxury hospitality properties across Vythiri, Lakkidi, Meppadi, Chembra, Banasura, and Thirunelly.
             </p>
+          </div>
+
+          {/* Excellence in Timber Defense - Core Protocol Showcase */}
+          <div className="mb-12 bg-gradient-to-br from-slate-950 via-[#031c14] to-slate-950 border border-emerald-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+            <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-white/10">
+              <div className="space-y-2">
+                <div className="inline-flex items-center space-x-2 text-emerald-400 text-xs font-mono font-bold tracking-widest uppercase">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Wayanad Hospitality & Villa Protocol</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
+                  Excellence in Timber Defense & Eco-Shielding
+                </h3>
+                <p className="text-slate-300 text-xs sm:text-sm max-w-2xl">
+                  Engineered specifically for Wayanad's high-moisture tropical highlands, protecting heritage structures, plantation manors, and luxury resort villas without altering wood aesthetics or disrupting guests.
+                </p>
+              </div>
+              <div className="shrink-0 flex items-center gap-3">
+                <button
+                  onClick={() => onOpenLeadModal({ service: 'Timber & Resort Protocol', location: 'Wayanad District' })}
+                  className="inline-flex items-center space-x-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl transition text-xs shadow-lg shadow-emerald-500/20"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Schedule Timber Audit</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 pt-6 relative z-10">
+              <div className="bg-white/5 border border-white/10 hover:border-emerald-500/50 rounded-2xl p-5 space-y-3 transition">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-300">
+                    <Hotel className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">Rainforest Resort & Homestays</div>
+                    <div className="text-[11px] text-emerald-400 font-medium">Zero Room Evacuation</div>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  100% odorless, eco-safe micro-encapsulated formulations applied discreetly without interrupting guest stays or resort operations.
+                </p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 hover:border-emerald-500/50 rounded-2xl p-5 space-y-3 transition">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300">
+                    <Trees className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">Teak, Rosewood & Anjili Care</div>
+                    <div className="text-[11px] text-amber-400 font-medium">Surgical Micro-Syringe Injection</div>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  Deep wood penetration targeting subterranean termites, powder-post beetles, and wood borers without staining luxury timber finishes.
+                </p>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 hover:border-emerald-500/50 rounded-2xl p-5 space-y-3 transition">
+                <div className="flex items-center space-x-3">
+                  <div className="w-9 h-9 rounded-xl bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-300">
+                    <Award className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-white">IS:6313 Certified Soil Barrier</div>
+                    <div className="text-[11px] text-teal-400 font-medium">Colony Elimination Chemistry</div>
+                  </div>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  High-pressure sub-slab and perimeter soil barrier creating an impermeable defense ring with 5 to 10 years guaranteed written warranty.
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
