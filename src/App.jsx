@@ -10,6 +10,7 @@ import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
 import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
 import KollamLandingPage from './pages/KollamLandingPage';
 import WayanadLandingPage from './pages/WayanadLandingPage';
+import KasaragodLandingPage from './pages/KasaragodLandingPage';
 import DistrictLandingPage from './pages/DistrictLandingPage';
 import CostCalculatorModal from './components/CostCalculatorModal';
 import LeadManagerModal from './components/LeadManagerModal';
@@ -242,6 +243,32 @@ export default function App() {
         <WayanadLandingPage
           onOpenLeadModal={openLeadModal}
           onOpenInspectionModal={() => openLeadModal({ location: 'Wayanad District (Sultan Bathery Hub)' })}
+        />
+      );
+    }
+
+    // Kasaragod Dedicated Master Landing Page (Kasaragod Town, Kanhangad, Nileshwar, Bekal, Uppala)
+    const kasaragodTowns = [
+      'kasaragod', 'kasargod', 'kanhangad', 'nileshwar', 'neeleshwaram', 'bekal', 
+      'uppala', 'cheruvathur', 'trikaripur', 'manjeshwar', 'kumbla', 'kudlu', 
+      'vidyanagar', 'mogral', 'badiyadka', 'chengala', 'hosdurg', 'mavungal', 
+      'padannakkad', 'kottacherry', 'cheemeni', 'periya', 'udma', 'pallikkere'
+    ];
+    const isKasaragodRoute = 
+      kasaragodTowns.some(town => cleanPath === `termite-control-${town}` || cleanPath === `termite-treatment-${town}` || cleanPath === `pest-control-${town}` || cleanPath === `termite-control/${town}` || cleanPath === town || cleanPath === `locations/${town}` || cleanPath === `locations/${town}/`) ||
+      cleanPath === 'termite-control-kasaragod' ||
+      cleanPath === 'termite-control-kasargod' ||
+      cleanPath === 'termite-treatment-kasaragod' ||
+      cleanPath === 'pest-control-kasaragod' ||
+      cleanPath.startsWith('termite-control/kasaragod') ||
+      cleanPath.startsWith('locations/kasaragod') ||
+      cleanPath.startsWith('termite-control-kasaragod/');
+
+    if (isKasaragodRoute) {
+      return (
+        <KasaragodLandingPage
+          onOpenLeadModal={openLeadModal}
+          onOpenInspectionModal={() => openLeadModal({ location: 'Kasaragod District (Vidyanagar Hub)' })}
         />
       );
     }
