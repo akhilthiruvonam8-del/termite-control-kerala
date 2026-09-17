@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import bocRooftopBg from '../assets/boc-rooftop-bg.jpg';
+import bocMobileBg from '../assets/boc-mobile-bg.jpg';
 import bocLogoPng from '../assets/boc-logo.png';
 import { 
   ArrowRight, 
@@ -549,231 +550,20 @@ export default function BOCHero({ onOpenJoinModal }) {
 
       {/* ===================================================================== */}
       {/* 2. MOBILE RESPONSIVE HERO VIEW (< md screens)                         */}
+      {/* 100% Clean: Zero Text, Zero Logo, Pure Background Image Only          */}
       {/* ===================================================================== */}
-      <div className="md:hidden relative w-full flex flex-col justify-between px-4 py-4 space-y-6">
-        
-        {/* Mobile Navbar Header */}
-        <header className="relative z-50 w-full flex items-center justify-between pb-3 border-b border-[#DFC688]/20 navbar-container">
-          <div 
-            onClick={() => { setActiveNav('Home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-2.5 cursor-pointer"
-          >
-            <img 
-              src={bocLogoPng} 
-              alt="BOC Official Crest" 
-              className="w-9 h-9 object-contain filter drop-shadow-[0_0_8px_rgba(223,198,136,0.6)]"
-            />
-            <div className="flex flex-col">
-              <span className="font-serif tracking-[0.1em] text-xs font-bold text-[#FAF6ED] uppercase">
-                BUSINESS OWNERS CIRCLE
-              </span>
-              <span className="text-[8.5px] tracking-[0.2em] text-[#DFC688] font-semibold uppercase">
-                KOCHI, KERALA
-              </span>
-            </div>
-          </div>
-
-          <button
-            onClick={() => setSideMenuOpen(!sideMenuOpen)}
-            className="px-3 py-1.5 rounded-lg bg-[#030C1C]/90 border border-[#DFC688]/50 flex items-center gap-1.5 text-[#DFC688] shadow-md cursor-pointer"
-            aria-label="Toggle Mobile Menu"
-          >
-            <span className="text-[11px] font-extrabold tracking-wider">MENU</span>
-            {sideMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
-        </header>
-
-        {/* Mobile Dropdown Menu Drawer */}
-        {sideMenuOpen && (
-          <div className="relative z-50 w-full rounded-2xl bg-[#030C1C]/98 border border-[#DFC688]/40 p-4 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-2 duration-200">
-            <div className="space-y-2">
-              {navCategories.map((item) => {
-                const hasDropdown = !!item.dropdown;
-                const isExpanded = expandedAccordion === item.id;
-                const ItemIcon = item.icon;
-
-                if (!hasDropdown) {
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => handleItemClick(item)}
-                      className="w-full text-left px-3.5 py-2.5 rounded-xl hover:bg-white/5 text-xs font-semibold text-slate-200 hover:text-white border border-transparent hover:border-[#DFC688]/20 transition-all flex items-center justify-between cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2">
-                        <ItemIcon className="w-4 h-4 text-[#DFC688]" />
-                        <span>{item.label}</span>
-                      </div>
-                      <ArrowRight className="w-3.5 h-3.5 text-[#DFC688]/60" />
-                    </button>
-                  );
-                }
-
-                return (
-                  <div key={item.id} className="rounded-xl border border-white/5 overflow-hidden bg-white/[0.02]">
-                    <button
-                      onClick={() => toggleAccordion(item.id)}
-                      className="w-full px-3.5 py-2.5 flex items-center justify-between text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
-                    >
-                      <div className="flex items-center gap-2">
-                        <ItemIcon className="w-4 h-4 text-[#DFC688]" />
-                        <span>{item.label}</span>
-                      </div>
-                      <ChevronDown 
-                        className={`w-3.5 h-3.5 text-[#DFC688] transition-transform duration-200 ${
-                          isExpanded ? 'rotate-180 text-[#E5C45A]' : ''
-                        }`} 
-                      />
-                    </button>
-
-                    {isExpanded && (
-                      <div className="p-2 space-y-1.5 bg-[#030C1C]/90 border-t border-white/5">
-                        {item.dropdown.map((sub, sIdx) => {
-                          const SubIcon = sub.icon;
-                          return (
-                            <div
-                              key={sIdx}
-                              onClick={() => {
-                                onOpenJoinModal();
-                                setSideMenuOpen(false);
-                              }}
-                              className={`p-2 rounded-lg flex items-start gap-2.5 cursor-pointer ${
-                                sub.isAction 
-                                  ? 'bg-[#DFC688]/15 border border-[#DFC688]/40' 
-                                  : 'hover:bg-white/5'
-                              }`}
-                            >
-                              <SubIcon className="w-4 h-4 text-[#E5C45A] mt-0.5 flex-shrink-0" />
-                              <div>
-                                <div className="text-xs font-bold text-white flex items-center gap-1">
-                                  <span>{sub.title}</span>
-                                  {sub.isAction && <ArrowRight className="w-3 h-3 text-[#E5C45A]" />}
-                                </div>
-                                <div className="text-[10px] text-slate-300">{sub.desc}</div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-
-              <div className="pt-3">
-                <button
-                  onClick={() => {
-                    onOpenJoinModal();
-                    setSideMenuOpen(false);
-                  }}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#F0DC9B] via-[#E2C77D] to-[#C5A059] text-[#041126] font-black text-xs tracking-wider uppercase shadow-[0_4px_20px_rgba(197,160,89,0.5)] flex items-center justify-center gap-2 cursor-pointer"
-                >
-                  <span>APPLY TO JOIN THE CIRCLE</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Hero Card with Rooftop Image & Native Typography */}
-        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DFC688]/30 bg-[#030C1C]">
-          <div className="relative w-full h-[260px] overflow-hidden">
-            <img 
-              src={bocRooftopBg} 
-              alt="BOC Kochi Background" 
-              className="w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#020712] via-[#020712]/40 to-transparent" />
-          </div>
-
-          <div className="p-5 pt-2 flex flex-col">
-            {/* Mobile Sub-Badge */}
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-5 h-[1.5px] bg-[#FCE38A]" />
-              <span className="text-[10px] font-bold tracking-[0.24em] text-[#FCE38A] uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                BUSINESS OWNERS CIRCLE — KOCHI
-              </span>
-            </div>
-
-            {/* Mobile Grand Headline */}
-            <h1 className="font-serif font-black text-white text-[28px] leading-[1.12] mb-2.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-              REFER. COLLABORATE.<br />
-              <span className="text-[#FAF6ED]">SUPPORT. GROW.</span>
-            </h1>
-
-            {/* Mobile Mission Subtitle */}
-            <p className="text-slate-200 text-xs leading-relaxed mb-4">
-              A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
-            </p>
-
-            {/* Mobile CTA Buttons */}
-            <div className="flex flex-col gap-2.5">
-              <button
-                onClick={onOpenJoinModal}
-                className="w-full py-3 rounded-full bg-gradient-to-r from-[#DFB743] via-[#FCE38A] to-[#D4AF37] border border-[#FFF5C0] text-[#040E1E] font-black text-xs tracking-wider uppercase shadow-[0_4px_20px_rgba(223,198,136,0.5)] flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all"
-              >
-                <span>JOIN THE CIRCLE</span>
-                <ArrowRight className="w-4 h-4 stroke-[3]" />
-              </button>
-
-              <button
-                onClick={onOpenJoinModal}
-                className="w-full py-2.5 rounded-full bg-[#030D1D]/90 border border-[#DFC688] text-white hover:text-[#FCE38A] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all"
-              >
-                <span>EXPLORE OUR COMMUNITY</span>
-                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2] text-[#DFC688]" />
-              </button>
-            </div>
-          </div>
+      <div className="md:hidden relative w-full min-h-screen flex items-center justify-center bg-[#020712]">
+        <div 
+          onClick={onOpenJoinModal}
+          className="relative w-full h-screen overflow-hidden cursor-pointer"
+          title="Business Owners Circle Kochi — Tap to Join"
+        >
+          <img 
+            src={bocMobileBg} 
+            alt="Business Owners Circle Kochi" 
+            className="w-full h-full object-cover object-center select-none pointer-events-none"
+          />
         </div>
-
-        {/* Mobile 4 Value Pillars Grid */}
-        <div className="grid grid-cols-2 gap-2.5 pt-1">
-          {dockPillars.map((pillar) => {
-            const Icon = pillar.icon;
-            return (
-              <div 
-                key={pillar.id}
-                onClick={onOpenJoinModal}
-                className="p-3 rounded-xl bg-[#030C1C]/90 border border-[#DFC688]/30 flex items-center gap-2.5 cursor-pointer active:scale-98 transition-all"
-              >
-                <div className="w-8 h-8 rounded-full bg-[#071B3A] border border-[#FCE38A] flex items-center justify-center text-[#FCE38A] flex-shrink-0 shadow-[0_0_10px_rgba(252,227,138,0.3)]">
-                  <Icon className="w-4 h-4 stroke-[2.4]" />
-                </div>
-                <span className="text-[10.5px] font-bold text-white uppercase tracking-wider leading-tight">
-                  {pillar.label}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Mobile 4-Step Process Rail */}
-        <div className="p-3.5 rounded-2xl bg-[#030C1C]/90 border border-[#DFC688]/30">
-          <div className="text-[10px] font-extrabold text-[#FCE38A] tracking-[0.2em] uppercase mb-3 text-center">
-            HOW MEMBERS GROW TOGETHER
-          </div>
-          <div className="grid grid-cols-4 gap-1.5 text-center">
-            {verticalRailItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div 
-                  key={item.id}
-                  onClick={onOpenJoinModal}
-                  className="flex flex-col items-center gap-1.5 cursor-pointer"
-                >
-                  <div className="w-9 h-9 rounded-full bg-[#071B3A] border border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_10px_rgba(252,227,138,0.3)]">
-                    <Icon className="w-4 h-4 stroke-[2.4]" />
-                  </div>
-                  <span className="text-[9.5px] font-semibold text-white uppercase tracking-wider">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
       </div>
 
 
