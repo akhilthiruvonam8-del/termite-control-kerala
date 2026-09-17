@@ -12,6 +12,7 @@ import {
   Star, 
   Sparkles,
   ShieldCheck,
+  Link2,
   ChevronDown,
   ChevronRight,
   Menu,
@@ -181,20 +182,20 @@ export default function BOCHero({ onOpenJoinModal }) {
     },
   ];
 
-  // Right vertical rail hotspots (Refer, Connect, Collaborate, Grow)
+  // Right vertical rail items (Refer, Connect, Collaborate, Grow)
   const verticalRailItems = [
-    { id: 'refer', label: 'REFER', top: '23.4%', height: '8.5%', desc: 'Connect fellow members with genuine business opportunities.' },
-    { id: 'connect', label: 'CONNECT', top: '34.5%', height: '8.5%', desc: 'Build trusted relationships through regular masterminds.' },
-    { id: 'collaborate', label: 'COLLABORATE', top: '46.0%', height: '8.5%', desc: 'Form multi-disciplinary packages for large clients.' },
-    { id: 'grow', label: 'GROW', top: '58.0%', height: '8.5%', desc: 'Achieve sustainable, predictable business scaling.' },
+    { id: 'refer', label: 'REFER', icon: Handshake, desc: 'Connect fellow members with genuine business opportunities.' },
+    { id: 'connect', label: 'CONNECT', icon: Link2, desc: 'Build trusted relationships through regular masterminds.' },
+    { id: 'collaborate', label: 'COLLABORATE', icon: Users, desc: 'Form multi-disciplinary packages for large clients.' },
+    { id: 'grow', label: 'GROW', icon: TrendingUp, desc: 'Achieve sustainable, predictable business scaling.' },
   ];
 
-  // Bottom 4 dock pillars hotspots
+  // Bottom 4 dock pillars
   const dockPillars = [
-    { id: 'connections', label: 'BUSINESS CONNECTIONS', left: '17.2%', width: '14.5%', desc: 'High-trust, qualified executive relationships.' },
-    { id: 'industries', label: 'DIVERSE INDUSTRIES', left: '37.0%', width: '13.5%', desc: '100% verified founders across 25+ verticals.' },
-    { id: 'opportunities', label: 'MORE OPPORTUNITIES', left: '57.0%', width: '13.5%', desc: 'Accelerated revenue via strategic referrals.' },
-    { id: 'community', label: 'STRONGER COMMUNITY', left: '76.0%', width: '14.5%', desc: 'A fraternity where you never build alone.' },
+    { id: 'connections', label: 'BUSINESS CONNECTIONS', icon: Handshake, desc: 'High-trust, qualified executive relationships.' },
+    { id: 'industries', label: 'DIVERSE INDUSTRIES', icon: Building2, desc: '100% verified founders across 25+ verticals.' },
+    { id: 'opportunities', label: 'MORE OPPORTUNITIES', icon: Star, desc: 'Accelerated revenue via strategic referrals.' },
+    { id: 'community', label: 'STRONGER COMMUNITY', icon: Users, desc: 'A fraternity where you never build alone.' },
   ];
 
   const handleItemClick = (item) => {
@@ -412,92 +413,136 @@ export default function BOCHero({ onOpenJoinModal }) {
         </header>
 
         {/* ----------------------------------------------------------------- */}
-        {/* INTERACTIVE HOTSPOTS OVER MASTER 2K GRAPHIC                       */}
+        {/* 1. MEDALLION OFFICIAL CREST (Interactive with Radiant Hover Glow)  */}
         {/* ----------------------------------------------------------------- */}
-
-        {/* 1. Medallion Logo Interactive Hotspot */}
         <div 
           onClick={onOpenJoinModal}
-          className="absolute top-[22.5%] left-[3.5%] w-[18.5%] h-[37.5%] rounded-full cursor-pointer z-20 group"
+          className="absolute top-[12%] left-[3.2%] w-[16%] h-[35%] rounded-full cursor-pointer z-20 group"
           title="Business Owners Circle Official Crest — Empower Together"
         >
-          <div className="w-full h-full rounded-full border-2 border-transparent group-hover:border-[#DFC688]/60 group-hover:shadow-[0_0_40px_rgba(223,198,136,0.6)] group-hover:scale-105 transition-all duration-300" />
+          <div className="w-full h-full rounded-full border-2 border-transparent group-hover:border-[#DFC688]/70 group-hover:shadow-[0_0_40px_rgba(223,198,136,0.7)] group-hover:scale-105 transition-all duration-300" />
         </div>
 
-        {/* 2. Hero 'JOIN THE CIRCLE' Pill Button */}
-        <button
-          onClick={onOpenJoinModal}
-          className="absolute top-[56.8%] left-[22.2%] w-[12.6%] h-[7.2%] cursor-pointer z-20 rounded-full flex items-center justify-center px-3 sm:px-4 lg:px-6 group shadow-[0_6px_25px_rgba(223,198,136,0.4)] hover:shadow-[0_10px_35px_rgba(252,227,138,0.7)] transition-all duration-300 transform hover:scale-[1.02] active:scale-95 bg-gradient-to-r from-[#DFC688] via-[#FCE38A] to-[#D4AF37] border border-[#FFF5C0]"
-          title="Join The Circle — Apply for Membership"
-          aria-label="Join the Circle"
-        >
-          <span className="font-extrabold tracking-[0.08em] uppercase text-[#040E1E] text-[clamp(9px,0.95vw,14px)] flex items-center gap-1.5 whitespace-nowrap drop-shadow-sm">
-            JOIN THE CIRCLE
-            <ArrowRight className="w-[clamp(11px,1.05vw,16px)] h-[clamp(11px,1.05vw,16px)] stroke-[2.5] text-[#040E1E] group-hover:translate-x-1 transition-transform" />
-          </span>
-        </button>
+        {/* ----------------------------------------------------------------- */}
+        {/* 2. CENTER-LEFT HERO TYPOGRAPHY & CTA (100% Hand-Crafted Code)     */}
+        {/* ----------------------------------------------------------------- */}
+        <div className="absolute top-[22%] left-[20.5%] max-w-[45%] z-20 flex flex-col justify-center select-text">
+          
+          {/* Sub-Badge */}
+          <div className="flex items-center gap-2.5 mb-2.5">
+            <span className="w-8 sm:w-12 h-[1.5px] bg-gradient-to-r from-transparent to-[#FCE38A]" />
+            <span className="text-[clamp(9px,0.85vw,13.5px)] font-bold tracking-[0.26em] text-[#FCE38A] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] whitespace-nowrap">
+              BUSINESS OWNERS CIRCLE — KOCHI, KERALA
+            </span>
+            <span className="w-8 sm:w-12 h-[1.5px] bg-gradient-to-l from-transparent to-[#FCE38A]" />
+          </div>
 
-        {/* 3. Hero 'EXPLORE OUR COMMUNITY' Pill Button */}
-        <button
-          onClick={onOpenJoinModal}
-          className="absolute top-[56.8%] left-[35.4%] w-[14.8%] h-[7.2%] cursor-pointer z-20 rounded-full flex items-center justify-center px-3 sm:px-4 lg:px-6 group bg-[#030D1D]/85 backdrop-blur-md border border-[#DFC688]/80 hover:border-[#FFF0B3] shadow-[0_6px_25px_rgba(0,0,0,0.6)] hover:shadow-[0_8px_35px_rgba(223,198,136,0.4)] hover:bg-[#06162E]/95 transition-all duration-300 transform hover:scale-[1.02] active:scale-95"
-          title="Explore Our Community"
-          aria-label="Explore Our Community"
-        >
-          <span className="font-bold tracking-[0.06em] uppercase text-white group-hover:text-[#FDE68A] text-[clamp(8.5px,0.88vw,13.5px)] flex items-center gap-1.5 whitespace-nowrap transition-colors drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-            EXPLORE OUR COMMUNITY
-            <ArrowRight className="w-[clamp(11px,1vw,15px)] h-[clamp(11px,1vw,15px)] stroke-[2] text-[#DFC688] group-hover:text-[#FDE68A] group-hover:translate-x-1 transition-all" />
-          </span>
-        </button>
+          {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
+          <h1 className="font-serif font-black text-white tracking-tight text-[clamp(22px,2.8vw,52px)] leading-[1.08] drop-shadow-[0_4px_20px_rgba(0,0,0,1)] mb-2.5">
+            REFER. COLLABORATE.<br />
+            <span className="text-white drop-shadow-[0_4px_24px_rgba(0,0,0,1)]">SUPPORT. GROW.</span>
+          </h1>
 
-        {/* 4. Right Vertical Rail Interactive Hotspots */}
-        {verticalRailItems.map((item) => (
-          <div
-            key={item.id}
-            onClick={onOpenJoinModal}
-            onMouseEnter={() => setActiveTooltip(item.id)}
-            onMouseLeave={() => setActiveTooltip(null)}
-            style={{ top: item.top, height: item.height }}
-            className="absolute right-[2.8%] w-[10.5%] cursor-pointer z-20 flex items-center justify-end pr-2 group"
-          >
-            {/* Hover Indicator Box */}
-            <div className="w-full h-full rounded-xl border border-transparent group-hover:border-[#DFC688]/50 group-hover:bg-[#DFC688]/10 transition-all duration-200" />
+          {/* Mission Statement Subtitle */}
+          <p className="text-slate-100 text-[clamp(10px,0.95vw,15px)] font-normal leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,1)] mb-5">
+            A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
+          </p>
 
-            {/* Hover Tooltip */}
-            {activeTooltip === item.id && (
-              <div className="absolute right-[105%] top-1/2 -translate-y-1/2 mr-3 px-3.5 py-2 rounded-xl bg-[#041126]/95 border border-[#DFC688]/60 shadow-[0_8px_25px_rgba(0,0,0,0.9)] text-left whitespace-nowrap z-30 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
-                <div className="text-xs font-bold text-[#E5C45A] flex items-center gap-1">
-                  <span>{item.label}</span>
-                  <ArrowRight className="w-3 h-3 text-[#E5C45A]" />
+          {/* Action Buttons: JOIN THE CIRCLE & EXPLORE OUR COMMUNITY */}
+          <div className="flex items-center gap-3 sm:gap-4 select-none">
+            {/* Button 1: JOIN THE CIRCLE */}
+            <button
+              onClick={onOpenJoinModal}
+              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#DFB743] via-[#FCE38A] to-[#D4AF37] border border-[#FFF5C0] text-[#040E1E] font-black text-[clamp(9px,0.9vw,14px)] tracking-wider uppercase shadow-[0_6px_25px_rgba(223,198,136,0.55)] hover:shadow-[0_10px_35px_rgba(252,227,138,0.85)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer group"
+            >
+              <span>JOIN THE CIRCLE</span>
+              <ArrowRight className="w-4 h-4 stroke-[3] text-[#040E1E] group-hover:translate-x-1 transition-transform" />
+            </button>
+
+            {/* Button 2: EXPLORE OUR COMMUNITY */}
+            <button
+              onClick={onOpenJoinModal}
+              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#030D1D]/85 backdrop-blur-md border border-[#DFC688] hover:border-[#FFF0B3] text-white hover:text-[#FCE38A] font-bold text-[clamp(8.5px,0.85vw,13.5px)] tracking-wider uppercase shadow-[0_6px_25px_rgba(0,0,0,0.7)] hover:shadow-[0_8px_35px_rgba(223,198,136,0.5)] hover:bg-[#06162E]/95 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
+            >
+              <span>EXPLORE OUR COMMUNITY</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.4] text-[#DFC688] group-hover:text-[#FCE38A] group-hover:translate-x-1 transition-all" />
+            </button>
+          </div>
+        </div>
+
+        {/* ----------------------------------------------------------------- */}
+        {/* 3. RIGHT VERTICAL TIMELINE RAIL (Coded in Real HTML/SVG)          */}
+        {/* ----------------------------------------------------------------- */}
+        <div className="absolute top-[20%] right-[2%] z-20 flex flex-col items-start gap-3 sm:gap-4 lg:gap-5">
+          {/* Vertical Connecting Gold Line */}
+          <div className="absolute left-[15px] sm:left-[19px] lg:left-[21px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-[#DFC688]/30 via-[#FCE38A] to-[#DFC688]/30 -z-10" />
+
+          {verticalRailItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={item.id}
+                onClick={onOpenJoinModal}
+                onMouseEnter={() => setActiveTooltip(item.id)}
+                onMouseLeave={() => setActiveTooltip(null)}
+                className="relative flex items-center gap-2.5 group cursor-pointer"
+              >
+                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-[#030C1C]/95 border border-[#FCE38A] shadow-[0_0_15px_rgba(252,227,138,0.45)] flex items-center justify-center text-[#FCE38A] group-hover:border-[#FFF5C0] group-hover:text-[#FFF5C0] group-hover:scale-110 transition-all backdrop-blur-md">
+                  <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 stroke-[2.4]" />
                 </div>
-                <div className="text-[10px] text-slate-300 max-w-xs">{item.desc}</div>
-              </div>
-            )}
-          </div>
-        ))}
+                <span className="text-[clamp(8.5px,0.8vw,12px)] font-semibold tracking-[0.22em] text-[#FFFFFF] group-hover:text-[#FCE38A] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,1)] transition-colors whitespace-nowrap">
+                  {item.label}
+                </span>
 
-        {/* 5. Bottom Curved Dock 4 Pillars Hotspots */}
-        {dockPillars.map((pillar) => (
-          <div
-            key={pillar.id}
-            onClick={onOpenJoinModal}
-            onMouseEnter={() => setActiveTooltip(pillar.id)}
-            onMouseLeave={() => setActiveTooltip(null)}
-            style={{ left: pillar.left, width: pillar.width }}
-            className="absolute bottom-[2.5%] h-[10.5%] cursor-pointer z-20 group"
-          >
-            {/* Hover Illumination */}
-            <div className="w-full h-full rounded-2xl border border-transparent group-hover:border-[#DFC688]/40 group-hover:bg-[#DFC688]/10 transition-all duration-200" />
-
-            {/* Hover Tooltip */}
-            {activeTooltip === pillar.id && (
-              <div className="absolute bottom-[110%] left-1/2 -translate-x-1/2 px-3.5 py-2 rounded-xl bg-[#041126]/95 border border-[#DFC688]/60 shadow-[0_8px_25px_rgba(0,0,0,0.9)] text-center whitespace-nowrap z-30 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
-                <div className="text-xs font-black text-white tracking-wide">{pillar.label}</div>
-                <div className="text-[10px] text-slate-300">{pillar.desc}</div>
+                {/* Tooltip */}
+                {activeTooltip === item.id && (
+                  <div className="absolute right-[105%] top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 rounded-xl bg-[#041126]/95 border border-[#DFC688]/60 shadow-[0_8px_25px_rgba(0,0,0,0.9)] text-left whitespace-nowrap z-30 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
+                    <div className="text-[11px] font-bold text-[#E5C45A] flex items-center gap-1">
+                      <span>{item.label}</span>
+                      <ArrowRight className="w-3 h-3 text-[#E5C45A]" />
+                    </div>
+                    <div className="text-[9.5px] text-slate-300 max-w-xs">{item.desc}</div>
+                  </div>
+                )}
               </div>
-            )}
+            );
+          })}
+        </div>
+
+        {/* ----------------------------------------------------------------- */}
+        {/* 4. BOTTOM CURVED LUXURY DOCK (Coded in Real HTML/SVG)             */}
+        {/* ----------------------------------------------------------------- */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 w-full py-2.5 sm:py-3.5 px-4 sm:px-8 lg:px-12 bg-gradient-to-t from-[#010610]/98 via-[#020A17]/90 to-transparent border-t border-[#DFC688]/40 backdrop-blur-sm">
+          <div className="max-w-6xl mx-auto grid grid-cols-4 gap-2 sm:gap-6 text-center">
+            {dockPillars.map((pillar) => {
+              const Icon = pillar.icon;
+              return (
+                <div
+                  key={pillar.id}
+                  onClick={onOpenJoinModal}
+                  onMouseEnter={() => setActiveTooltip(pillar.id)}
+                  onMouseLeave={() => setActiveTooltip(null)}
+                  className="relative flex items-center justify-center gap-2 sm:gap-3 py-1 px-2 rounded-xl hover:bg-white/[0.04] transition-all cursor-pointer group"
+                >
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#030C1C]/95 border border-[#FCE38A] flex items-center justify-center text-[#FCE38A] group-hover:border-[#FFF5C0] group-hover:text-[#FFF5C0] group-hover:scale-110 transition-all shadow-[0_0_14px_rgba(252,227,138,0.45)]">
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.4]" />
+                  </div>
+                  <span className="text-[clamp(8px,0.85vw,12.5px)] font-bold tracking-wider text-[#FFFFFF] group-hover:text-[#FCE38A] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,1)] transition-colors whitespace-nowrap">
+                    {pillar.label}
+                  </span>
+
+                  {/* Tooltip */}
+                  {activeTooltip === pillar.id && (
+                    <div className="absolute bottom-[115%] left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-xl bg-[#041126]/95 border border-[#DFC688]/60 shadow-[0_8px_25px_rgba(0,0,0,0.9)] text-center whitespace-nowrap z-30 pointer-events-none animate-in fade-in zoom-in-95 duration-150">
+                      <div className="text-[11px] font-black text-white tracking-wide">{pillar.label}</div>
+                      <div className="text-[9.5px] text-slate-300">{pillar.desc}</div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
 
       </div>
 
@@ -630,32 +675,103 @@ export default function BOCHero({ onOpenJoinModal }) {
           </div>
         )}
 
-        {/* Mobile Background Image */}
-        <div className="relative w-full rounded-2xl overflow-hidden shadow-xl border border-white/10">
-          <img 
-            src={bocRooftopBg} 
-            alt="BOC Kochi Background" 
-            className="w-full h-auto object-cover brightness-[1.0]"
-          />
+        {/* Mobile Hero Card with Rooftop Image & Native Typography */}
+        <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-[#DFC688]/30 bg-[#030C1C]">
+          <div className="relative w-full h-[260px] overflow-hidden">
+            <img 
+              src={bocRooftopBg} 
+              alt="BOC Kochi Background" 
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#020712] via-[#020712]/40 to-transparent" />
+          </div>
+
+          <div className="p-5 pt-2 flex flex-col">
+            {/* Mobile Sub-Badge */}
+            <div className="flex items-center gap-2 mb-2">
+              <span className="w-5 h-[1.5px] bg-[#FCE38A]" />
+              <span className="text-[10px] font-bold tracking-[0.24em] text-[#FCE38A] uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                BUSINESS OWNERS CIRCLE — KOCHI
+              </span>
+            </div>
+
+            {/* Mobile Grand Headline */}
+            <h1 className="font-serif font-black text-white text-[28px] leading-[1.12] mb-2.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+              REFER. COLLABORATE.<br />
+              <span className="text-[#FAF6ED]">SUPPORT. GROW.</span>
+            </h1>
+
+            {/* Mobile Mission Subtitle */}
+            <p className="text-slate-200 text-xs leading-relaxed mb-4">
+              A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
+            </p>
+
+            {/* Mobile CTA Buttons */}
+            <div className="flex flex-col gap-2.5">
+              <button
+                onClick={onOpenJoinModal}
+                className="w-full py-3 rounded-full bg-gradient-to-r from-[#DFB743] via-[#FCE38A] to-[#D4AF37] border border-[#FFF5C0] text-[#040E1E] font-black text-xs tracking-wider uppercase shadow-[0_4px_20px_rgba(223,198,136,0.5)] flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all"
+              >
+                <span>JOIN THE CIRCLE</span>
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
+              </button>
+
+              <button
+                onClick={onOpenJoinModal}
+                className="w-full py-2.5 rounded-full bg-[#030D1D]/90 border border-[#DFC688] text-white hover:text-[#FCE38A] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer active:scale-95 transition-all"
+              >
+                <span>EXPLORE OUR COMMUNITY</span>
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2] text-[#DFC688]" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Mobile Actions */}
-        <div className="flex flex-col w-full gap-3 pt-2">
-          <button
-            onClick={onOpenJoinModal}
-            className="w-full py-3 rounded-full bg-gradient-to-r from-[#F0DC9B] via-[#E2C77D] to-[#C5A059] text-[#041126] font-black text-xs tracking-wider uppercase shadow-[0_4px_20px_rgba(197,160,89,0.5)] flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <span>JOIN THE CIRCLE</span>
-            <ArrowRight className="w-4 h-4 stroke-[2.8]" />
-          </button>
+        {/* Mobile 4 Value Pillars Grid */}
+        <div className="grid grid-cols-2 gap-2.5 pt-1">
+          {dockPillars.map((pillar) => {
+            const Icon = pillar.icon;
+            return (
+              <div 
+                key={pillar.id}
+                onClick={onOpenJoinModal}
+                className="p-3 rounded-xl bg-[#030C1C]/90 border border-[#DFC688]/30 flex items-center gap-2.5 cursor-pointer active:scale-98 transition-all"
+              >
+                <div className="w-8 h-8 rounded-full bg-[#071B3A] border border-[#FCE38A] flex items-center justify-center text-[#FCE38A] flex-shrink-0 shadow-[0_0_10px_rgba(252,227,138,0.3)]">
+                  <Icon className="w-4 h-4 stroke-[2.4]" />
+                </div>
+                <span className="text-[10.5px] font-bold text-white uppercase tracking-wider leading-tight">
+                  {pillar.label}
+                </span>
+              </div>
+            );
+          })}
+        </div>
 
-          <button
-            onClick={onOpenJoinModal}
-            className="w-full py-2.5 rounded-full bg-[#041126]/80 border border-[#C5A059]/80 text-slate-100 font-semibold text-xs tracking-wider uppercase flex items-center justify-center gap-2 cursor-pointer"
-          >
-            <span>EXPLORE OUR COMMUNITY</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+        {/* Mobile 4-Step Process Rail */}
+        <div className="p-3.5 rounded-2xl bg-[#030C1C]/90 border border-[#DFC688]/30">
+          <div className="text-[10px] font-extrabold text-[#FCE38A] tracking-[0.2em] uppercase mb-3 text-center">
+            HOW MEMBERS GROW TOGETHER
+          </div>
+          <div className="grid grid-cols-4 gap-1.5 text-center">
+            {verticalRailItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={item.id}
+                  onClick={onOpenJoinModal}
+                  className="flex flex-col items-center gap-1.5 cursor-pointer"
+                >
+                  <div className="w-9 h-9 rounded-full bg-[#071B3A] border border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_10px_rgba(252,227,138,0.3)]">
+                    <Icon className="w-4 h-4 stroke-[2.4]" />
+                  </div>
+                  <span className="text-[9.5px] font-semibold text-white uppercase tracking-wider">
+                    {item.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
       </div>
