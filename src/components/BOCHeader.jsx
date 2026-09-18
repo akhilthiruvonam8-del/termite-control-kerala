@@ -87,7 +87,7 @@ export default function BOCHeader({ onOpenJoinModal, onNavigate }) {
                 BUSINESS OWNERS CIRCLE
               </span>
               <span className="text-[7.5px] sm:text-[9.5px] tracking-[0.24em] font-semibold text-[#DFC688] uppercase leading-none mt-0.5">
-                KOCHI, KERALA
+                EMPOWER TOGETHER
               </span>
             </div>
           </a>

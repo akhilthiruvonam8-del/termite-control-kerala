@@ -18,7 +18,7 @@ export default function BOCMicroFooter({ isLight = false }) {
         <div className="flex items-center gap-2 text-center sm:text-left">
           <ShieldCheck className={`w-3.5 h-3.5 ${isLight ? 'text-[#B08C1E]' : 'text-[#E5C45A]'}`} />
           <span>
-            © {new Date().getFullYear()} <strong className={isLight ? 'text-slate-900' : 'text-slate-200'}>Business Owner’s Circle (BOC)</strong> – Kochi, Kerala. All Rights Reserved.
+            © {new Date().getFullYear()} <strong className={isLight ? 'text-slate-900' : 'text-slate-200'}>Business Owner’s Circle (BOC)</strong>. All Rights Reserved.
           </span>
         </div>
 

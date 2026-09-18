@@ -223,12 +223,14 @@ export default function BOCHero({ onOpenJoinModal }) {
       <div className="hidden md:block relative w-full aspect-[2/1] max-w-[2048px] mx-auto select-none shadow-2xl overflow-visible">
         
         {/* The Exact Master 2K Image from User's Sample Picture (media_1789641252571.jpg) */}
-        {/* ZERO artificial dark shade, ZERO box seams: Natural river, plants, sunset, skyline intact */}
+        {/* Highlighted, Radiant Sunset Skyline & Terrace */}
         <img 
           src={bocRooftopBg} 
-          alt="Business Owner's Circle Kochi Master Experience"
-          className="w-full h-full object-cover select-none pointer-events-none"
+          alt="Business Owner's Circle Master Experience"
+          className="w-full h-full object-cover select-none pointer-events-none contrast-[1.14] saturate-[1.25] brightness-[1.08]"
         />
+        {/* Ambient warm sunset radial glow */}
+        <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-gradient-to-br from-amber-400/20 via-orange-500/10 to-transparent rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
 
         {/* =================================================================== */}
         {/* TOP BAR: LOGO (LEFT) + FULL NAV (CENTER) + JOIN & MENU (RIGHT)      */}
@@ -732,42 +734,46 @@ export default function BOCHero({ onOpenJoinModal }) {
         <div className="relative w-full overflow-hidden bg-[#020712]">
           
           {/* Background Image: Vivid, Rich Saturated Sunset Networking */}
-          <div className="relative w-full h-[470px] sm:h-[510px] overflow-hidden">
+          <div className="relative w-full h-[510px] sm:h-[550px] overflow-hidden">
             <img 
               src={bocMobileBg} 
               alt="BOC Rooftop Networking" 
-              className="w-full h-full object-cover object-center contrast-[1.10] saturate-[1.15] brightness-[1.03] select-none"
+              className="w-full h-full object-cover object-[center_15%] contrast-[1.18] saturate-[1.35] brightness-[1.12] select-none"
             />
-            {/* Top rich twilight gradient for 100% crisp, highlighted readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/92 via-[#020712]/50 via-45% to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#010714] via-transparent to-transparent" />
+            {/* Luminous Warm Sunset Radial Glow Behind Skyline */}
+            <div className="absolute right-0 top-1/4 w-80 h-80 bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent rounded-full blur-3xl pointer-events-none mix-blend-screen" />
+
+            {/* Directional Soft Scrim ONLY Behind Text (Keeps Sunset Sky & Skyline 100% Brilliant & Glowing) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020712]/90 via-[#020712]/50 via-55% to-transparent pointer-events-none" />
+            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#020712]/75 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none" />
 
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
             {/* FLUSH LEFT-ALIGNED 1:1 TO MASTER MOCKUP (media_1789704907551.jpg) */}
-            <div className="absolute top-4 left-0 right-0 px-5 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
+            <div className="absolute top-5 left-0 right-0 px-5 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
               
               {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (without KOCHI, KERALA) */}
-              <div className="flex items-center gap-2 mb-2">
-                <span className="w-8 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
+              <div className="flex items-center gap-2 mb-2.5">
+                <span className="w-8 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.9)]" />
                 <span className="font-cinzel font-black tracking-[0.26em] text-[11px] sm:text-[12.5px] text-[#FCE38A] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">
                   BUSINESS OWNERS CIRCLE
                 </span>
-                <span className="w-8 h-[2px] bg-gradient-to-l from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
+                <span className="w-8 h-[2px] bg-gradient-to-l from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.9)]" />
               </div>
 
               {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted & Grand) */}
-              <h1 className="font-serif font-black text-[27px] xs:text-[30px] sm:text-[34px] leading-[1.08] mb-2.5 text-left">
-                <span className="text-white drop-shadow-[0_4px_18px_rgba(0,0,0,1)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.95),_0_6px_24px_rgba(0,0,0,0.9)]">
+              <h1 className="font-serif font-black text-[28px] xs:text-[32px] sm:text-[36px] leading-[1.10] mb-3 text-left">
+                <span className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,1)] [text-shadow:_0_2px_4px_rgba(0,0,0,1),_0_4px_16px_rgba(0,0,0,0.95)]">
                   REFER. COLLABORATE.
                 </span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_28px_rgba(255,215,0,0.65)] filter brightness-115 [text-shadow:_0_2px_12px_rgba(0,0,0,0.8)]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_28px_rgba(255,215,0,0.85)] filter brightness-125 [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]">
                   SUPPORT. GROW.
                 </span>
               </h1>
 
               {/* Mission Statement Subtitle ("a professional..." line) (Ultra-Sharp & Highlighted) */}
-              <p className="text-[#FFFFFF] text-[12px] sm:text-[13.5px] leading-relaxed max-w-[340px] font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,1)] [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)] mb-4 text-left">
+              <p className="text-[#FFFFFF] text-[12.5px] sm:text-[13.5px] leading-relaxed max-w-[340px] font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,1)] [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)] mb-4 text-left">
                 A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
               </p>
 
@@ -859,12 +865,12 @@ export default function BOCHero({ onOpenJoinModal }) {
               The Power of<br />Business Community
             </h2>
             <p className="text-slate-700 text-xs leading-relaxed mb-4 font-normal">
-              Business Owners Circle (BOC) is a premium networking platform for forward-thinking business owners and professionals in Kochi, Kerala. We bring like-minded people together to share ideas, create opportunities and build lasting relationships.
+              Business Owners Circle (BOC) is a premier networking platform for forward-thinking business owners, founders, and industry leaders. We bring like-minded executives together to share high-level insights, forge strategic alliances, and build lasting relationships.
             </p>
             <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200">
               <img 
                 src={bocRooftopBg} 
-                alt="BOC Kochi Skyline" 
+                alt="BOC Executive Community" 
                 className="w-full h-32 object-cover object-[70%_center]" 
               />
             </div>
@@ -903,7 +909,7 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* WhatsApp Direct Chat Button */}
         <div className="relative group">
           <a
-            href="https://wa.me/919876543210?text=Hi%20Business%20Owners%20Circle%20Kochi%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
+            href="https://wa.me/919876543210?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => setFloatingTooltip('wa')}

@@ -51,14 +51,8 @@ export default function BOCLogo({ size = 'md', className = '', showWordmark = tr
             </span>
           </div>
           <div className="flex items-center gap-1.5 mt-0.5">
-            <span className={`text-[8.5px] sm:text-[10px] tracking-[0.2em] font-bold uppercase ${
+            <span className={`text-[8.5px] sm:text-[9.5px] tracking-[0.2em] font-bold uppercase ${
               isLight ? 'text-[#B08C1E]' : 'text-[#E5C45A]'
-            }`}>
-              KOCHI, KERALA
-            </span>
-            <span className="w-1 h-1 rounded-full bg-[#C9A227]/60"></span>
-            <span className={`text-[8px] sm:text-[9px] tracking-[0.15em] font-medium uppercase ${
-              isLight ? 'text-slate-600' : 'text-slate-300'
             }`}>
               EMPOWER TOGETHER
             </span>
