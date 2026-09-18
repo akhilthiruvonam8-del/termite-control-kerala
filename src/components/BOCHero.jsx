@@ -387,7 +387,11 @@ export default function BOCHero({ onOpenJoinModal }) {
                                   <div
                                     key={sIdx}
                                     onClick={() => {
-                                      onOpenJoinModal();
+                                      if (sub.title === 'Membership Benefits' || sub.title === 'Executive Membership') {
+                                        document.getElementById('membership-benefits')?.scrollIntoView({ behavior: 'smooth' });
+                                      } else {
+                                        onOpenJoinModal();
+                                      }
                                       setSideMenuOpen(false);
                                     }}
                                     className={`p-2 rounded-lg flex items-start gap-2.5 cursor-pointer transition-all ${
@@ -691,7 +695,11 @@ export default function BOCHero({ onOpenJoinModal }) {
                             <div
                               key={sIdx}
                               onClick={() => {
-                                onOpenJoinModal();
+                                if (sub.title === 'Membership Benefits' || sub.title === 'Executive Membership') {
+                                  document.getElementById('membership-benefits')?.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                  onOpenJoinModal();
+                                }
                                 setSideMenuOpen(false);
                               }}
                               className={`p-2 rounded-lg flex items-start gap-2.5 cursor-pointer ${

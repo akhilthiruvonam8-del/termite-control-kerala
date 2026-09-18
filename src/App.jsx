@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BOCHero from './components/BOCHero';
 import BOCWhyBOC from './components/BOCWhyBOC';
+import BOCMembershipBenefits from './components/BOCMembershipBenefits';
 import BOCHowItWorks from './components/BOCHowItWorks';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <div id="home" className="min-h-screen flex flex-col font-sans selection:bg-[#C9A227] selection:text-[#041126] overflow-x-hidden bg-[#020712] text-slate-100">
       
-      {/* Main Experience: Hero + Why BOC + How It Works Journey */}
+      {/* Main Experience: Hero + Why BOC + Membership Benefits + How It Works Journey */}
       <main className="flex-grow flex flex-col items-center justify-center bg-[#020712]">
         <BOCHero 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
@@ -26,7 +27,12 @@ export default function App() {
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
 
-        {/* Module 2: How It Works — The BOC Journey */}
+        {/* Module 2: Membership Benefits (More Connections, More Opportunities, More Growth) */}
+        <BOCMembershipBenefits 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 3: How It Works — The BOC Journey */}
         <BOCHowItWorks 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
