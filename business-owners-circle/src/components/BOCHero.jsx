@@ -205,18 +205,6 @@ export default function BOCHero({ onOpenJoinModal }) {
 
     if (item.id === 'home' || item.label === 'Home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (item.id === 'about' || item.label === 'About Us') {
-      const el = document.getElementById('about');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    } else if (item.id === 'membership' || item.label === 'Membership') {
-      const el = document.getElementById('membership');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    } else if (item.id === 'how-it-works' || item.label === 'How It Works') {
-      const el = document.getElementById('about');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    } else if (item.id === 'contact' || item.label === 'Contact') {
-      const el = document.getElementById('contact') || document.getElementById('membership');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else {
       onOpenJoinModal();
     }
@@ -597,17 +585,6 @@ export default function BOCHero({ onOpenJoinModal }) {
               );
             })}
           </div>
-
-          {/* Desktop Explore Modules Cue */}
-          <div className="flex justify-center mt-2.5">
-            <button 
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030C1C]/95 border border-[#DFC688]/80 text-[#FCE38A] hover:text-white hover:border-[#FFF5C0] shadow-[0_4px_16px_rgba(0,0,0,0.85)] hover:scale-105 transition-all cursor-pointer"
-            >
-              <span className="text-[10px] sm:text-[11px] font-cinzel font-black tracking-widest uppercase">EXPLORE BOC MODULES</span>
-              <ChevronDown className="w-3.5 h-3.5 text-[#FCE38A] group-hover:translate-y-0.5 transition-transform" />
-            </button>
-          </div>
         </div>
 
       </div>
@@ -872,17 +849,6 @@ export default function BOCHero({ onOpenJoinModal }) {
                   STRONGER COMMUNITY
                 </span>
               </div>
-            </div>
-
-            {/* Mobile Explore Modules Cue */}
-            <div className="flex justify-center pt-2 pb-1">
-              <button 
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#030C1C] via-[#081B38] to-[#030C1C] border border-[#DFC688] text-[#FCE38A] shadow-[0_4px_20px_rgba(0,0,0,0.8),_0_0_12px_rgba(252,227,138,0.3)] active:scale-95 transition-all cursor-pointer"
-              >
-                <span className="text-[10.5px] font-cinzel font-black tracking-widest uppercase">EXPLORE BOC MODULES</span>
-                <ChevronDown className="w-4 h-4 text-[#FCE38A] animate-bounce" />
-              </button>
             </div>
 
           </div>
