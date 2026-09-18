@@ -109,18 +109,19 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
       {/* ===================================================================== */}
       {/* PART 1: "WHAT IS BOC?" SECTION                                        */}
       {/* ===================================================================== */}
-      <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16">
+      <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 min-h-[500px] lg:min-h-[530px]">
         
-        {/* Desktop Top-Right Background Image Feature (media_1789729171746.jpg) */}
-        <div className="hidden lg:block absolute top-0 right-0 w-[55%] xl:w-[54%] h-full pointer-events-none overflow-hidden z-0">
+        {/* Desktop Top-Right Background Image Feature (Crystal Clear, Zero Milky Wash) */}
+        <div className="hidden lg:block absolute top-0 right-0 w-[50%] xl:w-[52%] 2xl:w-[50%] h-[530px] pointer-events-none overflow-hidden z-0">
           <img 
             src={bocNetworkingTerrace} 
             alt="BOC Business Professionals Networking on Waterfront Terrace"
-            className="w-full h-full object-cover object-left contrast-[1.03] saturate-[1.06]"
+            className="w-full h-full object-cover object-[25%_center] contrast-[1.03] brightness-[1.01]"
           />
-          {/* Smooth left and bottom gradient masks into cream canvas */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/35 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-transparent to-transparent" />
+          {/* Subtle soft left feather strip (strictly on the far left margin, NOT over the people) */}
+          <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
+          {/* Soft bottom feather strip */}
+          <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
         </div>
 
         {/* Content Container */}
@@ -153,14 +154,13 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
                 Business Owner's Circle (BOC) is a professional community where business owners, entrepreneurs and professionals connect, collaborate, exchange referrals and create meaningful business opportunities.
               </p>
 
-              {/* Mobile Terrace Image (visible on mobile only) */}
-              <div className="lg:hidden w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
+              {/* Mobile Terrace Image (visible on mobile only, 100% crystal clear) */}
+              <div className="lg:hidden w-full h-60 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
                 <img 
                   src={bocNetworkingTerrace} 
                   alt="BOC Professionals on Terrace" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center contrast-[1.03] brightness-[1.01]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#041126]/30 via-transparent to-transparent" />
               </div>
 
               {/* 3 Value Props Badges */}
