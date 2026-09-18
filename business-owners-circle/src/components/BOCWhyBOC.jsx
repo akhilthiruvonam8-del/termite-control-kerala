@@ -110,7 +110,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             {/* Action CTA Button */}
             <div>
               <button
-                onClick={onOpenJoinModal}
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#041633] hover:bg-[#072454] text-white font-bold text-xs uppercase tracking-widest shadow-[0_6px_22px_rgba(4,22,51,0.35)] hover:shadow-[0_8px_28px_rgba(4,22,51,0.5)] active:scale-95 transition-all group cursor-pointer"
               >
                 <span>EXPLORE BOC</span>
@@ -233,7 +233,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
           {/* Action CTA Button */}
           <div className="w-full mb-8">
             <button
-              onClick={onOpenJoinModal}
+              onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center justify-center gap-3 px-7 py-3 rounded-full bg-[#041633] active:bg-[#072454] text-white font-bold text-xs uppercase tracking-widest shadow-[0_6px_20px_rgba(4,22,51,0.35)] cursor-pointer"
             >
               <span>EXPLORE BOC</span>
