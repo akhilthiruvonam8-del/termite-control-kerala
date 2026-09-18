@@ -1,150 +1,210 @@
 import React from 'react';
-import { Users, Handshake, BarChart3, ArrowRight } from 'lucide-react';
-import bocTeamCollab from '../assets/boc-team-collaboration.jpg';
-import bocWaterfrontSkyline from '../assets/boc-waterfront-skyline.jpg';
+import { 
+  Users, 
+  Handshake, 
+  TrendingUp, 
+  Megaphone, 
+  GraduationCap, 
+  Star, 
+  Globe, 
+  ArrowRight 
+} from 'lucide-react';
+import bocNetworkingTerrace from '../assets/boc-networking-terrace.jpg';
 
 /**
- * BOCWhyBOC — "Why Business Owner's Circle?" Executive Module
- * 1:1 Pixel-Perfect Recreation of User's Mockup (media_1789708592373.jpg)
- * 
- * Features:
- * - Natural typed typography and semantic responsive layout
- * - Desktop View: 2-column layout with 3 horizontal feature pillars, offset gold card, and overlapping badge
- * - Mobile View: Vertical feature rows, centered executive image card, and smooth waterfront ground
- * - Ultra-high-resolution team collaboration photo and panoramic Kochi waterfront
+ * Traditional Kerala Houseboat (Kettuvallam) Line Art Sketch Watermark
+ */
+function HouseboatWatermark({ className }) {
+  return (
+    <svg className={className} viewBox="0 0 280 180" fill="none" stroke="currentColor">
+      {/* Palm trees on bank */}
+      <path d="M15,120 Q30,70 45,35" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M45,35 Q60,25 75,32" strokeWidth="1.2" />
+      <path d="M45,35 Q30,22 15,25" strokeWidth="1.2" />
+      <path d="M45,35 Q50,15 42,5" strokeWidth="1.2" />
+      <path d="M45,35 Q30,35 20,48" strokeWidth="1.2" />
+      <path d="M45,35 Q60,45 68,55" strokeWidth="1.2" />
+      
+      {/* Second palm tree */}
+      <path d="M40,125 Q55,80 65,50" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M65,50 Q80,42 92,50" strokeWidth="1.2" />
+      <path d="M65,50 Q52,38 40,42" strokeWidth="1.2" />
+      <path d="M65,50 Q70,30 62,20" strokeWidth="1.2" />
+
+      {/* Houseboat Hull (Kettuvallam) */}
+      <path d="M50,135 Q140,145 230,130 Q245,125 255,115 Q220,125 140,125 Q65,125 50,135 Z" strokeWidth="1.5" />
+      <path d="M35,122 Q50,135 65,135" strokeWidth="1.5" strokeLinecap="round" />
+      
+      {/* Arched Thatched Roof */}
+      <path d="M70,125 Q75,100 135,98 Q200,98 215,125" strokeWidth="1.5" />
+      <path d="M80,125 Q85,103 135,101 Q190,101 205,125" strokeWidth="1" strokeDasharray="3 3" />
+      <path d="M90,125 Q95,106 135,104 Q180,104 195,125" strokeWidth="1" strokeDasharray="3 3" />
+      
+      {/* Windows on Houseboat */}
+      <rect x="95" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
+      <rect x="115" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
+      <rect x="135" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
+      <rect x="155" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
+      <rect x="175" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
+
+      {/* Water Ripples */}
+      <path d="M10,145 Q60,143 110,145" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+      <path d="M70,152 Q150,150 230,152" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+      <path d="M30,160 Q110,158 190,160" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+      <path d="M120,168 Q180,166 250,168" strokeWidth="0.8" strokeLinecap="round" opacity="0.4" />
+    </svg>
+  );
+}
+
+/**
+ * BOCWhyBOC — "WHAT IS BOC?" & "WHY JOIN BOC?" Executive Module
+ * 1:1 Pixel-Perfect Recreation of Master Reference (media_1789729171746.jpg)
  */
 export default function BOCWhyBOC({ onOpenJoinModal }) {
+  const whyJoinCards = [
+    {
+      title: 'Expand Your Network',
+      desc: 'Connect with like-minded business owners and professionals.',
+      icon: Users
+    },
+    {
+      title: 'Get Referrals',
+      desc: 'Discover new opportunities through trusted recommendations.',
+      icon: Handshake
+    },
+    {
+      title: 'Collaborate',
+      desc: 'Work together on projects and partnerships.',
+      icon: TrendingUp
+    },
+    {
+      title: 'Increase Your Visibility',
+      desc: 'Showcase your business to a wider audience.',
+      icon: Megaphone
+    },
+    {
+      title: 'Learn & Grow',
+      desc: 'Join events, workshops and knowledge sharing sessions.',
+      icon: GraduationCap
+    },
+    {
+      title: 'Build Credibility',
+      desc: 'Be part of a trusted and professional community.',
+      icon: Star
+    },
+    {
+      title: 'Create Opportunities',
+      desc: 'Turn conversations into long-term business success.',
+      icon: Globe
+    }
+  ];
+
   return (
-    <section id="why-boc" className="relative w-full bg-[#FCFAF7] text-slate-800 overflow-hidden select-none">
-      
-      {/* Delicate Gold Palm Frond Watermark in Top-Right Corner */}
-      <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 pointer-events-none opacity-15 sm:opacity-20 overflow-hidden z-0">
-        <svg viewBox="0 0 200 200" className="w-full h-full stroke-[#C59B27] fill-none" strokeWidth="1.2">
-          <path d="M180,0 Q130,80 70,110 Q20,130 0,140" />
-          <path d="M180,0 Q150,60 120,70" />
-          <path d="M170,10 Q145,80 90,95" />
-          <path d="M155,25 Q135,100 80,120" />
-          <path d="M140,40 Q120,120 70,145" />
-          <path d="M120,60 Q105,140 60,165" />
-          <path d="M100,80 Q90,160 50,185" />
-          <circle cx="170" cy="30" r="40" strokeDasharray="3 3" strokeWidth="0.8" opacity="0.6" />
-        </svg>
-      </div>
+    <section 
+      id="what-is-boc" 
+      className="relative w-full bg-[#FAF8F5] text-slate-800 overflow-hidden select-none border-t border-[#EADBBD]/40"
+    >
+      <div id="why-boc" className="absolute top-0" />
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-12 sm:pt-16 lg:pt-20">
+      {/* ===================================================================== */}
+      {/* PART 1: "WHAT IS BOC?" SECTION                                        */}
+      {/* ===================================================================== */}
+      <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16">
         
-        {/* =================================================================== */}
-        {/* DESKTOP / LAPTOP LAYOUT (Hidden on mobile, shown on md and above)  */}
-        {/* =================================================================== */}
-        <div className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Desktop Top-Right Background Image Feature (media_1789729171746.jpg) */}
+        <div className="hidden lg:block absolute top-0 right-0 w-[55%] xl:w-[54%] h-full pointer-events-none overflow-hidden z-0">
+          <img 
+            src={bocNetworkingTerrace} 
+            alt="BOC Business Professionals Networking on Waterfront Terrace"
+            className="w-full h-full object-cover object-left contrast-[1.03] saturate-[1.06]"
+          />
+          {/* Smooth left and bottom gradient masks into cream canvas */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5] via-transparent to-transparent" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           
-          {/* Left Column (Content & Features) */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Tagline / Subtitle */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#C59B27]" />
-              <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
-                WHY BUSINESS OWNER'S CIRCLE?
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.18] mb-5">
-              MORE THAN NETWORKING.<br />
-              A COMMUNITY BUILT<br />
-              <span className="text-[#081730]">FOR </span>
-              <span className="text-[#C59B27] drop-shadow-[0_2px_4px_rgba(197,155,39,0.25)]">GROWTH.</span>
-            </h2>
-
-            {/* Lead Narrative */}
-            <p className="text-[14.5px] lg:text-[15.5px] text-slate-600 leading-relaxed font-normal max-w-xl mb-9">
-              Business Owner's Circle is a structured business community where entrepreneurs, business owners and professionals build trusted relationships, exchange genuine opportunities, collaborate on projects and grow together.
-            </p>
-
-            {/* 3 Core Value Pillars (Horizontal Columns) */}
-            <div className="grid grid-cols-3 gap-5 pt-3 pb-8 mb-8 max-w-2xl">
+            {/* Left Content Column */}
+            <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start text-left">
               
-              {/* Pillar 1: Trusted Connections */}
-              <div className="flex flex-col items-start pr-3">
-                <div className="w-12 h-12 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex items-center justify-center mb-3.5 shadow-[0_2px_12px_rgba(212,163,56,0.18)]">
-                  <Users className="w-5 h-5 stroke-[2]" />
-                </div>
-                <h4 className="text-[11px] sm:text-[11.5px] font-black uppercase tracking-wider text-[#081730] mb-1.5 leading-snug">
-                  TRUSTED CONNECTIONS
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-normal">
-                  Build relationships with like-minded professionals.
-                </p>
+              {/* Section Kicker */}
+              <div className="flex items-center gap-3 mb-3">
+                <span className="w-8 h-[1.5px] bg-[#C29023]" />
+                <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
+                  WHAT IS BOC?
+                </span>
+                <span className="w-8 h-[1.5px] bg-[#C29023]" />
               </div>
 
-              {/* Pillar 2: Genuine Opportunities */}
-              <div className="flex flex-col items-start px-2">
-                <div className="w-12 h-12 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex items-center justify-center mb-3.5 shadow-[0_2px_12px_rgba(212,163,56,0.18)]">
-                  <Handshake className="w-5 h-5 stroke-[2]" />
-                </div>
-                <h4 className="text-[11px] sm:text-[11.5px] font-black uppercase tracking-wider text-[#081730] mb-1.5 leading-snug">
-                  GENUINE OPPORTUNITIES
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-normal">
-                  Exchange relevant referrals and business opportunities.
-                </p>
-              </div>
+              {/* Main Headline */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.18] mb-4">
+                More Than a Network.<br />
+                <span className="text-[#C29023] font-bold drop-shadow-[0_1px_2px_rgba(194,144,35,0.25)]">
+                  It's a Growth Ecosystem.
+                </span>
+              </h2>
 
-              {/* Pillar 3: Meaningful Collaboration */}
-              <div className="flex flex-col items-start pl-2">
-                <div className="w-12 h-12 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex items-center justify-center mb-3.5 shadow-[0_2px_12px_rgba(212,163,56,0.18)]">
-                  <BarChart3 className="w-5 h-5 stroke-[2]" />
-                </div>
-                <h4 className="text-[11px] sm:text-[11.5px] font-black uppercase tracking-wider text-[#081730] mb-1.5 leading-snug">
-                  MEANINGFUL COLLABORATION
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-normal">
-                  Connect with people who can help your business grow.
-                </p>
-              </div>
+              {/* Narrative Paragraph */}
+              <p className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed font-normal max-w-xl mb-7">
+                Business Owner's Circle (BOC) is a professional community where business owners, entrepreneurs and professionals connect, collaborate, exchange referrals and create meaningful business opportunities.
+              </p>
 
-            </div>
-
-            {/* Action CTA Button */}
-            <div>
-              <button
-                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#041633] hover:bg-[#072454] text-white font-bold text-xs uppercase tracking-widest shadow-[0_6px_22px_rgba(4,22,51,0.35)] hover:shadow-[0_8px_28px_rgba(4,22,51,0.5)] active:scale-95 transition-all group cursor-pointer"
-              >
-                <span>EXPLORE BOC</span>
-                <ArrowRight className="w-4 h-4 text-[#FCE38A] group-hover:translate-x-1.5 transition-transform" />
-              </button>
-            </div>
-
-          </div>
-
-          {/* Right Column (Side Collaboration Card) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-center relative py-4">
-            
-            <div className="relative w-full max-w-[390px] lg:max-w-[420px]">
-              
-              {/* Warm Gold Accent Offset Border Backdrop */}
-              <div className="absolute -bottom-3.5 -right-3.5 w-full h-full rounded-[36px] border-2 border-[#D4A338]/70 bg-gradient-to-br from-[#DFC688]/30 via-transparent to-[#B8860B]/20 pointer-events-none -z-0" />
-              
-              {/* Ultra High Quality Team Photo Card */}
-              <div className="relative z-10 rounded-[32px] overflow-hidden border border-[#D4A338]/40 shadow-2xl bg-slate-900 aspect-[3/4]">
+              {/* Mobile Terrace Image (visible on mobile only) */}
+              <div className="lg:hidden w-full h-56 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
                 <img 
-                  src={bocTeamCollab} 
-                  alt="BOC Business Executives Collaborating in Boardroom"
-                  className="w-full h-full object-cover object-center contrast-[1.05] saturate-[1.1] transition-transform duration-700 hover:scale-105"
+                  src={bocNetworkingTerrace} 
+                  alt="BOC Professionals on Terrace" 
+                  className="w-full h-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#041126]/30 via-transparent to-transparent" />
               </div>
 
-              {/* Overlapping Midnight Navy Badge at Bottom Right */}
-              <div className="absolute -bottom-4 -right-2 sm:-right-4 z-20 bg-[#031533] border border-[#DFC688]/80 px-6 py-2.5 sm:py-3 rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.6)] text-center backdrop-blur-md">
-                <div className="text-[11px] sm:text-[12px] font-cinzel font-black tracking-widest text-[#FCE38A] uppercase leading-tight">
-                  CONNECT • TRUST
+              {/* 3 Value Props Badges */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2 pb-2 w-full max-w-xl">
+                
+                {/* 1. Real People */}
+                <div className="flex items-start gap-3">
+                  <Users className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
+                  <div className="text-left">
+                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
+                      Real People
+                    </h4>
+                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
+                      Not just contacts
+                    </p>
+                  </div>
                 </div>
-                <div className="text-[10px] sm:text-[11px] font-cinzel font-bold tracking-widest text-[#DFC688] uppercase leading-tight mt-0.5">
-                  COLLABORATE • GROW
+
+                {/* 2. Meaningful Connections */}
+                <div className="flex items-start gap-3">
+                  <Handshake className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
+                  <div className="text-left">
+                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
+                      Meaningful Connections
+                    </h4>
+                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
+                      Not just introductions
+                    </p>
+                  </div>
                 </div>
+
+                {/* 3. Business Growth */}
+                <div className="flex items-start gap-3">
+                  <TrendingUp className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
+                  <div className="text-left">
+                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
+                      Business Growth
+                    </h4>
+                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
+                      For everyone
+                    </p>
+                  </div>
+                </div>
+
               </div>
 
             </div>
@@ -153,148 +213,92 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
 
         </div>
 
+      </div>
 
-        {/* =================================================================== */}
-        {/* MOBILE LAYOUT (Exact to Right Panel in Mockup)                     */}
-        {/* =================================================================== */}
-        <div className="md:hidden flex flex-col items-start text-left pt-2 pb-6">
+
+      {/* ===================================================================== */}
+      {/* PART 2: "WHY JOIN BOC?" SECTION                                       */}
+      {/* ===================================================================== */}
+      <div className="relative w-full overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 border-t border-[#EADBBD]/30">
+        
+        {/* Bottom-Left Curved Champagne Wave Accent */}
+        <svg 
+          className="absolute bottom-0 left-0 w-80 sm:w-[480px] h-32 sm:h-48 pointer-events-none text-[#E8D6B0]/30 z-0" 
+          viewBox="0 0 500 200" 
+          fill="none"
+        >
+          <path d="M0,200 L0,120 Q180,140 320,80 Q420,35 500,0 L500,200 Z" fill="currentColor" />
+        </svg>
+
+        {/* Bottom-Left Houseboat & Palms Line Sketch Watermark */}
+        <div className="absolute bottom-2 left-2 sm:left-4 pointer-events-none opacity-25 sm:opacity-35 text-[#C29023] z-0">
+          <HouseboatWatermark className="w-48 sm:w-64 h-32 sm:h-44" />
+        </div>
+
+        {/* Content Container */}
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           
-          {/* Tagline / Subtitle */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-6 h-[2px] bg-[#C59B27]" />
-            <span className="text-[10.5px] font-cinzel font-bold tracking-[0.2em] text-[#B58920] uppercase">
-              WHY BUSINESS OWNER'S CIRCLE?
+          {/* Section Kicker */}
+          <div className="flex items-center justify-center gap-3 mb-2.5">
+            <span className="w-8 h-[1.5px] bg-[#C29023]" />
+            <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
+              WHY JOIN BOC?
             </span>
+            <span className="w-8 h-[1.5px] bg-[#C29023]" />
           </div>
 
           {/* Main Headline */}
-          <h2 className="text-[27px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.2] mb-4">
-            MORE THAN NETWORKING.<br />
-            A COMMUNITY BUILT<br />
-            <span className="text-[#081730]">FOR </span>
-            <span className="text-[#C59B27]">GROWTH.</span>
-          </h2>
+          <h3 className="text-3xl sm:text-4xl lg:text-[40px] font-cinzel font-black tracking-tight text-[#081730] mb-3">
+            Be Part of Something Bigger
+          </h3>
 
-          {/* Lead Narrative */}
-          <p className="text-[13px] text-slate-600 leading-relaxed font-normal mb-6">
-            Business Owner's Circle is a structured business community where entrepreneurs, business owners and professionals build trusted relationships, exchange genuine opportunities, collaborate on projects and grow together.
+          {/* Narrative Subtitle */}
+          <p className="text-[14px] sm:text-[15px] text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10 sm:mb-12 font-normal">
+            Join a community that believes in collaboration, trust and shared success.<br className="hidden sm:inline" />
+            At BOC, you don't just build your business — you build lasting relationships.
           </p>
 
-          {/* 3 Core Value Pillars (Vertical Stacked Rows with Left Icon) */}
-          <div className="w-full flex flex-col gap-4 mb-7">
-            
-            {/* Row 1 */}
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex-shrink-0 flex items-center justify-center shadow-[0_2px_10px_rgba(212,163,56,0.18)]">
-                <Users className="w-5 h-5 stroke-[2]" />
-              </div>
-              <div>
-                <h4 className="text-[11.5px] font-black uppercase tracking-wider text-[#081730]">
-                  TRUSTED CONNECTIONS
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-0.5">
-                  Build relationships with like-minded professionals.
-                </p>
-              </div>
-            </div>
+          {/* 7 Value Cards in a Row (Desktop: 7 Columns, Mobile: 2-3 Columns) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3.5 xl:gap-4 items-stretch max-w-7xl mx-auto mb-10">
+            {whyJoinCards.map((card, idx) => {
+              const Icon = card.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="relative h-full bg-[#FCFAF7]/90 backdrop-blur-sm rounded-2xl p-4 pt-5 pb-5 border border-[#E5D7B5] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_6px_20px_rgba(212,163,56,0.18)] hover:border-[#D4A536] transition-all flex flex-col items-center text-center group"
+                >
+                  {/* Circular Icon Medallion */}
+                  <div className="w-12 h-12 rounded-full bg-[#06162E] border border-[#D4A536] flex items-center justify-center text-[#F9D678] shadow-sm mb-3.5 group-hover:scale-110 transition-transform flex-shrink-0">
+                    <Icon className="w-5 h-5 stroke-[2]" />
+                  </div>
 
-            {/* Row 2 */}
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex-shrink-0 flex items-center justify-center shadow-[0_2px_10px_rgba(212,163,56,0.18)]">
-                <Handshake className="w-5 h-5 stroke-[2]" />
-              </div>
-              <div>
-                <h4 className="text-[11.5px] font-black uppercase tracking-wider text-[#081730]">
-                  GENUINE OPPORTUNITIES
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-0.5">
-                  Exchange relevant referrals and business opportunities.
-                </p>
-              </div>
-            </div>
+                  {/* Card Title */}
+                  <h4 className="text-[13px] sm:text-[13.5px] font-cinzel font-bold text-[#081730] leading-snug mb-1.5 min-h-[36px] flex items-center justify-center">
+                    {card.title}
+                  </h4>
 
-            {/* Row 3 */}
-            <div className="flex items-center gap-3.5">
-              <div className="w-11 h-11 rounded-full border-2 border-[#D4A338]/80 bg-[#FAF6ED] text-[#B8860B] flex-shrink-0 flex items-center justify-center shadow-[0_2px_10px_rgba(212,163,56,0.18)]">
-                <BarChart3 className="w-5 h-5 stroke-[2]" />
-              </div>
-              <div>
-                <h4 className="text-[11.5px] font-black uppercase tracking-wider text-[#081730]">
-                  MEANINGFUL COLLABORATION
-                </h4>
-                <p className="text-[11px] text-slate-500 leading-tight mt-0.5">
-                  Connect with people who can help your business grow.
-                </p>
-              </div>
-            </div>
-
+                  {/* Card Description */}
+                  <p className="text-[11px] text-slate-500 leading-snug font-normal">
+                    {card.desc}
+                  </p>
+                </div>
+              );
+            })}
           </div>
 
-          {/* Action CTA Button */}
-          <div className="w-full mb-8">
+          {/* Bottom CTA Button */}
+          <div className="flex justify-center mt-6">
             <button
               onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center gap-3 px-7 py-3 rounded-full bg-[#041633] active:bg-[#072454] text-white font-bold text-xs uppercase tracking-widest shadow-[0_6px_20px_rgba(4,22,51,0.35)] cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase shadow-[0_6px_20px_rgba(8,23,48,0.25)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.4)] active:scale-95 transition-all group cursor-pointer"
             >
-              <span>EXPLORE BOC</span>
-              <ArrowRight className="w-4 h-4 text-[#FCE38A]" />
+              <span>Explore the BOC Journey</span>
+              <ArrowRight className="w-4 h-4 text-[#F9D678] group-hover:translate-x-1.5 transition-transform" />
             </button>
           </div>
 
-          {/* Centered Mobile Collaboration Photo Card */}
-          <div className="w-full flex justify-center pb-8">
-            <div className="relative w-full max-w-[340px]">
-              
-              {/* Warm Gold Accent Offset Border Backdrop */}
-              <div className="absolute -bottom-3 -right-3 w-full h-full rounded-[28px] border-2 border-[#D4A338]/70 bg-gradient-to-br from-[#DFC688]/30 via-transparent to-[#B8860B]/20 pointer-events-none -z-0" />
-              
-              {/* Ultra High Quality Team Photo Card */}
-              <div className="relative z-10 rounded-[26px] overflow-hidden border border-[#D4A338]/40 shadow-xl bg-slate-900 aspect-[3/4]">
-                <img 
-                  src={bocTeamCollab} 
-                  alt="BOC Business Executives Collaborating in Boardroom"
-                  className="w-full h-full object-cover object-center contrast-[1.05] saturate-[1.1]"
-                />
-              </div>
-
-              {/* Overlapping Midnight Navy Badge at Bottom Right */}
-              <div className="absolute -bottom-3.5 -right-2 z-20 bg-[#031533] border border-[#DFC688]/80 px-4 py-2 rounded-xl shadow-[0_10px_28px_rgba(0,0,0,0.6)] text-center">
-                <div className="text-[10px] font-cinzel font-black tracking-widest text-[#FCE38A] uppercase leading-tight">
-                  CONNECT • TRUST
-                </div>
-                <div className="text-[9px] font-cinzel font-bold tracking-widest text-[#DFC688] uppercase leading-tight mt-0.5">
-                  COLLABORATE • GROW
-                </div>
-              </div>
-
-            </div>
-          </div>
-
         </div>
 
-      </div>
-
-
-      {/* ===================================================================== */}
-      {/* FULL-WIDTH PANORAMIC WATERFRONT SKYLINE BANNER (BOTTOM OF SECTION)   */}
-      {/* ===================================================================== */}
-      <div className="relative w-full mt-4 sm:mt-10 overflow-hidden leading-none">
-        
-        {/* Soft feather gradient transition merging ivory background into the morning sky */}
-        <div className="absolute inset-x-0 top-0 h-10 sm:h-24 md:h-32 bg-gradient-to-b from-[#FCFAF7] via-[#FCFAF7]/60 to-transparent z-10 pointer-events-none" />
-        
-        {/* Kochi Waterfront Skyline with Chinese Fishing Nets & City Reflections */}
-        {/* Natural wide aspect ratio on mobile so both the nets on left and skyline on right are 100% visible without zoom */}
-        <img 
-          src={bocWaterfrontSkyline} 
-          alt="BOC Kochi Harbor Skyline & Chinese Fishing Nets"
-          className="w-full aspect-[3.3/1] xs:aspect-[3.6/1] sm:aspect-[4.2/1] md:h-64 lg:h-80 object-cover object-bottom contrast-[1.02] saturate-[1.05]"
-        />
-
-        {/* Subtle decorative bottom golden curve divider from mockup */}
-        <div className="absolute inset-x-0 -bottom-1 flex justify-center pointer-events-none overflow-hidden">
-          <div className="w-[125%] h-6 sm:h-8 rounded-t-[100%] border-t border-[#DFC688]/70 bg-gradient-to-b from-[#DFC688]/20 to-transparent" />
-        </div>
       </div>
 
     </section>
