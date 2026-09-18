@@ -236,7 +236,7 @@ export default function BOCHero({ onOpenJoinModal }) {
         <header className="absolute top-0 left-0 right-0 z-40 w-full px-5 sm:px-8 lg:px-10 pt-3 sm:pt-4 bg-gradient-to-b from-[#020712]/60 via-[#020712]/20 to-transparent pb-4">
           <div className="flex items-center justify-between">
             
-            {/* Left Brand Wordmark & Official Emblem */}
+            {/* Left Brand Wordmark & Official Emblem (Clean single-line without KOCHI, KERALA) */}
             <div 
               onClick={() => { setActiveNav('Home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="flex items-center gap-3 sm:gap-3.5 cursor-pointer group py-1 flex-shrink-0"
@@ -248,12 +248,9 @@ export default function BOCHero({ onOpenJoinModal }) {
                   className="w-full h-full object-contain filter drop-shadow-[0_0_12px_rgba(223,198,136,0.65)] brightness-105"
                 />
               </div>
-              <div className="flex flex-col justify-center">
-                <span className="font-serif tracking-[0.14em] text-xs sm:text-[13px] lg:text-[14px] font-bold text-[#FAF6ED] group-hover:text-[#F0DC9B] transition-colors uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] leading-tight">
+              <div className="flex items-center">
+                <span className="font-cinzel font-bold text-xs sm:text-[13px] lg:text-[15px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6ED] via-[#FCE38A] to-[#DFC688] group-hover:text-[#F0DC9B] transition-colors uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)] leading-none">
                   BUSINESS OWNERS CIRCLE
-                </span>
-                <span className="text-[8.5px] sm:text-[9.5px] lg:text-[10px] tracking-[0.24em] text-[#DFC688] font-semibold uppercase drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)] leading-none mt-1">
-                  KOCHI, KERALA
                 </span>
               </div>
             </div>
@@ -467,28 +464,28 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* ----------------------------------------------------------------- */}
         <div className="absolute top-[23.5%] left-[21.5%] max-w-[46%] z-20 flex flex-col justify-center select-text">
           
-          {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed to avoid duplication) */}
+          {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (without KOCHI, KERALA) */}
           <div className="flex items-center gap-2.5 mb-2.5">
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#DFC688]" />
-            <span className="text-[clamp(10px,0.95vw,14px)] font-black tracking-[0.28em] text-[#FCE38A] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] whitespace-nowrap">
+            <span className="w-8 sm:w-12 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
+            <span className="font-cinzel font-black tracking-[0.28em] text-[clamp(10px,0.95vw,14px)] text-[#FCE38A] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-nowrap">
               BUSINESS OWNERS CIRCLE
             </span>
-            <span className="w-8 sm:w-12 h-[1.5px] bg-[#DFC688]" />
+            <span className="w-8 sm:w-12 h-[2px] bg-gradient-to-l from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
           </div>
 
-          {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted) */}
-          <h1 className="font-serif font-black tracking-tight text-[clamp(24px,3vw,54px)] leading-[1.08] mb-3">
-            <span className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,1)]">
+          {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted & Glowing) */}
+          <h1 className="font-serif font-black tracking-tight text-[clamp(26px,3.2vw,56px)] leading-[1.08] mb-3">
+            <span className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,1)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.95),_0_6px_24px_rgba(0,0,0,0.9)]">
               REFER. COLLABORATE.
             </span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5C0] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_4px_28px_rgba(252,227,138,0.6)] filter brightness-110">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_28px_rgba(255,215,0,0.65)] filter brightness-115 [text-shadow:_0_2px_12px_rgba(0,0,0,0.8)]">
               SUPPORT. GROW.
             </span>
           </h1>
 
           {/* Mission Statement Subtitle (Ultra-Sharp & Highlighted) */}
-          <p className="text-[#FAF6EE] text-[clamp(12px,1.1vw,16.5px)] font-semibold leading-relaxed max-w-xl drop-shadow-[0_2px_14px_rgba(0,0,0,1)] mb-5">
+          <p className="text-[#FFFFFF] text-[clamp(13px,1.15vw,17px)] font-medium leading-relaxed max-w-xl drop-shadow-[0_2px_14px_rgba(0,0,0,1)] [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)] mb-5">
             A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
           </p>
 
@@ -497,19 +494,19 @@ export default function BOCHero({ onOpenJoinModal }) {
             {/* Button 1: JOIN THE CIRCLE */}
             <button
               onClick={onOpenJoinModal}
-              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#E5B838] via-[#FCE38A] to-[#D4AF37] border-2 border-[#FFF8D6] text-[#030B17] font-black text-[clamp(9.5px,0.95vw,14px)] tracking-wider uppercase shadow-[0_6px_30px_rgba(252,227,138,0.65)] hover:shadow-[0_10px_40px_rgba(252,227,138,0.9)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer group"
+              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border-2 border-[#FFF6C7] text-[#030B17] font-black text-[clamp(9.5px,0.95vw,14px)] tracking-wider uppercase shadow-[0_0_30px_rgba(245,192,66,0.7),_0_6px_20px_rgba(0,0,0,0.9)] hover:shadow-[0_0_40px_rgba(245,192,66,0.95)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer group"
             >
-              <span>JOIN THE CIRCLE</span>
+              <span className="font-black">JOIN THE CIRCLE</span>
               <ArrowRight className="w-4 h-4 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
             </button>
 
             {/* Button 2: EXPLORE OUR COMMUNITY */}
             <button
               onClick={onOpenJoinModal}
-              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#030D1D]/90 backdrop-blur-md border-2 border-[#DFC688] hover:border-[#FFF5C0] text-white hover:text-[#FCE38A] font-bold text-[clamp(9px,0.9vw,13.5px)] tracking-wider uppercase shadow-[0_6px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_8px_35px_rgba(223,198,136,0.6)] hover:bg-[#06162E]/95 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#020A17]/90 backdrop-blur-md border-2 border-[#FCE38A] hover:border-[#FFF8D6] text-white hover:text-[#FCE38A] font-bold text-[clamp(9px,0.9vw,13.5px)] tracking-wider uppercase shadow-[0_0_25px_rgba(252,227,138,0.45),_0_6px_20px_rgba(0,0,0,0.85)] hover:bg-[#06162E]/95 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
             >
               <span>EXPLORE OUR COMMUNITY</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5] text-[#DFC688] group-hover:text-[#FCE38A] group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 stroke-[2.5] text-[#FCE38A] group-hover:translate-x-1 transition-all" />
             </button>
           </div>
         </div>
@@ -613,13 +610,10 @@ export default function BOCHero({ onOpenJoinModal }) {
               />
             </div>
             
-            {/* Typography */}
-            <div className="flex flex-col justify-center text-left">
-              <span className="font-serif tracking-[0.14em] text-[12px] sm:text-[13px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6EE] via-[#E2C77D] to-[#C5A059] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+            {/* Typography - Clean Brand Title with ZERO KOCHI, KERALA */}
+            <div className="flex items-center text-left">
+              <span className="font-cinzel font-bold text-[13px] sm:text-[14.5px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6EE] via-[#FCE38A] to-[#DFC688] uppercase leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
                 BUSINESS OWNERS CIRCLE
-              </span>
-              <span className="text-[8px] sm:text-[9px] tracking-[0.24em] text-[#DFC688] font-semibold uppercase leading-none mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
-                KOCHI, KERALA
               </span>
             </div>
           </div>
@@ -737,102 +731,102 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* Mobile Hero Viewport: Clean Portrait Photo + 100% Typed Vector Typography */}
         <div className="relative w-full overflow-hidden bg-[#020712]">
           
-          {/* Background Image: Clean Portrait Photo with zero baked text */}
-          <div className="relative w-full h-[420px] sm:h-[460px] overflow-hidden">
+          {/* Background Image: Vivid, Rich Saturated Sunset Networking */}
+          <div className="relative w-full h-[470px] sm:h-[510px] overflow-hidden">
             <img 
               src={bocMobileBg} 
-              alt="BOC Kochi Rooftop Networking" 
-              className="w-full h-full object-cover object-center select-none"
+              alt="BOC Rooftop Networking" 
+              className="w-full h-full object-cover object-center contrast-[1.10] saturate-[1.15] brightness-[1.03] select-none"
             />
-            {/* Top subtle gradient for natural sky readability */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/75 via-[#020712]/20 to-transparent" />
+            {/* Top rich twilight gradient for 100% crisp, highlighted readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/92 via-[#020712]/50 via-45% to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#010714] via-transparent to-transparent" />
 
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
             {/* FLUSH LEFT-ALIGNED 1:1 TO MASTER MOCKUP (media_1789704907551.jpg) */}
             <div className="absolute top-4 left-0 right-0 px-5 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
               
-              {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed to avoid duplication) */}
+              {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (without KOCHI, KERALA) */}
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-                <span className="text-[10px] sm:text-[11px] font-black tracking-[0.24em] text-[#FCE38A] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">
+                <span className="w-8 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
+                <span className="font-cinzel font-black tracking-[0.26em] text-[11px] sm:text-[12.5px] text-[#FCE38A] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">
                   BUSINESS OWNERS CIRCLE
                 </span>
-                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
+                <span className="w-8 h-[2px] bg-gradient-to-l from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
               </div>
 
-              {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted) */}
-              <h1 className="font-serif font-black text-[22px] sm:text-[25px] leading-[1.12] mb-2 text-left">
-                <span className="text-white drop-shadow-[0_3px_12px_rgba(0,0,0,1)]">
+              {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted & Grand) */}
+              <h1 className="font-serif font-black text-[27px] xs:text-[30px] sm:text-[34px] leading-[1.08] mb-2.5 text-left">
+                <span className="text-white drop-shadow-[0_4px_18px_rgba(0,0,0,1)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.95),_0_6px_24px_rgba(0,0,0,0.9)]">
                   REFER. COLLABORATE.
                 </span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5C0] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_3px_16px_rgba(252,227,138,0.6)] filter brightness-110">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_28px_rgba(255,215,0,0.65)] filter brightness-115 [text-shadow:_0_2px_12px_rgba(0,0,0,0.8)]">
                   SUPPORT. GROW.
                 </span>
               </h1>
 
-              {/* Mission Statement Subtitle ("a professional..." line) (Ultra-Sharp) */}
-              <p className="text-[#FAF6EE] text-[10.5px] sm:text-[11.5px] leading-relaxed max-w-[310px] drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium mb-3.5 text-left">
+              {/* Mission Statement Subtitle ("a professional..." line) (Ultra-Sharp & Highlighted) */}
+              <p className="text-[#FFFFFF] text-[12px] sm:text-[13.5px] leading-relaxed max-w-[340px] font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,1)] [text-shadow:_0_1px_4px_rgba(0,0,0,0.95)] mb-4 text-left">
                 A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
               </p>
 
-              {/* Two CTA Buttons Side-by-Side (Left Aligned & Highlighted) */}
-              <div className="flex items-center justify-start gap-2.5 w-full max-w-xs select-none">
+              {/* Two CTA Buttons Side-by-Side (Left Aligned & Prominently Highlighted) */}
+              <div className="flex items-center justify-start gap-2.5 w-full max-w-sm select-none">
                 {/* Button 1: JOIN THE CIRCLE */}
                 <button
                   onClick={onOpenJoinModal}
-                  className="py-2 px-3.5 sm:px-4 rounded-full bg-gradient-to-r from-[#E5B838] via-[#FCE38A] to-[#D4AF37] border-2 border-[#FFF8D6] text-[#030B17] font-black text-[10px] tracking-wider uppercase shadow-[0_4px_20px_rgba(252,227,138,0.65)] flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+                  className="py-2.5 px-4 sm:px-5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border-2 border-[#FFF6C7] text-[#030B17] font-black text-[11px] sm:text-xs tracking-wider uppercase shadow-[0_0_25px_rgba(245,192,66,0.65),_0_4px_16px_rgba(0,0,0,0.9)] flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all"
                 >
-                  <span className="whitespace-nowrap">JOIN THE CIRCLE</span>
-                  <ArrowRight className="w-3 h-3 stroke-[3] text-[#030B17]" />
+                  <span className="whitespace-nowrap font-black">JOIN THE CIRCLE</span>
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17]" />
                 </button>
 
                 {/* Button 2: EXPLORE OUR COMMUNITY */}
                 <button
                   onClick={onOpenJoinModal}
-                  className="py-2 px-2.5 sm:px-3 rounded-full bg-[#030D1D]/80 backdrop-blur-md border border-[#DFC688] hover:border-[#FFF5C0] text-white hover:text-[#FCE38A] font-bold text-[9px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-[0_4px_16px_rgba(0,0,0,0.85)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
+                  className="py-2.5 px-3 sm:px-4 rounded-full bg-[#020A17]/85 backdrop-blur-md border-2 border-[#FCE38A] hover:border-[#FFF8D6] text-white hover:text-[#FCE38A] font-bold text-[10px] sm:text-[11px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-[0_0_20px_rgba(252,227,138,0.4),_0_4px_16px_rgba(0,0,0,0.9)]"
                 >
                   <span className="whitespace-nowrap">EXPLORE OUR COMMUNITY</span>
-                  <ArrowRight className="w-3 h-3 stroke-[2.2] text-[#DFC688]" />
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.4] text-[#FCE38A]" />
                 </button>
               </div>
 
             </div>
           </div>
 
-          {/* Curved Luxury Dock with 4 Value Pillars (Matching media_1789658972902.jpg) */}
+          {/* Curved Luxury Dock with 4 Value Pillars (Matching media_1789704907551.jpg) */}
           <div className="relative -mt-4 z-30 pt-5 pb-6 px-3 bg-gradient-to-b from-[#020B1A] to-[#010612] rounded-t-[34px] border-t-2 border-[#DFC688] shadow-[0_-12px_35px_rgba(0,0,0,0.95)]">
             
             {/* Top Row: 3 Value Pillars with Vertical Dividers */}
             <div className="grid grid-cols-3 gap-1 items-start text-center mb-4">
               
               {/* Pillar 1: Business Connections */}
-              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1.5 cursor-pointer group px-1">
-                <div className="w-11 h-11 rounded-full bg-[#030C1C] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_14px_rgba(252,227,138,0.45)] group-hover:scale-110 transition-transform">
+              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-2 cursor-pointer group px-1">
+                <div className="w-12 h-12 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_18px_rgba(252,227,138,0.5)] group-hover:scale-110 transition-transform">
                   <Handshake className="w-5 h-5 stroke-[2.4]" />
                 </div>
-                <span className="text-[9.5px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+                <span className="text-[10px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                   BUSINESS<br />CONNECTIONS
                 </span>
               </div>
 
               {/* Pillar 2: Diverse Industries */}
-              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1.5 cursor-pointer group border-x border-[#DFC688]/30 px-1">
-                <div className="w-11 h-11 rounded-full bg-[#030C1C] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_14px_rgba(252,227,138,0.45)] group-hover:scale-110 transition-transform">
+              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-2 cursor-pointer group border-x border-[#DFC688]/30 px-1">
+                <div className="w-12 h-12 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_18px_rgba(252,227,138,0.5)] group-hover:scale-110 transition-transform">
                   <Building2 className="w-5 h-5 stroke-[2.4]" />
                 </div>
-                <span className="text-[9.5px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+                <span className="text-[10px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                   DIVERSE<br />INDUSTRIES
                 </span>
               </div>
 
               {/* Pillar 3: More Opportunities */}
-              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1.5 cursor-pointer group px-1">
-                <div className="w-11 h-11 rounded-full bg-[#030C1C] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_14px_rgba(252,227,138,0.45)] group-hover:scale-110 transition-transform">
+              <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-2 cursor-pointer group px-1">
+                <div className="w-12 h-12 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_18px_rgba(252,227,138,0.5)] group-hover:scale-110 transition-transform">
                   <Star className="w-5 h-5 stroke-[2.4]" />
                 </div>
-                <span className="text-[9.5px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+                <span className="text-[10px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                   MORE<br />OPPORTUNITIES
                 </span>
               </div>
@@ -841,11 +835,11 @@ export default function BOCHero({ onOpenJoinModal }) {
 
             {/* Bottom Row: Centered 4th Pillar: Stronger Community */}
             <div className="flex justify-center pt-1">
-              <div onClick={onOpenJoinModal} className="flex items-center gap-3 py-2 px-5 rounded-full bg-white/[0.05] border border-[#DFC688]/60 shadow-[0_4px_16px_rgba(0,0,0,0.6)] cursor-pointer group active:scale-95 transition-all">
+              <div onClick={onOpenJoinModal} className="flex items-center gap-3 py-2 px-5 rounded-full bg-[#020A17]/90 border-2 border-[#FCE38A]/80 shadow-[0_0_18px_rgba(252,227,138,0.4)] cursor-pointer group active:scale-95 transition-all">
                 <div className="w-9 h-9 rounded-full bg-[#030C1C] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-110 transition-transform">
                   <Users className="w-4.5 h-4.5 stroke-[2.4]" />
                 </div>
-                <span className="text-[10.5px] font-black tracking-wider text-white uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+                <span className="text-[11px] font-black tracking-wider text-white uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                   STRONGER COMMUNITY
                 </span>
               </div>
