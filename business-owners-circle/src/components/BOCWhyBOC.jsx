@@ -33,7 +33,7 @@ function PalmCorner({ className }) {
 
 /**
  * BOCWhyBOC — "WHAT IS BOC?" & "WHY JOIN BOC?"
- * 1:1 Pixel-Perfect Recreation of Latest Master Mockup (media_1789733092320.jpg)
+ * 1:1 Pixel-Perfect Recreation with Ultra-Luxury Boardroom Handshake Photography
  */
 export default function BOCWhyBOC({ onOpenJoinModal }) {
   const whyJoinCards = [
@@ -86,14 +86,14 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
       {/* ===================================================================== */}
       <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 min-h-[500px] lg:min-h-[540px]">
         
-        {/* Desktop Top-Right Background Image Feature (Ultra-High-Definition Handshake Photo) */}
+        {/* Desktop Top-Right Feature (Ultra-Luxury Boardroom Handshake) */}
         <div className="hidden lg:block absolute top-0 right-0 w-[52%] xl:w-[54%] 2xl:w-[52%] h-[540px] pointer-events-none overflow-hidden z-0">
           <img 
             src={bocNetworkingHandshake} 
-            alt="BOC Business Professionals Networking and Shaking Hands on Waterfront Terrace"
-            className="w-full h-full object-cover object-[center_28%] contrast-[1.03] brightness-[1.01]"
+            alt="BOC Business Executives Shaking Hands in Luxury Boardroom"
+            className="w-full h-full object-cover object-[center_35%] contrast-[1.03] brightness-[1.01]"
           />
-          {/* Subtle soft left feather strip (strictly on the far left margin, NOT over the people) */}
+          {/* Subtle soft left feather strip */}
           <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
           {/* Soft bottom edge feathering */}
           <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
@@ -116,7 +116,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
                 <span className="w-8 h-[1.5px] bg-[#C29023]" />
               </div>
 
-              {/* Main Headline (All Caps Matching media_1789733092320.jpg) */}
+              {/* Main Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.18] mb-5">
                 MORE THAN A NETWORK.<br />
                 <span className="text-[#C29023] font-bold drop-shadow-[0_1px_2px_rgba(194,144,35,0.25)]">
@@ -128,12 +128,12 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
               <div className="lg:hidden w-full h-64 sm:h-80 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
                 <img 
                   src={bocNetworkingHandshake} 
-                  alt="BOC Professionals Networking on Terrace" 
-                  className="w-full h-full object-cover object-[center_25%] contrast-[1.02] brightness-[1.01]"
+                  alt="BOC Business Executives Shaking Hands in Luxury Boardroom" 
+                  className="w-full h-full object-cover object-[center_30%] contrast-[1.02] brightness-[1.01]"
                 />
               </div>
 
-              {/* Narrative Paragraphs (2 Paragraphs Matching media_1789733092320.jpg) */}
+              {/* Narrative Paragraphs */}
               <div className="space-y-4 max-w-xl text-[14px] sm:text-[15px] text-slate-600 leading-relaxed font-normal">
                 <p>
                   Business Owner's Circle – Kochi is a professional business networking and collaboration community created for entrepreneurs and professionals who believe that business growth becomes stronger when opportunities are shared.
@@ -199,7 +199,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             <span className="w-8 h-[1.5px] bg-[#C29023]" />
           </div>
 
-          {/* 7 Value Cards in a Row (Desktop: 7 Columns, Mobile: Responsive Grid) */}
+          {/* 7 Value Cards in a Row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3.5 xl:gap-4 items-stretch max-w-7xl mx-auto mb-9">
             {whyJoinCards.map((card, idx) => {
               const Icon = card.icon;
@@ -213,7 +213,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
                     <Icon className="w-5 h-5 stroke-[2]" />
                   </div>
 
-                  {/* Card Title (All Caps Matching media_1789733092320.jpg) */}
+                  {/* Card Title */}
                   <h4 className="text-[11.5px] sm:text-[12px] font-cinzel font-bold text-[#081730] leading-snug mb-2 min-h-[34px] flex items-center justify-center uppercase tracking-wide">
                     {card.title}
                   </h4>
@@ -227,7 +227,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             })}
           </div>
 
-          {/* Centered CTA Pill Button: "JOIN THE CIRCLE →" */}
+          {/* Centered CTA Pill Button */}
           <div className="flex justify-center mt-7 relative z-20">
             <button
               onClick={onOpenJoinModal}
