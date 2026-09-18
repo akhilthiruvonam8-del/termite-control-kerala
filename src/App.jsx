@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import BOCHero from './components/BOCHero';
+import BOCWhatIsBOC from './components/BOCWhatIsBOC';
+import BOCWhyJoinMembership from './components/BOCWhyJoinMembership';
 import BOCJoinModal from './components/BOCJoinModal';
 
 /**
- * Business Owner's Circle (BOC) — Kochi, Kerala
- * Executive Web Experience
- * Hero Viewport Active (Matches media_1789641252571.jpg 1:1)
+ * Business Owner's Circle (BOC) — Executive Web Platform
+ * Master Application Root
  */
 export default function App() {
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
@@ -16,6 +17,16 @@ export default function App() {
       {/* 1:1 Unified Master Hero Section */}
       <main className="flex-grow flex flex-col items-center justify-center bg-[#020712]">
         <BOCHero 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 1: What is BOC? (About BOC / Ecosystem & 4 Pillars) */}
+        <BOCWhatIsBOC 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 2: Why Join BOC? & Executive Membership Plans */}
+        <BOCWhyJoinMembership 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
