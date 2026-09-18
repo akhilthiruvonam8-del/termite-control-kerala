@@ -116,7 +116,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
           <img 
             src={bocNetworkingTerrace} 
             alt="BOC Business Professionals Networking on Waterfront Terrace"
-            className="w-full h-full object-cover object-[25%_center] contrast-[1.03] brightness-[1.01]"
+            className="w-full h-full object-cover object-[center_30%] contrast-[1.03] brightness-[1.01]"
           />
           {/* Subtle soft left feather strip (strictly on the far left margin, NOT over the people) */}
           <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
@@ -159,7 +159,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
                 <img 
                   src={bocNetworkingTerrace} 
                   alt="BOC Professionals on Terrace" 
-                  className="w-full h-full object-cover object-center contrast-[1.03] brightness-[1.01]"
+                  className="w-full h-full object-cover object-[center_25%] contrast-[1.02] brightness-[1.01]"
                 />
               </div>
 
