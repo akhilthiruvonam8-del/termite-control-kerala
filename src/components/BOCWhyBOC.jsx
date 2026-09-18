@@ -5,96 +5,71 @@ import {
   TrendingUp, 
   Megaphone, 
   GraduationCap, 
-  Star, 
+  ShieldCheck, 
   Globe, 
   ArrowRight 
 } from 'lucide-react';
-import bocNetworkingTerrace from '../assets/boc-networking-terrace.jpg';
+import bocNetworkingHandshake from '../assets/boc-networking-handshake.jpg';
+import bocHouseboatPalms from '../assets/boc-journey-houseboat-palms.jpg';
 
 /**
- * Traditional Kerala Houseboat (Kettuvallam) Line Art Sketch Watermark
+ * Palm Frond Botanical Vector Accent for Bottom-Right Corner
  */
-function HouseboatWatermark({ className }) {
+function PalmCorner({ className }) {
   return (
-    <svg className={className} viewBox="0 0 280 180" fill="none" stroke="currentColor">
-      {/* Palm trees on bank */}
-      <path d="M15,120 Q30,70 45,35" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M45,35 Q60,25 75,32" strokeWidth="1.2" />
-      <path d="M45,35 Q30,22 15,25" strokeWidth="1.2" />
-      <path d="M45,35 Q50,15 42,5" strokeWidth="1.2" />
-      <path d="M45,35 Q30,35 20,48" strokeWidth="1.2" />
-      <path d="M45,35 Q60,45 68,55" strokeWidth="1.2" />
-      
-      {/* Second palm tree */}
-      <path d="M40,125 Q55,80 65,50" strokeWidth="1.5" strokeLinecap="round" />
-      <path d="M65,50 Q80,42 92,50" strokeWidth="1.2" />
-      <path d="M65,50 Q52,38 40,42" strokeWidth="1.2" />
-      <path d="M65,50 Q70,30 62,20" strokeWidth="1.2" />
-
-      {/* Houseboat Hull (Kettuvallam) */}
-      <path d="M50,135 Q140,145 230,130 Q245,125 255,115 Q220,125 140,125 Q65,125 50,135 Z" strokeWidth="1.5" />
-      <path d="M35,122 Q50,135 65,135" strokeWidth="1.5" strokeLinecap="round" />
-      
-      {/* Arched Thatched Roof */}
-      <path d="M70,125 Q75,100 135,98 Q200,98 215,125" strokeWidth="1.5" />
-      <path d="M80,125 Q85,103 135,101 Q190,101 205,125" strokeWidth="1" strokeDasharray="3 3" />
-      <path d="M90,125 Q95,106 135,104 Q180,104 195,125" strokeWidth="1" strokeDasharray="3 3" />
-      
-      {/* Windows on Houseboat */}
-      <rect x="95" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
-      <rect x="115" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
-      <rect x="135" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
-      <rect x="155" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
-      <rect x="175" y="108" width="10" height="12" rx="1.5" strokeWidth="1" />
-
-      {/* Water Ripples */}
-      <path d="M10,145 Q60,143 110,145" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-      <path d="M70,152 Q150,150 230,152" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-      <path d="M30,160 Q110,158 190,160" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-      <path d="M120,168 Q180,166 250,168" strokeWidth="0.8" strokeLinecap="round" opacity="0.4" />
+    <svg className={className} viewBox="0 0 160 160" fill="none" stroke="currentColor">
+      <path d="M140,150 Q100,80 10,20" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M120,130 Q90,105 70,115" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M100,110 Q75,85 55,95" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M80,90 Q55,65 35,75" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M60,70 Q40,45 20,55" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M110,140 Q85,125 75,138" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M90,120 Q65,105 55,118" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M70,100 Q45,85 35,98" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M50,80 Q25,65 15,78" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
 
 /**
- * BOCWhyBOC — "WHAT IS BOC?" & "WHY JOIN BOC?" Executive Module
- * 1:1 Pixel-Perfect Recreation of Master Reference (media_1789729171746.jpg)
+ * BOCWhyBOC — "WHAT IS BOC?" & "WHY JOIN BOC?"
+ * 1:1 Pixel-Perfect Recreation of Latest Master Mockup (media_1789733092320.jpg)
  */
 export default function BOCWhyBOC({ onOpenJoinModal }) {
   const whyJoinCards = [
     {
-      title: 'Expand Your Network',
-      desc: 'Connect with like-minded business owners and professionals.',
+      title: 'EXPAND YOUR NETWORK',
+      desc: 'Connect with business owners and professionals from different industries.',
       icon: Users
     },
     {
-      title: 'Get Referrals',
-      desc: 'Discover new opportunities through trusted recommendations.',
+      title: 'GET REFERRALS',
+      desc: 'Discover genuine business opportunities through trusted connections.',
       icon: Handshake
     },
     {
-      title: 'Collaborate',
-      desc: 'Work together on projects and partnerships.',
+      title: 'COLLABORATE',
+      desc: 'Build partnerships, projects, services and campaigns together.',
       icon: TrendingUp
     },
     {
-      title: 'Increase Your Visibility',
-      desc: 'Showcase your business to a wider audience.',
+      title: 'INCREASE YOUR VISIBILITY',
+      desc: 'Showcase your business and strengthen your professional presence.',
       icon: Megaphone
     },
     {
-      title: 'Learn & Grow',
-      desc: 'Join events, workshops and knowledge sharing sessions.',
+      title: 'LEARN & GROW',
+      desc: 'Share knowledge, experience, resources and practical business insights.',
       icon: GraduationCap
     },
     {
-      title: 'Build Credibility',
-      desc: 'Be part of a trusted and professional community.',
-      icon: Star
+      title: 'BUILD CREDIBILITY',
+      desc: 'Grow through trusted professional relationships and recommendations.',
+      icon: ShieldCheck
     },
     {
-      title: 'Create Opportunities',
-      desc: 'Turn conversations into long-term business success.',
+      title: 'CREATE OPPORTUNITIES',
+      desc: 'Turn meaningful connections into mutually beneficial business opportunities.',
       icon: Globe
     }
   ];
@@ -109,19 +84,19 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
       {/* ===================================================================== */}
       {/* PART 1: "WHAT IS BOC?" SECTION                                        */}
       {/* ===================================================================== */}
-      <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 min-h-[500px] lg:min-h-[530px]">
+      <div className="relative w-full overflow-hidden pt-12 sm:pt-16 lg:pt-20 pb-8 sm:pb-12 min-h-[500px] lg:min-h-[540px]">
         
-        {/* Desktop Top-Right Background Image Feature (Crystal Clear, Zero Milky Wash) */}
-        <div className="hidden lg:block absolute top-0 right-0 w-[50%] xl:w-[52%] 2xl:w-[50%] h-[530px] pointer-events-none overflow-hidden z-0">
+        {/* Desktop Top-Right Background Image Feature (Ultra-High-Definition Handshake Photo) */}
+        <div className="hidden lg:block absolute top-0 right-0 w-[52%] xl:w-[54%] 2xl:w-[52%] h-[540px] pointer-events-none overflow-hidden z-0">
           <img 
-            src={bocNetworkingTerrace} 
-            alt="BOC Business Professionals Networking on Waterfront Terrace"
-            className="w-full h-full object-cover object-[center_30%] contrast-[1.03] brightness-[1.01]"
+            src={bocNetworkingHandshake} 
+            alt="BOC Business Professionals Networking and Shaking Hands on Waterfront Terrace"
+            className="w-full h-full object-cover object-[center_28%] contrast-[1.03] brightness-[1.01]"
           />
           {/* Subtle soft left feather strip (strictly on the far left margin, NOT over the people) */}
           <div className="absolute top-0 bottom-0 left-0 w-28 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/50 to-transparent pointer-events-none" />
-          {/* Soft bottom feather strip */}
-          <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
+          {/* Soft bottom edge feathering */}
+          <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#FAF8F5] to-transparent pointer-events-none" />
         </div>
 
         {/* Content Container */}
@@ -141,70 +116,31 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
                 <span className="w-8 h-[1.5px] bg-[#C29023]" />
               </div>
 
-              {/* Main Headline */}
-              <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.18] mb-4">
-                More Than a Network.<br />
+              {/* Main Headline (All Caps Matching media_1789733092320.jpg) */}
+              <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-cinzel font-black tracking-tight text-[#081730] leading-[1.18] mb-5">
+                MORE THAN A NETWORK.<br />
                 <span className="text-[#C29023] font-bold drop-shadow-[0_1px_2px_rgba(194,144,35,0.25)]">
-                  It's a Growth Ecosystem.
+                  IT'S A GROWTH ECOSYSTEM.
                 </span>
               </h2>
 
-              {/* Narrative Paragraph */}
-              <p className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed font-normal max-w-xl mb-7">
-                Business Owner's Circle (BOC) is a professional community where business owners, entrepreneurs and professionals connect, collaborate, exchange referrals and create meaningful business opportunities.
-              </p>
-
-              {/* Mobile Terrace Image (visible on mobile only, 100% crystal clear) */}
-              <div className="lg:hidden w-full h-60 sm:h-72 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
+              {/* Mobile Handshake Image (visible on mobile only, crystal clear) */}
+              <div className="lg:hidden w-full h-64 sm:h-80 rounded-2xl overflow-hidden mb-6 border border-[#E5D7B5]/80 shadow-md relative">
                 <img 
-                  src={bocNetworkingTerrace} 
-                  alt="BOC Professionals on Terrace" 
+                  src={bocNetworkingHandshake} 
+                  alt="BOC Professionals Networking on Terrace" 
                   className="w-full h-full object-cover object-[center_25%] contrast-[1.02] brightness-[1.01]"
                 />
               </div>
 
-              {/* 3 Value Props Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-2 pb-2 w-full max-w-xl">
-                
-                {/* 1. Real People */}
-                <div className="flex items-start gap-3">
-                  <Users className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
-                      Real People
-                    </h4>
-                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
-                      Not just contacts
-                    </p>
-                  </div>
-                </div>
-
-                {/* 2. Meaningful Connections */}
-                <div className="flex items-start gap-3">
-                  <Handshake className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
-                      Meaningful Connections
-                    </h4>
-                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
-                      Not just introductions
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. Business Growth */}
-                <div className="flex items-start gap-3">
-                  <TrendingUp className="w-7 h-7 text-[#C29023] stroke-[1.8] flex-shrink-0 mt-0.5" />
-                  <div className="text-left">
-                    <h4 className="text-[14px] font-bold text-[#081730] leading-snug">
-                      Business Growth
-                    </h4>
-                    <p className="text-[12px] text-slate-500 font-normal leading-tight mt-0.5">
-                      For everyone
-                    </p>
-                  </div>
-                </div>
-
+              {/* Narrative Paragraphs (2 Paragraphs Matching media_1789733092320.jpg) */}
+              <div className="space-y-4 max-w-xl text-[14px] sm:text-[15px] text-slate-600 leading-relaxed font-normal">
+                <p>
+                  Business Owner's Circle – Kochi is a professional business networking and collaboration community created for entrepreneurs and professionals who believe that business growth becomes stronger when opportunities are shared.
+                </p>
+                <p>
+                  Our community brings together people from different industries to build meaningful professional relationships, generate referrals, discover collaboration opportunities, and support each other's business journey.
+                </p>
               </div>
 
             </div>
@@ -217,29 +153,45 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
 
 
       {/* ===================================================================== */}
+      {/* ORGANIC CURVED WAVE TRANSITION DIVIDER                                */}
+      {/* ===================================================================== */}
+      <div className="relative w-full overflow-hidden leading-none z-10 pointer-events-none -mt-4 sm:-mt-6">
+        <svg 
+          className="w-full h-10 sm:h-14 text-[#FAF8F5] fill-current" 
+          viewBox="0 0 1440 60" 
+          preserveAspectRatio="none"
+        >
+          <path d="M0,0 Q360,50 720,25 Q1080,0 1440,35 L1440,60 L0,60 Z" />
+        </svg>
+      </div>
+
+
+      {/* ===================================================================== */}
       {/* PART 2: "WHY JOIN BOC?" SECTION                                       */}
       {/* ===================================================================== */}
-      <div className="relative w-full overflow-hidden pt-8 sm:pt-12 pb-16 sm:pb-24 border-t border-[#EADBBD]/30">
+      <div className="relative w-full overflow-hidden pt-6 sm:pt-10 pb-20 sm:pb-28">
         
-        {/* Bottom-Left Curved Champagne Wave Accent */}
-        <svg 
-          className="absolute bottom-0 left-0 w-80 sm:w-[480px] h-32 sm:h-48 pointer-events-none text-[#E8D6B0]/30 z-0" 
-          viewBox="0 0 500 200" 
-          fill="none"
-        >
-          <path d="M0,200 L0,120 Q180,140 320,80 Q420,35 500,0 L500,200 Z" fill="currentColor" />
-        </svg>
+        {/* Bottom Panoramic Backwaters & Houseboat Landscape Feature */}
+        <div className="absolute bottom-0 left-0 right-0 h-48 sm:h-64 pointer-events-none overflow-hidden z-0">
+          <img 
+            src={bocHouseboatPalms} 
+            alt="Kerala Backwaters and Traditional Houseboat"
+            className="w-full h-full object-cover object-bottom opacity-75 contrast-[1.02] saturate-[1.05]"
+          />
+          {/* Gentle top fade into the cream canvas */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F5]/10 via-[#FAF8F5]/70 to-[#FAF8F5]" />
+        </div>
 
-        {/* Bottom-Left Houseboat & Palms Line Sketch Watermark */}
-        <div className="absolute bottom-2 left-2 sm:left-4 pointer-events-none opacity-25 sm:opacity-35 text-[#C29023] z-0">
-          <HouseboatWatermark className="w-48 sm:w-64 h-32 sm:h-44" />
+        {/* Bottom-Right Corner Palm Fronds Accent */}
+        <div className="absolute bottom-1 right-1 pointer-events-none opacity-30 text-[#D4A536] z-0">
+          <PalmCorner className="w-36 sm:w-52 h-36 sm:h-52 transform rotate-12" />
         </div>
 
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
           
           {/* Section Kicker */}
-          <div className="flex items-center justify-center gap-3 mb-2.5">
+          <div className="flex items-center justify-center gap-3 mb-8 sm:mb-11">
             <span className="w-8 h-[1.5px] bg-[#C29023]" />
             <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
               WHY JOIN BOC?
@@ -247,33 +199,22 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             <span className="w-8 h-[1.5px] bg-[#C29023]" />
           </div>
 
-          {/* Main Headline */}
-          <h3 className="text-3xl sm:text-4xl lg:text-[40px] font-cinzel font-black tracking-tight text-[#081730] mb-3">
-            Be Part of Something Bigger
-          </h3>
-
-          {/* Narrative Subtitle */}
-          <p className="text-[14px] sm:text-[15px] text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10 sm:mb-12 font-normal">
-            Join a community that believes in collaboration, trust and shared success.<br className="hidden sm:inline" />
-            At BOC, you don't just build your business — you build lasting relationships.
-          </p>
-
-          {/* 7 Value Cards in a Row (Desktop: 7 Columns, Mobile: 2-3 Columns) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3.5 xl:gap-4 items-stretch max-w-7xl mx-auto mb-10">
+          {/* 7 Value Cards in a Row (Desktop: 7 Columns, Mobile: Responsive Grid) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-3.5 xl:gap-4 items-stretch max-w-7xl mx-auto mb-9">
             {whyJoinCards.map((card, idx) => {
               const Icon = card.icon;
               return (
                 <div 
                   key={idx}
-                  className="relative h-full bg-[#FCFAF7]/90 backdrop-blur-sm rounded-2xl p-4 pt-5 pb-5 border border-[#E5D7B5] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_6px_20px_rgba(212,163,56,0.18)] hover:border-[#D4A536] transition-all flex flex-col items-center text-center group"
+                  className="relative h-full bg-[#FCFAF7]/95 backdrop-blur-sm rounded-2xl p-4 pt-5 pb-5 border border-[#E5D7B5] shadow-[0_2px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_6px_20px_rgba(212,163,56,0.18)] hover:border-[#D4A536] transition-all flex flex-col items-center text-center group"
                 >
                   {/* Circular Icon Medallion */}
                   <div className="w-12 h-12 rounded-full bg-[#06162E] border border-[#D4A536] flex items-center justify-center text-[#F9D678] shadow-sm mb-3.5 group-hover:scale-110 transition-transform flex-shrink-0">
                     <Icon className="w-5 h-5 stroke-[2]" />
                   </div>
 
-                  {/* Card Title */}
-                  <h4 className="text-[13px] sm:text-[13.5px] font-cinzel font-bold text-[#081730] leading-snug mb-1.5 min-h-[36px] flex items-center justify-center">
+                  {/* Card Title (All Caps Matching media_1789733092320.jpg) */}
+                  <h4 className="text-[11.5px] sm:text-[12px] font-cinzel font-bold text-[#081730] leading-snug mb-2 min-h-[34px] flex items-center justify-center uppercase tracking-wide">
                     {card.title}
                   </h4>
 
@@ -286,13 +227,13 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             })}
           </div>
 
-          {/* Bottom CTA Button */}
-          <div className="flex justify-center mt-6">
+          {/* Centered CTA Pill Button: "JOIN THE CIRCLE →" */}
+          <div className="flex justify-center mt-7 relative z-20">
             <button
-              onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase shadow-[0_6px_20px_rgba(8,23,48,0.25)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.4)] active:scale-95 transition-all group cursor-pointer"
+              onClick={onOpenJoinModal}
+              className="inline-flex items-center gap-2.5 px-9 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase border border-[#D4A536]/40 shadow-[0_6px_22px_rgba(8,23,48,0.3)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.45)] active:scale-95 transition-all group cursor-pointer"
             >
-              <span>Explore the BOC Journey</span>
+              <span>JOIN THE CIRCLE</span>
               <ArrowRight className="w-4 h-4 text-[#F9D678] group-hover:translate-x-1.5 transition-transform" />
             </button>
           </div>
