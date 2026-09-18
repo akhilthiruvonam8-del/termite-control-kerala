@@ -281,17 +281,20 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
       <div className="relative w-full mt-4 sm:mt-10 overflow-hidden leading-none">
         
         {/* Soft feather gradient transition merging ivory background into the morning sky */}
-        <div className="absolute inset-x-0 top-0 h-20 sm:h-32 bg-gradient-to-b from-[#FCFAF7] via-[#FCFAF7]/70 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-10 sm:h-24 md:h-32 bg-gradient-to-b from-[#FCFAF7] via-[#FCFAF7]/60 to-transparent z-10 pointer-events-none" />
         
         {/* Kochi Waterfront Skyline with Chinese Fishing Nets & City Reflections */}
+        {/* Natural wide aspect ratio on mobile so both the nets on left and skyline on right are 100% visible without zoom */}
         <img 
           src={bocWaterfrontSkyline} 
           alt="BOC Kochi Harbor Skyline & Chinese Fishing Nets"
-          className="w-full h-44 sm:h-64 lg:h-84 object-cover object-bottom contrast-[1.02] saturate-[1.05]"
+          className="w-full aspect-[3.3/1] xs:aspect-[3.6/1] sm:aspect-[4.2/1] md:h-64 lg:h-80 object-cover object-bottom contrast-[1.02] saturate-[1.05]"
         />
 
-        {/* Subtle decorative bottom arc divider */}
-        <div className="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        {/* Subtle decorative bottom golden curve divider from mockup */}
+        <div className="absolute inset-x-0 -bottom-1 flex justify-center pointer-events-none overflow-hidden">
+          <div className="w-[125%] h-6 sm:h-8 rounded-t-[100%] border-t border-[#DFC688]/70 bg-gradient-to-b from-[#DFC688]/20 to-transparent" />
+        </div>
       </div>
 
     </section>
