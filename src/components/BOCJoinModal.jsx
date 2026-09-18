@@ -220,11 +220,19 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-[#E5C45A] via-[#C9A227] to-[#B08C1E] text-[#041126] font-bold text-sm tracking-wider uppercase shadow-gold-md hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                  className="w-full mt-2 py-3.5 rounded-xl bg-gradient-to-r from-[#E5C45A] via-[#C9A227] to-[#B08C1E] text-[#041126] font-bold text-sm tracking-wider uppercase shadow-gold-md hover:brightness-110 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   Submit Membership Application
                   <ArrowRight className="w-4 h-4 text-[#041126]" />
                 </button>
+
+                {/* Direct Secretariat Contact Info */}
+                <div className="pt-2 text-center text-[11px] text-slate-400">
+                  <span>Direct Inquiries: </span>
+                  <a href="tel:+919020040009" className="text-[#FCE38A] font-bold hover:underline">9020040009</a>
+                  <span className="mx-1.5">•</span>
+                  <a href="mailto:mailboc@yahoo.com" className="text-[#FCE38A] font-bold hover:underline">mailboc@yahoo.com</a>
+                </div>
               </form>
             </>
           ) : (
@@ -235,7 +243,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
               </div>
 
               <div className="inline-block px-3 py-1 rounded-full bg-[#071B3A] border border-[#C9A227]/40 text-xs font-semibold text-[#E5C45A]">
-                Application Received • Kochi Chapter
+                Application Received • Chapter Admissions
               </div>
 
               <h4 className="font-serif-luxury text-3xl font-bold text-white">
@@ -243,13 +251,13 @@ export default function BOCJoinModal({ isOpen, onClose }) {
               </h4>
 
               <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed">
-                Thank you, <span className="text-white font-semibold">{formData.fullName || 'Business Leader'}</span> from <span className="text-[#E5C45A] font-semibold">{formData.companyName || 'your enterprise'}</span>. Our Membership Committee for the Kochi Chapter is reviewing category availability for <span className="text-white underline">{formData.industry}</span>.
+                Thank you, <span className="text-white font-semibold">{formData.fullName || 'Business Leader'}</span> from <span className="text-[#E5C45A] font-semibold">{formData.companyName || 'your enterprise'}</span>. Our Membership Committee is reviewing category availability for <span className="text-white underline">{formData.industry}</span>.
               </p>
 
               <div className="p-4 rounded-2xl bg-[#071B3A]/80 border border-[#C9A227]/30 max-w-md mx-auto text-left text-xs space-y-1.5 text-slate-300">
                 <div className="flex justify-between">
                   <span className="text-slate-400">Chapter:</span>
-                  <span className="font-medium text-white">Kochi, Kerala (Founding)</span>
+                  <span className="font-medium text-white">BOC Chapter Network</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Target Region:</span>
@@ -259,11 +267,15 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                   <span className="text-slate-400">Status:</span>
                   <span className="font-medium text-[#E5C45A]">Priority Review In Progress</span>
                 </div>
+                <div className="flex justify-between pt-1 border-t border-white/5">
+                  <span className="text-slate-400">Direct Secretariat:</span>
+                  <span className="font-medium text-[#FCE38A]">9020040009 • mailboc@yahoo.com</span>
+                </div>
               </div>
 
               <button
                 onClick={handleReset}
-                className="px-8 py-3 rounded-full bg-gradient-to-r from-[#E5C45A] to-[#C9A227] text-[#041126] font-bold text-xs uppercase tracking-wider shadow-gold-sm hover:brightness-110 transition-all"
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-[#E5C45A] to-[#C9A227] text-[#041126] font-bold text-xs uppercase tracking-wider shadow-gold-sm hover:brightness-110 transition-all cursor-pointer"
               >
                 Return to Circle Showcase
               </button>

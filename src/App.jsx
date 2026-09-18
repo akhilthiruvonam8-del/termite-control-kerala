@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import BOCHero from './components/BOCHero';
 import BOCWhatIsBOC from './components/BOCWhatIsBOC';
 import BOCWhyJoinMembership from './components/BOCWhyJoinMembership';
+import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
 /**
@@ -30,6 +31,9 @@ export default function App() {
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
+
+      {/* Luxury Micro Footer */}
+      <BOCMicroFooter />
 
       {/* Interactive Membership Application Modal */}
       <BOCJoinModal 

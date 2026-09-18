@@ -203,8 +203,20 @@ export default function BOCHero({ onOpenJoinModal }) {
     setActiveNav(item.label);
     setSideMenuOpen(false);
 
-    if (item.label === 'Home') {
+    if (item.id === 'home' || item.label === 'Home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (item.id === 'about' || item.label === 'About Us') {
+      const el = document.getElementById('about');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (item.id === 'membership' || item.label === 'Membership') {
+      const el = document.getElementById('membership');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (item.id === 'how-it-works' || item.label === 'How It Works') {
+      const el = document.getElementById('about');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (item.id === 'contact' || item.label === 'Contact') {
+      const el = document.getElementById('contact') || document.getElementById('membership');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else {
       onOpenJoinModal();
     }
@@ -585,6 +597,17 @@ export default function BOCHero({ onOpenJoinModal }) {
               );
             })}
           </div>
+
+          {/* Desktop Explore Modules Cue */}
+          <div className="flex justify-center mt-2.5">
+            <button 
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#030C1C]/95 border border-[#DFC688]/80 text-[#FCE38A] hover:text-white hover:border-[#FFF5C0] shadow-[0_4px_16px_rgba(0,0,0,0.85)] hover:scale-105 transition-all cursor-pointer"
+            >
+              <span className="text-[10px] sm:text-[11px] font-cinzel font-black tracking-widest uppercase">EXPLORE BOC MODULES</span>
+              <ChevronDown className="w-3.5 h-3.5 text-[#FCE38A] group-hover:translate-y-0.5 transition-transform" />
+            </button>
+          </div>
         </div>
 
       </div>
@@ -840,7 +863,7 @@ export default function BOCHero({ onOpenJoinModal }) {
             </div>
 
             {/* Bottom Row: Centered 4th Pillar: Stronger Community */}
-            <div className="flex justify-center pt-1">
+            <div className="flex justify-center pt-1 mb-3">
               <div onClick={onOpenJoinModal} className="flex items-center gap-3 py-2 px-5 rounded-full bg-[#020A17]/90 border-2 border-[#FCE38A]/80 shadow-[0_0_18px_rgba(252,227,138,0.4)] cursor-pointer group active:scale-95 transition-all">
                 <div className="w-9 h-9 rounded-full bg-[#030C1C] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-110 transition-transform">
                   <Users className="w-4.5 h-4.5 stroke-[2.4]" />
@@ -851,30 +874,18 @@ export default function BOCHero({ onOpenJoinModal }) {
               </div>
             </div>
 
-          </div>
+            {/* Mobile Explore Modules Cue */}
+            <div className="flex justify-center pt-2 pb-1">
+              <button 
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#030C1C] via-[#081B38] to-[#030C1C] border border-[#DFC688] text-[#FCE38A] shadow-[0_4px_20px_rgba(0,0,0,0.8),_0_0_12px_rgba(252,227,138,0.3)] active:scale-95 transition-all cursor-pointer"
+              >
+                <span className="text-[10.5px] font-cinzel font-black tracking-widest uppercase">EXPLORE BOC MODULES</span>
+                <ChevronDown className="w-4 h-4 text-[#FCE38A] animate-bounce" />
+              </button>
+            </div>
 
-          {/* About Us Section (Matching Bottom of media_1789658972902.jpg) */}
-          <section className="bg-[#FAF8F5] text-[#0A192F] px-5 py-7 rounded-t-3xl border-t border-[#DFC688]/40">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-6 h-[2px] bg-[#C5A059]" />
-              <span className="text-[11px] font-black tracking-[0.2em] text-[#C5A059] uppercase">
-                ABOUT US
-              </span>
-            </div>
-            <h2 className="font-serif font-black text-[#0A192F] text-[22px] leading-tight mb-2.5">
-              The Power of<br />Business Community
-            </h2>
-            <p className="text-slate-700 text-xs leading-relaxed mb-4 font-normal">
-              Business Owners Circle (BOC) is a premier networking platform for forward-thinking business owners, founders, and industry leaders. We bring like-minded executives together to share high-level insights, forge strategic alliances, and build lasting relationships.
-            </p>
-            <div className="rounded-2xl overflow-hidden shadow-md border border-slate-200">
-              <img 
-                src={bocRooftopBg} 
-                alt="BOC Executive Community" 
-                className="w-full h-32 object-cover object-[70%_center]" 
-              />
-            </div>
-          </section>
+          </div>
 
         </div>
 
@@ -909,13 +920,13 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* WhatsApp Direct Chat Button */}
         <div className="relative group">
           <a
-            href="https://wa.me/919876543210?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
+            href="https://wa.me/919020040009?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
             target="_blank"
             rel="noopener noreferrer"
             onMouseEnter={() => setFloatingTooltip('wa')}
             onMouseLeave={() => setFloatingTooltip(null)}
             className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_6px_25px_rgba(37,211,102,0.5)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-            title="Chat with Chapter Director on WhatsApp"
+            title="Chat with BOC Director on WhatsApp (9020040009)"
             aria-label="WhatsApp Director"
           >
             <MessageCircle className="w-5 h-5 fill-current" />
@@ -923,7 +934,7 @@ export default function BOCHero({ onOpenJoinModal }) {
 
           {floatingTooltip === 'wa' && (
             <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#25D366]/50 text-[10px] text-[#25D366] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-              WhatsApp
+              WhatsApp (9020040009)
             </div>
           )}
         </div>
@@ -931,11 +942,11 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* Phone Call Secretariat Button */}
         <div className="relative group">
           <a
-            href="tel:+919876543210"
+            href="tel:+919020040009"
             onMouseEnter={() => setFloatingTooltip('call')}
             onMouseLeave={() => setFloatingTooltip(null)}
             className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#C5A059] to-[#F0DC9B] text-[#041126] shadow-[0_6px_25px_rgba(223,198,136,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-            title="Call BOC Secretariat"
+            title="Call BOC Secretariat (9020040009)"
             aria-label="Call Secretariat"
           >
             <PhoneCall className="w-5 h-5 stroke-[2.5]" />

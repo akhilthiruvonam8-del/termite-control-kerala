@@ -22,10 +22,17 @@ export default function BOCMicroFooter({ isLight = false }) {
           </span>
         </div>
 
-        {/* Center: Kochi Regional Meeting Hubs */}
-        <div className="flex items-center gap-1.5 text-slate-400 hidden lg:flex">
-          <MapPin className={`w-3.5 h-3.5 ${isLight ? 'text-[#B08C1E]' : 'text-[#C9A227]'}`} />
-          <span>Chapter Meeting Hubs: Kakkanad • Panampilly Nagar • Marine Drive</span>
+        {/* Center: Official Contact Info */}
+        <div className="flex items-center gap-3 text-slate-300">
+          <a href="tel:+919020040009" className="hover:text-[#FCE38A] transition-colors flex items-center gap-1">
+            <Phone className="w-3 h-3 text-[#FCE38A]" />
+            <span>9020040009</span>
+          </a>
+          <span className="text-slate-600">•</span>
+          <a href="mailto:mailboc@yahoo.com" className="hover:text-[#FCE38A] transition-colors flex items-center gap-1">
+            <Mail className="w-3 h-3 text-[#FCE38A]" />
+            <span>mailboc@yahoo.com</span>
+          </a>
         </div>
 
         {/* Right: Chapter Admissions Desk */}

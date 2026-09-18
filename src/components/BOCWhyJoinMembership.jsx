@@ -14,7 +14,9 @@ import {
   PhoneCall,
   Calendar,
   Layers,
-  ChevronRight
+  ChevronRight,
+  Mail,
+  MessageCircle
 } from 'lucide-react';
 
 /**
@@ -322,6 +324,61 @@ export default function BOCWhyJoinMembership({ onOpenJoinModal }) {
               <span>CHECK SEAT AVAILABILITY & APPLY NOW</span>
               <ArrowRight className="w-4 h-4 stroke-[2.8]" />
             </button>
+          </div>
+
+          {/* ================================================================= */}
+          {/* 5. OFFICIAL SECRETARIAT & ADMISSIONS CONTACT STRIP                */}
+          {/* ================================================================= */}
+          <div id="contact" className="mt-14 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#020712] via-[#041126] to-[#020712] border-2 border-[#DFC688]/40 shadow-[0_12px_40px_rgba(0,0,0,0.85)]">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+              
+              <div className="text-center lg:text-left space-y-1.5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#020712] border border-[#DFC688]/40">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#FCE38A]" />
+                  <span className="text-[10px] font-cinzel font-black tracking-widest text-[#FCE38A] uppercase">
+                    OFFICIAL BOC SECRETARIAT & ADMISSIONS DESK
+                  </span>
+                </div>
+                <h4 className="text-xl sm:text-2xl font-cinzel font-bold text-white">
+                  Have questions about membership tiers or category locking?
+                </h4>
+                <p className="text-xs sm:text-sm text-slate-300">
+                  Reach out directly to our admissions team for immediate verification and assistance.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 flex-shrink-0">
+                {/* Direct Phone */}
+                <a
+                  href="tel:+919020040009"
+                  className="px-4 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-[#DFC688]/50 hover:border-[#FCE38A] text-white font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-md"
+                >
+                  <PhoneCall className="w-4 h-4 text-[#FCE38A]" />
+                  <span>+91 90200 40009</span>
+                </a>
+
+                {/* Direct Email */}
+                <a
+                  href="mailto:mailboc@yahoo.com"
+                  className="px-4 py-2.5 rounded-full bg-white/[0.05] hover:bg-white/[0.1] border border-[#DFC688]/50 hover:border-[#FCE38A] text-white font-bold text-xs flex items-center gap-2 transition-all hover:scale-105 shadow-md"
+                >
+                  <Mail className="w-4 h-4 text-[#FCE38A]" />
+                  <span>mailboc@yahoo.com</span>
+                </a>
+
+                {/* Direct WhatsApp */}
+                <a
+                  href="https://wa.me/919020040009?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20BOC%20membership."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs flex items-center gap-2 transition-all shadow-[0_4px_20px_rgba(37,211,102,0.5)] hover:scale-105"
+                >
+                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <span>WhatsApp Secretariat</span>
+                </a>
+              </div>
+
+            </div>
           </div>
         </div>
 
