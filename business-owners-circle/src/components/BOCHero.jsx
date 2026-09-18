@@ -205,6 +205,9 @@ export default function BOCHero({ onOpenJoinModal }) {
 
     if (item.id === 'home' || item.label === 'Home') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (item.id === 'about' || item.label === 'About Us' || item.id === 'how-it-works' || item.label === 'How It Works') {
+      const el = document.getElementById('why-boc');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     } else {
       onOpenJoinModal();
     }
@@ -504,7 +507,7 @@ export default function BOCHero({ onOpenJoinModal }) {
 
             {/* Button 2: EXPLORE OUR COMMUNITY */}
             <button
-              onClick={onOpenJoinModal}
+              onClick={() => document.getElementById('why-boc')?.scrollIntoView({ behavior: 'smooth' })}
               className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#020A17]/90 backdrop-blur-md border-2 border-[#FCE38A] hover:border-[#FFF8D6] text-white hover:text-[#FCE38A] font-bold text-[clamp(9px,0.9vw,13.5px)] tracking-wider uppercase shadow-[0_0_25px_rgba(252,227,138,0.45),_0_6px_20px_rgba(0,0,0,0.85)] hover:bg-[#06162E]/95 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
             >
               <span>EXPLORE OUR COMMUNITY</span>
@@ -790,7 +793,7 @@ export default function BOCHero({ onOpenJoinModal }) {
 
                 {/* Button 2: EXPLORE OUR COMMUNITY */}
                 <button
-                  onClick={onOpenJoinModal}
+                  onClick={() => document.getElementById('why-boc')?.scrollIntoView({ behavior: 'smooth' })}
                   className="py-2.5 px-3 sm:px-4 rounded-full bg-[#020A17]/85 backdrop-blur-md border-2 border-[#FCE38A] hover:border-[#FFF8D6] text-white hover:text-[#FCE38A] font-bold text-[10px] sm:text-[11px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-[0_0_20px_rgba(252,227,138,0.4),_0_4px_16px_rgba(0,0,0,0.9)]"
                 >
                   <span className="whitespace-nowrap">EXPLORE OUR COMMUNITY</span>
