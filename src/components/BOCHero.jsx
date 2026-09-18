@@ -231,9 +231,9 @@ export default function BOCHero({ onOpenJoinModal }) {
         />
 
         {/* =================================================================== */}
-        {/* TOP BAR: LOGO (LEFT) + JOIN BUTTON & SIDE DROPDOWN MENU (RIGHT)     */}
+        {/* TOP BAR: LOGO (LEFT) + FULL NAV (CENTER) + JOIN & MENU (RIGHT)      */}
         {/* =================================================================== */}
-        <header className="absolute top-0 left-0 right-0 z-40 w-full px-5 sm:px-8 lg:px-10 pt-3 sm:pt-4 bg-gradient-to-b from-[#020712]/40 via-[#020712]/10 to-transparent pb-4">
+        <header className="absolute top-0 left-0 right-0 z-40 w-full px-5 sm:px-8 lg:px-10 pt-3 sm:pt-4 bg-gradient-to-b from-[#020712]/60 via-[#020712]/20 to-transparent pb-4">
           <div className="flex items-center justify-between">
             
             {/* Left Brand Wordmark & Official Emblem */}
@@ -258,6 +258,34 @@ export default function BOCHero({ onOpenJoinModal }) {
               </div>
             </div>
 
+            {/* Center: Full Navigation Links (Matching media_1789640336285.jpg) */}
+            <div className="hidden xl:flex items-center gap-2 2xl:gap-3.5">
+              {navCategories.map((item) => {
+                const isActive = activeNav === item.label;
+                if (isActive) {
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => handleItemClick(item)}
+                      className="px-4 py-1.5 rounded-full bg-gradient-to-r from-[#F0DC9B] via-[#E2C77D] to-[#C5A059] text-[#061120] font-bold text-xs tracking-wide shadow-[0_2px_12px_rgba(197,160,89,0.4)] transition-all cursor-pointer"
+                    >
+                      {item.label}
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleItemClick(item)}
+                    className="text-xs font-medium tracking-wide text-slate-200 hover:text-[#F0DC9B] transition-colors py-1 px-2 flex items-center gap-1 cursor-pointer whitespace-nowrap"
+                  >
+                    <span>{item.label}</span>
+                    {item.dropdown && <span className="text-[9px] opacity-75 font-sans">▾</span>}
+                  </button>
+                );
+              })}
+            </div>
+
             {/* Right Side Actions: JOIN THE CIRCLE Button + SIDE DROPDOWN MENU BUTTON */}
             <div ref={menuContainerRef} className="relative flex items-center gap-3">
               
@@ -273,7 +301,7 @@ export default function BOCHero({ onOpenJoinModal }) {
               {/* Side Dropdown Menu Button */}
               <button
                 onClick={() => setSideMenuOpen(!sideMenuOpen)}
-                className={`px-3.5 sm:px-4 py-2 rounded-full border transition-all flex items-center gap-2 cursor-pointer shadow-lg active:scale-95 ${
+                className={`px-3 sm:px-3.5 py-2 rounded-full border transition-all flex items-center gap-1.5 cursor-pointer shadow-lg active:scale-95 ${
                   sideMenuOpen 
                     ? 'bg-[#E5C45A] text-[#041126] border-[#FFF3C4] shadow-[0_0_20px_rgba(229,196,90,0.6)] font-black' 
                     : 'bg-[#030C1C]/90 hover:bg-[#071B3A] text-[#DFC688] hover:text-[#FAF6ED] border-[#DFC688]/50 hover:border-[#F0DC9B] font-bold'
@@ -281,11 +309,11 @@ export default function BOCHero({ onOpenJoinModal }) {
                 title="Open Navigation Menu"
                 aria-label="Navigation Menu"
               >
-                <span className="text-xs uppercase tracking-widest font-extrabold">MENU</span>
+                <span className="text-[11px] uppercase tracking-widest font-extrabold">MENU</span>
                 {sideMenuOpen ? (
-                  <X className="w-4 h-4 text-[#041126] stroke-[2.8]" />
+                  <X className="w-3.5 h-3.5 text-[#041126] stroke-[2.8]" />
                 ) : (
-                  <Menu className="w-4 h-4 text-[#DFC688] stroke-[2.4]" />
+                  <Menu className="w-3.5 h-3.5 text-[#DFC688] stroke-[2.4]" />
                 )}
               </button>
 
@@ -414,28 +442,38 @@ export default function BOCHero({ onOpenJoinModal }) {
         </header>
 
         {/* ----------------------------------------------------------------- */}
-        {/* 1. MEDALLION OFFICIAL CREST (Interactive with Radiant Hover Glow)  */}
+        {/* 1. MEDALLION OFFICIAL CREST (1:1 Position on Left Railing)        */}
+        {/* Exact Master Coordinates: media_1789640336285.jpg (top: 23.5%)    */}
         {/* ----------------------------------------------------------------- */}
         <div 
           onClick={onOpenJoinModal}
-          className="absolute top-[11%] left-[3.2%] w-[16%] h-[32%] rounded-full cursor-pointer z-20 group"
+          className="absolute top-[23.5%] left-[3.8%] w-[16.2%] aspect-square rounded-full cursor-pointer z-20 group transition-all duration-300 hover:scale-105"
           title="Business Owners Circle Official Crest — Empower Together"
         >
-          <div className="w-full h-full rounded-full border-2 border-transparent group-hover:border-[#DFC688]/70 group-hover:shadow-[0_0_40px_rgba(223,198,136,0.7)] group-hover:scale-105 transition-all duration-300" />
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Soft Ambient Gold Halo */}
+            <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-[#C5A059] to-[#FCE38A] blur-[18px] opacity-60 group-hover:opacity-85 transition-opacity" />
+            {/* Crisp 3D Gold Medallion */}
+            <img 
+              src={bocLogoPng} 
+              alt="Business Owners Circle Official Crest" 
+              className="relative w-full h-full object-contain filter drop-shadow-[0_0_35px_rgba(223,198,136,0.75)] brightness-105"
+            />
+          </div>
         </div>
 
         {/* ----------------------------------------------------------------- */}
-        {/* 2. CENTER-LEFT HERO TYPOGRAPHY & CTA (100% Hand-Crafted Code)     */}
+        {/* 2. CENTER-LEFT HERO TYPOGRAPHY & CTA (Beside Medallion at 21.5%)  */}
         {/* ----------------------------------------------------------------- */}
-        <div className="absolute top-[13.5%] left-[21%] max-w-[47%] z-20 flex flex-col justify-center select-text bg-gradient-to-r from-[#020712]/75 via-[#020712]/40 to-transparent p-4 sm:p-6 -ml-4 sm:-ml-6 rounded-3xl backdrop-blur-[1.5px]">
+        <div className="absolute top-[23.5%] left-[21.5%] max-w-[46%] z-20 flex flex-col justify-center select-text">
           
-          {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed) */}
+          {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed to avoid duplication) */}
           <div className="flex items-center gap-2.5 mb-2.5">
-            <span className="w-8 sm:w-12 h-[1.5px] bg-gradient-to-r from-transparent to-[#FCE38A]" />
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#DFC688]" />
             <span className="text-[clamp(10px,0.95vw,14px)] font-black tracking-[0.28em] text-[#FCE38A] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] whitespace-nowrap">
               BUSINESS OWNERS CIRCLE
             </span>
-            <span className="w-8 sm:w-12 h-[1.5px] bg-gradient-to-l from-transparent to-[#FCE38A]" />
+            <span className="w-8 sm:w-12 h-[1.5px] bg-[#DFC688]" />
           </div>
 
           {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted) */}
@@ -561,32 +599,46 @@ export default function BOCHero({ onOpenJoinModal }) {
       <div className="md:hidden relative w-full flex flex-col bg-[#020712] text-slate-100">
         
         {/* Mobile Navbar Header */}
-        <header className="relative z-50 w-full flex items-center justify-between px-5 sm:px-6 pt-3.5 pb-3 border-b border-[#DFC688]/30 bg-[#020712]">
+        <header className="relative z-50 w-full flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#DFC688]/25 bg-[#020712]">
           <div 
             onClick={() => { setActiveNav('Home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className="flex items-center gap-2.5 sm:gap-3 cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer group"
           >
-            <img 
-              src={bocLogoPng} 
-              alt="BOC Official Crest" 
-              className="w-9 h-9 sm:w-10 sm:h-10 object-contain filter drop-shadow-[0_0_10px_rgba(223,198,136,0.7)] flex-shrink-0"
-            />
-            <div className="flex flex-col justify-center">
-              <span className="font-serif tracking-[0.14em] text-[12px] sm:text-[13px] font-bold text-[#FCE38A] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+            {/* Crisp 3D Crest Emblem */}
+            <div className="relative w-10 h-10 rounded-full border border-[#D4B56A]/70 bg-[#030C1C] p-0.5 shadow-[0_0_12px_rgba(223,198,136,0.5)] flex-shrink-0 group-hover:scale-105 transition-transform">
+              <img 
+                src={bocLogoPng} 
+                alt="BOC Official Crest" 
+                className="w-full h-full object-contain filter brightness-105"
+              />
+            </div>
+            
+            {/* Typography */}
+            <div className="flex flex-col justify-center text-left">
+              <span className="font-serif tracking-[0.14em] text-[12px] sm:text-[13px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6EE] via-[#E2C77D] to-[#C5A059] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
                 BUSINESS OWNERS CIRCLE
               </span>
-              <span className="text-[8.5px] sm:text-[9.5px] tracking-[0.24em] text-[#DFC688] font-semibold uppercase leading-none mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
+              <span className="text-[8px] sm:text-[9px] tracking-[0.24em] text-[#DFC688] font-semibold uppercase leading-none mt-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)]">
                 KOCHI, KERALA
               </span>
             </div>
           </div>
 
+          {/* Right Hamburger Menu Toggle */}
           <button
             onClick={() => setSideMenuOpen(!sideMenuOpen)}
-            className="p-1.5 text-[#DFC688] hover:text-[#FFF3C4] cursor-pointer transition-colors"
+            className="p-2 text-[#E5C45A] hover:text-[#FFF3C4] cursor-pointer transition-colors flex flex-col items-center justify-center gap-1"
             aria-label="Open Navigation Menu"
           >
-            {sideMenuOpen ? <X className="w-5 h-5 stroke-[2.2]" /> : <Menu className="w-6 h-6 stroke-[2]" />}
+            {sideMenuOpen ? (
+              <X className="w-6 h-6 stroke-[2.4]" />
+            ) : (
+              <>
+                <span className="block w-6 h-[2px] bg-[#E5C45A] rounded-full shadow-[0_0_4px_rgba(229,196,90,0.8)]" />
+                <span className="block w-6 h-[2px] bg-[#E5C45A] rounded-full shadow-[0_0_4px_rgba(229,196,90,0.8)]" />
+                <span className="block w-6 h-[2px] bg-[#E5C45A] rounded-full shadow-[0_0_4px_rgba(229,196,90,0.8)]" />
+              </>
+            )}
           </button>
         </header>
 
@@ -686,69 +738,64 @@ export default function BOCHero({ onOpenJoinModal }) {
         <div className="relative w-full overflow-hidden bg-[#020712]">
           
           {/* Background Image: Clean Portrait Photo with zero baked text */}
-          <div className="relative w-full h-[380px] sm:h-[420px] overflow-hidden">
+          <div className="relative w-full h-[420px] sm:h-[460px] overflow-hidden">
             <img 
               src={bocMobileBg} 
               alt="BOC Kochi Rooftop Networking" 
               className="w-full h-full object-cover object-center select-none"
             />
-            {/* Top gradient for crystal-clear readability of text on sky */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/80 via-[#020712]/40 to-transparent" />
+            {/* Top subtle gradient for natural sky readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/75 via-[#020712]/20 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#010714] via-transparent to-transparent" />
 
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
-            {/* FLUSH LEFT-ALIGNED 1:1 TO MASTER MOCKUP (media_1789658972902.jpg) */}
-            <div className="absolute top-2 left-0 right-0 px-4 sm:px-6 z-20 flex flex-col items-start text-left select-text">
+            {/* FLUSH LEFT-ALIGNED 1:1 TO MASTER MOCKUP (media_1789704907551.jpg) */}
+            <div className="absolute top-4 left-0 right-0 px-5 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
               
-              {/* Highlighted Backplate for High Contrast Legibility */}
-              <div className="p-3 sm:p-3.5 -ml-1 rounded-2xl bg-gradient-to-r from-[#020712]/85 via-[#020712]/55 to-transparent backdrop-blur-[2px] max-w-sm">
-                
-                {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed) */}
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-                  <span className="text-[10.5px] sm:text-[11.5px] font-black tracking-[0.26em] text-[#FCE38A] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">
-                    BUSINESS OWNERS CIRCLE
-                  </span>
-                  <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-                </div>
+              {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE (kochi kerala removed to avoid duplication) */}
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
+                <span className="text-[10px] sm:text-[11px] font-black tracking-[0.24em] text-[#FCE38A] uppercase drop-shadow-[0_2px_6px_rgba(0,0,0,1)]">
+                  BUSINESS OWNERS CIRCLE
+                </span>
+                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
+              </div>
 
-                {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted) */}
-                <h1 className="font-serif font-black text-[22px] sm:text-[25px] leading-[1.12] mb-2 text-left">
-                  <span className="text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)]">
-                    REFER. COLLABORATE.
-                  </span>
-                  <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5C0] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_4px_20px_rgba(252,227,138,0.6)] filter brightness-110">
-                    SUPPORT. GROW.
-                  </span>
-                </h1>
+              {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. (Prominently Highlighted) */}
+              <h1 className="font-serif font-black text-[22px] sm:text-[25px] leading-[1.12] mb-2 text-left">
+                <span className="text-white drop-shadow-[0_3px_12px_rgba(0,0,0,1)]">
+                  REFER. COLLABORATE.
+                </span>
+                <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5C0] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_3px_16px_rgba(252,227,138,0.6)] filter brightness-110">
+                  SUPPORT. GROW.
+                </span>
+              </h1>
 
-                {/* Mission Statement Subtitle ("a professional..." line) (Ultra-Sharp) */}
-                <p className="text-[#FAF6EE] text-[10.5px] sm:text-[11.5px] leading-relaxed max-w-[310px] drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-semibold mb-3 text-left">
-                  A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
-                </p>
+              {/* Mission Statement Subtitle ("a professional..." line) (Ultra-Sharp) */}
+              <p className="text-[#FAF6EE] text-[10.5px] sm:text-[11.5px] leading-relaxed max-w-[310px] drop-shadow-[0_2px_10px_rgba(0,0,0,1)] font-medium mb-3.5 text-left">
+                A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
+              </p>
 
-                {/* Two CTA Buttons Side-by-Side (Left Aligned & Highlighted) */}
-                <div className="flex items-center justify-start gap-2.5 w-full max-w-xs select-none">
-                  {/* Button 1: JOIN THE CIRCLE */}
-                  <button
-                    onClick={onOpenJoinModal}
-                    className="py-2 px-3.5 sm:px-4 rounded-full bg-gradient-to-r from-[#E5B838] via-[#FCE38A] to-[#D4AF37] border-2 border-[#FFF8D6] text-[#030B17] font-black text-[10px] tracking-wider uppercase shadow-[0_4px_20px_rgba(252,227,138,0.65)] flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all"
-                  >
-                    <span className="whitespace-nowrap">JOIN THE CIRCLE</span>
-                    <ArrowRight className="w-3 h-3 stroke-[3] text-[#030B17]" />
-                  </button>
+              {/* Two CTA Buttons Side-by-Side (Left Aligned & Highlighted) */}
+              <div className="flex items-center justify-start gap-2.5 w-full max-w-xs select-none">
+                {/* Button 1: JOIN THE CIRCLE */}
+                <button
+                  onClick={onOpenJoinModal}
+                  className="py-2 px-3.5 sm:px-4 rounded-full bg-gradient-to-r from-[#E5B838] via-[#FCE38A] to-[#D4AF37] border-2 border-[#FFF8D6] text-[#030B17] font-black text-[10px] tracking-wider uppercase shadow-[0_4px_20px_rgba(252,227,138,0.65)] flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+                >
+                  <span className="whitespace-nowrap">JOIN THE CIRCLE</span>
+                  <ArrowRight className="w-3 h-3 stroke-[3] text-[#030B17]" />
+                </button>
 
-                  {/* Button 2: EXPLORE OUR COMMUNITY */}
-                  <button
-                    onClick={onOpenJoinModal}
-                    className="py-2 px-2.5 sm:px-3 rounded-full bg-[#030D1D]/90 backdrop-blur-md border-2 border-[#DFC688] hover:border-[#FFF5C0] text-white hover:text-[#FCE38A] font-bold text-[9px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-[0_4px_16px_rgba(0,0,0,0.85)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
-                  >
-                    <span className="whitespace-nowrap">EXPLORE OUR COMMUNITY</span>
-                    <ArrowRight className="w-3 h-3 stroke-[2.2] text-[#DFC688]" />
-                  </button>
-                </div>
-
+                {/* Button 2: EXPLORE OUR COMMUNITY */}
+                <button
+                  onClick={onOpenJoinModal}
+                  className="py-2 px-2.5 sm:px-3 rounded-full bg-[#030D1D]/80 backdrop-blur-md border border-[#DFC688] hover:border-[#FFF5C0] text-white hover:text-[#FCE38A] font-bold text-[9px] tracking-wider uppercase flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-[0_4px_16px_rgba(0,0,0,0.85)] drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]"
+                >
+                  <span className="whitespace-nowrap">EXPLORE OUR COMMUNITY</span>
+                  <ArrowRight className="w-3 h-3 stroke-[2.2] text-[#DFC688]" />
+                </button>
               </div>
 
             </div>
