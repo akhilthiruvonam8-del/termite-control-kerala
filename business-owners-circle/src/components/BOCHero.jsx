@@ -389,6 +389,8 @@ export default function BOCHero({ onOpenJoinModal }) {
                                     onClick={() => {
                                       if (sub.title === 'Membership Benefits' || sub.title === 'Executive Membership') {
                                         document.getElementById('membership-benefits')?.scrollIntoView({ behavior: 'smooth' });
+                                      } else if (sub.title === 'Verified Founders Directory') {
+                                        document.getElementById('featured-members')?.scrollIntoView({ behavior: 'smooth' });
                                       } else {
                                         onOpenJoinModal();
                                       }
@@ -697,6 +699,8 @@ export default function BOCHero({ onOpenJoinModal }) {
                               onClick={() => {
                                 if (sub.title === 'Membership Benefits' || sub.title === 'Executive Membership') {
                                   document.getElementById('membership-benefits')?.scrollIntoView({ behavior: 'smooth' });
+                                } else if (sub.title === 'Verified Founders Directory') {
+                                  document.getElementById('featured-members')?.scrollIntoView({ behavior: 'smooth' });
                                 } else {
                                   onOpenJoinModal();
                                 }
