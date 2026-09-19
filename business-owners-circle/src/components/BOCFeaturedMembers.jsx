@@ -5,6 +5,8 @@ import {
   Globe, 
   Sparkles, 
   ShieldCheck, 
+  GraduationCap,
+  HeartHandshake,
   UserPlus, 
   ArrowRight,
   CheckCircle2
@@ -16,19 +18,21 @@ import maheshPhoto from '../assets/boc-member-mahesh-prabudhan.jpg';
 import binuPhoto from '../assets/boc-member-binu-tb.jpg';
 import vidhuPhoto from '../assets/boc-member-vidhu-mezhuveli.jpg';
 import sajishPhoto from '../assets/boc-member-sajish-maliyekkal.jpg';
+import nidhiPhoto from '../assets/boc-member-nidhi-tomer.jpg';
+import anjanaPhoto from '../assets/boc-member-anjana-sreedharan.jpg';
 
 /**
  * BOCFeaturedMembers — "Meet Our Valued Members" Executive Module
  * 1:1 Recreation of Master Reference (media_1789791169061.jpg)
  *
- * Real Member Profiles:
+ * 7 Real Member Profiles:
  * 1. Jijeesh Minerva (HIGHLIGHTED #1) — Founder & COO, M/s Eco Pest India & M/s Urban Owls Digital
  * 2. Mahesh Prabudhan — CEO, Yessem Facilities
  * 3. Binu TB — Global Marketing, Coimbatore
  * 4. Vidhu Mezhuveli — Founder & CEO, Smash Cleaning Company
- * 5. Sajish Maliyekkal — Founder, Greenline Pest Management
- * 6. Upcoming Member (Reserved Slot 1)
- * 7. Upcoming Member (Reserved Slot 2)
+ * 5. Sajish Maliyekkal — Founder, Greenline Pest Management (Executive Portrait)
+ * 6. Nidhi Tomer — Founder & CEO, Vedic Bricks Academy, Kochi
+ * 7. Anjana Sreedharan — General Secretary, Mithrakulam Trust
  */
 export default function BOCFeaturedMembers({ onOpenJoinModal }) {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -87,24 +91,24 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
       photo: sajishPhoto,
     },
     {
-      id: 'reserved-slot-1',
-      name: 'Upcoming Member',
-      role: 'Chapter Seat Reserved',
-      company: 'Induction in Progress',
-      category: 'NEW VERTICAL',
-      tagline: 'Exclusive category seat reserved for an established Kerala business leader.',
-      icon: UserPlus,
-      isReserved: true,
+      id: 'nidhi-tomer',
+      name: 'Nidhi Tomer',
+      role: 'Founder & CEO',
+      company: 'Vedic Bricks Academy, Kochi',
+      category: 'VEDIC EDTECH',
+      tagline: 'Empowering future generations with transformative learning and holistic skill development.',
+      icon: GraduationCap,
+      photo: nidhiPhoto,
     },
     {
-      id: 'reserved-slot-2',
-      name: 'Upcoming Member',
-      role: 'Chapter Seat Reserved',
-      company: 'Induction in Progress',
-      category: 'NEW VERTICAL',
-      tagline: 'Exclusive category seat reserved for an established Kerala business leader.',
-      icon: UserPlus,
-      isReserved: true,
+      id: 'anjana-sreedharan',
+      name: 'Anjana Sreedharan',
+      role: 'General Secretary',
+      company: 'Mithrakulam Trust',
+      category: 'SOCIAL IMPACT',
+      tagline: 'Championing community welfare, cultural empowerment and sustainable social upliftment.',
+      icon: HeartHandshake,
+      photo: anjanaPhoto,
     },
   ];
 
