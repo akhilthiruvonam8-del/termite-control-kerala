@@ -14,6 +14,7 @@ import meeraThomasPhoto from '../assets/boc-member-meera-thomas.jpg';
 import rohitMenonPhoto from '../assets/boc-member-rohit-menon.jpg';
 import anithaVarmaPhoto from '../assets/boc-member-anitha-varma.jpg';
 import sanjayPillaiPhoto from '../assets/boc-member-sanjay-pillai.jpg';
+import bocLogoPng from '../assets/boc-logo.png';
 
 /**
  * BOCFeaturedMembers — "Meet Our Valued Members" Executive Module
@@ -112,11 +113,12 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
           
           {/* Kicker Badge with Horizontal Rules */}
           <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="h-[1.5px] w-8 sm:w-14 bg-[#B57D2B]" />
+            <div className="h-[1.5px] w-6 sm:w-12 bg-[#B57D2B]" />
+            <img src={bocLogoPng} alt="BOC Emblem" className="w-7 h-7 sm:w-8 sm:h-8 object-contain drop-shadow-sm" />
             <span className="text-[#B57D2B] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase font-cinzel">
               FEATURED MEMBERS
             </span>
-            <div className="h-[1.5px] w-8 sm:w-14 bg-[#B57D2B]" />
+            <div className="h-[1.5px] w-6 sm:w-12 bg-[#B57D2B]" />
           </div>
 
           {/* Main Headline */}
@@ -211,6 +213,7 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
             onClick={onOpenJoinModal}
             className="inline-flex items-center gap-2.5 px-8 sm:px-10 py-3 sm:py-3.5 rounded-full bg-[#07172C] hover:bg-[#0B2548] text-white font-medium text-sm sm:text-base border border-[#B57D2B]/50 shadow-xl hover:shadow-2xl hover:shadow-[#B57D2B]/25 transition-all duration-300 transform hover:-translate-y-0.5 group"
           >
+            <img src={bocLogoPng} alt="BOC Emblem" className="w-5 h-5 object-contain" />
             <span>View All Members</span>
             <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1.5 transition-transform" />
           </button>

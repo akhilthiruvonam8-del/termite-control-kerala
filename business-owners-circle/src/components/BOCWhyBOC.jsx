@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import bocNetworkingHandshake from '../assets/boc-networking-handshake.jpg';
 import bocHouseboatPalms from '../assets/boc-journey-houseboat-palms.jpg';
+import bocLogoPng from '../assets/boc-logo.png';
 
 /**
  * Palm Frond Botanical Vector Accent for Bottom-Right Corner
@@ -109,11 +110,12 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
               
               {/* Section Kicker */}
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-[1.5px] bg-[#C29023]" />
+                <img src={bocLogoPng} alt="BOC Emblem" className="w-7 h-7 sm:w-8 sm:h-8 object-contain drop-shadow-sm" />
+                <span className="w-6 h-[1.5px] bg-[#C29023]" />
                 <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
                   WHAT IS BOC?
                 </span>
-                <span className="w-8 h-[1.5px] bg-[#C29023]" />
+                <span className="w-6 h-[1.5px] bg-[#C29023]" />
               </div>
 
               {/* Main Headline */}
@@ -233,6 +235,7 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
               onClick={onOpenJoinModal}
               className="inline-flex items-center gap-2.5 px-9 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase border border-[#D4A536]/40 shadow-[0_6px_22px_rgba(8,23,48,0.3)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.45)] active:scale-95 transition-all group cursor-pointer"
             >
+              <img src={bocLogoPng} alt="BOC Emblem" className="w-5 h-5 object-contain" />
               <span>JOIN THE CIRCLE</span>
               <ArrowRight className="w-4 h-4 text-[#F9D678] group-hover:translate-x-1.5 transition-transform" />
             </button>

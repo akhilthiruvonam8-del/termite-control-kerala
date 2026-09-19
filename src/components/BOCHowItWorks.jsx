@@ -2,6 +2,7 @@ import React from 'react';
 import { UserPlus, Users, Handshake, Megaphone, TrendingUp, ArrowRight } from 'lucide-react';
 import bocNetsSkyline from '../assets/boc-journey-nets-skyline.jpg';
 import bocHouseboatPalms from '../assets/boc-journey-houseboat-palms.jpg';
+import bocLogoPng from '../assets/boc-logo.png';
 
 /**
  * Palm Frond Botanical Vector Accent
@@ -134,7 +135,8 @@ export default function BOCHowItWorks({ onOpenJoinModal }) {
           <div className="lg:col-span-7 flex flex-col items-start text-left">
             {/* Tagline / Kicker */}
             <div className="flex items-center gap-3 mb-2.5">
-              <span className="w-8 h-[2px] bg-[#C29023]" />
+              <img src={bocLogoPng} alt="BOC Emblem" className="w-7 h-7 sm:w-8 sm:h-8 object-contain drop-shadow-sm" />
+              <span className="w-6 h-[2px] bg-[#C29023]" />
               <span className="text-[11px] sm:text-xs font-cinzel font-bold tracking-[0.25em] text-[#B58920] uppercase">
                 HOW IT WORKS
               </span>
@@ -290,8 +292,9 @@ export default function BOCHowItWorks({ onOpenJoinModal }) {
         <div className="flex justify-center mt-7 sm:mt-9 mb-8 sm:mb-12 relative z-10">
           <button
             onClick={onOpenJoinModal}
-            className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] active:scale-95 text-white font-bold text-xs uppercase tracking-widest shadow-[0_6px_22px_rgba(8,23,48,0.25)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.4)] transition-all group cursor-pointer"
+            className="inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] active:scale-95 text-white font-bold text-xs sm:text-[13px] tracking-wider uppercase border border-[#D4A536]/40 shadow-[0_6px_22px_rgba(8,23,48,0.25)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.4)] transition-all group cursor-pointer"
           >
+            <img src={bocLogoPng} alt="BOC Emblem" className="w-4 h-4 object-contain" />
             <span>Be Part of the BOC Journey</span>
             <ArrowRight className="w-4 h-4 text-[#F9D678] group-hover:translate-x-1.5 transition-transform" />
           </button>

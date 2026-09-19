@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import bocMembershipNetworking from '../assets/boc-membership-networking.jpg';
 import bocHouseboatPalms from '../assets/boc-journey-houseboat-palms.jpg';
+import bocLogoPng from '../assets/boc-logo.png';
 
 /**
  * Palm Frond Botanical Vector Accent
@@ -132,11 +133,12 @@ export default function BOCMembershipBenefits({ onOpenJoinModal }) {
             
             {/* Kicker Badge */}
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-[1.5px] w-8 sm:w-12 bg-[#B57D2B]" />
+              <img src={bocLogoPng} alt="BOC Emblem" className="w-7 h-7 sm:w-8 sm:h-8 object-contain drop-shadow-sm" />
+              <div className="h-[1.5px] w-6 sm:w-10 bg-[#B57D2B]" />
               <span className="text-[#B57D2B] text-xs sm:text-sm font-bold tracking-[0.25em] uppercase font-cinzel">
                 MEMBERSHIP BENEFITS
               </span>
-              <div className="h-[1.5px] w-8 sm:w-12 bg-[#B57D2B]" />
+              <div className="h-[1.5px] w-6 sm:w-10 bg-[#B57D2B]" />
             </div>
 
             {/* Main Headline */}
@@ -167,6 +169,7 @@ export default function BOCMembershipBenefits({ onOpenJoinModal }) {
                 onClick={onOpenJoinModal}
                 className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#07172C] hover:bg-[#0B2548] text-white font-medium text-sm shadow-md hover:shadow-lg hover:shadow-[#B57D2B]/15 transition-all duration-300 border border-[#B57D2B]/40 group"
               >
+                <img src={bocLogoPng} alt="BOC Emblem" className="w-4 h-4 object-contain" />
                 <span>Join the Circle</span>
                 <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
               </button>
