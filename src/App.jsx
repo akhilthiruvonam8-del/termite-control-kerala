@@ -6,6 +6,7 @@ import BOCMembershipBenefits from './components/BOCMembershipBenefits';
 import BOCFeaturedMembers from './components/BOCFeaturedMembers';
 import BOCBusinessCategories from './components/BOCBusinessCategories';
 import BOCChapters from './components/BOCChapters';
+import BOCEvents from './components/BOCEvents';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -52,6 +53,11 @@ export default function App() {
 
         {/* Module 6: BOC Chapters (Growing Together, Chapter by Chapter.) */}
         <BOCChapters 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 7: BOC Events (Upcoming Events: Learn. Network. Collaborate. Grow.) */}
+        <BOCEvents 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
