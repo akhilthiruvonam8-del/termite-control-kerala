@@ -39,9 +39,9 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
 
   const members = [
     {
-      id: 'jijeesh-minerva',
-      name: 'Jijeesh Minerva',
-      role: 'Founder & COO',
+      id: 'jijeesh',
+      name: 'Jijeesh',
+      role: 'Founder & CEO',
       company: 'M/s Eco Pest India • M/s Urban Owls Digital',
       category: 'PEST & DIGITAL',
       tagline: 'Driving business ecosystems, pest control excellence & digital innovation across Kerala.',
