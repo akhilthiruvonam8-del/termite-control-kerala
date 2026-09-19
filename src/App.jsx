@@ -5,6 +5,7 @@ import BOCHowItWorks from './components/BOCHowItWorks';
 import BOCMembershipBenefits from './components/BOCMembershipBenefits';
 import BOCFeaturedMembers from './components/BOCFeaturedMembers';
 import BOCBusinessCategories from './components/BOCBusinessCategories';
+import BOCChapters from './components/BOCChapters';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -18,7 +19,7 @@ export default function App() {
   return (
     <div id="home" className="min-h-screen flex flex-col font-sans selection:bg-[#C9A227] selection:text-[#041126] overflow-x-hidden bg-[#020712] text-slate-100">
       
-      {/* Main Experience: Hero + Why BOC + How It Works + Membership Benefits + Featured Members + Business Categories */}
+      {/* Main Experience: Hero + Why BOC + How It Works + Membership Benefits + Featured Members + Business Categories + BOC Chapters */}
       <main className="flex-grow flex flex-col items-center justify-center bg-[#020712]">
         <BOCHero 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
@@ -46,6 +47,11 @@ export default function App() {
 
         {/* Module 5: Business Categories (Connect Across Industries. Create New Opportunities.) */}
         <BOCBusinessCategories 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 6: BOC Chapters (Growing Together, Chapter by Chapter.) */}
+        <BOCChapters 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
