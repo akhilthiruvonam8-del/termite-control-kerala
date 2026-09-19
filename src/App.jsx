@@ -7,7 +7,6 @@ import BOCFeaturedMembers from './components/BOCFeaturedMembers';
 import BOCBusinessCategories from './components/BOCBusinessCategories';
 import BOCChapters from './components/BOCChapters';
 import BOCNetworkingReferrals from './components/BOCNetworkingReferrals';
-import BOCEvents from './components/BOCEvents';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -59,11 +58,6 @@ export default function App() {
 
         {/* Module 7: Networking & Referrals (Real Connections. Big Opportunities.) */}
         <BOCNetworkingReferrals 
-          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
-        />
-
-        {/* Module 8: BOC Events (Upcoming Events: Learn. Network. Collaborate. Grow.) */}
-        <BOCEvents 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>

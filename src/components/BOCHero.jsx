@@ -156,16 +156,6 @@ export default function BOCHero({ onOpenJoinModal }) {
       ]
     },
     { 
-      id: 'events', 
-      label: 'Events', 
-      icon: Calendar,
-      dropdown: [
-        { title: 'Weekly Sunrise Conclave', desc: 'Every Thursday 7:00 AM — Grand Hyatt Kochi', icon: Calendar },
-        { title: 'Quarterly CEO Dinner', desc: 'Private rooftop gala & keynote address', icon: Flame },
-        { title: 'Kerala Business Expo 2026', desc: 'Annual 1,000+ delegate summit', icon: Rocket },
-      ]
-    },
-    { 
       id: 'resources', 
       label: 'Resources', 
       icon: BookOpen,
