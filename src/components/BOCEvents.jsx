@@ -29,68 +29,68 @@ export default function BOCEvents({ onOpenJoinModal }) {
 
   const events = [
     {
-      id: 'digital-growth-seminar',
-      month: 'APR',
-      day: '26',
+      id: 'event-slot-1',
+      month: 'TBA',
+      day: '--',
       year: '2025',
-      weekday: 'SAT',
+      weekday: 'SOON',
       category: 'BUSINESS SEMINAR',
       categoryIcon: Presentation,
-      title: 'Digital Growth Strategies for SMEs',
-      tagline: 'Learn how to leverage digital tools, marketing and technology to scale your business.',
-      venue: 'Hotel Grand Hyatt, Kochi',
-      time: '10:00 AM – 01:00 PM',
-      capacity: 'Limited Seats',
+      title: 'Executive Business Seminar',
+      tagline: 'Topic, agenda and keynote speakers will be announced shortly by the BOC Executive Council.',
+      venue: 'Venue: To Be Announced (Kochi)',
+      time: 'Schedule: Releasing Soon',
+      capacity: 'Pre-Registration Open',
       photo: seminarImg,
-      specialSpeaker: 'Special Guest: Roopesh Pathalil',
+      specialSpeaker: 'Keynote Speaker: Announcing Soon',
     },
     {
-      id: 'networking-mixer',
-      month: 'MAY',
-      day: '10',
+      id: 'event-slot-2',
+      month: 'TBA',
+      day: '--',
       year: '2025',
-      weekday: 'SAT',
-      category: 'NETWORKING EVENT',
+      weekday: 'SOON',
+      category: 'NETWORKING MIXER',
       categoryIcon: Users,
-      title: 'Business Networking Mixer',
-      tagline: 'Build new connections, exchange ideas and discover collaboration opportunities.',
-      venue: 'The Leela, Kochi',
-      time: '04:00 PM – 07:00 PM',
-      capacity: 'BOC Members & Guests',
+      title: 'Entrepreneurs Networking Mixer',
+      tagline: 'Exclusive peer networking evening for Kerala business founders. Official schedule releasing soon.',
+      venue: 'Venue: To Be Announced (Kochi)',
+      time: 'Schedule: Releasing Soon',
+      capacity: 'BOC Members & Invited Guests',
       photo: networkingImg,
-      specialSpeaker: 'Kerala Service Business Entrepreneurs Mixer',
+      specialSpeaker: 'Host: BOC Chapter Council',
     },
     {
-      id: 'business-branding',
-      month: 'MAY',
-      day: '18',
+      id: 'event-slot-3',
+      month: 'TBA',
+      day: '--',
       year: '2025',
-      weekday: 'SUN',
-      category: 'WORKSHOP',
+      weekday: 'SOON',
+      category: 'FOUNDER WORKSHOP',
       categoryIcon: Lightbulb,
-      title: 'Effective Business Branding',
-      tagline: 'Build a strong brand identity and stand out in your industry.',
-      venue: 'CIAL Convention Centre, Kochi',
-      time: '10:00 AM – 01:00 PM',
+      title: 'Executive Masterclass & Workshop',
+      tagline: 'High-impact business growth workshop. Speaker lineup and curriculum updating shortly.',
+      venue: 'Venue: To Be Announced (Kochi)',
+      time: 'Schedule: Releasing Soon',
       capacity: 'BOC Members Only',
       photo: brandingImg,
-      specialSpeaker: 'Led by Nidhi Tomer (VP-Business Strategist)',
+      specialSpeaker: 'Facilitator: Announcing Soon',
     },
     {
-      id: 'backwater-retreat',
-      month: 'JUN',
-      day: '07',
+      id: 'event-slot-4',
+      month: 'TBA',
+      day: '--',
       year: '2025',
-      weekday: 'SAT',
-      category: 'CHAPTER EVENT',
+      weekday: 'SOON',
+      category: 'CHAPTER CONCLAVE',
       categoryIcon: Palmtree,
-      title: 'Backwater Retreat & Business Talks',
-      tagline: 'Relax, connect and grow — an exclusive retreat for BOC members.',
-      venue: 'Kumarakom Resort, Kerala',
-      time: '09:00 AM – 06:00 PM',
+      title: 'Annual Kerala Chapters Conclave',
+      tagline: 'Statewide leadership retreat, business talks and award night. Full itinerary releasing soon.',
+      venue: 'Venue: Destination Resort (TBA)',
+      time: 'Schedule: Releasing Soon',
       capacity: 'BOC Members Only',
       photo: retreatImg,
-      specialSpeaker: 'Annual Kerala Chapters Conclave',
+      specialSpeaker: 'Special Guests: State Business Dignitaries',
     },
   ];
 
@@ -234,7 +234,7 @@ export default function BOCEvents({ onOpenJoinModal }) {
                   </div>
                 </div>
 
-                {/* Register Button */}
+                {/* Register / Pre-Register Button */}
                 <button
                   onClick={() => {
                     setSelectedEvent(evt);
@@ -242,7 +242,7 @@ export default function BOCEvents({ onOpenJoinModal }) {
                   }}
                   className="w-full py-2.5 px-4 rounded-full bg-[#07172C] hover:bg-[#0B2548] text-white text-xs sm:text-sm font-semibold border border-[#B57D2B]/50 shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-[#D4AF37] mt-auto cursor-pointer"
                 >
-                  <span>Register Now</span>
+                  <span>Pre-Register / Notify Me</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37] group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
