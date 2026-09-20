@@ -8,6 +8,8 @@ import BOCBusinessCategories from './components/BOCBusinessCategories';
 import BOCChapters from './components/BOCChapters';
 import BOCEvents from './components/BOCEvents';
 import BOCNetworkingReferrals from './components/BOCNetworkingReferrals';
+import BOCMemberSuccessStories from './components/BOCMemberSuccessStories';
+import BOCGlobalExpansion from './components/BOCGlobalExpansion';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -64,6 +66,16 @@ export default function App() {
 
         {/* Module 8: Networking & Referrals (Real Connections. Big Opportunities.) */}
         <BOCNetworkingReferrals 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 9: Member Success Stories (Real People. Real Growth.) */}
+        <BOCMemberSuccessStories 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 10: Global Expansion (From Kerala to the World.) */}
+        <BOCGlobalExpansion 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
