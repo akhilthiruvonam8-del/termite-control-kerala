@@ -12,7 +12,7 @@ import BOCMemberSuccessStories from './components/BOCMemberSuccessStories';
 import BOCGlobalExpansion from './components/BOCGlobalExpansion';
 import BOCFAQ from './components/BOCFAQ';
 import BOCJoinToday from './components/BOCJoinToday';
-import BOCMicroFooter from './components/BOCMicroFooter';
+import BOCFooter from './components/BOCFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
 /**
@@ -92,8 +92,8 @@ export default function App() {
         />
       </main>
 
-      {/* Luxury Micro Footer */}
-      <BOCMicroFooter />
+      {/* Executive Master Grand Footer */}
+      <BOCFooter onOpenJoinModal={() => setIsJoinModalOpen(true)} />
 
       {/* Interactive Membership Application Modal */}
       <BOCJoinModal 
