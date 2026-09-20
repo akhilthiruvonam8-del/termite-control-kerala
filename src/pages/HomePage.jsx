@@ -1,85 +1,62 @@
-import React, { useEffect } from 'react';
-import Hero from '../components/Hero';
-import TrustSection from '../components/TrustSection';
-import ServicesGrid from '../components/ServicesGrid';
-import TermiteProblemSection from '../components/TermiteProblemSection';
-import WoodBorerSection from '../components/WoodBorerSection';
-import HowItWorks from '../components/HowItWorks';
-import PropertyTypes from '../components/PropertyTypes';
-import BeforeAfterShowcase from '../components/BeforeAfterShowcase';
-import KeralaLocationsHub from '../components/KeralaLocationsHub';
-import FAQSection from '../components/FAQSection';
-import ContactSection from '../components/ContactSection';
-import PrimaryBottomCTA from '../components/PrimaryBottomCTA';
-import { updateMetaTags } from '../utils/seo';
+import React from 'react';
+import BOCHero from '../components/BOCHero';
+import BOCWhyBOC from '../components/BOCWhyBOC';
+import BOCHowItWorks from '../components/BOCHowItWorks';
+import BOCMembershipBenefits from '../components/BOCMembershipBenefits';
+import BOCFeaturedMembers from '../components/BOCFeaturedMembers';
+import BOCBusinessCategories from '../components/BOCBusinessCategories';
+import BOCChapters from '../components/BOCChapters';
+import BOCEvents from '../components/BOCEvents';
+import BOCNetworkingReferrals from '../components/BOCNetworkingReferrals';
+import BOCMemberSuccessStories from '../components/BOCMemberSuccessStories';
+import BOCGlobalExpansion from '../components/BOCGlobalExpansion';
+import BOCFAQ from '../components/BOCFAQ';
+import BOCJoinToday from '../components/BOCJoinToday';
 
-export default function HomePage({ onNavigate, onOpenLeadModal, onOpenInspectionModal }) {
-  useEffect(() => {
-    updateMetaTags({
-      title: "Termite Control Kerala | Anti-Termite & Wood Borer Treatment",
-      description: "Professional termite control, anti-termite treatment and wood borer treatment across Kerala. Residential, commercial and pre/post-construction solutions. Call 9020040009.",
-      keywords: "termite control Kerala, termite treatment Kerala, anti termite treatment Kerala, termite control Kozhikode, termite control Kochi, termite control Ernakulam, wood borer treatment Kerala, wood borer control Kerala, termite treatment Kochi, anti termite treatment Kochi, termite control near me, termite pest control Kerala, pre construction termite treatment Kerala, post construction termite treatment Kerala"
-    });
-  }, []);
-
+/**
+ * HomePage — Complete 14-Module Luxury Business Networking Portal
+ */
+export default function HomePage({ onOpenJoinModal }) {
   return (
-    <div className="bg-slate-50 min-h-screen">
-      {/* 1. Hero Section + Quick Lead Form */}
-      <Hero 
-        onOpenInspectionModal={onOpenInspectionModal}
-      />
+    <main className="flex-grow flex flex-col items-center justify-center bg-[#020712] w-full pt-16 sm:pt-20">
+      {/* Hero Showcase */}
+      <BOCHero onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 2. Trust Section (7 Points) */}
-      <TrustSection />
+      {/* Module 1: Why Business Owner's Circle? */}
+      <BOCWhyBOC onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 3. Services Grid (7 Services) */}
-      <ServicesGrid 
-        onOpenLeadModal={onOpenLeadModal} 
-      />
+      {/* Module 2: How It Works — The BOC Journey */}
+      <BOCHowItWorks onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 4. Termite Problem Section (8 Signs) */}
-      <TermiteProblemSection 
-        onOpenInspectionModal={onOpenInspectionModal}
-      />
+      {/* Module 3: Membership Benefits */}
+      <BOCMembershipBenefits onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 5. Wood Borer Section */}
-      <WoodBorerSection 
-        onOpenLeadModal={onOpenLeadModal}
-      />
+      {/* Module 4: Featured Members */}
+      <BOCFeaturedMembers onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 6. How It Works (4 Steps) */}
-      <HowItWorks 
-        onOpenInspectionModal={onOpenInspectionModal}
-      />
+      {/* Module 5: Business Categories */}
+      <BOCBusinessCategories onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 7. Property Types (Residential, Commercial, Construction, etc.) */}
-      <PropertyTypes 
-        onOpenLeadModal={onOpenLeadModal}
-      />
+      {/* Module 6: BOC Chapters */}
+      <BOCChapters onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 8. Before & After Results Showcase */}
-      <BeforeAfterShowcase 
-        onOpenInspectionModal={onOpenInspectionModal}
-      />
+      {/* Module 7: Upcoming Events */}
+      <BOCEvents onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 9. Kerala-Wide Service Hub + Kozhikode & Kochi Focus */}
-      <KeralaLocationsHub 
-        onNavigate={onNavigate}
-        onOpenLeadModal={onOpenLeadModal}
-      />
+      {/* Module 8: Networking & Referrals */}
+      <BOCNetworkingReferrals onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 9. FAQ Section */}
-      <FAQSection />
+      {/* Module 9: Member Success Stories */}
+      <BOCMemberSuccessStories onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 10. Contact Section */}
-      <ContactSection 
-        onOpenLeadModal={onOpenLeadModal}
-      />
+      {/* Module 10: Global Expansion */}
+      <BOCGlobalExpansion onOpenJoinModal={onOpenJoinModal} />
 
-      {/* 11. Final Primary Bottom CTA */}
-      <PrimaryBottomCTA 
-        onOpenInspectionModal={onOpenInspectionModal}
-      />
-    </div>
+      {/* Module 11: Frequently Asked Questions */}
+      <BOCFAQ onOpenJoinModal={onOpenJoinModal} />
+
+      {/* Module 12: Join BOC Today CTA */}
+      <BOCJoinToday onOpenJoinModal={onOpenJoinModal} />
+    </main>
   );
 }
