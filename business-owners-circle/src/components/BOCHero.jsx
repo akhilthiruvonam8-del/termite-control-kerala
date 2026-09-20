@@ -136,6 +136,15 @@ export default function BOCHero({ onOpenJoinModal }) {
       ]
     },
     { 
+      id: 'events', 
+      label: 'Events', 
+      icon: Calendar,
+      dropdown: [
+        { title: 'Upcoming Business Events', desc: 'Seminars, mixers, workshops & retreats', icon: Calendar },
+        { title: 'Pre-Register for Invitations', desc: 'Get early access to verified member conclaves', icon: Sparkles, isAction: true },
+      ]
+    },
+    { 
       id: 'referrals', 
       label: 'Referrals', 
       icon: Gift,
