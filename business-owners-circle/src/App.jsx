@@ -10,6 +10,7 @@ import BOCEvents from './components/BOCEvents';
 import BOCNetworkingReferrals from './components/BOCNetworkingReferrals';
 import BOCMemberSuccessStories from './components/BOCMemberSuccessStories';
 import BOCGlobalExpansion from './components/BOCGlobalExpansion';
+import BOCFAQ from './components/BOCFAQ';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -76,6 +77,11 @@ export default function App() {
 
         {/* Module 10: Global Expansion (From Kerala to the World.) */}
         <BOCGlobalExpansion 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 11: Frequently Asked Questions (Get Clarity. Move Forward.) */}
+        <BOCFAQ 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
