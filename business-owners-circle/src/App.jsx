@@ -11,6 +11,7 @@ import BOCNetworkingReferrals from './components/BOCNetworkingReferrals';
 import BOCMemberSuccessStories from './components/BOCMemberSuccessStories';
 import BOCGlobalExpansion from './components/BOCGlobalExpansion';
 import BOCFAQ from './components/BOCFAQ';
+import BOCJoinToday from './components/BOCJoinToday';
 import BOCMicroFooter from './components/BOCMicroFooter';
 import BOCJoinModal from './components/BOCJoinModal';
 
@@ -82,6 +83,11 @@ export default function App() {
 
         {/* Module 11: Frequently Asked Questions (Get Clarity. Move Forward.) */}
         <BOCFAQ 
+          onOpenJoinModal={() => setIsJoinModalOpen(true)} 
+        />
+
+        {/* Module 12: Join BOC Today — More Connections. Bigger Opportunities. */}
+        <BOCJoinToday 
           onOpenJoinModal={() => setIsJoinModalOpen(true)} 
         />
       </main>
