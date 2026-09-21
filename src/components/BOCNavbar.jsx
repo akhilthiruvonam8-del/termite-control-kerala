@@ -43,6 +43,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
     { name: 'Members Directory', path: '/members' },
     { name: 'Events', path: '/events' },
     { name: 'Success Stories', path: '/success-stories' },
+    { name: 'FAQ', path: '/faq' },
   ];
 
   const isActive = (path) => {
@@ -101,25 +102,16 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             })}
           </nav>
 
-          {/* Right: Desktop Action Buttons (Login & Join BOC) */}
+          {/* Right: Desktop Action Buttons (Login Only) */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             {/* Member Login */}
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-[#D4AF37]/50 hover:border-[#F9D678] text-slate-200 hover:text-white bg-[#05142B]/80 hover:bg-[#D4AF37]/20 text-xs font-semibold tracking-wider transition-all font-cinzel"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#D4AF37]/50 hover:border-[#F9D678] text-slate-200 hover:text-white bg-[#05142B]/80 hover:bg-[#D4AF37]/20 text-xs font-semibold tracking-wider transition-all font-cinzel shadow-sm"
             >
               <User className="w-3.5 h-3.5 text-[#F9D678]" />
               <span>MEMBER LOGIN</span>
             </Link>
-
-            {/* Join BOC */}
-            <button
-              onClick={onOpenJoinModal}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] hover:from-white hover:to-[#F9D678] text-[#07172C] font-bold text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.35)] transition-all transform hover:scale-105 cursor-pointer font-cinzel"
-            >
-              <span>JOIN BOC</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
           </div>
 
           {/* Mobile Right: Login & Standout Gold Hamburger */}

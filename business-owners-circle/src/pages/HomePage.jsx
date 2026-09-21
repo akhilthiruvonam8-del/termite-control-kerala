@@ -10,7 +10,9 @@ import {
   ArrowRight, 
   CheckCircle2, 
   TrendingUp, 
-  ShieldCheck 
+  ShieldCheck,
+  HelpCircle,
+  LogIn
 } from 'lucide-react';
 
 import BOCHero from '../components/BOCHero';
@@ -77,6 +79,24 @@ export default function HomePage({ onOpenJoinModal }) {
       action: 'Read Member Stories',
       stats: '₹450 Cr+ Exchanged'
     },
+    {
+      title: 'FAQ & Help Center',
+      badge: 'OFFICIAL ANSWERS',
+      desc: 'Everything you need to know about category lock, chapter meetings, referrals, and joining.',
+      path: '/faq',
+      icon: HelpCircle,
+      action: 'Explore FAQs',
+      stats: '12 Top Questions'
+    },
+    {
+      title: 'Member Portal & Login',
+      badge: 'EXCLUSIVE ACCESS',
+      desc: 'Secure portal for registered BOC members to pass referrals, track synergies, and connect.',
+      path: '/login',
+      icon: LogIn,
+      action: 'Access Portal',
+      stats: 'Members Only'
+    },
   ];
 
   return (
@@ -98,13 +118,13 @@ export default function HomePage({ onOpenJoinModal }) {
           
           {/* Section Heading */}
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#07172C] border border-[#D4AF37]/40 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.25em] uppercase mb-3 shadow-sm">
-              <Sparkles className="w-3 h-3 text-[#F9D678]" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07172C] border border-[#D4AF37]/60 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.25em] uppercase mb-4 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+              <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
               <span>EXPLORE PLATFORM MODULES</span>
             </div>
             
             <h2 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight mb-4">
-              Everything You Need to <span className="bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] bg-clip-text text-transparent">Scale & Collaborate</span>
+              Everything You Need to <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#F5C75D] bg-clip-text text-transparent">Scale & Collaborate</span>
             </h2>
             
             <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed">
@@ -112,8 +132,8 @@ export default function HomePage({ onOpenJoinModal }) {
             </p>
           </div>
 
-          {/* 6 Modules Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* 8 Modules Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {portalModules.map((module, idx) => {
               const Icon = module.icon;
               return (

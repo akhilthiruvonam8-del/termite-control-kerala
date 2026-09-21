@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   MapPin, 
   Mail, 
@@ -175,52 +176,52 @@ export default function BOCFooter({ onOpenJoinModal }) {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-300">
               <li>
-                <button onClick={() => scrollToSection('home')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                <Link to="/" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
                   <span>Home</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('why-boc')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                <Link to="/about" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
                   <span>About Us</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('members')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Our Community</span>
+                <Link to="/membership" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>Membership Tiers</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('categories')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Business Connections</span>
+                <Link to="/chapters" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>Kerala Chapters</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('success-stories')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                <Link to="/members" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>Member Directory</span>
+                  <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/events" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>Events & Conclaves</span>
+                  <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/success-stories" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
                   <span>Success Stories</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('global')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Global Expansion</span>
+                <Link to="/faq" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>FAQ & Help Center</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('success-stories')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Testimonials</span>
-                  <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
-              </li>
-              <li>
-                <button onClick={() => scrollToSection('faq')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>FAQ</span>
-                  <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -235,46 +236,46 @@ export default function BOCFooter({ onOpenJoinModal }) {
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-[13px] text-slate-300">
               <li>
-                <button onClick={() => scrollToSection('benefits')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                <Link to="/membership" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
                   <span>Membership Benefits</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
                 <button onClick={onOpenJoinModal} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left font-semibold text-white">
-                  <span>Join BOC</span>
+                  <span>Join BOC (Apply)</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection('members')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                <Link to="/members" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
                   <span>Member Directory</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('events')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Events & Webinars</span>
+                <Link to="/events" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>Events & Conclaves</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={() => scrollToSection('networking')} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Networking Opportunities</span>
+                <Link to="/login" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left font-medium">
+                  <span>Member Login</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={onOpenJoinModal} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Resources</span>
+                <Link to="/register" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
+                  <span>New Member Registration</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
               <li>
-                <button onClick={onOpenJoinModal} className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left">
-                  <span>Partner With Us</span>
+                <Link to="/dashboard" className="hover:text-[#F9D678] transition-colors flex items-center gap-1.5 group cursor-pointer text-left font-medium">
+                  <span>Member Dashboard</span>
                   <span className="text-[#D4AF37] group-hover:translate-x-1 transition-transform">→</span>
-                </button>
+                </Link>
               </li>
             </ul>
           </div>

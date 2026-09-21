@@ -98,13 +98,13 @@ export default function EventsPage({ onOpenJoinModal }) {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#05142B] border border-[#D4AF37]/40 text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-4 shadow-sm">
-            <Calendar className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07172C] border border-[#D4AF37]/60 text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-4 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+            <Calendar className="w-3.5 h-3.5 text-[#F9D678]" />
             <span>EXECUTIVE CALENDAR</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight mb-4">
-            Upcoming <span className="bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] bg-clip-text text-transparent">Events & Conclaves</span>
+            Upcoming <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#F5C75D] bg-clip-text text-transparent">Events & Conclaves</span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">

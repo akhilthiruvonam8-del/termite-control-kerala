@@ -191,17 +191,16 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
           <div className="lg:col-span-6 flex flex-col justify-center text-left">
             {/* Kicker */}
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="h-[1.5px] w-6 bg-[#B57D2B]" />
-              <span className="text-[#B57D2B] text-xs sm:text-[13px] font-bold tracking-[0.25em] uppercase font-cinzel">
-                MEMBER SUCCESS STORIES
-              </span>
-              <div className="h-[1.5px] w-6 bg-[#B57D2B]" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07172C] border border-[#D4AF37]/60 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.25em] uppercase shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
+                <span>MEMBER SUCCESS STORIES</span>
+              </div>
             </div>
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-serif font-bold tracking-tight leading-[1.08] mb-4">
               <span className="text-[#0A192F] block">Real People.</span>
-              <span className="text-[#B57D2B] block">Real Growth.</span>
+              <span className="bg-gradient-to-r from-[#B57D2B] via-[#D4AF37] to-[#966620] bg-clip-text text-transparent block">Real Growth.</span>
             </h2>
 
             {/* Narrative Description */}
