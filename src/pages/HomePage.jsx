@@ -18,7 +18,7 @@ import BOCJoinToday from '../components/BOCJoinToday';
  */
 export default function HomePage({ onOpenJoinModal }) {
   return (
-    <main className="flex-grow flex flex-col items-center justify-center bg-[#020712] w-full pt-16 sm:pt-20">
+    <main className="flex-grow flex flex-col items-center justify-center bg-[#020712] w-full">
       {/* Hero Showcase */}
       <BOCHero onOpenJoinModal={onOpenJoinModal} />
 

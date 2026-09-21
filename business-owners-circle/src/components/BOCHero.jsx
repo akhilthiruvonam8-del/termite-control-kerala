@@ -46,7 +46,7 @@ export default function BOCHero({ onOpenJoinModal }) {
   ];
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col justify-center bg-[#020712] text-slate-100 select-none overflow-x-hidden">
+    <div className="relative w-full flex flex-col bg-[#020712] text-slate-100 select-none overflow-x-hidden">
       
       {/* ===================================================================== */}
       {/* 1. DESKTOP VIEWPORT: 100% UNTOUCHED 2K MASTER CANVAS (1:1 SAMPLE)     */}
@@ -89,6 +89,9 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* ----------------------------------------------------------------- */}
         <div className="absolute top-[23.5%] left-[21.5%] max-w-[46%] z-20 flex flex-col justify-center select-text">
           
+          {/* Soft directional backdrop scrim for 100% crisp text readability */}
+          <div className="absolute -inset-x-8 -inset-y-6 -z-10 bg-gradient-to-r from-[#020712]/80 via-[#020712]/45 to-transparent rounded-3xl blur-xl pointer-events-none" />
+
           {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE */}
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-8 sm:w-12 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
@@ -99,12 +102,12 @@ export default function BOCHero({ onOpenJoinModal }) {
           </div>
 
           {/* Grand Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
-          <h1 className="font-serif font-black tracking-tight text-[clamp(26px,3.2vw,56px)] leading-[1.08] mb-3">
-            <span className="text-white drop-shadow-[0_4px_20px_rgba(0,0,0,1)] [text-shadow:_0_2px_4px_rgba(0,0,0,0.95),_0_6px_24px_rgba(0,0,0,0.9)]">
+          <h1 className="font-serif font-black tracking-tight text-[clamp(26px,3.2vw,56px)] leading-[1.08] mb-3 select-text">
+            <span className="text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)]">
               REFER. COLLABORATE.
             </span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_28px_rgba(255,215,0,0.65)] filter brightness-115 [text-shadow:_0_2px_12px_rgba(0,0,0,0.8)]">
+            <span className="text-[#FCD34D] drop-shadow-[0_4px_20px_rgba(0,0,0,1)] [text-shadow:_0_2px_12px_rgba(0,0,0,0.95),_0_0_24px_rgba(252,211,77,0.45)]">
               SUPPORT. GROW.
             </span>
           </h1>
@@ -218,7 +221,7 @@ export default function BOCHero({ onOpenJoinModal }) {
       {/* EXACT 1:1 TO USER'S MOCKUP (media_1789658972902.jpg)                  */}
       {/* 100% Real Hand-Crafted Typed Code with Crisp Vector Fonts & Icons     */}
       {/* ===================================================================== */}
-      <div className="md:hidden relative w-full flex flex-col bg-[#020712] text-slate-100">
+      <div className="md:hidden relative w-full flex flex-col bg-[#020712] text-slate-100 pt-16">
         
         {/* Mobile Hero Viewport: Clean Portrait Photo + 100% Typed Vector Typography */}
         <div className="relative w-full overflow-hidden bg-[#020712]">
@@ -256,7 +259,7 @@ export default function BOCHero({ onOpenJoinModal }) {
                   REFER. COLLABORATE.
                 </span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFFCE8] via-[#FFD700] to-[#E5A823] drop-shadow-[0_4px_20px_rgba(255,215,0,0.6)]">
+                <span className="text-[#FCD34D] drop-shadow-[0_4px_16px_rgba(0,0,0,1)] [text-shadow:_0_2px_8px_rgba(0,0,0,0.95),_0_0_16px_rgba(252,211,77,0.4)]">
                   SUPPORT. GROW.
                 </span>
               </h1>
