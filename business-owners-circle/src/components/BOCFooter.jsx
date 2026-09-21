@@ -15,8 +15,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import bocLogoPng from '../assets/boc-logo.png';
-import footerSkylineImg from '../assets/boc-footer-skyline.png';
-import footerRibbonsImg from '../assets/boc-footer-ribbons.png';
+import footerCleanBg from '../assets/boc-footer-clean-bg.jpg';
 
 /**
  * Custom X (Twitter) Icon
@@ -62,6 +61,17 @@ export default function BOCFooter({ onOpenJoinModal }) {
           backgroundSize: '24px 24px'
         }}
       />
+
+      {/* Pristine Master Background (Illuminated Golden Skyline, Airplane Light Arc & Silk Wave — ZERO baked-in text) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+        <img 
+          src={footerCleanBg} 
+          alt="BOC Global Network Ambience" 
+          className="w-full h-full object-cover object-right opacity-35 sm:opacity-55 lg:opacity-75 mix-blend-screen pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020713] via-[#020713]/85 via-45% to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020713]/30 via-transparent to-[#020713]/50 pointer-events-none" />
+      </div>
 
       {/* Ambient Lighting Glows */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none -mt-32" />
@@ -354,16 +364,6 @@ export default function BOCFooter({ onOpenJoinModal }) {
           {/* COLUMN 5: STAY UPDATED WITH BOC & SKYLINE (3 Cols)                  */}
           {/* =================================================================== */}
           <div className="lg:col-span-3 md:border-l md:border-[#D4AF37]/30 md:pl-6 lg:pl-8 relative flex flex-col justify-between">
-            
-            {/* Skyline Backdrop Element in Right Corner */}
-            <div className="absolute -top-12 -right-4 w-40 sm:w-48 h-56 pointer-events-none opacity-40 lg:opacity-60 overflow-hidden mix-blend-screen hidden sm:block">
-              <img 
-                src={footerSkylineImg} 
-                alt="Global Skyline" 
-                className="w-full h-full object-cover object-right"
-              />
-            </div>
-
             <div className="relative z-10">
               {/* Heading */}
               <h4 className="font-serif font-bold text-xl sm:text-2xl leading-tight mb-2">
@@ -449,18 +449,6 @@ export default function BOCFooter({ onOpenJoinModal }) {
 
         </div>
 
-      </div>
-
-      {/* ===================================================================== */}
-      {/* 3D GOLDEN SILK RIBBONS / AMBER WAVE (media_1789907540023.png)         */}
-      {/* ===================================================================== */}
-      <div className="relative w-full h-16 sm:h-20 pointer-events-none overflow-hidden -mt-4">
-        <img 
-          src={footerRibbonsImg} 
-          alt="Golden Ribbons" 
-          className="w-full h-full object-cover object-bottom opacity-85 mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020713] via-transparent to-transparent" />
       </div>
 
     </footer>

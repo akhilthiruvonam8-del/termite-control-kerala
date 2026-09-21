@@ -4,16 +4,13 @@ import bocMobileBg from '../assets/boc-mobile-bg.jpg';
 import bocLogoPng from '../assets/boc-logo.png';
 import { 
   ArrowRight, 
-  ArrowUp,
-  PhoneCall,
   Users, 
   Handshake, 
   TrendingUp, 
   Building2, 
   Star, 
   Link2,
-  ChevronDown,
-  MessageCircle
+  ChevronDown
 } from 'lucide-react';
 
 /**
@@ -23,11 +20,9 @@ import {
  * - 100% Authentic 2K Master Canvas without duplicate headers or boxes
  * - Clean visual hierarchy aligned with top unified floating BOCNavbar
  * - Interactive touch & click hotspots mapped directly to master buttons & icons
- * - Fixed bottom-right action buttons: Scroll to Top, WhatsApp, and Call
  */
 export default function BOCHero({ onOpenJoinModal }) {
   const [activeTooltip, setActiveTooltip] = useState(null);
-  const [floatingTooltip, setFloatingTooltip] = useState(null);
 
   // Right vertical rail items (Refer, Connect, Collaborate, Grow)
   const verticalRailItems = [
@@ -58,7 +53,7 @@ export default function BOCHero({ onOpenJoinModal }) {
         <img 
           src={bocRooftopBg} 
           alt="Business Owner's Circle Master Experience" 
-          className="w-full h-full object-cover select-none pointer-events-none contrast-[1.14] saturate-[1.25] brightness-[1.08]"
+          className="w-full h-full object-cover object-[center_20%] select-none pointer-events-none contrast-[1.14] saturate-[1.25] brightness-[1.08]"
         />
         {/* Ambient warm sunset radial glow */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-gradient-to-br from-amber-400/20 via-orange-500/10 to-transparent rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
@@ -227,34 +222,33 @@ export default function BOCHero({ onOpenJoinModal }) {
         <div className="relative w-full overflow-hidden bg-[#020712]">
           
           {/* Background Image: Vivid, Rich Saturated Sunset Networking */}
-          <div className="relative w-full h-[510px] sm:h-[550px] overflow-hidden">
+          <div className="relative w-full h-[580px] sm:h-[620px] overflow-hidden">
             <img 
               src={bocMobileBg} 
               alt="BOC Rooftop Networking" 
-              className="w-full h-full object-cover object-[center_15%] contrast-[1.18] saturate-[1.35] brightness-[1.12] select-none"
+              className="w-full h-full object-cover object-[center_top] contrast-[1.14] saturate-[1.3] brightness-[1.1] select-none"
             />
             {/* Luminous Warm Sunset Radial Glow Behind Skyline */}
             <div className="absolute right-0 top-1/4 w-80 h-80 bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent rounded-full blur-3xl pointer-events-none mix-blend-screen" />
 
-            {/* Directional Soft Scrim ONLY Behind Text */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#020712]/90 via-[#020712]/50 via-55% to-transparent pointer-events-none" />
-            <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-[#020712]/75 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none" />
+            {/* Directional Soft Scrim ONLY Behind Upper Text — Fades to transparent above people's heads */}
+            <div className="absolute top-0 left-0 right-0 h-56 bg-gradient-to-b from-[#020712]/95 via-[#020712]/60 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#010714] via-[#010714]/65 to-transparent pointer-events-none" />
 
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
-            <div className="absolute top-5 left-0 right-0 px-5 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
+            <div className="absolute top-3.5 left-0 right-0 px-4 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
               
               {/* Sub-Badge: Clean BUSINESS OWNERS CIRCLE */}
-              <div className="flex items-center gap-2 mb-2.5">
-                <span className="w-6 h-[1.5px] bg-[#DFC688]" />
-                <span className="font-cinzel font-bold text-[10.5px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
+                <span className="font-cinzel font-bold text-[10px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                   BUSINESS OWNERS CIRCLE
                 </span>
-                <span className="w-6 h-[1.5px] bg-[#DFC688]" />
+                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
               </div>
 
               {/* Main Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
-              <h1 className="font-serif font-black tracking-tight text-[28px] sm:text-[34px] leading-[1.12] mb-3">
+              <h1 className="font-serif font-black tracking-tight text-[22px] sm:text-[26px] leading-[1.14] mb-2">
                 <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)]">
                   REFER. COLLABORATE.
                 </span>
@@ -265,28 +259,28 @@ export default function BOCHero({ onOpenJoinModal }) {
               </h1>
 
               {/* Subtitle description paragraph */}
-              <p className="text-[#E2E8F0] text-[12.5px] font-normal leading-relaxed mb-5 drop-shadow-[0_2px_10px_rgba(0,0,0,1)]">
+              <p className="text-[#E2E8F0] text-[11.5px] sm:text-xs font-normal leading-relaxed mb-3.5 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-xs">
                 A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
               </p>
 
-              {/* Action Buttons: Vertical Stack on Mobile */}
-              <div className="w-full flex flex-col gap-2.5 select-none">
+              {/* Action Buttons: SIDE-BY-SIDE ON MOBILE (Matching user mockup media_1789658972902.jpg) */}
+              <div className="w-full flex items-center gap-2 select-none">
                 {/* Button 1: JOIN THE CIRCLE */}
                 <button
                   onClick={onOpenJoinModal}
-                  className="w-full py-3 px-5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-xs tracking-wider uppercase shadow-[0_0_20px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer group"
+                  className="flex-1 py-2 sm:py-2.5 px-3 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[10.5px] sm:text-xs tracking-wider uppercase shadow-[0_0_18px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer group"
                 >
-                  <span className="font-black">JOIN THE CIRCLE</span>
-                  <ArrowRight className="w-4 h-4 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
+                  <span className="font-black whitespace-nowrap">JOIN THE CIRCLE</span>
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17] group-hover:translate-x-0.5 transition-transform shrink-0" />
                 </button>
 
                 {/* Button 2: EXPLORE OUR COMMUNITY */}
                 <button
                   onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full py-2.5 px-5 rounded-full bg-[#020A17]/80 backdrop-blur-md border border-[#DFC688]/60 text-white hover:text-[#DFC688] font-bold text-xs tracking-wider uppercase hover:bg-[#06162E] active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer group"
+                  className="flex-1 py-2 sm:py-2.5 px-2.5 rounded-full bg-[#020A17]/85 backdrop-blur-md border border-[#DFC688]/70 text-white hover:text-[#DFC688] font-bold text-[9.5px] sm:text-[11px] tracking-wider uppercase hover:bg-[#06162E] active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer group"
                 >
-                  <span>EXPLORE OUR COMMUNITY</span>
-                  <ArrowRight className="w-3.5 h-3.5 stroke-[2] text-[#DFC688] group-hover:translate-x-1 transition-transform" />
+                  <span className="whitespace-nowrap">EXPLORE</span>
+                  <ArrowRight className="w-3 h-3 stroke-[2] text-[#DFC688] group-hover:translate-x-0.5 transition-transform shrink-0" />
                 </button>
               </div>
 
@@ -357,76 +351,6 @@ export default function BOCHero({ onOpenJoinModal }) {
 
           </div>
 
-        </div>
-
-      </div>
-
-
-      {/* ===================================================================== */}
-      {/* 3. FIXED FLOATING ACTION BUTTONS (BOTTOM-RIGHT)                       */}
-      {/* ===================================================================== */}
-      <div className="fixed bottom-6 right-4 sm:right-6 z-50 flex flex-col items-center gap-3">
-        
-        {/* Scroll to Top Button */}
-        <div className="relative group">
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            onMouseEnter={() => setFloatingTooltip('top')}
-            onMouseLeave={() => setFloatingTooltip(null)}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#030C1C]/90 hover:bg-gradient-to-tr hover:from-[#DFC688] hover:to-[#FFF3C4] border border-[#DFC688]/60 text-[#DFC688] hover:text-[#041126] shadow-[0_6px_22px_rgba(0,0,0,0.85)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-            title="Scroll to Top"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-5 h-5 stroke-[2.5]" />
-          </button>
-          
-          {floatingTooltip === 'top' && (
-            <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#FAF6ED] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-              Top
-            </div>
-          )}
-        </div>
-
-        {/* WhatsApp Direct Chat Button */}
-        <div className="relative group">
-          <a
-            href="https://wa.me/919020040009?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseEnter={() => setFloatingTooltip('wa')}
-            onMouseLeave={() => setFloatingTooltip(null)}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_6px_25px_rgba(37,211,102,0.5)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-            title="Chat with BOC Director on WhatsApp (9020040009)"
-            aria-label="WhatsApp Director"
-          >
-            <MessageCircle className="w-5 h-5 fill-current" />
-          </a>
-
-          {floatingTooltip === 'wa' && (
-            <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#25D366]/50 text-[10px] text-[#25D366] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-              WhatsApp (9020040009)
-            </div>
-          )}
-        </div>
-
-        {/* Phone Call Secretariat Button */}
-        <div className="relative group">
-          <a
-            href="tel:+919020040009"
-            onMouseEnter={() => setFloatingTooltip('call')}
-            onMouseLeave={() => setFloatingTooltip(null)}
-            className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#C5A059] to-[#F0DC9B] text-[#041126] shadow-[0_6px_25px_rgba(223,198,136,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-            title="Call BOC Secretariat (9020040009)"
-            aria-label="Call Secretariat"
-          >
-            <PhoneCall className="w-5 h-5 stroke-[2.5]" />
-          </a>
-
-          {floatingTooltip === 'call' && (
-            <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#DFC688] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-              Call Us
-            </div>
-          )}
         </div>
 
       </div>

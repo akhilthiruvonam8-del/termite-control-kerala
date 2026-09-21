@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import BOCNavbar from './components/BOCNavbar';
 import BOCFooter from './components/BOCFooter';
 import BOCJoinModal from './components/BOCJoinModal';
+import FloatingActionButtons from './components/FloatingActionButtons';
 
 // Dedicated Platform Pages
 import HomePage from './pages/HomePage';
@@ -131,6 +132,9 @@ function AppContent() {
 
       {/* Executive Master Grand Footer */}
       <BOCFooter onOpenJoinModal={() => setIsJoinModalOpen(true)} />
+
+      {/* Global Floating Action Buttons (Scroll to Top, WhatsApp, Call) — Visible across all modules */}
+      <FloatingActionButtons />
 
       {/* Interactive Membership Application Modal */}
       <BOCJoinModal 
