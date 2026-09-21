@@ -20,14 +20,10 @@ import {
 import heroTeamImg from '../assets/boc-success-hero-team.jpg';
 import bocLogoPng from '../assets/boc-logo.png';
 
-// 100% Real Member Photos (Provided by User — Zero AI Stock Portraits)
+// 100% Real Member Photos (First 3 Verified Leaders)
 import jijeeshPhoto from '../assets/boc-member-jijeesh-minerva.jpg';
 import maheshPhoto from '../assets/boc-member-mahesh-prabudhan.jpg';
 import binuPhoto from '../assets/boc-member-binu-tb.jpg';
-import vidhuPhoto from '../assets/boc-member-vidhu-mezhuveli.jpg';
-import sajishPhoto from '../assets/boc-member-sajish-maliyekkal.jpg';
-import nidhiPhoto from '../assets/boc-member-nidhi-tomer.jpg';
-import anjanaPhoto from '../assets/boc-member-anjana-sreedharan.jpg';
 
 /**
  * BOCMemberSuccessStories — "Real People. Real Growth."
@@ -51,9 +47,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
   const categories = [
     'All',
     'Pest & Facilities',
-    'Global & Marketing',
-    'Cleaning & Hygiene',
-    'EdTech & Social Impact'
+    'Global & Marketing'
   ];
 
   const stories = [
@@ -71,7 +65,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
       quote: 'BOC has fundamentally transformed how we win corporate contracts. Through category exclusivity and peer trust, we stopped competing on price and started closing high-value annual maintenance contracts.',
       challenge: 'Traditional pest control and digital services in Kerala face heavy price undercutting, slow B2B client acquisition cycles, and difficulty accessing top-tier property developers, hospital chains, and hospitality groups without third-party commissions.',
       experience: 'Secured exclusive seat protection for both pest management and digital infrastructure. Attended weekly chapter meetings in Kochi and engaged in structured 1-to-1 masterminds with real estate, healthcare, and facility leaders.',
-      collaboration: 'Formed a strategic consortium with Facility Management (Mahesh Prabudhan) and Industrial Cleaning (Vidhu Mezhuveli) to pitch comprehensive hospital and resort maintenance packages as a single unified tender.',
+      collaboration: 'Formed a strategic consortium with Facility Management (Mahesh Prabudhan) and corporate facility partners to pitch comprehensive hospital and resort maintenance packages as a single unified tender.',
       result: 'Successfully closed 14 corporate AMC contracts across Kochi, Thrissur, and Calicut within 8 months, generating over ₹1.8 Cr in verified B2B referral revenue.',
       verified: true
     },
@@ -110,79 +104,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
       collaboration: 'Collaborated with chapter members producing organic agricultural products, spices, and industrial components to set up streamlined distribution channels in GCC countries.',
       result: 'Facilitated 3 major export trade tie-ups valued at ₹3.2 Cr+ and established a permanent marketing corridor between Coimbatore, Kochi, and the Middle East.',
       verified: true
-    },
-    {
-      id: 'vidhu-mezhuveli',
-      name: 'Vidhu Mezhuveli',
-      role: 'Founder & CEO',
-      company: 'Smash Cleaning Company',
-      category: 'Cleaning & Hygiene',
-      industryTag: 'INDUSTRIAL CLEANING & HYGIENE',
-      location: 'Pathanamthitta / Kochi Chapter',
-      photo: vidhuPhoto,
-      photoPosition: 'center 20%',
-      metric: '+320% Revenue Scale in 12 Months',
-      quote: 'Before joining BOC, word-of-mouth was slow and unorganized. In BOC, referrals are systematic, qualified, and backed by personal peer recommendation.',
-      challenge: 'Scaling beyond residential deep cleaning into high-margin post-construction industrial cleaning, corporate auditorium sanitization, and mall hygiene management across multiple Kerala districts.',
-      experience: 'Active participation in weekly referral rounds, where fellow members proactively shared upcoming construction completions, office handovers, and hospital renovations.',
-      collaboration: 'Partnered with chapter builders, architects, and pest control specialists (Jijeesh Minerva / Sajish) to offer joint "pre-handover deep clean & pest treatment" turnkey solutions.',
-      result: 'Expanded cleaning workforce from 12 to 55+ trained technicians, secured multi-year cleaning contracts for 8 educational institutions and 5 commercial complexes, boosting revenue by 320%.',
-      verified: true
-    },
-    {
-      id: 'sajish-maliyekkal',
-      name: 'Sajish Maliyekkal',
-      role: 'Founder',
-      company: 'Greenline Pest Management',
-      category: 'Pest & Facilities',
-      industryTag: 'ECO-FRIENDLY PEST CONTROL',
-      location: 'Thrissur Chapter',
-      photo: sajishPhoto,
-      photoPosition: 'center 20%',
-      metric: '100% Retained Corporate Client Rate',
-      quote: 'The zero-competition rule in BOC gives me complete confidence. No two members compete for the same service in a chapter, creating 100% loyalty and genuine collaboration.',
-      challenge: 'Standing out in a crowded market filled with uncertified local contractors and establishing Greenline as the definitive authority for certified eco-friendly termite control and structural treatment.',
-      experience: 'Delivered weekly educational micro-sessions to chapter members explaining government regulations, IPM (Integrated Pest Management) standards, and the financial danger of untreated termite infestation.',
-      collaboration: 'Received priority referrals from architects, civil contractors, and interior designers in the chapter for pre-construction anti-termite soil treatment across Thrissur and Ernakulam.',
-      result: 'Achieved 100% corporate client retention, established pre-construction contracts with 18 premium villa and apartment projects, and expanded service fleet to 4 Kerala districts.',
-      verified: true
-    },
-    {
-      id: 'nidhi-tomer',
-      name: 'Nidhi Tomer',
-      role: 'Founder & CEO',
-      company: 'Vedic Bricks Academy, Kochi',
-      category: 'EdTech & Social Impact',
-      industryTag: 'VEDIC EDTECH & CHILD DEVELOPMENT',
-      location: 'Kochi Marine Drive Chapter',
-      photo: nidhiPhoto,
-      photoPosition: 'center 20%',
-      metric: '1,200+ Students Across 15 Schools',
-      quote: 'BOC helped us take our Vedic Mathematics and Abacus learning programs from a single neighborhood center into 15 prestigious schools and hundreds of student families.',
-      challenge: 'Gaining institutional trust with school principals and affluent parent networks in Kochi for a new experiential learning curriculum without spending heavily on mass advertisements.',
-      experience: 'Fellow chapter members who were school board trustees, parents, and community leaders personally experienced demo sessions and vouched for the pedagogical rigour of the curriculum.',
-      collaboration: 'Member referrals directly introduced Vedic Bricks Academy to PTA presidents, preschool chains, and community education centers throughout Ernakulam district.',
-      result: 'Scaled student enrollments from 80 to over 1,200 active learners, partnered with 15 private schools in Kerala, and launched online batches for Gulf Malayali families.',
-      verified: true
-    },
-    {
-      id: 'anjana-sreedharan',
-      name: 'Anjana Sreedharan',
-      role: 'General Secretary',
-      company: 'Mithrakulam Trust',
-      category: 'EdTech & Social Impact',
-      industryTag: 'SOCIAL IMPACT & CSR ALLIANCES',
-      location: 'Thiruvananthapuram Chapter',
-      photo: anjanaPhoto,
-      photoPosition: 'center 12%',
-      metric: '₹45 Lakhs in Structured CSR Alliances',
-      quote: 'BOC is built on empathy and mutual support. Through the circle, we connected with visionary business founders who made community development and youth skill training a core part of their corporate giving.',
-      challenge: 'Connecting grassroots social welfare programs with genuine, high-trust corporate sponsors seeking verified CSR impact, transparent fund tracking, and tangible community empowerment.',
-      experience: 'Presented grassroots women entrepreneurship and youth vocational projects during BOC Kerala Conclaves; received unanimous support and sponsorship from chapter business owners.',
-      collaboration: 'Formed ongoing CSR partnerships with BOC members across manufacturing, finance, and IT to adopt artisan clusters and fund technical vocational scholarships.',
-      result: 'Mobilized ₹45 Lakhs in audited CSR funding, established 4 vocational micro-units in southern Kerala, and empowered 300+ rural women to launch self-sustaining micro-enterprises.',
-      verified: true
-    },
+    }
   ];
 
   const filteredStories = activeCategory === 'All' 
