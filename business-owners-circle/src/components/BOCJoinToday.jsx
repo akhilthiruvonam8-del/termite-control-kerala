@@ -95,8 +95,8 @@ export default function BOCJoinToday({ onOpenJoinModal }) {
             
             <div className="flex flex-col text-left font-cinzel font-bold text-[9px] sm:text-[11px] tracking-[0.22em] leading-tight text-white">
               <span className="text-[#F9D678]">BUSINESS</span>
-              <span>OPPORTUNITIES</span>
-              <span className="text-slate-300">CONNECTIONS</span>
+              <span>OWNERS</span>
+              <span className="text-slate-300">CIRCLE</span>
             </div>
           </div>
 

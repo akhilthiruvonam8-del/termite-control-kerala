@@ -13,6 +13,7 @@ import ChaptersPage from './pages/ChaptersPage';
 import MembershipPage from './pages/MembershipPage';
 import EventsPage from './pages/EventsPage';
 import AboutPage from './pages/AboutPage';
+import SuccessStoriesPage from './pages/SuccessStoriesPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -80,6 +81,12 @@ function AppContent() {
           <Route 
             path="/about" 
             element={<AboutPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+
+          {/* Member Success Stories & ROI Case Studies (Brief Point 20) */}
+          <Route 
+            path="/success-stories" 
+            element={<SuccessStoriesPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
           />
 
           {/* Member Login Portal (Brief Point 8) */}

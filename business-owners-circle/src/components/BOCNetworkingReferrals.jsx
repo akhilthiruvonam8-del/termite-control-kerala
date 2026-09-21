@@ -75,8 +75,8 @@ export default function BOCNetworkingReferrals({ onOpenJoinModal }) {
             <div className="h-9 w-[1.5px] bg-[#B57D2B]/50" />
             <div className="flex flex-col text-[#0A192F] tracking-[0.18em] leading-tight text-[10px] sm:text-[11px] font-cinzel font-bold">
               <span>BUSINESS</span>
-              <span>OPPORTUNITIES</span>
-              <span className="text-[#B57D2B]">CONNECTIONS</span>
+              <span className="text-[#B57D2B]">OWNERS</span>
+              <span>CIRCLE</span>
             </div>
           </div>
 

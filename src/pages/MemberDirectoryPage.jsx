@@ -57,7 +57,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
     },
     {
       id: 'mem-2',
-      name: 'Jijeesh T.K.',
+      name: 'Jijeesh Minerva',
       role: 'Managing Director',
       company: 'Minerva Business Solutions',
       category: 'Management & Strategic Consulting',

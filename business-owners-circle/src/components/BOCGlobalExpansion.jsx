@@ -123,8 +123,8 @@ export default function BOCGlobalExpansion({ onOpenJoinModal }) {
             <div className="h-7 w-[1.5px] bg-[#D4AF37]" />
             <div className="flex flex-col text-white tracking-[0.2em] leading-tight text-[8px] sm:text-[9.5px] font-cinzel font-bold">
               <span>BUSINESS</span>
-              <span>OPPORTUNITIES</span>
-              <span className="text-[#F9D678]">CONNECTIONS</span>
+              <span className="text-[#F9D678]">OWNERS</span>
+              <span>CIRCLE</span>
             </div>
           </div>
         </div>

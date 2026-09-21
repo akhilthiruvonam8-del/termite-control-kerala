@@ -40,7 +40,7 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
   const members = [
     {
       id: 'jijeesh',
-      name: 'Jijeesh',
+      name: 'Jijeesh Minerva',
       role: 'Founder & CEO',
       company: 'M/s Eco Pest India • M/s Urban Owls Digital',
       category: 'PEST & DIGITAL',

@@ -42,6 +42,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
     { name: 'Chapters', path: '/chapters' },
     { name: 'Members Directory', path: '/members' },
     { name: 'Events', path: '/events' },
+    { name: 'Success Stories', path: '/success-stories' },
   ];
 
   const isActive = (path) => {
@@ -56,41 +57,41 @@ export default function BOCNavbar({ onOpenJoinModal }) {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           isScrolled 
             ? 'bg-[#030B18]/95 backdrop-blur-md py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)] border-b border-[#D4AF37]/30' 
-            : 'bg-gradient-to-b from-[#020712]/95 via-[#020712]/80 to-transparent py-3.5 sm:py-4 backdrop-blur-sm'
+            : 'bg-gradient-to-b from-[#020712]/95 via-[#020712]/80 to-transparent py-3 sm:py-4 backdrop-blur-sm'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
           
           {/* Left: Brand Logo & Title */}
-          <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 group flex-shrink-0">
-            <div className="relative w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full border border-[#D4B56A]/60 bg-[#030C1C] p-0.5 shadow-[0_0_12px_rgba(223,198,136,0.45)] flex-shrink-0 group-hover:scale-105 transition-transform">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 pr-1">
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full border border-[#D4B56A]/60 bg-[#030C1C] p-0.5 shadow-[0_0_12px_rgba(223,198,136,0.45)] flex-shrink-0 group-hover:scale-105 transition-transform">
               <img 
                 src={bocLogoPng} 
                 alt="BOC Official Crest" 
                 className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(223,198,136,0.5)] brightness-105" 
               />
             </div>
-            <div className="flex flex-col text-left">
-              <span className="font-cinzel font-bold text-xs sm:text-[13.5px] lg:text-[15px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6ED] via-[#FCE38A] to-[#DFC688] uppercase leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+            <div className="flex flex-col text-left min-w-0">
+              <span className="font-cinzel font-bold text-[11px] xs:text-xs sm:text-[13.5px] lg:text-[15px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6ED] via-[#FCE38A] to-[#DFC688] uppercase leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] truncate">
                 BUSINESS OWNERS CIRCLE
               </span>
-              <span className="font-sans font-semibold text-[7.5px] sm:text-[8.5px] lg:text-[9.5px] tracking-[0.18em] text-[#C5A059] uppercase mt-1">
-                BUSINESS • OPPORTUNITIES • CONNECTIONS
+              <span className="font-sans font-semibold text-[6.5px] sm:text-[8.5px] lg:text-[9.5px] tracking-[0.16em] text-[#C5A059] uppercase mt-1 truncate">
+                BUSINESS • OWNERS • CIRCLE
               </span>
             </div>
           </Link>
 
           {/* Center: Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2">
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             {navLinks.map((link) => {
               const active = isActive(link.path);
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all uppercase font-cinzel ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all uppercase font-cinzel ${
                     active 
-                      ? 'text-[#F9D678] bg-[#D4AF37]/15 border border-[#D4AF37]/40 shadow-sm' 
+                      ? 'text-[#F9D678] bg-[#D4AF37]/20 border border-[#D4AF37]/50 shadow-[0_0_12px_rgba(212,175,55,0.25)]' 
                       : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5'
                   }`}
                 >
@@ -101,11 +102,11 @@ export default function BOCNavbar({ onOpenJoinModal }) {
           </nav>
 
           {/* Right: Desktop Action Buttons (Login & Join BOC) */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
             {/* Member Login */}
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#D4AF37]/50 hover:border-[#F9D678] text-slate-200 hover:text-white bg-[#05142B]/80 hover:bg-[#D4AF37]/20 text-xs font-semibold tracking-wider transition-all font-cinzel"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full border border-[#D4AF37]/50 hover:border-[#F9D678] text-slate-200 hover:text-white bg-[#05142B]/80 hover:bg-[#D4AF37]/20 text-xs font-semibold tracking-wider transition-all font-cinzel"
             >
               <User className="w-3.5 h-3.5 text-[#F9D678]" />
               <span>MEMBER LOGIN</span>
@@ -114,35 +115,36 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             {/* Join BOC */}
             <button
               onClick={onOpenJoinModal}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] hover:from-white hover:to-[#F9D678] text-[#07172C] font-bold text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.35)] transition-all transform hover:scale-105 cursor-pointer font-cinzel"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] hover:from-white hover:to-[#F9D678] text-[#07172C] font-bold text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.35)] transition-all transform hover:scale-105 cursor-pointer font-cinzel"
             >
               <span>JOIN BOC</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {/* Mobile Right: Login & Sleek Glowing Gold Hamburger */}
-          <div className="flex lg:hidden items-center gap-2">
+          {/* Mobile Right: Login & Standout Gold Hamburger */}
+          <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <Link
               to="/login"
-              className="px-3 py-1.5 rounded-full border border-[#D4AF37]/60 text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 text-[10.5px] font-bold tracking-wider font-cinzel transition-all shadow-sm flex items-center gap-1.5"
+              className="px-2.5 py-1.5 rounded-full border border-[#D4AF37]/60 text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 text-[10px] sm:text-[11px] font-bold tracking-wider font-cinzel transition-all shadow-sm flex items-center gap-1"
             >
               <User className="w-3 h-3 text-[#F9D678]" />
               <span>LOGIN</span>
             </Link>
             
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-[#E5C45A] hover:text-[#FFF3C4] cursor-pointer transition-colors flex flex-col items-center justify-center rounded-lg hover:bg-white/5"
+              className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#081B38] border border-[#D4AF37]/70 text-[#F9D678] hover:border-[#F9D678] hover:bg-[#D4AF37]/20 transition-all shadow-[0_0_12px_rgba(212,175,55,0.3)] cursor-pointer active:scale-95"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 stroke-[2.4] text-[#E5C45A]" />
+                <X className="w-5 h-5 stroke-[2.5] text-[#F9D678]" />
               ) : (
-                <div className="flex flex-col gap-[5px] p-1">
-                  <span className="block w-6 h-[2.5px] bg-gradient-to-r from-[#F0DC9B] to-[#C5A059] rounded-full shadow-[0_0_6px_rgba(229,196,90,0.7)]" />
-                  <span className="block w-6 h-[2.5px] bg-gradient-to-r from-[#F0DC9B] to-[#C5A059] rounded-full shadow-[0_0_6px_rgba(229,196,90,0.7)]" />
-                  <span className="block w-6 h-[2.5px] bg-gradient-to-r from-[#F0DC9B] to-[#C5A059] rounded-full shadow-[0_0_6px_rgba(229,196,90,0.7)]" />
+                <div className="flex flex-col gap-1 w-4.5 items-center justify-center">
+                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
+                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
+                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
                 </div>
               )}
             </button>
@@ -153,9 +155,13 @@ export default function BOCNavbar({ onOpenJoinModal }) {
 
       {/* Mobile Slide-Over Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden bg-black/80 backdrop-blur-md animate-fadeIn">
-          <div className="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-[#030B18] border-l border-[#D4AF37]/30 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
-            
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          {/* Backdrop with click-to-close */}
+          <div 
+            className="fixed inset-0 bg-black/80 backdrop-blur-md transition-opacity animate-fadeIn" 
+            onClick={() => setMobileMenuOpen(false)}
+          />
+          <div className="fixed top-0 right-0 w-4/5 max-w-sm h-full bg-[#030B18] border-l border-[#D4AF37]/40 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto z-10">
             <div>
               {/* Drawer Header */}
               <div className="flex items-center justify-between pb-5 border-b border-[#D4AF37]/20 mb-6">
@@ -172,13 +178,13 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                 </div>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10"
+                  className="p-1.5 rounded-full text-slate-400 hover:text-white hover:bg-white/10 cursor-pointer"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-5 h-5 text-[#F9D678]" />
                 </button>
               </div>
 
-              {/* Navigation Links */}
+              {/* Navigation Links with Active Indicator */}
               <nav className="flex flex-col space-y-2">
                 {navLinks.map((link) => {
                   const active = isActive(link.path);
@@ -186,13 +192,15 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                     <Link
                       key={link.path}
                       to={link.path}
-                      className={`px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider uppercase font-cinzel transition-all ${
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`px-4 py-2.5 rounded-xl text-xs tracking-wider uppercase font-cinzel transition-all flex items-center justify-between ${
                         active 
-                          ? 'text-[#F9D678] bg-[#D4AF37]/15 border border-[#D4AF37]/40' 
-                          : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5'
+                          ? 'text-[#F9D678] bg-[#D4AF37]/20 border border-[#D4AF37]/50 shadow-[0_0_12px_rgba(212,175,55,0.25)] font-bold' 
+                          : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5 font-medium'
                       }`}
                     >
-                      {link.name}
+                      <span>{link.name}</span>
+                      {active && <span className="w-1.5 h-1.5 rounded-full bg-[#F9D678] shadow-[0_0_6px_#F9D678]" />}
                     </Link>
                   );
                 })}
@@ -203,6 +211,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             <div className="pt-6 border-t border-[#D4AF37]/20 space-y-3">
               <Link
                 to="/login"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-[#D4AF37]/60 text-[#F9D678] font-cinzel font-bold text-xs tracking-wider hover:bg-[#D4AF37]/15 transition-all"
               >
                 <User className="w-4 h-4" />

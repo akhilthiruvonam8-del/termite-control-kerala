@@ -89,8 +89,8 @@ export default function BOCFooter({ onOpenJoinModal }) {
                 <div className="h-9 w-[1.5px] bg-[#D4AF37]" />
                 <div className="flex flex-col text-left font-cinzel font-bold text-[9px] sm:text-[10px] tracking-[0.22em] leading-tight text-white">
                   <span className="text-[#F9D678]">BUSINESS</span>
-                  <span>OPPORTUNITIES</span>
-                  <span className="text-slate-300">CONNECTIONS</span>
+                  <span>OWNERS</span>
+                  <span className="text-slate-300">CIRCLE</span>
                 </div>
               </div>
 

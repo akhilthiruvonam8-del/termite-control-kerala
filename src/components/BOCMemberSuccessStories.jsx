@@ -59,7 +59,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
   const stories = [
     {
       id: 'jijeesh',
-      name: 'Jijeesh',
+      name: 'Jijeesh Minerva',
       role: 'Founder & CEO',
       company: 'M/s Eco Pest India • M/s Urban Owls Digital',
       category: 'Pest & Facilities',
@@ -125,7 +125,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
       quote: 'Before joining BOC, word-of-mouth was slow and unorganized. In BOC, referrals are systematic, qualified, and backed by personal peer recommendation.',
       challenge: 'Scaling beyond residential deep cleaning into high-margin post-construction industrial cleaning, corporate auditorium sanitization, and mall hygiene management across multiple Kerala districts.',
       experience: 'Active participation in weekly referral rounds, where fellow members proactively shared upcoming construction completions, office handovers, and hospital renovations.',
-      collaboration: 'Partnered with chapter builders, architects, and pest control specialists (Jijeesh / Sajish) to offer joint "pre-handover deep clean & pest treatment" turnkey solutions.',
+      collaboration: 'Partnered with chapter builders, architects, and pest control specialists (Jijeesh Minerva / Sajish) to offer joint "pre-handover deep clean & pest treatment" turnkey solutions.',
       result: 'Expanded cleaning workforce from 12 to 55+ trained technicians, secured multi-year cleaning contracts for 8 educational institutions and 5 commercial complexes, boosting revenue by 320%.',
       verified: true
     },
@@ -237,8 +237,8 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
             <div className="h-7 w-[1.5px] bg-[#D4AF37]" />
             <div className="flex flex-col text-white tracking-[0.2em] leading-tight text-[8px] sm:text-[9.5px] font-cinzel font-bold">
               <span>BUSINESS</span>
-              <span>OPPORTUNITIES</span>
-              <span className="text-[#F9D678]">CONNECTIONS</span>
+              <span className="text-[#F9D678]">OWNERS</span>
+              <span>CIRCLE</span>
             </div>
           </div>
         </div>

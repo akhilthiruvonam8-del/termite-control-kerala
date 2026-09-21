@@ -81,7 +81,7 @@ export default function DashboardPage() {
     },
     {
       id: 'ref-4',
-      recipient: 'Jijeesh T.K. (Minerva Solutions)',
+      recipient: 'Jijeesh Minerva (Minerva Solutions)',
       category: 'Strategic Consulting',
       client: 'Sunny Mathew (Skyline Auto Logistics)',
       phone: '+91 97450 55662',
@@ -464,7 +464,7 @@ export default function DashboardPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'Jijeesh T.K.', company: 'Minerva Solutions', cat: 'Strategic Consulting', photo: jijeeshImg, phone: '+91 98471 22334' },
+                  { name: 'Jijeesh Minerva', company: 'Minerva Solutions', cat: 'Strategic Consulting', photo: jijeeshImg, phone: '+91 98471 22334' },
                   { name: 'Arjun Nair', company: 'Nair Tech Solutions', cat: 'IT & Software', photo: arjunImg, phone: '+91 98462 88990' },
                   { name: 'Ananya Suresh', company: 'Bloom Creative', cat: 'Media & Branding', photo: ananyaImg, phone: '+91 98955 99001' },
                   { name: 'Binu T.B.', company: 'Equinox Financial', cat: 'Wealth Advisory', photo: binuImg, phone: '+91 94470 44556' },
@@ -563,7 +563,7 @@ export default function DashboardPage() {
                   <option value="Arjun Nair (Nair Tech Solutions - IT & Software)">Arjun Nair (IT & Custom Software)</option>
                   <option value="Ananya Suresh (Bloom Creative - Media & Branding)">Ananya Suresh (Media & Branding)</option>
                   <option value="Binu T.B. (Equinox Financial - Wealth & Tax)">Binu T.B. (Wealth Advisory & Debt)</option>
-                  <option value="Jijeesh T.K. (Minerva Solutions - Consulting)">Jijeesh T.K. (Management Consulting)</option>
+                  <option value="Jijeesh Minerva (Minerva Solutions)">Jijeesh Minerva (Management Consulting)</option>
                   <option value="Anjana Sreedharan (Studio Aesthetica - Architecture)">Anjana Sreedharan (Architecture & Interiors)</option>
                 </select>
               </div>
