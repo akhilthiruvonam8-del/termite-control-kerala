@@ -12,6 +12,7 @@ import MemberDirectoryPage from './pages/MemberDirectoryPage';
 import ChaptersPage from './pages/ChaptersPage';
 import MembershipPage from './pages/MembershipPage';
 import EventsPage from './pages/EventsPage';
+import EventDetailPage from './pages/EventDetailPage';
 import AboutPage from './pages/AboutPage';
 import SuccessStoriesPage from './pages/SuccessStoriesPage';
 import FAQPage from './pages/FAQPage';
@@ -72,10 +73,16 @@ function AppContent() {
             element={<MembershipPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
           />
 
-          {/* Events Hub & Conclaves (Brief Point 16 & 17) */}
+          {/* Events Hub & Conclaves (Brief Point 9) */}
           <Route 
             path="/events" 
             element={<EventsPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+
+          {/* Dedicated Event Detail Page (Brief Point 10) */}
+          <Route 
+            path="/events/:id" 
+            element={<EventDetailPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
           />
 
           {/* About BOC, Vision & Leadership (Brief Point 5) */}

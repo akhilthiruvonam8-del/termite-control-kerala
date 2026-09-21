@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
+  Menu,
   X, 
   User, 
   ArrowRight, 
@@ -12,9 +13,9 @@ import bocLogoPng from '../assets/boc-logo.png';
  * BOCNavbar — Unified Executive Luxury Navigation Bar
  * Features:
  * - Prominent "BUSINESS OWNERS CIRCLE" Branding + Golden Tagline
- * - Single glowing 3-line golden hamburger on mobile
- * - Desktop navigation links with active indicators
- * - Member Login & Join BOC buttons
+ * - Standout 3-line golden hamburger (Menu) on mobile
+ * - Desktop navigation links with uniform executive styling and luminous indicator
+ * - Member Login button
  * - Mobile slide-over drawer with all platform destinations
  */
 export default function BOCNavbar({ onOpenJoinModal }) {
@@ -55,34 +56,37 @@ export default function BOCNavbar({ onOpenJoinModal }) {
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled 
-            ? 'bg-[#030B18]/95 backdrop-blur-md py-3 shadow-[0_10px_30px_rgba(0,0,0,0.6)] border-b border-[#D4AF37]/30' 
-            : 'bg-gradient-to-b from-[#020712]/95 via-[#020712]/80 to-transparent py-3 sm:py-4 backdrop-blur-sm'
+            ? 'bg-[#030B17]/95 backdrop-blur-md py-2.5 border-b border-[#D4AF37]/35 shadow-[0_4px_25px_rgba(0,0,0,0.6)]' 
+            : 'bg-gradient-to-b from-[#020712]/95 via-[#030B18]/85 to-transparent py-3 sm:py-3.5 border-b border-[#D4AF37]/20'
         }`}
       >
-        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
+        <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between">
           
-          {/* Left: Brand Logo & Title */}
-          <Link to="/" className="flex items-center gap-2 sm:gap-3 group min-w-0 pr-1">
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full border border-[#D4B56A]/60 bg-[#030C1C] p-0.5 shadow-[0_0_12px_rgba(223,198,136,0.45)] flex-shrink-0 group-hover:scale-105 transition-transform">
+          {/* Left: Brand Identity & Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 sm:gap-3 group flex-shrink-0 cursor-pointer min-w-0 pr-1"
+          >
+            <div className="relative flex-shrink-0">
               <img 
                 src={bocLogoPng} 
-                alt="BOC Official Crest" 
-                className="w-full h-full object-contain filter drop-shadow-[0_0_8px_rgba(223,198,136,0.5)] brightness-105" 
+                alt="BOC Logo" 
+                className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:scale-105 transition-transform"
               />
             </div>
-            <div className="flex flex-col text-left min-w-0">
-              <span className="font-cinzel font-bold text-[11px] xs:text-xs sm:text-[13.5px] lg:text-[15px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6ED] via-[#FCE38A] to-[#DFC688] uppercase leading-none drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] truncate">
+            <div className="flex flex-col text-left truncate">
+              <span className="font-cinzel font-black tracking-wider text-[11px] xs:text-xs sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
                 BUSINESS OWNERS CIRCLE
               </span>
-              <span className="font-sans font-semibold text-[6.5px] sm:text-[8.5px] lg:text-[9.5px] tracking-[0.16em] text-[#C5A059] uppercase mt-1 truncate">
+              <span className="font-cinzel tracking-[0.18em] sm:tracking-[0.22em] text-[7px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
                 BUSINESS • OWNERS • CIRCLE
               </span>
             </div>
           </Link>
 
-          {/* Center: Desktop Navigation Links */}
+          {/* Center: Desktop Navigation Links (Uniform Executive Styling) */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
             {navLinks.map((link) => {
               const active = isActive(link.path);
@@ -90,13 +94,16 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider transition-all uppercase font-cinzel ${
+                  className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition-all uppercase font-cinzel ${
                     active 
-                      ? 'text-[#F9D678] bg-[#D4AF37]/20 border border-[#D4AF37]/50 shadow-[0_0_12px_rgba(212,175,55,0.25)]' 
-                      : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5'
+                      ? 'text-[#F9D678] font-bold' 
+                      : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5 font-medium'
                   }`}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {active && (
+                    <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gradient-to-r from-transparent via-[#F9D678] to-transparent rounded-full shadow-[0_0_8px_#F9D678]" />
+                  )}
                 </Link>
               );
             })}
@@ -114,7 +121,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             </Link>
           </div>
 
-          {/* Mobile Right: Login & Standout Gold Hamburger */}
+          {/* Mobile Right: Login & Standout Gold Hamburger Button */}
           <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <Link
               to="/login"
@@ -127,17 +134,13 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#081B38] border border-[#D4AF37]/70 text-[#F9D678] hover:border-[#F9D678] hover:bg-[#D4AF37]/20 transition-all shadow-[0_0_12px_rgba(212,175,55,0.3)] cursor-pointer active:scale-95"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#081B38] border border-[#D4AF37]/80 text-[#F9D678] hover:border-[#F9D678] hover:bg-[#D4AF37]/20 transition-all shadow-[0_0_12px_rgba(212,175,55,0.35)] cursor-pointer active:scale-95"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5 stroke-[2.5] text-[#F9D678]" />
               ) : (
-                <div className="flex flex-col gap-1 w-4.5 items-center justify-center">
-                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
-                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
-                  <span className="block w-4.5 h-[2px] bg-gradient-to-r from-[#F9D678] to-[#DFC688] rounded-full shadow-[0_0_5px_rgba(229,196,90,0.8)]" />
-                </div>
+                <Menu className="w-5 h-5 stroke-[2.5] text-[#F9D678]" />
               )}
             </button>
           </div>
