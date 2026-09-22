@@ -77,8 +77,9 @@ export default function BOCNavbar({ onOpenJoinModal }) {
               />
             </div>
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-cinzel font-black tracking-wider text-[11px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
-                BUSINESS OWNERS CIRCLE
+              <span className="font-cinzel font-black tracking-wider text-[12px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
+                <span className="sm:hidden">BOC</span>
+                <span className="hidden sm:inline">BUSINESS OWNERS CIRCLE</span>
               </span>
               <span className="font-cinzel tracking-[0.16em] sm:tracking-[0.22em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
                 BUSINESS • OWNERS • CIRCLE
@@ -109,27 +110,28 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             })}
           </nav>
 
-          {/* Right: Desktop Action Buttons (Login Only) */}
+          {/* Right: Desktop Action Buttons (JOIN BOC) */}
           <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-            <Link
-              to="/login"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#D4AF37]/50 hover:border-[#F9D678] text-slate-200 hover:text-white bg-[#05142B]/80 hover:bg-[#D4AF37]/20 text-xs font-semibold tracking-wider transition-all font-cinzel shadow-sm"
+            <button
+              onClick={onOpenJoinModal}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] hover:from-white hover:to-[#F9D678] text-[#07172C] font-black text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-95 transition-all cursor-pointer font-cinzel"
             >
-              <User className="w-3.5 h-3.5 text-[#F9D678]" />
-              <span>MEMBER LOGIN</span>
-            </Link>
+              <span>JOIN BOC</span>
+              <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            </button>
           </div>
 
-          {/* Mobile Right: Standout Luxury Gold LOGIN & Menu Button */}
+          {/* Mobile Right: Standout Luxury Gold JOIN BOC & Menu Button */}
           <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
-            <Link
-              to="/login"
-              className="px-2.5 py-1.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] hover:brightness-110 text-[10.5px] font-black tracking-wider font-cinzel transition-all shadow-[0_0_12px_rgba(212,175,55,0.4)] flex items-center gap-1 active:scale-95 shrink-0"
-              aria-label="Member Login"
+            <button
+              type="button"
+              onClick={onOpenJoinModal}
+              className="px-2.5 sm:px-3 py-1.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] hover:brightness-110 text-[10.5px] sm:text-xs font-black tracking-wider font-cinzel transition-all shadow-[0_0_12px_rgba(212,175,55,0.45)] flex items-center gap-1 active:scale-95 shrink-0 cursor-pointer"
+              aria-label="Join BOC"
             >
-              <User className="w-3.5 h-3.5 stroke-[2.8] text-[#07172C]" />
-              <span>LOGIN</span>
-            </Link>
+              <span>JOIN BOC</span>
+              <ArrowRight className="w-3 h-3 stroke-[3] text-[#07172C]" />
+            </button>
             
             <button
               type="button"
@@ -204,24 +206,24 @@ export default function BOCNavbar({ onOpenJoinModal }) {
 
             {/* Drawer Bottom Actions */}
             <div className="pt-6 border-t border-[#D4AF37]/20 space-y-3">
-              <Link
-                to="/login"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl border border-[#D4AF37]/60 text-[#F9D678] font-cinzel font-bold text-xs tracking-wider hover:bg-[#D4AF37]/15 transition-all"
-              >
-                <User className="w-4 h-4" />
-                <span>MEMBER LOGIN</span>
-              </Link>
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenJoinModal();
                 }}
-                className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs tracking-wider shadow-lg hover:brightness-110 active:scale-95 transition-all cursor-pointer"
               >
-                <span>APPLY FOR MEMBERSHIP</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>JOIN BOC</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
+              <Link
+                to="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-[#D4AF37]/50 text-slate-300 hover:text-[#F9D678] font-cinzel font-semibold text-xs tracking-wider hover:bg-[#D4AF37]/10 transition-all"
+              >
+                <User className="w-3.5 h-3.5 text-[#F9D678]" />
+                <span>MEMBER PORTAL LOGIN</span>
+              </Link>
               <div className="text-center pt-2 text-[11px] text-slate-400">
                 <span>Admissions Desk: </span>
                 <a href="tel:+919020040009" className="text-[#F9D678] font-semibold">9020040009</a>
