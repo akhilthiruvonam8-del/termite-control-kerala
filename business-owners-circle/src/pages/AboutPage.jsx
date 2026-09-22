@@ -30,7 +30,6 @@ import {
 
 // Assets
 import bocLogoPng from '../assets/boc-logo.png';
-import cleanHdPhoto from '../assets/boc-about-clean-hd-photo.jpg';
 import masterAboutHero from '../assets/boc-about-master-hero.jpg';
 import keralaWaterfrontBg from '../assets/boc-about-kerala-hd.jpg';
 
@@ -254,178 +253,56 @@ export default function AboutPage({ onOpenJoinModal }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* ===================================================================== */}
-        {/* 1. MASTER ULTRA-HD SHOWCASE BANNER (EXACT SAME AS REFERENCE ARTWORK)  */}
+        {/* 1. MASTER SHOWCASE BANNER (100% AUTHENTIC NATURAL MASTER PHOTOGRAPH)  */}
         {/* ===================================================================== */}
         <div className="mb-14 sm:mb-20">
           
           {/* Eyebrow Header */}
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#071D3E]/90 border border-[#D4AF37] text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-4 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#071D3E]/90 border border-[#D4AF37] text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-3 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
               <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
               <span>THE BACKBONE OF KERALA BUSINESS LEADERSHIP</span>
             </div>
             
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
-              More Than a Network,{' '}
-              <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#C9A227] bg-clip-text text-transparent">
-                We’re a Community.
-              </span>
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+              About Business Owners Circle
             </h1>
           </div>
 
-          {/* MASTER EXECUTIVE SUITE CARD (ULTRA-HD CLARITY WITH ZERO CROPPING) */}
-          <div className="relative rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_70px_rgba(0,0,0,0.85)] bg-[#030914] mb-8">
+          {/* MASTER EXECUTIVE SUITE SHOWCASE (100% NATURAL - NO AI MANIPULATION) */}
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_70px_rgba(0,0,0,0.85)] bg-[#030914] max-w-6xl mx-auto group">
             
-            <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[560px] lg:min-h-[620px] relative">
-              
-              {/* Left Column: Vector Branding, Typography, 4 Badges & Cursive Script */}
-              <div className="lg:col-span-6 xl:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-between z-10 bg-gradient-to-b from-[#030A18] via-[#020713]/98 to-[#030A18] lg:bg-gradient-to-r lg:from-[#030A18] lg:via-[#030A18]/98 lg:to-[#030A18]/85 border-b lg:border-b-0 lg:border-r border-[#D4AF37]/30">
-                
-                <div>
-                  {/* Gold BOC Logo */}
-                  <div className="flex items-center gap-3.5 mb-6">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#D4AF37] bg-gradient-to-tr from-[#C9A227] via-[#FFF3C4] to-[#E5C45A] p-0.5 shadow-[0_0_15px_rgba(212,175,55,0.3)] flex items-center justify-center shrink-0">
-                      <span className="font-serif font-extrabold text-sm text-[#07172C] tracking-tighter">BOC</span>
-                    </div>
-                    <div>
-                      <div className="text-2xl font-cinzel font-black tracking-wider text-white">
-                        BOC
-                      </div>
-                      <div className="text-[9px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.25em] uppercase leading-tight">
-                        BUSINESS OPPORTUNITIES CONNECTIONS
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Section Eyebrow */}
-                  <div className="text-xs font-cinzel font-bold text-[#F9D678] tracking-[0.2em] uppercase mb-2">
-                    — ABOUT US
-                  </div>
-
-                  {/* Heading */}
-                  <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight leading-snug mb-3">
-                    More Than a Network,<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
-                      We’re a Community.
-                    </span>
-                  </h2>
-
-                  {/* Exact Description */}
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-                    Business Owners Circle (BOC) is a premium networking platform for entrepreneurs, professionals and business leaders who believe in the power of genuine connections, collaboration and shared growth.
-                  </p>
-
-                  {/* 4 Feature Badges (Exact from Reference) */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/5 border border-[#D4AF37]/25">
-                      <div className="w-7 h-7 rounded-full bg-[#092244] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                        <Users className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CONNECT</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">with like-minded business owners</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/5 border border-[#D4AF37]/25">
-                      <div className="w-7 h-7 rounded-full bg-[#092244] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                        <Handshake className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">COLLABORATE</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">on new opportunities</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/5 border border-[#D4AF37]/25">
-                      <div className="w-7 h-7 rounded-full bg-[#092244] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                        <TrendingUp className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">GROW</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">together as a community</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-white/5 border border-[#D4AF37]/25">
-                      <div className="w-7 h-7 rounded-full bg-[#092244] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                        <Globe className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CREATE</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">a bigger impact in business</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Signature Script & Action */}
-                <div>
-                  <div className="mb-4">
-                    <p className="font-serif italic text-lg sm:text-xl text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
-                      Real People. Real Business. Real Growth.
-                    </p>
-                    <div className="h-[1.5px] w-48 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1" />
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button
-                      onClick={onOpenJoinModal}
-                      className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs uppercase tracking-wider shadow-md hover:scale-105 transition-all cursor-pointer flex items-center gap-1.5"
-                    >
-                      <span>Join The Circle</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <button
-                      onClick={() => setIsPhotoLightboxOpen(true)}
-                      className="px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#D4AF37]/40 text-[#F9D678] font-cinzel font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-1.5"
-                      title="View Ultra-HD Photo Fullscreen"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>View 8K Photo</span>
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Right Column: The Ultra-HD Photo (Jijeesh Sir & Madam in Pristine 8K Clarity) */}
-              <div className="lg:col-span-6 xl:col-span-7 relative min-h-[360px] sm:min-h-[460px] lg:min-h-full overflow-hidden bg-[#040E1E] group">
-                <img
-                  src={cleanHdPhoto}
-                  alt="Jijeesh Minerva and Leaders at BOC Kerala Waterfront Meeting"
-                  className="w-full h-full object-cover object-[center_top] sm:object-[center_35%] lg:object-center block transition-transform duration-700 group-hover:scale-[1.03]"
-                  loading="eager"
-                />
-
-                {/* Subtle Edge Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020A17]/60 via-transparent to-transparent pointer-events-none" />
-                <div className="hidden lg:block absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#030A18] to-transparent pointer-events-none" />
-
-                {/* Ultra-HD Clarity Guarantee Overlay */}
-                <div className="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-full bg-[#030A17]/85 border border-[#D4AF37] text-[#F9D678] text-[10px] sm:text-xs font-cinzel font-bold tracking-wider uppercase backdrop-blur-md shadow-xl flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>Ultra-HD Master Photograph</span>
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Full Artwork Banner Section (As requested by user for exact replica) */}
-          <div className="mt-8 text-center">
-            <div className="text-xs font-cinzel font-bold text-[#DFC688] uppercase tracking-widest mb-3">
-              OFFICIAL BANNER ARTWORK
-            </div>
-            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#040E1E] max-w-5xl mx-auto">
-              <img 
-                src={masterAboutHero} 
-                alt="BOC Master Artwork Banner" 
-                className="w-full h-auto object-contain block"
+            <div className="relative w-full aspect-[16/9] overflow-hidden">
+              <img
+                src={masterAboutHero}
+                alt="Business Owners Circle — More Than a Network, We’re a Community"
+                className="w-full h-full object-cover sm:object-contain object-center block select-none transition-transform duration-700 group-hover:scale-[1.01]"
               />
+
+              {/* Gentle ambient gradient scrim at bottom edge for actions */}
+              <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-[#020713]/95 via-[#020713]/40 to-transparent pointer-events-none" />
+
+              {/* Action Buttons */}
+              <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-8 right-3 sm:right-8 flex items-center justify-between gap-2 z-20">
+                <button
+                  onClick={onOpenJoinModal}
+                  className="px-4 sm:px-7 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2"
+                >
+                  <span>JOIN BOC</span>
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                </button>
+
+                <button
+                  onClick={() => setIsPhotoLightboxOpen(true)}
+                  className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#030A17]/85 hover:bg-[#030A17] border border-[#D4AF37] text-[#F9D678] font-cinzel font-bold text-[10.5px] sm:text-xs uppercase tracking-wider backdrop-blur-md shadow-lg transition-all cursor-pointer flex items-center gap-1.5"
+                  title="View Fullscreen"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Fullscreen View</span>
+                </button>
+              </div>
             </div>
+
           </div>
 
         </div>
@@ -850,12 +727,12 @@ export default function AboutPage({ onOpenJoinModal }) {
           
           <div className="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center">
             <img 
-              src={cleanHdPhoto} 
-              alt="BOC Leadership Fullscreen Ultra-HD" 
+              src={masterAboutHero} 
+              alt="BOC Leadership Fullscreen Master Photograph" 
               className="max-w-full max-h-[80vh] object-contain rounded-2xl border-2 border-[#D4AF37] shadow-2xl"
             />
             <div className="text-center mt-4 text-xs font-cinzel font-bold text-[#F9D678] tracking-widest uppercase">
-              BOC Kerala Executive Leadership Gathering • Ultra-HD 8K Photograph
+              Business Owners Circle • Kerala Executive Gathering
             </div>
           </div>
         </div>
