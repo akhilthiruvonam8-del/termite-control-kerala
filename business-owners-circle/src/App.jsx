@@ -41,14 +41,14 @@ function AppContent() {
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-[#C9A227] selection:text-[#041126] overflow-x-hidden bg-[#020712] text-slate-100">
+    <div className="min-h-screen w-full max-w-full flex flex-col font-sans selection:bg-[#C9A227] selection:text-[#041126] overflow-x-hidden bg-[#020712] text-slate-100 relative">
       <ScrollToTop />
 
       {/* Floating Executive Luxury Navbar */}
       <BOCNavbar onOpenJoinModal={() => setIsJoinModalOpen(true)} />
 
       {/* Multi-Page Routes */}
-      <div className="flex-grow flex flex-col">
+      <div className="flex-grow w-full max-w-full flex flex-col overflow-x-hidden min-w-0">
         <Routes>
           {/* Main Master Landing Portal (All 14 Modules) */}
           <Route 

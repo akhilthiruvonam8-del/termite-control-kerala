@@ -51,7 +51,7 @@ export default function BOCFooter({ onOpenJoinModal }) {
   };
 
   return (
-    <footer className="relative w-full bg-[#020713] text-white overflow-hidden select-none border-t border-[#D4AF37]/30">
+    <footer className="relative w-full max-w-full bg-[#020713] text-white overflow-hidden select-none border-t border-[#D4AF37]/30">
       
       {/* Background World Dot Grid Map Accent */}
       <div 
@@ -74,8 +74,10 @@ export default function BOCFooter({ onOpenJoinModal }) {
       </div>
 
       {/* Ambient Lighting Glows */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none -mt-32" />
-      <div className="absolute top-10 right-0 w-[500px] h-[500px] bg-[#B57D2B]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl -mt-32" />
+        <div className="absolute top-10 right-0 w-[500px] h-[500px] bg-[#B57D2B]/10 rounded-full blur-3xl" />
+      </div>
 
       {/* Main Container */}
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12 z-10">

@@ -114,12 +114,14 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     : chapters.filter(c => c.city === selectedCity);
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] relative">
       
       {/* Background Lights */}
-      <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+      </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full min-w-0">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
@@ -139,7 +141,7 @@ export default function ChaptersPage({ onOpenJoinModal }) {
         </div>
 
         {/* City Filter Pills */}
-        <div className="flex items-center justify-center gap-2 mb-12 flex-wrap">
+        <div className="flex items-center justify-center gap-2 mb-12 flex-wrap max-w-full px-2">
           {['All', 'Kochi', 'Thrissur', 'Kozhikode', 'Thiruvananthapuram', 'Kottayam', 'Kollam'].map((city) => (
             <button
               key={city}
@@ -256,10 +258,10 @@ export default function ChaptersPage({ onOpenJoinModal }) {
         </div>
 
         {/* Bottom Banner: Launch a Chapter */}
-        <div className="relative rounded-3xl bg-gradient-to-r from-[#081E3B] via-[#0B2548] to-[#040F21] p-8 sm:p-12 border-2 border-[#D4AF37]/50 text-center overflow-hidden shadow-2xl">
-          <div className="relative z-10 max-w-2xl mx-auto">
+        <div className="relative rounded-3xl bg-gradient-to-r from-[#081E3B] via-[#0B2548] to-[#040F21] p-5 sm:p-12 border-2 border-[#D4AF37]/50 text-center overflow-hidden shadow-2xl">
+          <div className="relative z-10 max-w-2xl mx-auto w-full min-w-0">
             <Sparkles className="w-8 h-8 text-[#F9D678] mx-auto mb-3" />
-            <h3 className="font-serif font-bold text-2xl sm:text-3xl text-white mb-3">
+            <h3 className="font-serif font-bold text-xl sm:text-3xl text-white mb-3">
               Want to Launch a BOC Chapter in Your City or Country?
             </h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
@@ -268,7 +270,7 @@ export default function ChaptersPage({ onOpenJoinModal }) {
             </p>
             <button
               onClick={onOpenJoinModal}
-              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all"
+              className="px-5 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all max-w-full"
             >
               Apply as Chapter Founding Leader →
             </button>

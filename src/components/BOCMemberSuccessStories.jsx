@@ -137,11 +137,13 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
   return (
     <section 
       id="success-stories" 
-      className="relative w-full bg-[#FAF8F5] text-slate-900 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#EADBBD]/60"
+      className="relative w-full max-w-full bg-[#FAF8F5] text-slate-900 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#EADBBD]/60"
     >
       {/* Background Soft Subtle Ambient Glow */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#F5E6BE]/30 rounded-full blur-3xl pointer-events-none -mr-32 -mt-32" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F5E6BE]/25 rounded-full blur-3xl pointer-events-none -ml-32 -mb-32" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#F5E6BE]/30 rounded-full blur-3xl -mr-32 -mt-32" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#F5E6BE]/25 rounded-full blur-3xl -ml-32 -mb-32" />
+      </div>
 
       {/* ===================================================================== */}
       {/* 1. TOP-LEFT CURVED NAVY WAVE WITH BOC BRANDING                        */}

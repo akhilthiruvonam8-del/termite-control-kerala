@@ -147,7 +147,7 @@ export default function BOCChapters({ onOpenJoinModal }) {
   return (
     <section 
       id="chapters" 
-      className="relative w-full text-slate-900 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#EADBBD]/40"
+      className="relative w-full max-w-full text-slate-900 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#EADBBD]/40"
     >
       {/* ===================================================================== */}
       {/* 1. SCENIC KERALA BACKWATERS SUNSET BACKDROP                           */}

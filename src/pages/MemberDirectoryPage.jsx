@@ -270,11 +270,13 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
   }, [searchQuery, selectedCategory, selectedChapter]);
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C]">
+    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative">
       
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-40 left-10 w-[450px] h-[450px] bg-[#0E2849]/35 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+        <div className="absolute top-40 left-10 w-[450px] h-[450px] bg-[#0E2849]/35 rounded-full blur-3xl" />
+      </div>
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
@@ -355,7 +357,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
           </div>
 
           {/* Quick Category Chips */}
-          <div className="flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80 overflow-x-auto pb-1 scrollbar-none">
+          <div className="flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80 overflow-x-auto pb-1 scrollbar-none w-full max-w-full min-w-0">
             <span className="text-[11px] font-cinzel text-slate-400 uppercase tracking-wider shrink-0 flex items-center gap-1">
               <Filter className="w-3 h-3 text-[#D4AF37]" /> Filter:
             </span>
@@ -404,7 +406,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
             {filteredMembers.map((member) => (
               <div
                 key={member.id}
-                className="bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] flex flex-col justify-between group"
+                className="bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] flex flex-col justify-between group overflow-hidden"
               >
                 <div>
                   {/* Top Row: Photo + Badges */}
@@ -465,7 +467,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                 </div>
 
                 {/* Bottom Action Controls */}
-                <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                <div className="pt-4 border-t border-slate-800/80 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2">
                   <div className="flex items-center gap-1.5">
                     {/* Call */}
                     <a
@@ -533,7 +535,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
       {/* ===================================================================== */}
       {activeProfile && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-gradient-to-b from-[#071B36] to-[#040E1E] rounded-3xl border-2 border-[#D4AF37] p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-2xl bg-gradient-to-b from-[#071B36] to-[#040E1E] rounded-3xl border-2 border-[#D4AF37] p-5 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
             
             {/* Close Button */}
             <button

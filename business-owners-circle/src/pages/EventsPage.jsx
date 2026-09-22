@@ -34,13 +34,15 @@ export default function EventsPage({ onOpenJoinModal }) {
     : tabFilteredEvents.filter((e) => e.type === selectedType);
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] relative">
       
       {/* Background Ambient Lighting */}
-      <div className="absolute top-0 right-1/4 w-[550px] h-[550px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-96 left-10 w-[450px] h-[450px] bg-[#0E2849]/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[550px] h-[550px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+        <div className="absolute top-96 left-10 w-[450px] h-[450px] bg-[#0E2849]/30 rounded-full blur-3xl" />
+      </div>
 
-      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full min-w-0">
         
         {/* =================================================================== */}
         {/* 1. HEADER SHOWCASE (Radiant Gold Pill Badge & Luminous Gradient)    */}
@@ -65,19 +67,19 @@ export default function EventsPage({ onOpenJoinModal }) {
         {/* =================================================================== */}
         {/* 2. UPCOMING VS PREVIOUS EVENTS TOGGLE TABS                          */}
         {/* =================================================================== */}
-        <div className="flex items-center justify-center gap-3 mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8 w-full max-w-full px-2">
           <button
             onClick={() => {
               setActiveTab('upcoming');
               setSelectedType('All');
             }}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer shadow-md ${
+            className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer shadow-md ${
               activeTab === 'upcoming'
-                ? 'bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] shadow-[0_4px_20px_rgba(212,175,55,0.3)] scale-105'
+                ? 'bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] shadow-[0_4px_20px_rgba(212,175,55,0.3)] scale-102 sm:scale-105'
                 : 'bg-[#05142B] hover:bg-[#071F3E] text-slate-300 border border-[#D4AF37]/35 hover:text-white'
             }`}
           >
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Upcoming Events ({eventsData.filter(e => e.isUpcoming).length})</span>
           </button>
 
@@ -86,13 +88,13 @@ export default function EventsPage({ onOpenJoinModal }) {
               setActiveTab('previous');
               setSelectedType('All');
             }}
-            className={`flex items-center gap-2 px-6 py-3 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer shadow-md ${
+            className={`flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider uppercase transition-all cursor-pointer shadow-md ${
               activeTab === 'previous'
-                ? 'bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] shadow-[0_4px_20px_rgba(212,175,55,0.3)] scale-105'
+                ? 'bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] shadow-[0_4px_20px_rgba(212,175,55,0.3)] scale-102 sm:scale-105'
                 : 'bg-[#05142B] hover:bg-[#071F3E] text-slate-300 border border-[#D4AF37]/35 hover:text-white'
             }`}
           >
-            <History className="w-4 h-4" />
+            <History className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span>Previous Events ({eventsData.filter(e => !e.isUpcoming).length})</span>
           </button>
         </div>

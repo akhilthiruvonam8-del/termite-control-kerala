@@ -124,7 +124,7 @@ export default function BOCMembershipDirectory({ onOpenJoinModal }) {
   });
 
   return (
-    <section id="members" className="relative py-20 lg:py-28 bg-[#030917] text-white border-t border-[#C9A227]/20 overflow-hidden">
+    <section id="members" className="relative py-20 lg:py-28 bg-[#030917] text-white border-t border-[#C9A227]/20 overflow-hidden w-full max-w-full">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

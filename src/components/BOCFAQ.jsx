@@ -119,11 +119,13 @@ export default function BOCFAQ({ onOpenJoinModal }) {
   return (
     <section 
       id="faq" 
-      className="relative w-full bg-[#020712] text-slate-100 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#D4AF37]/30"
+      className="relative w-full max-w-full bg-[#020712] text-slate-100 overflow-hidden select-none py-16 sm:py-20 lg:py-24 border-t border-[#D4AF37]/30"
     >
       {/* Background Soft Subtle Ambient Glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[140px] pointer-events-none -mr-32 -mt-32" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0A2246]/25 rounded-full blur-[140px] pointer-events-none -ml-32 -mb-32" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-[140px] -mr-32 -mt-32" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0A2246]/25 rounded-full blur-[140px] -ml-32 -mb-32" />
+      </div>
 
       {/* ===================================================================== */}
       {/* 1. TOP-LEFT CURVED NAVY WAVE WITH BOC BRANDING                        */}
@@ -307,7 +309,7 @@ export default function BOCFAQ({ onOpenJoinModal }) {
         {/* ===================================================================== */}
         {/* 5. INTERACTIVE CATEGORY TABS                                          */}
         {/* ===================================================================== */}
-        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-3 mb-8 scrollbar-none no-scrollbar">
+        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-3 mb-8 scrollbar-none no-scrollbar w-full max-w-full min-w-0">
           {faqCategories.map((cat) => {
             const isActive = activeCategory === cat.id;
             return (

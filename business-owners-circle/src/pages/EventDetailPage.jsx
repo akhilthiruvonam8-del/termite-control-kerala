@@ -71,16 +71,18 @@ export default function EventDetailPage({ onOpenJoinModal }) {
   };
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C]">
+    <div className="min-h-screen bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative">
       
       {/* Background Ambient Lighting */}
-      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-96 left-10 w-[500px] h-[500px] bg-[#0E2849]/30 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+        <div className="absolute top-96 left-10 w-[500px] h-[500px] bg-[#0E2849]/30 rounded-full blur-3xl" />
+      </div>
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Navigation Breadcrumb */}
-        <div className="flex items-center justify-between gap-4 mb-8 pt-2">
+        <div className="flex items-center justify-between gap-4 mb-8 pt-2 flex-wrap">
           <Link
             to="/events"
             className="inline-flex items-center gap-2 text-xs sm:text-sm font-cinzel font-semibold text-[#F9D678] hover:text-white transition-colors group cursor-pointer"
@@ -481,7 +483,7 @@ export default function EventDetailPage({ onOpenJoinModal }) {
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
                       <label className="block text-[11px] font-cinzel font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
                         Phone / WhatsApp *
