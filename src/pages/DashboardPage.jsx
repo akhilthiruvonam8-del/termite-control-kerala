@@ -24,8 +24,7 @@ import {
 
 import sajishImg from '../assets/boc-member-sajish-maliyekkal.jpg';
 import jijeeshImg from '../assets/boc-member-jijeesh-minerva.jpg';
-import arjunImg from '../assets/boc-story-arjun-nair.jpg';
-import ananyaImg from '../assets/boc-story-ananya-suresh.jpg';
+import maheshImg from '../assets/boc-member-mahesh-prabudhan.jpg';
 import binuImg from '../assets/boc-member-binu-tb.jpg';
 
 export default function DashboardPage() {
@@ -34,9 +33,9 @@ export default function DashboardPage() {
   const [isReferralModalOpen, setIsReferralModalOpen] = useState(false);
   const [referralSuccessToast, setReferralSuccessToast] = useState(false);
 
-  // New Referral Form state
+  // New Referral Form state (Jijeesh Minerva First)
   const [newReferral, setNewReferral] = useState({
-    recipient: 'Arjun Nair (Nair Tech Solutions - IT & Software)',
+    recipient: 'Jijeesh Minerva (Minerva Solutions - Strategic Consulting)',
     clientName: '',
     clientPhone: '',
     opportunityType: 'High Interest / Ready to Purchase',
@@ -48,23 +47,23 @@ export default function DashboardPage() {
   const [referralsList, setReferralsList] = useState([
     {
       id: 'ref-1',
-      recipient: 'Arjun Nair (Nair Tech Solutions)',
-      category: 'IT & Software',
-      client: 'Dr. Joseph Kurian (Lifeline Clinics)',
-      phone: '+91 98471 99002',
-      requirement: 'Custom Clinic ERP & Appointment Booking App',
-      estimatedValue: '₹4,50,000',
+      recipient: 'Jijeesh Minerva (Minerva Solutions)',
+      category: 'Strategic Consulting',
+      client: 'Sunny Mathew (Skyline Auto Logistics)',
+      phone: '+91 97450 55662',
+      requirement: 'Franchise SOP development & enterprise facilities setup',
+      estimatedValue: '₹6,00,000',
       status: 'Converted',
       date: 'Oct 02, 2025',
     },
     {
       id: 'ref-2',
-      recipient: 'Ananya Suresh (Bloom Creative)',
-      category: 'Branding & Media',
+      recipient: 'Mahesh Prabudhan (Yessem Facilities)',
+      category: 'Facility Management',
       client: 'Kiran Raj (Grand Spices Co.)',
       phone: '+91 94470 33441',
-      requirement: 'Complete export packaging redesign & corporate website',
-      estimatedValue: '₹2,80,000',
+      requirement: 'Complete warehouse facility management & compliance audit',
+      estimatedValue: '₹4,80,000',
       status: 'In Progress',
       date: 'Oct 06, 2025',
     },
@@ -78,17 +77,6 @@ export default function DashboardPage() {
       estimatedValue: '₹12,00,000',
       status: 'Contacted',
       date: 'Oct 10, 2025',
-    },
-    {
-      id: 'ref-4',
-      recipient: 'Jijeesh Minerva (Minerva Solutions)',
-      category: 'Strategic Consulting',
-      client: 'Sunny Mathew (Skyline Auto Logistics)',
-      phone: '+91 97450 55662',
-      requirement: 'Franchise SOP development & organizational restructuring',
-      estimatedValue: '₹6,00,000',
-      status: 'New',
-      date: 'Oct 12, 2025',
     },
   ]);
 
@@ -115,7 +103,7 @@ export default function DashboardPage() {
 
     // Reset
     setNewReferral({
-      recipient: 'Arjun Nair (Nair Tech Solutions - IT & Software)',
+      recipient: 'Jijeesh Minerva (Minerva Solutions - Strategic Consulting)',
       clientName: '',
       clientPhone: '',
       opportunityType: 'High Interest / Ready to Purchase',
@@ -464,10 +452,10 @@ export default function DashboardPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'Jijeesh Minerva', company: 'Minerva Solutions', cat: 'Strategic Consulting', photo: jijeeshImg, phone: '+91 98471 22334' },
-                  { name: 'Arjun Nair', company: 'Nair Tech Solutions', cat: 'IT & Software', photo: arjunImg, phone: '+91 98462 88990' },
-                  { name: 'Ananya Suresh', company: 'Bloom Creative', cat: 'Media & Branding', photo: ananyaImg, phone: '+91 98955 99001' },
-                  { name: 'Binu T.B.', company: 'Equinox Financial', cat: 'Wealth Advisory', photo: binuImg, phone: '+91 94470 44556' },
+                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls', cat: 'Strategic Consulting', photo: jijeeshImg, phone: '+91 98471 22334' },
+                  { name: 'Sajish Maliyekkal', company: 'Maliyekkal Builders & Infra', cat: 'Construction & Infra', photo: sajishImg, phone: '+91 98460 11223' },
+                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities & Logistics', cat: 'Corporate Facilities', photo: maheshImg, phone: '+91 98465 33445' },
+                  { name: 'Binu T.B.', company: 'Equinox Financial Advisory', cat: 'Wealth Advisory', photo: binuImg, phone: '+91 94470 44556' },
                 ].map((m, idx) => (
                   <div key={idx} className="bg-[#020814] p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
@@ -560,10 +548,10 @@ export default function DashboardPage() {
                   onChange={(e) => setNewReferral({ ...newReferral, recipient: e.target.value })}
                   className="w-full py-2.5 px-3 bg-[#020814] border border-[#D4AF37]/40 rounded-xl text-xs sm:text-sm text-white focus:border-[#F9D678] outline-none"
                 >
-                  <option value="Arjun Nair (Nair Tech Solutions - IT & Software)">Arjun Nair (IT & Custom Software)</option>
-                  <option value="Ananya Suresh (Bloom Creative - Media & Branding)">Ananya Suresh (Media & Branding)</option>
+                  <option value="Jijeesh Minerva (Minerva Solutions - Strategic Consulting)">Jijeesh Minerva (Management Consulting & Pest/Digital)</option>
+                  <option value="Sajish Maliyekkal (Maliyekkal Builders - Construction)">Sajish Maliyekkal (Construction & Infra)</option>
+                  <option value="Mahesh Prabudhan (Yessem Facilities - Facility Mgmt)">Mahesh Prabudhan (Facility Management & Logistics)</option>
                   <option value="Binu T.B. (Equinox Financial - Wealth & Tax)">Binu T.B. (Wealth Advisory & Debt)</option>
-                  <option value="Jijeesh Minerva (Minerva Solutions)">Jijeesh Minerva (Management Consulting)</option>
                   <option value="Anjana Sreedharan (Studio Aesthetica - Architecture)">Anjana Sreedharan (Architecture & Interiors)</option>
                 </select>
               </div>

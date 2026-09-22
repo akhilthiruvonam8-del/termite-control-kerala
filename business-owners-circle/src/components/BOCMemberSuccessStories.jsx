@@ -60,7 +60,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
       industryTag: 'PEST & DIGITAL ECOSYSTEMS',
       location: 'Kochi / Kozhikode Chapter',
       photo: jijeeshPhoto,
-      photoPosition: 'center 12%',
+      photoPosition: 'center 20%',
       metric: '₹1.8 Cr+ in Enterprise AMCs',
       quote: 'BOC has fundamentally transformed how we win corporate contracts. Through category exclusivity and peer trust, we stopped competing on price and started closing high-value annual maintenance contracts.',
       challenge: 'Traditional pest control and digital services in Kerala face heavy price undercutting, slow B2B client acquisition cycles, and difficulty accessing top-tier property developers, hospital chains, and hospitality groups without third-party commissions.',

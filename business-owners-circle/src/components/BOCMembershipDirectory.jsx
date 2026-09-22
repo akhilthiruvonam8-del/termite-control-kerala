@@ -41,15 +41,15 @@ export default function BOCMembershipDirectory({ onOpenJoinModal }) {
   const sampleMembers = [
     {
       id: 1,
-      name: 'Rahul Menon',
-      company: 'Apex Cloud Solutions',
-      category: 'Technology',
-      specialty: 'Enterprise Software & Cloud Architecture',
-      location: 'Kakkanad',
-      experience: '12+ Years',
+      name: 'Jijeesh Minerva',
+      company: 'M/s Eco Pest India • M/s Urban Owls Digital',
+      category: 'Professional Services',
+      specialty: 'Strategic Business Consulting & Facility Solutions',
+      location: 'Ernakulam CBD',
+      experience: '15+ Years',
       verified: true,
-      bio: 'Providing scalable cloud SaaS backends, ERP solutions, and digital transformation for healthcare and retail enterprises.',
-      services: ['Custom Cloud ERP', 'Web & Mobile Apps', 'Data Security'],
+      bio: 'Founder & CEO driving corporate business consulting, certified pest control excellence, and digital transformation across Kerala.',
+      services: ['Corporate Advisory', 'Enterprise Facilities', 'Digital Architecture'],
     },
     {
       id: 2,

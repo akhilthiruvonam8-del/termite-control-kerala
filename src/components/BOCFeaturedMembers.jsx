@@ -47,7 +47,7 @@ export default function BOCFeaturedMembers({ onOpenJoinModal }) {
       tagline: 'Driving business ecosystems, pest control excellence & digital innovation across Kerala.',
       icon: Crown,
       photo: jijeeshPhoto,
-      photoPosition: 'center 12%',
+      photoPosition: 'center 20%',
     },
     {
       id: 'mahesh-prabudhan',

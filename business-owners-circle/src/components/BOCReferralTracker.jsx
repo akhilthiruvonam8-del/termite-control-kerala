@@ -25,7 +25,7 @@ export default function BOCReferralTracker({ onOpenJoinModal }) {
   const sampleLiveReferrals = [
     {
       id: 'REF-2026-089',
-      from: 'Rahul Menon (Cloud Tech)',
+      from: 'Jijeesh Minerva (Minerva Solutions)',
       to: 'Mathew Joseph (Interior Fitouts)',
       client: 'Fintech Startup, Infopark Phase 2',
       requirement: '12,000 sq.ft Corporate Office Turnkey Interior',
@@ -37,7 +37,7 @@ export default function BOCReferralTracker({ onOpenJoinModal }) {
     {
       id: 'REF-2026-092',
       from: 'Adv. Anjali Varma (Legal)',
-      to: 'Rahul Menon (Cloud Tech)',
+      to: 'Jijeesh Minerva (Minerva Solutions)',
       client: 'Healthcare Diagnostics Chain',
       requirement: 'HIPAA-compliant Patient Records Cloud SaaS',
       status: 'In Discussion',

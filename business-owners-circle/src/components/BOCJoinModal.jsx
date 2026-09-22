@@ -104,7 +104,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                       <input
                         type="text"
                         required
-                        placeholder="e.g. Rahul Menon"
+                        placeholder="e.g. Jijeesh Minerva"
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         className="w-full bg-[#041126]/90 border border-[#C9A227]/30 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#E5C45A] focus:ring-1 focus:ring-[#E5C45A]"

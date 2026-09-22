@@ -18,17 +18,13 @@ import {
 } from 'lucide-react';
 
 // Import existing verified member images
-import sajishImg from '../assets/boc-member-sajish-maliyekkal.jpg';
 import jijeeshImg from '../assets/boc-member-jijeesh-minerva.jpg';
+import sajishImg from '../assets/boc-member-sajish-maliyekkal.jpg';
 import maheshImg from '../assets/boc-member-mahesh-prabudhan.jpg';
 import binuImg from '../assets/boc-member-binu-tb.jpg';
 import vidhuImg from '../assets/boc-member-vidhu-mezhuveli.jpg';
 import anjanaImg from '../assets/boc-member-anjana-sreedharan.jpg';
 import nidhiImg from '../assets/boc-member-nidhi-tomer.jpg';
-import arjunImg from '../assets/boc-story-arjun-nair.jpg';
-import priyaImg from '../assets/boc-story-priya-thomas.jpg';
-import rahulImg from '../assets/boc-story-rahul-menon.jpg';
-import ananyaImg from '../assets/boc-story-ananya-suresh.jpg';
 
 export default function MemberDirectoryPage({ onOpenJoinModal }) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -36,16 +32,33 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
   const [selectedChapter, setSelectedChapter] = useState('All');
   const [activeProfile, setActiveProfile] = useState(null);
 
-  // Complete Verified Directory Data
+  // Complete Verified Directory Data (Jijeesh Minerva Always First)
   const members = [
     {
       id: 'mem-1',
+      name: 'Jijeesh Minerva',
+      role: 'Founder & CEO',
+      company: 'M/s Eco Pest India • M/s Urban Owls Digital',
+      category: 'Management & Strategic Consulting',
+      chapter: 'Kochi Chapter',
+      city: 'Kochi',
+      photo: jijeeshImg,
+      phone: '+91 98471 22334',
+      email: 'jijeesh@minervagroup.in',
+      whatsapp: '919847122334',
+      website: 'www.minervagroup.in',
+      experience: '15+ Years',
+      services: ['Corporate Advisory', 'Enterprise Facilities', 'Franchise Structuring', 'Digital Ecosystems'],
+      bio: 'Strategic business growth architect advising over 60+ mid-market family-owned enterprises, founder of enterprise pest control solutions and digital business infrastructure.',
+    },
+    {
+      id: 'mem-2',
       name: 'Sajish Maliyekkal',
       role: 'CEO & Founder',
       company: 'Maliyekkal Builders & Infra',
       category: 'Real Estate & Construction',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
+      chapter: 'Thrissur Chapter',
+      city: 'Thrissur',
       photo: sajishImg,
       phone: '+91 98460 11223',
       email: 'sajish@maliyekkalbuilders.com',
@@ -56,27 +69,10 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
       bio: 'Leading residential and commercial infrastructure developer in Central Kerala with over 1.2 million sq. ft. constructed.',
     },
     {
-      id: 'mem-2',
-      name: 'Jijeesh Minerva',
-      role: 'Managing Director',
-      company: 'Minerva Business Solutions',
-      category: 'Management & Strategic Consulting',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      photo: jijeeshImg,
-      phone: '+91 98471 22334',
-      email: 'jijeesh@minervagroup.in',
-      whatsapp: '919847122334',
-      website: 'www.minervagroup.in',
-      experience: '15+ Years',
-      services: ['Corporate Advisory', 'Business Scaling', 'Franchise Structuring', 'SOP Implementation'],
-      bio: 'Strategic business growth architect advising over 60+ mid-market family-owned enterprises across South India.',
-    },
-    {
       id: 'mem-3',
       name: 'Mahesh Prabudhan',
       role: 'Chief Executive Officer',
-      company: 'Apex Logistics & Freight',
+      company: 'Yessem Facilities & Logistics',
       category: 'Logistics & Supply Chain',
       chapter: 'Kochi Chapter',
       city: 'Kochi',
@@ -86,8 +82,8 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
       whatsapp: '919846533445',
       website: 'www.apexlogistics.in',
       experience: '12+ Years',
-      services: ['Container Freight Station', 'Customs Clearance', 'Cold Chain Transport', 'GCC Freight Forwarding'],
-      bio: 'End-to-end multi-modal logistics enterprise connecting South Indian manufacturers to international markets.',
+      services: ['Corporate Facility Management', 'Container Freight Station', 'Customs Clearance', 'GCC Logistics'],
+      bio: 'End-to-end multi-modal facility management and logistics enterprise connecting South Indian manufacturers to international markets.',
     },
     {
       id: 'mem-4',
@@ -157,89 +153,17 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
       services: ['Molecular Diagnostics', 'Executive Health Checkups', 'Corporate Wellness Programs', 'Telemedicine'],
       bio: 'Advanced diagnostic network operating 8 accredited laboratories across Southern Kerala.',
     },
-    {
-      id: 'mem-8',
-      name: 'Arjun Nair',
-      role: 'Founder & CTO',
-      company: 'Nair Tech Solutions',
-      category: 'Information Technology & Software',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      photo: arjunImg,
-      phone: '+91 98462 88990',
-      email: 'arjun@nairtech.io',
-      whatsapp: '919846288990',
-      website: 'www.nairtech.io',
-      experience: '10+ Years',
-      services: ['Custom Cloud Platforms', 'Enterprise ERP', 'AI Automation', 'Mobile Apps'],
-      bio: 'Enterprise SaaS and digital transformation engineering firm serving international logistics and fintech clients.',
-    },
-    {
-      id: 'mem-9',
-      name: 'Ananya Suresh',
-      role: 'Co-Founder & Creative Director',
-      company: 'Bloom Creative Studio',
-      category: 'Media & Branding',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      photo: ananyaImg,
-      phone: '+91 98955 99001',
-      email: 'ananya@bloomcreative.co',
-      whatsapp: '919895599001',
-      website: 'www.bloomcreative.co',
-      experience: '8+ Years',
-      services: ['Brand Identity', 'Performance Marketing', 'Packaging Design', 'Video Production'],
-      bio: 'Creative agency scaling direct-to-consumer and retail brands across India with measurable ROI.',
-    },
-    {
-      id: 'mem-10',
-      name: 'Rahul Menon',
-      role: 'Managing Director',
-      company: 'GreenBuild Infra & Solar',
-      category: 'Renewable Energy & Utilities',
-      chapter: 'Thrissur Chapter',
-      city: 'Thrissur',
-      photo: rahulImg,
-      phone: '+91 98473 11224',
-      email: 'rahul@greenbuildinfra.com',
-      whatsapp: '919847311224',
-      website: 'www.greenbuildinfra.com',
-      experience: '13+ Years',
-      services: ['Rooftop Commercial Solar', 'Industrial EPC', 'Energy Auditing', 'Green Building Consulting'],
-      bio: 'Pioneering renewable energy infrastructure with over 15 MW commissioned across industrial zones in Kerala.',
-    },
-    {
-      id: 'mem-11',
-      name: 'Priya Thomas',
-      role: 'Founder',
-      company: 'Luxe Wellness & Spa Resorts',
-      category: 'Hospitality & Tourism',
-      chapter: 'Kollam Chapter',
-      city: 'Kollam',
-      photo: priyaImg,
-      phone: '+91 98464 22335',
-      email: 'priya@luxewellness.com',
-      whatsapp: '919846422335',
-      website: 'www.luxewellness.com',
-      experience: '9+ Years',
-      services: ['Ayurvedic Luxury Retreats', 'Corporate Offsites', 'Wellness Hospitality', 'Eco-Resort Management'],
-      bio: 'Curator of heritage lakeside wellness retreats providing restorative executive experiences in Kerala.',
-    },
   ];
 
   const categories = [
     'All',
-    'Real Estate & Construction',
-    'Information Technology & Software',
     'Management & Strategic Consulting',
+    'Real Estate & Construction',
+    'Logistics & Supply Chain',
     'Financial & Wealth Services',
     'Manufacturing & Agriculture',
     'Architecture & Interior Design',
     'Healthcare & Diagnostics',
-    'Renewable Energy & Utilities',
-    'Logistics & Supply Chain',
-    'Media & Branding',
-    'Hospitality & Tourism',
   ];
 
   const chapters = [
@@ -415,7 +339,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                       <img
                         src={member.photo}
                         alt={member.name}
-                        className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover border-2 border-[#D4AF37] shadow-md group-hover:scale-105 transition-transform"
+                        className="w-16 h-16 sm:w-18 sm:h-18 rounded-full object-cover object-top border-2 border-[#D4AF37] shadow-md group-hover:scale-105 transition-transform"
                       />
                       <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-[#D4AF37] text-[#07172C] flex items-center justify-center shadow-sm">
                         <CheckCircle2 className="w-3.5 h-3.5 stroke-[3]" />
@@ -551,7 +475,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                 <img
                   src={activeProfile.photo}
                   alt={activeProfile.name}
-                  className="w-24 h-24 rounded-full object-cover border-3 border-[#D4AF37] shadow-xl"
+                  className="w-24 h-24 rounded-full object-cover object-top border-3 border-[#D4AF37] shadow-xl"
                 />
                 <div className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-[#D4AF37] text-[#07172C] font-bold text-[10px] tracking-wider uppercase flex items-center gap-1 shadow-md">
                   <CheckCircle2 className="w-3 h-3" />
