@@ -288,17 +288,21 @@ export default function AboutPage({ onOpenJoinModal }) {
               <div className="relative z-10 w-full max-w-[58%] h-full p-8 lg:p-12 flex flex-col justify-between select-text">
                 
                 <div>
-                  {/* BOC Logo & Branding */}
+                  {/* BOC Logo & Branding (Official Emblem & Correct Full Form) */}
                   <div className="flex items-center gap-3.5 mb-5">
-                    <div className="w-12 h-12 rounded-full border-2 border-[#D4AF37] bg-gradient-to-tr from-[#C9A227] via-[#FFF3C4] to-[#E5C45A] p-0.5 shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center justify-center shrink-0">
-                      <span className="font-serif font-black text-sm text-[#07172C] tracking-tighter">BOC</span>
+                    <div className="relative shrink-0">
+                      <img 
+                        src={bocLogoPng} 
+                        alt="BOC Official Logo" 
+                        className="w-12 h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" 
+                      />
                     </div>
                     <div>
                       <div className="text-2xl font-cinzel font-black tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
                         BOC
                       </div>
-                      <div className="text-[9.5px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.25em] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                        BUSINESS OPPORTUNITIES CONNECTIONS
+                      <div className="text-[10px] sm:text-[11px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.22em] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                        BUSINESS • OWNERS • CIRCLE
                       </div>
                     </div>
                   </div>
@@ -422,17 +426,21 @@ export default function AboutPage({ onOpenJoinModal }) {
               {/* Crisp Mobile Typography Content (Native Vector Text - 100% HD Quality) */}
               <div className="p-5 xs:p-6 flex flex-col">
                 
-                {/* Logo & Subtitle */}
-                <div className="flex items-center gap-2.5 mb-3.5">
-                  <div className="w-9 h-9 rounded-full border border-[#D4AF37] bg-gradient-to-tr from-[#C9A227] to-[#FCE38A] p-0.5 flex items-center justify-center shrink-0">
-                    <span className="font-serif font-black text-xs text-[#07172C]">BOC</span>
+                {/* Logo & Subtitle (Official Emblem & Correct Full Form) */}
+                <div className="flex items-center gap-3 mb-3.5">
+                  <div className="relative shrink-0">
+                    <img 
+                      src={bocLogoPng} 
+                      alt="BOC Official Logo" 
+                      className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" 
+                    />
                   </div>
                   <div>
-                    <div className="text-lg font-cinzel font-black tracking-wider text-white">
+                    <div className="text-xl font-cinzel font-black tracking-wider text-white">
                       BOC
                     </div>
-                    <div className="text-[8px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.2em] uppercase leading-tight">
-                      BUSINESS OPPORTUNITIES CONNECTIONS
+                    <div className="text-[9px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.18em] uppercase leading-tight">
+                      BUSINESS • OWNERS • CIRCLE
                     </div>
                   </div>
                 </div>
