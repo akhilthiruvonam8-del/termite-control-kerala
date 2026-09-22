@@ -253,54 +253,269 @@ export default function AboutPage({ onOpenJoinModal }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         
         {/* ===================================================================== */}
-        {/* 1. MASTER SHOWCASE BANNER (100% AUTHENTIC NATURAL MASTER PHOTOGRAPH)  */}
+        {/* 1. MASTER ABOUT BOC SHOWCASE BANNER                                   */}
         {/* ===================================================================== */}
         <div className="mb-14 sm:mb-20">
           
-          {/* Eyebrow Header */}
+          {/* Header Title (Clean without 'the backbone of kerala') */}
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#071D3E]/90 border border-[#D4AF37] text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-3 shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-              <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
-              <span>THE BACKBONE OF KERALA BUSINESS LEADERSHIP</span>
-            </div>
-            
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
-              About Business Owners Circle
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
+              About{' '}
+              <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#C9A227] bg-clip-text text-transparent">
+                Business Owners Circle
+              </span>
             </h1>
           </div>
 
-          {/* MASTER EXECUTIVE SUITE SHOWCASE (100% NATURAL - NO AI MANIPULATION) */}
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_70px_rgba(0,0,0,0.85)] bg-[#030914] max-w-6xl mx-auto group">
+          {/* MASTER SHOWCASE: FULL BACKGROUND WITH CRISP ULTRA-HD TYPOGRAPHY */}
+          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_70px_rgba(0,0,0,0.85)] bg-[#020713] max-w-6xl mx-auto">
             
-            <div className="relative w-full aspect-[16/9] overflow-hidden">
+            {/* Desktop Viewport (md and up): Real Master Background with Left Vector Scrim & Typography */}
+            <div className="hidden md:block relative w-full aspect-[16/9] min-h-[580px] lg:min-h-[640px] overflow-hidden">
+              
+              {/* Full Background Image: 100% Natural User Photograph */}
               <img
                 src={masterAboutHero}
-                alt="Business Owners Circle — More Than a Network, We’re a Community"
-                className="w-full h-full object-cover sm:object-contain object-center block select-none transition-transform duration-700 group-hover:scale-[1.01]"
+                alt="Business Owners Circle Kerala Waterfront Meeting"
+                className="absolute inset-0 w-full h-full object-cover object-[center_right] select-none pointer-events-none"
               />
 
-              {/* Gentle ambient gradient scrim at bottom edge for actions */}
-              <div className="absolute inset-x-0 bottom-0 h-16 sm:h-24 bg-gradient-to-t from-[#020713]/95 via-[#020713]/40 to-transparent pointer-events-none" />
+              {/* Directional Soft Luxury Scrim on Left: Perfectly shields text readability while leaving faces 100% natural */}
+              <div className="absolute inset-y-0 left-0 w-[64%] bg-gradient-to-r from-[#020713]/98 via-[#020713]/90 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020713]/90 via-[#020713]/30 to-transparent pointer-events-none" />
 
-              {/* Action Buttons */}
-              <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-8 right-3 sm:right-8 flex items-center justify-between gap-2 z-20">
+              {/* 100% Native Vector Typed Content (Razor Sharp, Infinite Resolution, Never Fuzzy) */}
+              <div className="relative z-10 w-full max-w-[58%] h-full p-8 lg:p-12 flex flex-col justify-between select-text">
+                
+                <div>
+                  {/* BOC Logo & Branding */}
+                  <div className="flex items-center gap-3.5 mb-5">
+                    <div className="w-12 h-12 rounded-full border-2 border-[#D4AF37] bg-gradient-to-tr from-[#C9A227] via-[#FFF3C4] to-[#E5C45A] p-0.5 shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center justify-center shrink-0">
+                      <span className="font-serif font-black text-sm text-[#07172C] tracking-tighter">BOC</span>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-cinzel font-black tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                        BOC
+                      </div>
+                      <div className="text-[9.5px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.25em] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                        BUSINESS OPPORTUNITIES CONNECTIONS
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Eyebrow Tag */}
+                  <div className="text-xs font-cinzel font-bold text-[#F9D678] tracking-[0.22em] uppercase mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
+                    — ABOUT US
+                  </div>
+
+                  {/* Main Headline */}
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-[1.14] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+                    More Than a Network,<br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_2px_15px_rgba(212,175,55,0.4)]">
+                      We’re a Community.
+                    </span>
+                  </h2>
+
+                  {/* Subtitle Description */}
+                  <p className="text-slate-200 text-xs sm:text-[13px] lg:text-sm leading-relaxed max-w-xl mb-5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] font-normal">
+                    Business Owners Circle (BOC) is a premium networking platform for entrepreneurs, professionals and business leaders who believe in the power of genuine connections, collaboration and shared growth.
+                  </p>
+
+                  {/* 4 Feature Badges (Ultra-Sharp Native Icons) */}
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-5 max-w-lg">
+                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
+                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <Users className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CONNECT</div>
+                        <div className="text-[10px] text-slate-300 leading-tight">with like-minded business owners</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
+                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <Handshake className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">COLLABORATE</div>
+                        <div className="text-[10px] text-slate-300 leading-tight">on new opportunities</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
+                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <TrendingUp className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">GROW</div>
+                        <div className="text-[10px] text-slate-300 leading-tight">together as a community</div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
+                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <Globe className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CREATE</div>
+                        <div className="text-[10px] text-slate-300 leading-tight">a bigger impact in business</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bottom Signature Script & Action Buttons */}
+                <div>
+                  <div className="mb-4">
+                    <p className="font-serif italic text-base sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                      Real People. Real Business. Real Growth.
+                    </p>
+                    <div className="h-[1.5px] w-48 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1" />
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={onOpenJoinModal}
+                      className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+                    >
+                      <span>JOIN BOC</span>
+                      <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </button>
+
+                    <button
+                      onClick={() => setIsPhotoLightboxOpen(true)}
+                      className="px-4 py-2.5 rounded-full bg-[#030A17]/85 hover:bg-[#030A17] border border-[#D4AF37] text-[#F9D678] font-cinzel font-bold text-xs uppercase tracking-wider backdrop-blur-md shadow-lg transition-all cursor-pointer flex items-center gap-1.5"
+                      title="View Fullscreen"
+                    >
+                      <Maximize2 className="w-3.5 h-3.5" />
+                      <span>Fullscreen View</span>
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* Mobile Viewport (< md screens): Crisp Portrait Photo + Full HD Responsive Typography */}
+            <div className="md:hidden flex flex-col bg-[#030914]">
+              
+              {/* Photo Area with Natural Master Photo */}
+              <div className="relative w-full h-[240px] xs:h-[270px] overflow-hidden">
+                <img
+                  src={masterAboutHero}
+                  alt="Business Owners Circle Gathering"
+                  className="w-full h-full object-cover object-[center_right] select-none"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030914] via-transparent to-transparent pointer-events-none" />
+                
+                <button
+                  onClick={() => setIsPhotoLightboxOpen(true)}
+                  className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#030A17]/85 border border-[#D4AF37] text-[#F9D678] text-[10px] font-cinzel font-bold uppercase tracking-wider backdrop-blur-md shadow-md flex items-center gap-1"
+                >
+                  <Maximize2 className="w-3 h-3" />
+                  <span>View Photo</span>
+                </button>
+              </div>
+
+              {/* Crisp Mobile Typography Content (Native Vector Text - 100% HD Quality) */}
+              <div className="p-5 xs:p-6 flex flex-col">
+                
+                {/* Logo & Subtitle */}
+                <div className="flex items-center gap-2.5 mb-3.5">
+                  <div className="w-9 h-9 rounded-full border border-[#D4AF37] bg-gradient-to-tr from-[#C9A227] to-[#FCE38A] p-0.5 flex items-center justify-center shrink-0">
+                    <span className="font-serif font-black text-xs text-[#07172C]">BOC</span>
+                  </div>
+                  <div>
+                    <div className="text-lg font-cinzel font-black tracking-wider text-white">
+                      BOC
+                    </div>
+                    <div className="text-[8px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.2em] uppercase leading-tight">
+                      BUSINESS OPPORTUNITIES CONNECTIONS
+                    </div>
+                  </div>
+                </div>
+
+                {/* Eyebrow */}
+                <div className="text-[10.5px] font-cinzel font-bold text-[#F9D678] tracking-[0.2em] uppercase mb-1.5">
+                  — ABOUT US
+                </div>
+
+                {/* Headline */}
+                <h2 className="text-xl xs:text-2xl font-serif font-bold text-white tracking-tight leading-snug mb-2.5">
+                  More Than a Network,<br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
+                    We’re a Community.
+                  </span>
+                </h2>
+
+                {/* Description */}
+                <p className="text-slate-300 text-xs leading-relaxed mb-4">
+                  Business Owners Circle (BOC) is a premium networking platform for entrepreneurs, professionals and business leaders who believe in the power of genuine connections, collaboration and shared growth.
+                </p>
+
+                {/* 4 Pillars Grid (Mobile) */}
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
+                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
+                      <Users className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">CONNECT</div>
+                      <div className="text-[9px] text-slate-300 leading-tight">with business owners</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
+                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
+                      <Handshake className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">COLLABORATE</div>
+                      <div className="text-[9px] text-slate-300 leading-tight">on opportunities</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
+                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
+                      <TrendingUp className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">GROW</div>
+                      <div className="text-[9px] text-slate-300 leading-tight">as a community</div>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
+                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
+                      <Globe className="w-3 h-3" />
+                    </div>
+                    <div>
+                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">CREATE</div>
+                      <div className="text-[9px] text-slate-300 leading-tight">bigger impact</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Motto */}
+                <div className="mb-4">
+                  <p className="font-serif italic text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
+                    Real People. Real Business. Real Growth.
+                  </p>
+                </div>
+
+                {/* Mobile CTA Button */}
                 <button
                   onClick={onOpenJoinModal}
-                  className="px-4 sm:px-7 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-[11px] sm:text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2"
+                  className="w-full py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
                   <span>JOIN BOC</span>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
                 </button>
 
-                <button
-                  onClick={() => setIsPhotoLightboxOpen(true)}
-                  className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full bg-[#030A17]/85 hover:bg-[#030A17] border border-[#D4AF37] text-[#F9D678] font-cinzel font-bold text-[10.5px] sm:text-xs uppercase tracking-wider backdrop-blur-md shadow-lg transition-all cursor-pointer flex items-center gap-1.5"
-                  title="View Fullscreen"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Fullscreen View</span>
-                </button>
               </div>
+
             </div>
 
           </div>
@@ -498,7 +713,7 @@ export default function AboutPage({ onOpenJoinModal }) {
               
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#071D3E] border border-[#D4AF37]/40 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.2em] uppercase">
                 <Compass className="w-3.5 h-3.5 text-[#F9D678]" />
-                <span>THE GENESIS & BACKBONE</span>
+                <span>OUR FOUNDING GENESIS</span>
               </div>
 
               <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight leading-tight">
