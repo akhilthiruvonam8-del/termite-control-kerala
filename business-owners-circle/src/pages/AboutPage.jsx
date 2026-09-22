@@ -280,9 +280,9 @@ export default function AboutPage({ onOpenJoinModal }) {
                 className="absolute inset-0 w-full h-full object-cover object-[center_right] select-none pointer-events-none"
               />
 
-              {/* Directional Soft Luxury Scrim on Left: Perfectly shields text readability while leaving faces 100% natural */}
-              <div className="absolute inset-y-0 left-0 w-[64%] bg-gradient-to-r from-[#020713]/98 via-[#020713]/90 to-transparent pointer-events-none" />
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020713]/90 via-[#020713]/30 to-transparent pointer-events-none" />
+              {/* Directional Soft Luxury Scrim on Left: Perfectly shields text readability while leaving natural photo ambiance and faces 100% natural */}
+              <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#020713]/90 via-[#020713]/65 via-[#020713]/30 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020713]/85 via-[#020713]/25 to-transparent pointer-events-none" />
 
               {/* 100% Native Vector Typed Content (Razor Sharp, Infinite Resolution, Never Fuzzy) */}
               <div className="relative z-10 w-full max-w-[58%] h-full p-8 lg:p-12 flex flex-col justify-between select-text">
