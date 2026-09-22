@@ -166,13 +166,13 @@ export default function ChaptersPage({ onOpenJoinModal }) {
             >
               <div>
                 {/* Chapter Photo Banner */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-52 sm:h-56 overflow-hidden">
                   <img 
                     src={ch.image} 
                     alt={ch.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#051329] via-[#051329]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#051329] via-[#051329]/15 to-transparent" />
                   
                   {/* Status Badge */}
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#07172C]/90 border border-[#D4AF37] text-[#F9D678] text-[10px] font-cinzel font-bold tracking-wider uppercase backdrop-blur-md">
