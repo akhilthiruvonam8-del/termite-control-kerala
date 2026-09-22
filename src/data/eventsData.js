@@ -12,7 +12,7 @@ export const eventsData = [
   // ===========================================================================
   {
     id: 'financial-prosperity',
-    isUpcoming: true,
+    isUpcoming: false,
     title: 'Financial Prosperity — Elevate Your Business, Elevate Your Life',
     subtitle: 'Aigerpeak LLP Company Presents || Special Business Growth Conclave',
     image: financialProsperityFlyer,
@@ -23,7 +23,7 @@ export const eventsData = [
     venue: 'Aigerpeak Executive Conclave Suite',
     city: 'Kochi',
     type: 'Wealth & Business Masterclass',
-    registrationStatus: 'Registration Open',
+    registrationStatus: 'Completed / Concluded',
     spotsLeft: 14,
     shortDescription: 'Discover actionable strategies for stock investment, capital growth, debt elimination, personal & business credit scoring, and building real estate assets.',
     fullDescription: 'Presented by Aigerpeak LLP Company in association with Business Owners Circle (BOC), this high-impact executive seminar is curated specifically for entrepreneurs, SMEs, and business leaders who want to master wealth accumulation, corporate debt restructuring, and strategic capital allocation. Learn how high-net-worth founders optimize balance sheets, scale business reserves, and build long-term generational assets.',
@@ -102,7 +102,7 @@ export const eventsData = [
   // ===========================================================================
   {
     id: 'boc-invitation-conclave',
-    isUpcoming: true,
+    isUpcoming: false,
     title: 'BOC Official Invitation & Growth Masterclass',
     subtitle: 'Unlock The Full Potential Of Your Business With Zero Competition',
     image: bocInvitationFlyer,
@@ -113,7 +113,7 @@ export const eventsData = [
     venue: 'Grand Conclave Ballroom',
     city: 'Kochi',
     type: 'Executive Conclave',
-    registrationStatus: 'VIP Invitation Only',
+    registrationStatus: 'Completed / Concluded',
     spotsLeft: 8,
     shortDescription: 'Gain access to expert-led workshops, category-exclusive referral exchange, and strategic resources to accelerate your enterprise.',
     fullDescription: 'Are you looking to unlock the full potential of your business? Join the Business Owners Circle (BOC) and gain access to expert-led workshops, networking opportunities, and exclusive resources. Our community is dedicated to helping business owners like you achieve their goals and succeed in their industries. We believe that by working together, we can achieve more. Connect now and start achieving your goals.',
@@ -193,7 +193,7 @@ export const eventsData = [
   // ===========================================================================
   {
     id: 'kerala-business-leaders-summit',
-    isUpcoming: true,
+    isUpcoming: false,
     title: 'Kerala Business Leaders Conclave & Summit',
     subtitle: 'The Statewide Convergence of 250+ Ambitious Enterprise Founders',
     image: seminarImg,
@@ -204,7 +204,7 @@ export const eventsData = [
     venue: 'Bolgatty Grand Ballroom',
     city: 'Kochi',
     type: 'Summit & Expo',
-    registrationStatus: 'Registration Open',
+    registrationStatus: 'Completed / Concluded',
     spotsLeft: 22,
     shortDescription: 'The premier statewide convergence of top entrepreneurs, corporate investors, and family-business founders across South India.',
     fullDescription: 'Join 250+ high-caliber founders, manufacturers, IT innovators, and strategic service leaders from all 14 districts of Kerala. The BOC Annual Summit features plenary addresses from prominent business pioneers, sector-wise syndicate roundtables, and structured trade exchange forums designed to spark multi-crore business deals.',
@@ -276,7 +276,7 @@ export const eventsData = [
   // ===========================================================================
   {
     id: 'executive-backwater-retreat',
-    isUpcoming: true,
+    isUpcoming: false,
     title: 'Annual Executive Backwater Leadership Retreat',
     subtitle: '3-Day Immersive Offsite for 40 Selected Enterprise Leaders',
     image: retreatImg,
@@ -287,7 +287,7 @@ export const eventsData = [
     venue: 'Heritage Waterfront Villas',
     city: 'Kumarakom',
     type: 'Executive Retreat',
-    registrationStatus: 'Application Required',
+    registrationStatus: 'Completed / Concluded',
     spotsLeft: 5,
     shortDescription: 'An intimate, high-impact leadership retreat designed for visionary CEOs to recharge, forge lifelong alliances, and strategize expansion.',
     fullDescription: 'Set amidst the tranquil backwaters of Vembanad Lake, the Annual BOC Executive Retreat provides an exclusive sanctuary for top entrepreneurs to step away from daily operational firefighting. Engage in profound strategic planning, masterclasses with international executive coaches, sunrise wellness sessions, and private lakeside banquet masterminds.',

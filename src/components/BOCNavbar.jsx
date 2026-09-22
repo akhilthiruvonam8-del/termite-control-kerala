@@ -57,9 +57,9 @@ export default function BOCNavbar({ onOpenJoinModal }) {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-[#030B17]/95 backdrop-blur-md py-2.5 border-b border-[#D4AF37]/35 shadow-[0_4px_25px_rgba(0,0,0,0.6)]' 
-            : 'bg-gradient-to-b from-[#020712]/95 via-[#030B18]/85 to-transparent py-3 sm:py-3.5 border-b border-[#D4AF37]/20'
+          isScrolled || location.pathname !== '/'
+            ? 'bg-[#030B17]/98 backdrop-blur-md py-2.5 border-b border-[#D4AF37]/35 shadow-[0_4px_25px_rgba(0,0,0,0.7)]' 
+            : 'bg-[#020712]/90 md:bg-gradient-to-b md:from-[#020712]/95 md:via-[#030B18]/85 md:to-transparent py-2.5 sm:py-3.5 border-b border-[#D4AF37]/25 backdrop-blur-sm'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -67,7 +67,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
           {/* Left: Brand Identity & Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 sm:gap-3 group flex-shrink-0 cursor-pointer min-w-0 pr-1"
+            className="flex items-center gap-2 sm:gap-3 group cursor-pointer min-w-0 flex-1 mr-2"
           >
             <div className="relative flex-shrink-0">
               <img 
@@ -76,11 +76,11 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain drop-shadow-[0_0_10px_rgba(212,175,55,0.4)] group-hover:scale-105 transition-transform"
               />
             </div>
-            <div className="flex flex-col text-left truncate">
-              <span className="font-cinzel font-black tracking-wider text-[11px] xs:text-xs sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
+            <div className="flex flex-col text-left min-w-0">
+              <span className="font-cinzel font-black tracking-wider text-[11px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
                 BUSINESS OWNERS CIRCLE
               </span>
-              <span className="font-cinzel tracking-[0.18em] sm:tracking-[0.22em] text-[7px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
+              <span className="font-cinzel tracking-[0.16em] sm:tracking-[0.22em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
                 BUSINESS • OWNERS • CIRCLE
               </span>
             </div>
@@ -120,26 +120,27 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             </Link>
           </div>
 
-          {/* Mobile Right: Login & Standout Gold Hamburger Button */}
+          {/* Mobile Right: Standout Luxury Gold LOGIN & Menu Button */}
           <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <Link
               to="/login"
-              className="px-2.5 py-1.5 rounded-full border border-[#D4AF37]/60 text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 text-[10px] sm:text-[11px] font-bold tracking-wider font-cinzel transition-all shadow-sm flex items-center gap-1"
+              className="px-2.5 py-1.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] hover:brightness-110 text-[10.5px] font-black tracking-wider font-cinzel transition-all shadow-[0_0_12px_rgba(212,175,55,0.4)] flex items-center gap-1 active:scale-95 shrink-0"
+              aria-label="Member Login"
             >
-              <User className="w-3 h-3 text-[#F9D678]" />
+              <User className="w-3.5 h-3.5 stroke-[2.8] text-[#07172C]" />
               <span>LOGIN</span>
             </Link>
             
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#081B38] border border-[#D4AF37]/80 text-[#F9D678] hover:border-[#F9D678] hover:bg-[#D4AF37]/20 transition-all shadow-[0_0_12px_rgba(212,175,55,0.35)] cursor-pointer active:scale-95"
+              className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#071A34] border-2 border-[#F9D678] text-[#F9D678] hover:bg-[#F9D678] hover:text-[#07172C] transition-all shadow-[0_0_15px_rgba(212,175,55,0.45)] cursor-pointer active:scale-95 shrink-0"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5 stroke-[2.5] text-[#F9D678]" />
+                <X className="w-5 h-5 stroke-[3] text-current" />
               ) : (
-                <Menu className="w-5 h-5 stroke-[2.5] text-[#F9D678]" />
+                <Menu className="w-5 h-5 stroke-[3] text-current" />
               )}
             </button>
           </div>

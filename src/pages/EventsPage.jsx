@@ -16,8 +16,8 @@ import {
 import { eventsData } from '../data/eventsData';
 
 export default function EventsPage({ onOpenJoinModal }) {
-  // Tab State: 'upcoming' vs 'previous'
-  const [activeTab, setActiveTab] = useState('upcoming');
+  // Tab State: Default highlighted to 'previous' as requested by user
+  const [activeTab, setActiveTab] = useState('previous');
   const [selectedType, setSelectedType] = useState('All');
 
   // Filter by Tab (Upcoming vs Previous)
@@ -122,10 +122,23 @@ export default function EventsPage({ onOpenJoinModal }) {
         {/* 4. EVENT CARDS GRID (Strictly adhering to Point 9 Requirements)     */}
         {/* =================================================================== */}
         {displayEvents.length === 0 ? (
-          <div className="text-center py-16 p-8 rounded-3xl bg-[#051329]/60 border border-[#D4AF37]/20 max-w-lg mx-auto">
-            <Calendar className="w-12 h-12 text-[#D4AF37]/60 mx-auto mb-3" />
-            <h3 className="font-serif font-bold text-lg text-white mb-1">No Events Found</h3>
-            <p className="text-slate-400 text-xs">No events match the selected filter category.</p>
+          <div className="text-center py-16 px-8 rounded-3xl bg-[#051329]/80 border border-[#D4AF37]/30 max-w-lg mx-auto shadow-2xl">
+            <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/40 flex items-center justify-center text-[#F9D678] mx-auto mb-4 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+              <Calendar className="w-7 h-7 stroke-[2.2]" />
+            </div>
+            <h3 className="font-serif font-bold text-xl text-white mb-2">No Upcoming Events Scheduled</h3>
+            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+              All recent executive conclaves and wealth masterclasses have concluded successfully. New dates for upcoming statewide business conclaves and masterminds will be announced soon.
+            </p>
+            <button
+              onClick={() => {
+                setActiveTab('previous');
+                setSelectedType('All');
+              }}
+              className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs tracking-wider uppercase shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer"
+            >
+              View Concluded Events ({eventsData.filter(e => !e.isUpcoming).length})
+            </button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16 items-stretch">

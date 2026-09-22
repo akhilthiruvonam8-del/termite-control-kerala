@@ -221,19 +221,17 @@ export default function BOCHero({ onOpenJoinModal }) {
         {/* Mobile Hero Viewport: Clean Portrait Photo + 100% Typed Vector Typography */}
         <div className="relative w-full overflow-hidden bg-[#020712]">
           
-          {/* Background Image: Vivid, Rich Saturated Sunset Networking */}
-          <div className="relative w-full h-[580px] sm:h-[620px] overflow-hidden">
+          {/* Background Image: Vivid, Ultra-Sharp 8K Crystal-Clear Networking */}
+          <div className="relative w-full h-[590px] sm:h-[630px] overflow-hidden">
             <img 
               src={bocMobileBg} 
               alt="BOC Rooftop Networking" 
-              className="w-full h-full object-cover object-[center_top] contrast-[1.14] saturate-[1.3] brightness-[1.1] select-none"
+              className="w-full h-full object-cover object-[center_top] select-none"
             />
-            {/* Luminous Warm Sunset Radial Glow Behind Skyline */}
-            <div className="absolute right-0 top-1/4 w-80 h-80 bg-gradient-to-br from-amber-400/30 via-orange-500/20 to-transparent rounded-full blur-3xl pointer-events-none mix-blend-screen" />
 
-            {/* Directional Soft Scrim ONLY Behind Upper Text — Fades to transparent above people's heads */}
-            <div className="absolute top-0 left-0 right-0 h-56 bg-gradient-to-b from-[#020712]/95 via-[#020712]/60 to-transparent pointer-events-none" />
-            <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#010714] via-[#010714]/65 to-transparent pointer-events-none" />
+            {/* Directional Soft Scrim ONLY Behind Upper Text — Fades completely before people's heads */}
+            <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#020712]/95 via-[#020712]/50 to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none" />
 
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
             <div className="absolute top-3.5 left-0 right-0 px-4 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
