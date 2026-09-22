@@ -14,7 +14,8 @@ import {
   X,
   Share2,
   Building2,
-  Users
+  Users,
+  ArrowRight
 } from 'lucide-react';
 
 // Import existing verified member images
@@ -333,8 +334,12 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                 className="bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)] flex flex-col justify-between group overflow-hidden"
               >
                 <div>
-                  {/* Top Row: Photo + Badges */}
-                  <div className="flex items-start gap-4 mb-4">
+                  {/* Top Row: Photo + Badges (Click to preview full bio) */}
+                  <div 
+                    onClick={() => setActiveProfile(member)}
+                    className="flex items-start gap-4 mb-4 cursor-pointer group/profile"
+                    title="Click to view full bio"
+                  >
                     <div className="relative shrink-0">
                       <img
                         src={member.photo}
@@ -421,9 +426,9 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                     </a>
                   </div>
 
-                  {/* Connect / View Profile */}
+                  {/* Connect / View Profile -> Opens Join BOC Application Form */}
                   <button
-                    onClick={() => setActiveProfile(member)}
+                    onClick={onOpenJoinModal}
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-[11px] tracking-wider uppercase hover:scale-105 transition-all cursor-pointer shadow-sm"
                   >
                     <span>View Profile</span>
@@ -566,7 +571,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                 }}
                 className="py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] flex items-center justify-center gap-1.5 text-xs font-bold uppercase tracking-wider shadow-md hover:scale-105 transition-all font-cinzel"
               >
-                <span>Connect</span>
+                <span>Join BOC to Connect</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
