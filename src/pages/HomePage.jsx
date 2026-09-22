@@ -82,11 +82,11 @@ export default function HomePage({ onOpenJoinModal }) {
     {
       title: 'FAQ & Help Center',
       badge: 'OFFICIAL ANSWERS',
-      desc: 'Everything you need to know about category lock, chapter meetings, referrals, and joining.',
+      desc: '50 official questions & answers on membership, business networking, chapters, events, and partnerships.',
       path: '/faq',
       icon: HelpCircle,
       action: 'Explore FAQs',
-      stats: '12 Top Questions'
+      stats: '50 Official FAQs'
     },
     {
       title: 'Member Portal & Login',
