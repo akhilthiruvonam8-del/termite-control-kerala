@@ -455,26 +455,20 @@ export default function DashboardPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls Digital', cat: 'Pest & Digital Ecosystems', photo: jijeeshImg, phone: '+91 90200 40009' },
-                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities', cat: 'Facility Management', photo: maheshImg, phone: '+91 90200 40009' },
-                  { name: 'Binu T.B.', company: 'Global Marketing, Coimbatore', cat: 'Global Marketing & Trade', photo: binuImg, phone: '+91 90200 40009' },
-                  { name: 'Vidhu Mezhuveli', company: 'Smash Cleaning Company', cat: 'Cleaning Services', photo: vidhuImg, phone: '+91 90200 40009' },
-                  { name: 'Nidhi Tomer', company: 'Vedic Bricks Academy, Kochi', cat: 'Vedic EdTech & Academy', photo: nidhiImg, phone: '+91 90200 40009' },
-                  { name: 'Anjana Sreedharan', company: 'Mithrakulam Trust', cat: 'Social Impact & Trust', photo: anjanaImg, phone: '+91 90200 40009' },
+                  { name: 'Jijeesh Minerva', role: 'Founder & CEO', company: 'M/s Eco Pest India • M/s Urban Owls Digital', photo: jijeeshImg },
+                  { name: 'Sajish Maliyekkal', role: 'Founder', company: 'Greenline Pest Management', photo: sajishImg },
+                  { name: 'Mahesh Prabudhan', role: 'CEO', company: 'Yessem Facilities', photo: maheshImg },
+                  { name: 'Binu T.B.', role: 'Global Marketing Leader', company: 'Global Marketing, Coimbatore', photo: binuImg },
+                  { name: 'Vidhu Mezhuveli', role: 'Founder & CEO', company: 'Smash Cleaning Company', photo: vidhuImg },
+                  { name: 'Nidhi Tomer', role: 'Founder & CEO', company: 'Vedic Bricks Academy, Kochi', photo: nidhiImg },
+                  { name: 'Anjana Sreedharan', role: 'General Secretary', company: 'Mithrakulam Trust', photo: anjanaImg },
                 ].map((m, idx) => (
-                  <div key={idx} className="bg-[#020814] p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <img src={m.photo} alt={m.name} className="w-12 h-12 rounded-full object-cover border border-[#D4AF37]" />
-                      <div>
-                        <h4 className="font-serif font-bold text-sm text-white">{m.name}</h4>
-                        <span className="text-xs text-[#F9D678] block">{m.company}</span>
-                        <span className="text-[11px] text-slate-400 block">{m.cat}</span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <a href={`tel:${m.phone}`} className="p-2 rounded-full bg-[#092244] text-[#F9D678] hover:bg-[#D4AF37] hover:text-[#07172C] transition-all">
-                        <Phone className="w-3.5 h-3.5" />
-                      </a>
+                  <div key={idx} className="bg-[#020814] p-4 rounded-xl border border-slate-800 flex items-center gap-3.5 hover:border-[#D4AF37]/50 transition-colors">
+                    <img src={m.photo} alt={m.name} className="w-14 h-14 rounded-xl object-cover object-top border border-[#D4AF37] shrink-0" />
+                    <div className="min-w-0 flex-grow">
+                      <h4 className="font-serif font-bold text-sm text-white truncate">{m.name}</h4>
+                      <span className="text-xs text-[#F9D678] font-medium block truncate">{m.role}</span>
+                      <span className="text-xs text-slate-300 block truncate">{m.company}</span>
                     </div>
                   </div>
                 ))}
@@ -553,12 +547,13 @@ export default function DashboardPage() {
                   onChange={(e) => setNewReferral({ ...newReferral, recipient: e.target.value })}
                   className="w-full py-2.5 px-3 bg-[#020814] border border-[#D4AF37]/40 rounded-xl text-xs sm:text-sm text-white focus:border-[#F9D678] outline-none"
                 >
-                  <option value="Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)">Jijeesh Minerva (Pest & Digital Ecosystems)</option>
-                  <option value="Mahesh Prabudhan (Yessem Facilities)">Mahesh Prabudhan (Facility Management)</option>
-                  <option value="Binu T.B. (Global Marketing, Coimbatore)">Binu T.B. (Global Marketing & Trade)</option>
-                  <option value="Vidhu Mezhuveli (Smash Cleaning Company)">Vidhu Mezhuveli (Cleaning Services)</option>
-                  <option value="Nidhi Tomer (Vedic Bricks Academy, Kochi)">Nidhi Tomer (Vedic EdTech & Academy)</option>
-                  <option value="Anjana Sreedharan (Mithrakulam Trust)">Anjana Sreedharan (Social Impact & Trust)</option>
+                  <option value="Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)">Jijeesh Minerva — Founder & CEO, M/s Eco Pest India • M/s Urban Owls Digital</option>
+                  <option value="Sajish Maliyekkal (Greenline Pest Management)">Sajish Maliyekkal — Founder, Greenline Pest Management</option>
+                  <option value="Mahesh Prabudhan (Yessem Facilities)">Mahesh Prabudhan — CEO, Yessem Facilities</option>
+                  <option value="Binu T.B. (Global Marketing, Coimbatore)">Binu T.B. — Global Marketing Leader, Global Marketing, Coimbatore</option>
+                  <option value="Vidhu Mezhuveli (Smash Cleaning Company)">Vidhu Mezhuveli — Founder & CEO, Smash Cleaning Company</option>
+                  <option value="Nidhi Tomer (Vedic Bricks Academy, Kochi)">Nidhi Tomer — Founder & CEO, Vedic Bricks Academy, Kochi</option>
+                  <option value="Anjana Sreedharan (Mithrakulam Trust)">Anjana Sreedharan — General Secretary, Mithrakulam Trust</option>
                 </select>
               </div>
 

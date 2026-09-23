@@ -18,9 +18,6 @@ import {
   Star,
   Clock,
   Briefcase,
-  Phone,
-  MessageCircle,
-  Mail,
   ChevronRight,
   Handshake,
   Gem,
@@ -43,7 +40,6 @@ import anjanaImg from '../assets/boc-member-anjana-sreedharan.jpg';
 import nidhiImg from '../assets/boc-member-nidhi-tomer.jpg';
 
 export default function AboutPage({ onOpenJoinModal }) {
-  const [activeLeaderModal, setActiveLeaderModal] = useState(null);
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
 
   // 4 Core Master Highlights (Exact from Master Reference)
@@ -78,126 +74,56 @@ export default function AboutPage({ onOpenJoinModal }) {
     }
   ];
 
-  // Core Leaders Roster (Jijeesh Minerva is #1)
+  // Core Leaders Roster (Jijeesh Minerva is #1 — Strictly 4 Fields Only)
   const leaders = [
     {
       id: 'jijeesh',
       name: 'Jijeesh Minerva',
       role: 'Founder & CEO',
       company: 'M/s Eco Pest India • M/s Urban Owls Digital',
-      category: 'Pest & Digital Ecosystems',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      experience: '15+ Years',
       photo: jijeeshImg,
-      badge: 'Charter Member #001',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'Founder & CEO of M/s Eco Pest India & M/s Urban Owls Digital, driving business ecosystems, pest control excellence and digital innovation across Kerala.',
-      services: ['Corporate Advisory', 'Eco Pest Solutions', 'Digital Infrastructure', 'Enterprise Growth'],
     },
     {
       id: 'sajish',
       name: 'Sajish Maliyekkal',
       role: 'Founder',
       company: 'Greenline Pest Management',
-      category: 'Pest Management',
-      chapter: 'Thrissur Chapter',
-      city: 'Thrissur',
-      experience: '18+ Years',
       photo: sajishImg,
-      badge: 'Pest Management Leader',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'Founder of Greenline Pest Management, pioneering eco-friendly, reliable and certified pest management solutions across Central Kerala.',
-      services: ['Eco-friendly Pest Control', 'Termite Treatment', 'Industrial Disinfection', 'Commercial Audits'],
     },
     {
       id: 'mahesh',
       name: 'Mahesh Prabudhan',
       role: 'CEO',
       company: 'Yessem Facilities',
-      category: 'Facility Management',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      experience: '12+ Years',
       photo: maheshImg,
-      badge: 'Facility Management Leader',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'CEO of Yessem Facilities, delivering world-class corporate facility management and operational excellence for commercial properties and enterprises.',
-      services: ['Corporate Facility Management', 'Operations Management', 'Commercial Maintenance', 'Property Support'],
     },
     {
       id: 'binu',
       name: 'Binu T.B.',
       role: 'Global Marketing Leader',
       company: 'Global Marketing, Coimbatore',
-      category: 'Global Marketing & Trade',
-      chapter: 'Thrissur Chapter',
-      city: 'Coimbatore',
-      experience: '20+ Years',
       photo: binuImg,
-      badge: 'Global Trade & Marketing',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'Leading Global Marketing in Coimbatore, expanding enterprise markets, international connections and strategic trade growth across South India and overseas.',
-      services: ['Global Market Expansion', 'Cross-border Trade', 'International Distribution', 'B2B Marketing'],
     },
     {
       id: 'vidhu',
       name: 'Vidhu Mezhuveli',
       role: 'Founder & CEO',
       company: 'Smash Cleaning Company',
-      category: 'Cleaning Services',
-      chapter: 'Kollam Chapter',
-      city: 'Kollam',
-      experience: '16+ Years',
       photo: vidhuImg,
-      badge: 'Cleaning Services Leader',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'Founder & CEO of Smash Cleaning Company, setting new benchmarks in industrial cleaning, sanitization and modern facility care.',
-      services: ['Industrial Cleaning', 'Sanitization Services', 'Modern Facility Care', 'Commercial Deep Cleaning'],
     },
     {
       id: 'nidhi',
       name: 'Nidhi Tomer',
       role: 'Founder & CEO',
       company: 'Vedic Bricks Academy, Kochi',
-      category: 'Vedic EdTech & Academy',
-      chapter: 'Kochi Chapter',
-      city: 'Kochi',
-      experience: '14+ Years',
       photo: nidhiImg,
-      badge: 'Vedic EdTech Pioneer',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'Founder & CEO of Vedic Bricks Academy, Kochi, empowering future generations with transformative learning and holistic skill development.',
-      services: ['Vedic Education', 'Transformative Learning', 'Holistic Skill Development', 'Educational Workshops'],
     },
     {
       id: 'anjana',
       name: 'Anjana Sreedharan',
       role: 'General Secretary',
       company: 'Mithrakulam Trust',
-      category: 'Social Impact & Trust',
-      chapter: 'Thiruvananthapuram Chapter',
-      city: 'Thiruvananthapuram',
-      experience: '11+ Years',
       photo: anjanaImg,
-      badge: 'Social Impact Leader',
-      phone: '+91 90200 40009',
-      whatsapp: '919020040009',
-      email: 'mailboc@yahoo.com',
-      bio: 'General Secretary of Mithrakulam Trust, championing community welfare, cultural empowerment and sustainable social upliftment across Kerala.',
-      services: ['Community Welfare', 'Cultural Empowerment', 'Social Impact Initiatives', 'Sustainable Upliftment'],
     },
   ];
 
@@ -598,97 +524,53 @@ export default function AboutPage({ onOpenJoinModal }) {
             </p>
           </div>
 
-          {/* Members Grid (Jijeesh Minerva Always First) */}
+          {/* Members Grid (Jijeesh Minerva Always First — Strictly 4 Fields Only) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {leaders.map((leader, index) => {
               const isFirst = index === 0;
               return (
                 <div
                   key={leader.id}
-                  className={`rounded-3xl p-6 transition-all duration-300 flex flex-col justify-between relative group ${
+                  className={`rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between group overflow-hidden ${
                     isFirst 
-                      ? 'bg-gradient-to-b from-[#0B254E] via-[#07172C] to-[#040E1E] border-2 border-[#E5C45A] shadow-[0_15px_40px_rgba(212,175,55,0.25)]' 
+                      ? 'bg-gradient-to-b from-[#0B254E] via-[#07172C] to-[#040E1E] border-2 border-[#E5C45A] shadow-[0_15px_40px_rgba(212,175,55,0.22)]' 
                       : 'bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)]'
                   }`}
                 >
-                  {/* Top Badge for #1 */}
-                  {isFirst && (
-                    <div className="absolute -top-3 right-6 px-3 py-1 rounded-full bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] font-cinzel font-extrabold text-[10px] tracking-wider uppercase shadow-md flex items-center gap-1">
-                      <Star className="w-3 h-3 fill-current" />
-                      <span>Founding Chair</span>
-                    </div>
-                  )}
-
-                  <div>
-                    {/* Header: Photo + Badges */}
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="relative shrink-0">
-                        <img
-                          src={leader.photo}
-                          alt={leader.name}
-                          className="w-20 h-20 rounded-full object-cover object-top border-2 border-[#D4AF37] shadow-lg group-hover:scale-105 transition-transform"
-                        />
-                        <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-[#D4AF37] text-[#07172C] flex items-center justify-center shadow-md">
-                          <CheckCircle2 className="w-4 h-4 stroke-[3]" />
-                        </div>
-                      </div>
-
-                      <div className="flex-grow min-w-0">
-                        <h3 className="font-serif font-bold text-lg text-white group-hover:text-[#F9D678] transition-colors truncate">
-                          {leader.name}
-                        </h3>
-                        <p className="text-xs text-[#F9D678] font-medium truncate">
-                          {leader.role}
-                        </p>
-                        <p className="text-xs text-slate-300 font-semibold truncate mt-0.5">
-                          {leader.company}
-                        </p>
-                        <div className="flex items-center gap-1.5 text-[11px] text-slate-400 mt-1">
-                          <MapPin className="w-3 h-3 text-[#D4AF37]" />
-                          <span>{leader.chapter}</span>
-                          <span className="text-[#D4AF37] font-semibold ml-auto">{leader.experience}</span>
-                        </div>
-                      </div>
+                  <div className="flex flex-col items-center text-center">
+                    {/* Photo */}
+                    <div className="relative mb-4">
+                      <img
+                        src={leader.photo}
+                        alt={`${leader.name} - ${leader.company}`}
+                        className="w-24 h-24 rounded-2xl object-cover object-top border-2 border-[#D4AF37] shadow-lg group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
 
-                    {/* Category Pill */}
-                    <div className="mb-3">
-                      <span className="inline-block px-2.5 py-1 rounded-md bg-[#092244] border border-[#D4AF37]/40 text-[#F9D678] text-[11px] font-cinzel font-semibold tracking-wider">
-                        {leader.category}
-                      </span>
-                    </div>
+                    {/* Name */}
+                    <h3 className="font-serif font-bold text-lg text-white group-hover:text-[#F9D678] transition-colors mb-1">
+                      {leader.name}
+                    </h3>
 
-                    {/* Bio snippet */}
-                    <p className="text-slate-300 text-xs leading-relaxed line-clamp-3 mb-4">
-                      {leader.bio}
+                    {/* Position / Role */}
+                    <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
+                      {leader.role}
                     </p>
 
-                    {/* Services Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {leader.services.map((srv, sIdx) => (
-                        <span key={sIdx} className="text-[10px] bg-white/5 text-slate-300 px-2 py-0.5 rounded border border-white/5">
-                          {srv}
-                        </span>
-                      ))}
-                    </div>
+                    {/* Company Detail */}
+                    <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
+                      {leader.company}
+                    </p>
                   </div>
 
-                  {/* Bottom Action Row */}
-                  <div className="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
-                    <button
-                      onClick={() => setActiveLeaderModal(leader)}
-                      className="text-xs text-[#F9D678] hover:text-white font-cinzel font-bold flex items-center gap-1 transition-colors cursor-pointer"
-                    >
-                      <span>Executive Bio</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
-
+                  {/* Connect Profile Button */}
+                  <div className="pt-4 mt-4 border-t border-slate-800/80">
                     <button
                       onClick={onOpenJoinModal}
-                      className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-[11px] tracking-wider uppercase hover:scale-105 transition-all cursor-pointer shadow-sm flex items-center gap-1"
+                      className="w-full py-2 px-3 rounded-full bg-gradient-to-r from-[#F9D678] to-[#D4AF37] hover:from-[#FFF3C4] hover:to-[#F5C75D] text-[#07172C] font-cinzel font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
                     >
-                      <span>Connect Profile</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <span>Connect via BOC</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
                     </button>
                   </div>
 
@@ -957,125 +839,6 @@ export default function AboutPage({ onOpenJoinModal }) {
             <div className="text-center mt-4 text-xs font-cinzel font-bold text-[#F9D678] tracking-widest uppercase">
               Business Owners Circle • Kerala Executive Gathering
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* ===================================================================== */}
-      {/* 9. EXECUTIVE LEADER BIO MODAL                                         */}
-      {/* ===================================================================== */}
-      {activeLeaderModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-gradient-to-b from-[#071B36] to-[#040E1E] rounded-3xl border-2 border-[#D4AF37] p-6 sm:p-8 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto">
-            
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveLeaderModal(null)}
-              className="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-            >
-              ✕
-            </button>
-
-            {/* Profile Header */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-5 mb-6 pb-6 border-b border-[#D4AF37]/30">
-              <div className="relative shrink-0">
-                <img
-                  src={activeLeaderModal.photo}
-                  alt={activeLeaderModal.name}
-                  className="w-24 h-24 rounded-full object-cover object-top border-3 border-[#D4AF37] shadow-xl"
-                />
-                <div className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-[#D4AF37] text-[#07172C] font-bold text-[10px] tracking-wider uppercase flex items-center gap-1 shadow-md">
-                  <CheckCircle2 className="w-3 h-3" />
-                  <span>Verified</span>
-                </div>
-              </div>
-
-              <div className="text-center sm:text-left flex-grow">
-                <h3 className="font-serif font-bold text-2xl text-white mb-1">
-                  {activeLeaderModal.name}
-                </h3>
-                <p className="text-sm text-[#F9D678] font-medium mb-1">
-                  {activeLeaderModal.role} • <strong className="text-white">{activeLeaderModal.company}</strong>
-                </p>
-                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-300 mt-2">
-                  <span className="flex items-center gap-1">
-                    <Building2 className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    {activeLeaderModal.category}
-                  </span>
-                  <span>•</span>
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-                    {activeLeaderModal.chapter}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Bio */}
-            <div className="mb-6">
-              <h4 className="text-xs font-cinzel font-bold text-[#F9D678] uppercase tracking-wider mb-2">
-                Executive Profile
-              </h4>
-              <p className="text-slate-300 text-sm leading-relaxed">
-                {activeLeaderModal.bio}
-              </p>
-            </div>
-
-            {/* Core Services */}
-            <div className="mb-8">
-              <h4 className="text-xs font-cinzel font-bold text-[#F9D678] uppercase tracking-wider mb-2.5">
-                Core Competencies & Capabilities
-              </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {activeLeaderModal.services.map((srv, idx) => (
-                  <div key={idx} className="flex items-center gap-2 p-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#F9D678] shrink-0" />
-                    <span>{srv}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Action Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-4 border-t border-[#D4AF37]/30">
-              <a
-                href={`tel:${activeLeaderModal.phone.replace(/\s+/g, '')}`}
-                className="py-2.5 px-3 rounded-xl bg-[#092244] hover:bg-[#D4AF37] hover:text-[#07172C] text-[#F9D678] border border-[#D4AF37]/40 flex items-center justify-center gap-2 text-xs font-bold transition-all"
-              >
-                <Phone className="w-4 h-4" />
-                <span>Call</span>
-              </a>
-
-              <a
-                href={`https://wa.me/${activeLeaderModal.whatsapp}?text=Hello%20${encodeURIComponent(activeLeaderModal.name)},%20I%20am%20connecting%20via%20BOC%20About%20Page.`}
-                target="_blank"
-                rel="noreferrer"
-                className="py-2.5 px-3 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 text-white flex items-center justify-center gap-2 text-xs font-bold transition-all"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp</span>
-              </a>
-
-              <a
-                href={`mailto:${activeLeaderModal.email}`}
-                className="py-2.5 px-3 rounded-xl bg-[#092244] hover:bg-[#D4AF37] hover:text-[#07172C] text-[#F9D678] border border-[#D4AF37]/40 flex items-center justify-center gap-2 text-xs font-bold transition-all"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Email</span>
-              </a>
-
-              <button
-                onClick={() => {
-                  setActiveLeaderModal(null);
-                  onOpenJoinModal();
-                }}
-                className="py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] flex items-center justify-center gap-1 text-xs font-bold uppercase tracking-wider shadow-md hover:scale-105 transition-all font-cinzel"
-              >
-                <span>Join BOC</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
           </div>
         </div>
       )}

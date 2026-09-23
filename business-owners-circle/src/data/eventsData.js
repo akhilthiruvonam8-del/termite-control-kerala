@@ -373,7 +373,7 @@ export const eventsData = [
       {
         time: '7:30 AM – 8:15 AM',
         title: 'Member Spotlights & Category Presentations',
-        desc: '10-minute deep-dive by Jijeesh Minerva and Mahesh Prabudhan on corporate facility tenders.'
+        desc: '10-minute deep-dive by enterprise leaders on corporate tenders and facility collaborations.'
       },
       {
         time: '8:15 AM – 8:45 AM',
@@ -389,10 +389,10 @@ export const eventsData = [
     speakers: [
       {
         name: 'Jijeesh Minerva',
-        role: 'Founder & CEO, Eco Pest India',
-        company: 'BOC Kochi Chapter Member',
+        role: 'Founder & CEO',
+        company: 'M/s Eco Pest India • M/s Urban Owls Digital',
         photo: networkingImg,
-        bio: 'Key presenter on integrating corporate pest and facility management for hospital and resort chains.'
+        bio: 'Founder & CEO, M/s Eco Pest India and M/s Urban Owls Digital.'
       }
     ],
     sponsors: [
