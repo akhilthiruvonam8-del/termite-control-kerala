@@ -77,11 +77,10 @@ export default function BOCNavbar({ onOpenJoinModal }) {
               />
             </div>
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-cinzel font-black tracking-wider text-[12px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
-                <span className="sm:hidden">BOC</span>
-                <span className="hidden sm:inline">BUSINESS OWNERS CIRCLE</span>
+              <span className="font-cinzel font-black tracking-wider text-[10.5px] xs:text-[11.5px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
+                BUSINESS OWNERS CIRCLE
               </span>
-              <span className="font-cinzel tracking-[0.16em] sm:tracking-[0.22em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
+              <span className="font-cinzel tracking-[0.14em] sm:tracking-[0.22em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
                 BUSINESS • OWNERS • CIRCLE
               </span>
             </div>
