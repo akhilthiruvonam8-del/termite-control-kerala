@@ -29,7 +29,7 @@ export default function LoginPage() {
   };
 
   const handleDemoLogin = () => {
-    setEmail('sajish.m@bocmember.in');
+    setEmail('mailboc@yahoo.com');
     setPassword('••••••••••••');
     setIsLoading(true);
     setTimeout(() => {
@@ -89,7 +89,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="founder@yourcompany.com"
+                placeholder="mailboc@yahoo.com"
                 className="w-full py-2.5 sm:py-3 pl-10 pr-4 rounded-xl bg-[#020814] border border-[#D4AF37]/40 text-white text-xs sm:text-sm focus:outline-none focus:border-[#F9D678] transition-colors"
               />
             </div>

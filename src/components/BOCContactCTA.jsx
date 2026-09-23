@@ -87,8 +87,8 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Chapter Hotline</div>
-                  <a href="tel:+914842800000" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
-                    +91 (0484) 280-BOC-IN
+                  <a href="tel:+919020040009" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
+                    +91 90200 40009
                   </a>
                 </div>
               </div>
@@ -100,8 +100,8 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">WhatsApp Membership Concierge</div>
-                  <a href="https://wa.me/919847000000" target="_blank" rel="noreferrer" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
-                    +91 98470 XXXXX (Quick Chat)
+                  <a href="https://wa.me/919020040009" target="_blank" rel="noreferrer" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
+                    +91 90200 40009 (Quick Chat)
                   </a>
                 </div>
               </div>
@@ -113,8 +113,8 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Official Admissions Desk</div>
-                  <a href="mailto:admissions@businessownerscircle.com" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
-                    admissions@businessownerscircle.com
+                  <a href="mailto:mailboc@yahoo.com" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
+                    mailboc@yahoo.com
                   </a>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98470 00000"
+                        placeholder="+91 90200 40009"
                         value={contactForm.phone}
                         onChange={(e) => setContactForm({ ...contactForm, phone: e.target.value })}
                         className="w-full bg-[#030A18] border border-[#C9A227]/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFE27A]"
@@ -197,7 +197,7 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                       </label>
                       <input
                         type="email"
-                        placeholder="name@company.com"
+                        placeholder="mailboc@yahoo.com"
                         value={contactForm.email}
                         onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                         className="w-full bg-[#030A18] border border-[#C9A227]/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFE27A]"

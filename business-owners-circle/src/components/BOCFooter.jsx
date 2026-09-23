@@ -315,7 +315,7 @@ export default function BOCFooter({ onOpenJoinModal }) {
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#F9D678] shrink-0" />
                 <a href="mailto:mailboc@yahoo.com" className="hover:text-[#F9D678] transition-colors">
-                  hello@boc.com
+                  mailboc@yahoo.com
                 </a>
               </div>
 

@@ -81,9 +81,9 @@ export const eventsData = [
       googleMapsUrl: 'https://maps.google.com/?q=Grand+Hyatt+Kochi+Bolgatty'
     },
     contactInfo: {
-      helpline: '9847040009',
-      phone: '+91 98470 40009',
-      email: 'events@boc.li',
+      helpline: '9020040009',
+      phone: '+91 90200 40009',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'Roopesh Pathalil / Executive Desk'
     },
@@ -150,8 +150,8 @@ export const eventsData = [
         role: 'VP - Business Strategist || BOC',
         company: 'Business Owners Circle',
         photo: nidhiPhoto,
-        phone: '9037710600 || 95734 32196',
-        email: 'connect@boc.li',
+        phone: '+91 90200 40009',
+        email: 'mailboc@yahoo.com',
         bio: 'Senior strategist spearheading regional business chapter expansion, entrepreneur admissions, and inter-chapter commercial trade agreements across South India and the GCC.'
       }
     ],
@@ -173,9 +173,9 @@ export const eventsData = [
       googleMapsUrl: 'https://maps.google.com/?q=Lulu+Bolgatty+International+Convention+Centre'
     },
     contactInfo: {
-      helpline: '9037710600',
-      phone: '+91 90377 10600 / +91 95734 32196',
-      email: 'connect@boc.li',
+      helpline: '9020040009',
+      phone: '+91 90200 40009',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'Nidhi Tomer (VP - Business Strategist)'
     },
@@ -259,7 +259,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'events@boc.li',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'BOC Central Secretariat'
     },
@@ -332,7 +332,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'retreat@boc.li',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'BOC Presidential Council'
     },
@@ -410,7 +410,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'kochi@boc.li',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'Kochi Chapter Secretary'
     },
@@ -488,7 +488,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'global@boc.li',
+      email: 'mailboc@yahoo.com',
       website: 'www.boc.li',
       coordinator: 'Thrissur Chapter Director'
     },

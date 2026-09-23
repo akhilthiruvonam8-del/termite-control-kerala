@@ -494,7 +494,7 @@ export default function EventDetailPage({ onOpenJoinModal }) {
                         required
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="98470 40009"
+                        placeholder="+91 90200 40009"
                         className="w-full bg-[#020814] border border-[#D4AF37]/40 rounded-xl py-2.5 px-3.5 text-xs sm:text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#F9D678] transition-colors"
                       />
                     </div>
@@ -544,7 +544,7 @@ export default function EventDetailPage({ onOpenJoinModal }) {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="founder@company.com"
+                      placeholder="mailboc@yahoo.com"
                       className="w-full bg-[#020814] border border-[#D4AF37]/40 rounded-xl py-2.5 px-3.5 text-xs sm:text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#F9D678] transition-colors"
                     />
                   </div>

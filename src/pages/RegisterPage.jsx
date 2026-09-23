@@ -187,7 +187,7 @@ export default function RegisterPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+91 98460 00000"
+                        placeholder="+91 90200 40009"
                         className="w-full py-2.5 px-3.5 rounded-xl bg-[#020814] border border-[#D4AF37]/40 text-white text-xs sm:text-sm focus:border-[#F9D678] outline-none"
                       />
                     </div>
@@ -201,7 +201,7 @@ export default function RegisterPage() {
                         name="whatsapp"
                         value={formData.whatsapp}
                         onChange={handleChange}
-                        placeholder="+91 98460 00000"
+                        placeholder="+91 90200 40009"
                         className="w-full py-2.5 px-3.5 rounded-xl bg-[#020814] border border-[#D4AF37]/40 text-white text-xs sm:text-sm focus:border-[#F9D678] outline-none"
                       />
                     </div>
@@ -217,7 +217,7 @@ export default function RegisterPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="founder@company.com"
+                      placeholder="mailboc@yahoo.com"
                       className="w-full py-2.5 px-3.5 rounded-xl bg-[#020814] border border-[#D4AF37]/40 text-white text-xs sm:text-sm focus:border-[#F9D678] outline-none"
                     />
                   </div>

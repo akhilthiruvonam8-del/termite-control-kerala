@@ -186,7 +186,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                       <input
                         type="tel"
                         required
-                        placeholder="+91 98950 00000"
+                        placeholder="+91 90200 40009"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="w-full bg-[#041126]/90 border border-[#C9A227]/30 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#E5C45A]"
@@ -201,7 +201,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                     </label>
                     <input
                       type="tel"
-                      placeholder="+91 98950 00000"
+                      placeholder="+91 90200 40009"
                       value={formData.whatsapp}
                       onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                       className="w-full bg-[#041126]/90 border border-[#C9A227]/30 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#E5C45A]"

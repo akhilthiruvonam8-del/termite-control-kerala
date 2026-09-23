@@ -53,7 +53,7 @@ export default function DashboardPage() {
       recipient: 'Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)',
       category: 'Pest & Digital Ecosystems',
       client: 'Sunny Mathew (Skyline Auto Logistics)',
-      phone: '+91 97450 55662',
+      phone: '+91 90200 40009',
       requirement: 'Enterprise digital strategy & commercial pest control contracts',
       estimatedValue: '₹6,00,000',
       status: 'Converted',
@@ -64,7 +64,7 @@ export default function DashboardPage() {
       recipient: 'Mahesh Prabudhan (Yessem Facilities)',
       category: 'Facility Management',
       client: 'Kiran Raj (Grand Spices Co.)',
-      phone: '+91 94470 33441',
+      phone: '+91 90200 40009',
       requirement: 'Complete warehouse facility management & compliance audit',
       estimatedValue: '₹4,80,000',
       status: 'In Progress',
@@ -75,7 +75,7 @@ export default function DashboardPage() {
       recipient: 'Binu T.B. (Global Marketing, Coimbatore)',
       category: 'Global Marketing & Trade',
       client: 'K.V. Haridas (Haridas Cashews)',
-      phone: '+91 98950 11228',
+      phone: '+91 90200 40009',
       requirement: 'Export market entry & B2B distribution syndication',
       estimatedValue: '₹12,00,000',
       status: 'Contacted',
@@ -455,12 +455,12 @@ export default function DashboardPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls Digital', cat: 'Pest & Digital Ecosystems', photo: jijeeshImg, phone: '+91 98471 22334' },
-                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities', cat: 'Facility Management', photo: maheshImg, phone: '+91 98465 33445' },
-                  { name: 'Binu T.B.', company: 'Global Marketing, Coimbatore', cat: 'Global Marketing & Trade', photo: binuImg, phone: '+91 94470 44556' },
-                  { name: 'Vidhu Mezhuveli', company: 'Smash Cleaning Company', cat: 'Cleaning Services', photo: vidhuImg, phone: '+91 94472 55667' },
-                  { name: 'Nidhi Tomer', company: 'Vedic Bricks Academy, Kochi', cat: 'Vedic EdTech & Academy', photo: nidhiImg, phone: '+91 97450 77889' },
-                  { name: 'Anjana Sreedharan', company: 'Mithrakulam Trust', cat: 'Social Impact & Trust', photo: anjanaImg, phone: '+91 98950 66778' },
+                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls Digital', cat: 'Pest & Digital Ecosystems', photo: jijeeshImg, phone: '+91 90200 40009' },
+                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities', cat: 'Facility Management', photo: maheshImg, phone: '+91 90200 40009' },
+                  { name: 'Binu T.B.', company: 'Global Marketing, Coimbatore', cat: 'Global Marketing & Trade', photo: binuImg, phone: '+91 90200 40009' },
+                  { name: 'Vidhu Mezhuveli', company: 'Smash Cleaning Company', cat: 'Cleaning Services', photo: vidhuImg, phone: '+91 90200 40009' },
+                  { name: 'Nidhi Tomer', company: 'Vedic Bricks Academy, Kochi', cat: 'Vedic EdTech & Academy', photo: nidhiImg, phone: '+91 90200 40009' },
+                  { name: 'Anjana Sreedharan', company: 'Mithrakulam Trust', cat: 'Social Impact & Trust', photo: anjanaImg, phone: '+91 90200 40009' },
                 ].map((m, idx) => (
                   <div key={idx} className="bg-[#020814] p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
@@ -503,11 +503,11 @@ export default function DashboardPage() {
               </div>
               <div>
                 <label className="block text-xs font-cinzel font-bold text-[#F9D678] mb-1">Direct Phone</label>
-                <input type="text" defaultValue="+91 98460 11223" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
+                <input type="text" defaultValue="+91 90200 40009" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-cinzel font-bold text-[#F9D678] mb-1">WhatsApp</label>
-                <input type="text" defaultValue="919846011223" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
+                <input type="text" defaultValue="919020040009" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
               </div>
               <button
                 type="button"
@@ -586,7 +586,7 @@ export default function DashboardPage() {
                     required
                     value={newReferral.clientPhone}
                     onChange={(e) => setNewReferral({ ...newReferral, clientPhone: e.target.value })}
-                    placeholder="+91 98460 12345"
+                    placeholder="+91 90200 40009"
                     className="w-full py-2.5 px-3 bg-[#020814] border border-[#D4AF37]/40 rounded-xl text-xs sm:text-sm text-white focus:border-[#F9D678] outline-none"
                   />
                 </div>
