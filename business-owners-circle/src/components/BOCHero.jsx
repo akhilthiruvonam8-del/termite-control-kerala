@@ -87,11 +87,11 @@ export default function BOCHero({ onOpenJoinModal }) {
           {/* Soft directional backdrop scrim for 100% crisp text readability */}
           <div className="absolute -inset-x-8 -inset-y-6 -z-10 bg-gradient-to-r from-[#020712]/80 via-[#020712]/45 to-transparent rounded-3xl blur-xl pointer-events-none" />
 
-          {/* Sub-Badge: Clean BOC */}
+          {/* Sub-Badge: Official Full Form */}
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-8 sm:w-12 h-[2px] bg-gradient-to-r from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
-            <span className="font-cinzel font-black tracking-[0.28em] text-[clamp(10px,0.95vw,14px)] text-[#FCE38A] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-nowrap">
-              BOC
+            <span className="font-cinzel font-black tracking-[0.22em] text-[clamp(11px,1.05vw,15px)] text-[#FCE38A] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,1)] whitespace-nowrap">
+              BUSINESS OWNERS CIRCLE
             </span>
             <span className="w-8 sm:w-12 h-[2px] bg-gradient-to-l from-transparent to-[#FCE38A] shadow-[0_0_8px_rgba(252,227,138,0.8)]" />
           </div>
@@ -112,24 +112,14 @@ export default function BOCHero({ onOpenJoinModal }) {
             A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine business opportunities and grow together.
           </p>
 
-          {/* Action Buttons: JOIN BOC & EXPLORE OUR COMMUNITY */}
-          <div className="flex items-center gap-3 sm:gap-4 select-none">
-            {/* Button 1: JOIN BOC */}
-            <button
-              onClick={onOpenJoinModal}
-              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border-2 border-[#FFF6C7] text-[#030B17] font-black text-[clamp(9.5px,0.95vw,14px)] tracking-wider uppercase shadow-[0_0_30px_rgba(245,192,66,0.7),_0_6px_20px_rgba(0,0,0,0.9)] hover:shadow-[0_0_40px_rgba(245,192,66,0.95)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer group"
-            >
-              <span className="font-black">JOIN BOC</span>
-              <ArrowRight className="w-4 h-4 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
-            </button>
-
-            {/* Button 2: EXPLORE OUR COMMUNITY */}
+          {/* Action Button: EXPLORE OUR COMMUNITY */}
+          <div className="flex items-center select-none">
             <button
               onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-5 sm:px-7 py-2.5 sm:py-3.5 rounded-full bg-[#020A17]/90 backdrop-blur-md border-2 border-[#FCE38A] hover:border-[#FFF8D6] text-white hover:text-[#FCE38A] font-bold text-[clamp(9px,0.9vw,13.5px)] tracking-wider uppercase shadow-[0_0_25px_rgba(252,227,138,0.45),_0_6px_20px_rgba(0,0,0,0.85)] hover:bg-[#06162E]/95 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border-2 border-[#FFF6C7] text-[#030B17] font-black text-[clamp(10px,1vw,14px)] tracking-wider uppercase shadow-[0_0_30px_rgba(245,192,66,0.7),_0_6px_20px_rgba(0,0,0,0.9)] hover:shadow-[0_0_40px_rgba(245,192,66,0.95)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2.5 cursor-pointer group"
             >
               <span>EXPLORE OUR COMMUNITY</span>
-              <ArrowRight className="w-4 h-4 stroke-[2.5] text-[#FCE38A] group-hover:translate-x-1 transition-all" />
+              <ArrowRight className="w-4 h-4 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
@@ -236,13 +226,13 @@ export default function BOCHero({ onOpenJoinModal }) {
             {/* Real Typed Web Typography (100% Native Vector HTML/CSS) */}
             <div className="absolute top-3 left-0 right-0 px-4 sm:px-6 z-20 flex flex-col items-start text-left select-text max-w-sm">
               
-              {/* Sub-Badge: Clean BOC */}
+              {/* Sub-Badge: Official Full Form */}
               <div className="flex items-center gap-2 mb-1.5">
-                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-                <span className="font-cinzel font-bold text-[10px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
-                  BOC
+                <span className="w-4 h-[1.5px] bg-[#DFC688]" />
+                <span className="font-cinzel font-bold text-[9px] xs:text-[10px] tracking-[0.18em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
+                  BUSINESS OWNERS CIRCLE
                 </span>
-                <span className="w-5 h-[1.5px] bg-[#DFC688]" />
+                <span className="w-4 h-[1.5px] bg-[#DFC688]" />
               </div>
 
               {/* Main Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
@@ -261,24 +251,14 @@ export default function BOCHero({ onOpenJoinModal }) {
                 A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
               </p>
 
-              {/* Action Buttons: SIDE-BY-SIDE ON MOBILE (Matching user mockup media_1789658972902.jpg) */}
-              <div className="w-full flex items-center gap-2 select-none">
-                {/* Button 1: JOIN BOC */}
-                <button
-                  onClick={onOpenJoinModal}
-                  className="flex-1 py-2 px-3 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[10.5px] xs:text-xs tracking-wider uppercase shadow-[0_0_18px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer group"
-                >
-                  <span className="font-black whitespace-nowrap">JOIN BOC</span>
-                  <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17] group-hover:translate-x-0.5 transition-transform shrink-0" />
-                </button>
-
-                {/* Button 2: EXPLORE OUR COMMUNITY */}
+              {/* Action Button: EXPLORE (Single clean button; JOIN BOC is already in the top navbar) */}
+              <div className="w-full flex items-center select-none">
                 <button
                   onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-                  className="flex-1 py-2 px-2.5 rounded-full bg-[#020A17]/85 backdrop-blur-md border border-[#DFC688]/70 text-white hover:text-[#DFC688] font-bold text-[9.5px] xs:text-[10.5px] tracking-wider uppercase hover:bg-[#06162E] active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer group"
+                  className="py-2.5 px-6 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-xs tracking-wider uppercase shadow-[0_0_20px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                 >
-                  <span className="whitespace-nowrap">EXPLORE</span>
-                  <ArrowRight className="w-3 h-3 stroke-[2] text-[#DFC688] group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  <span className="font-black whitespace-nowrap">EXPLORE</span>
+                  <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 

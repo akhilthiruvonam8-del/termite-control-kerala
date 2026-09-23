@@ -194,7 +194,7 @@ export default function BOCJoinToday({ onOpenJoinModal }) {
             <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D4AF37]/50 shadow-[0_20px_60px_rgba(0,0,0,0.6)] group">
               <img 
                 src={joinHeroImg} 
-                alt="BOC Business Executives Networking Handshake on Sunset Rooftop" 
+                alt="Jijeesh Minerva and BOC Business Leaders Networking on Waterfront Terrace" 
                 className="w-full h-auto object-cover transform group-hover:scale-103 transition-transform duration-700 ease-out"
               />
               
