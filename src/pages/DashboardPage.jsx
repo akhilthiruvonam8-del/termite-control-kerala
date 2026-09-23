@@ -26,6 +26,9 @@ import sajishImg from '../assets/boc-member-sajish-maliyekkal.jpg';
 import jijeeshImg from '../assets/boc-member-jijeesh-minerva.jpg';
 import maheshImg from '../assets/boc-member-mahesh-prabudhan.jpg';
 import binuImg from '../assets/boc-member-binu-tb.jpg';
+import vidhuImg from '../assets/boc-member-vidhu-mezhuveli.jpg';
+import nidhiImg from '../assets/boc-member-nidhi-tomer.jpg';
+import anjanaImg from '../assets/boc-member-anjana-sreedharan.jpg';
 
 export default function DashboardPage() {
   const navigate = useNavigate();
@@ -35,7 +38,7 @@ export default function DashboardPage() {
 
   // New Referral Form state (Jijeesh Minerva First)
   const [newReferral, setNewReferral] = useState({
-    recipient: 'Jijeesh Minerva (Minerva Solutions - Strategic Consulting)',
+    recipient: 'Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)',
     clientName: '',
     clientPhone: '',
     opportunityType: 'High Interest / Ready to Purchase',
@@ -47,11 +50,11 @@ export default function DashboardPage() {
   const [referralsList, setReferralsList] = useState([
     {
       id: 'ref-1',
-      recipient: 'Jijeesh Minerva (Minerva Solutions)',
-      category: 'Strategic Consulting',
+      recipient: 'Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)',
+      category: 'Pest & Digital Ecosystems',
       client: 'Sunny Mathew (Skyline Auto Logistics)',
       phone: '+91 97450 55662',
-      requirement: 'Franchise SOP development & enterprise facilities setup',
+      requirement: 'Enterprise digital strategy & commercial pest control contracts',
       estimatedValue: '₹6,00,000',
       status: 'Converted',
       date: 'Oct 02, 2025',
@@ -69,11 +72,11 @@ export default function DashboardPage() {
     },
     {
       id: 'ref-3',
-      recipient: 'Binu T.B. (Equinox Financial)',
-      category: 'Financial Advisory',
+      recipient: 'Binu T.B. (Global Marketing, Coimbatore)',
+      category: 'Global Marketing & Trade',
       client: 'K.V. Haridas (Haridas Cashews)',
       phone: '+91 98950 11228',
-      requirement: 'Debt syndication & working capital structuring for factory',
+      requirement: 'Export market entry & B2B distribution syndication',
       estimatedValue: '₹12,00,000',
       status: 'Contacted',
       date: 'Oct 10, 2025',
@@ -103,7 +106,7 @@ export default function DashboardPage() {
 
     // Reset
     setNewReferral({
-      recipient: 'Jijeesh Minerva (Minerva Solutions - Strategic Consulting)',
+      recipient: 'Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)',
       clientName: '',
       clientPhone: '',
       opportunityType: 'High Interest / Ready to Purchase',
@@ -161,17 +164,17 @@ export default function DashboardPage() {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-[#F9D678] font-medium">
-                Founder & CEO • Maliyekkal Builders & Infra
+                Founder • Greenline Pest Management
               </p>
               <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 text-xs text-slate-300 mt-2">
                 <span className="flex items-center gap-1">
                   <Building2 className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  Real Estate & Construction
+                  Pest Management
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
                   <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
-                  BOC Kochi Central Chapter
+                  BOC Thrissur Chapter
                 </span>
               </div>
             </div>
@@ -444,18 +447,20 @@ export default function DashboardPage() {
           <div className="space-y-6 animate-fadeIn">
             <div className="bg-[#051329] p-6 rounded-2xl border border-slate-800">
               <h2 className="font-serif font-bold text-2xl text-white mb-2">
-                BOC Kochi Central Chapter Members
+                BOC Chapter Network Members
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 mb-6">
-                Your direct chapter peers. Reach out for 1-on-1 synergy sessions or category collaborations.
+                Your fellow BOC verified members. Reach out for 1-on-1 synergy sessions or category collaborations.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls', cat: 'Strategic Consulting', photo: jijeeshImg, phone: '+91 98471 22334' },
-                  { name: 'Sajish Maliyekkal', company: 'Maliyekkal Builders & Infra', cat: 'Construction & Infra', photo: sajishImg, phone: '+91 98460 11223' },
-                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities & Logistics', cat: 'Corporate Facilities', photo: maheshImg, phone: '+91 98465 33445' },
-                  { name: 'Binu T.B.', company: 'Equinox Financial Advisory', cat: 'Wealth Advisory', photo: binuImg, phone: '+91 94470 44556' },
+                  { name: 'Jijeesh Minerva', company: 'M/s Eco Pest India • M/s Urban Owls Digital', cat: 'Pest & Digital Ecosystems', photo: jijeeshImg, phone: '+91 98471 22334' },
+                  { name: 'Mahesh Prabudhan', company: 'Yessem Facilities', cat: 'Facility Management', photo: maheshImg, phone: '+91 98465 33445' },
+                  { name: 'Binu T.B.', company: 'Global Marketing, Coimbatore', cat: 'Global Marketing & Trade', photo: binuImg, phone: '+91 94470 44556' },
+                  { name: 'Vidhu Mezhuveli', company: 'Smash Cleaning Company', cat: 'Cleaning Services', photo: vidhuImg, phone: '+91 94472 55667' },
+                  { name: 'Nidhi Tomer', company: 'Vedic Bricks Academy, Kochi', cat: 'Vedic EdTech & Academy', photo: nidhiImg, phone: '+91 97450 77889' },
+                  { name: 'Anjana Sreedharan', company: 'Mithrakulam Trust', cat: 'Social Impact & Trust', photo: anjanaImg, phone: '+91 98950 66778' },
                 ].map((m, idx) => (
                   <div key={idx} className="bg-[#020814] p-4 rounded-xl border border-slate-800 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
@@ -490,11 +495,11 @@ export default function DashboardPage() {
             <div className="space-y-4 text-xs sm:text-sm">
               <div>
                 <label className="block text-xs font-cinzel font-bold text-[#F9D678] mb-1">Company Name</label>
-                <input type="text" defaultValue="Maliyekkal Builders & Infra" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
+                <input type="text" defaultValue="Greenline Pest Management" className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-cinzel font-bold text-[#F9D678] mb-1">Business Description</label>
-                <textarea rows="3" defaultValue="Leading residential and commercial infrastructure developer in Central Kerala with over 1.2 million sq. ft. constructed." className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
+                <textarea rows="3" defaultValue="Founder of Greenline Pest Management, pioneering eco-friendly, reliable and certified pest management solutions across Central Kerala." className="w-full py-2.5 px-3 bg-[#020814] border border-slate-700 rounded-xl text-white outline-none" />
               </div>
               <div>
                 <label className="block text-xs font-cinzel font-bold text-[#F9D678] mb-1">Direct Phone</label>
@@ -548,11 +553,12 @@ export default function DashboardPage() {
                   onChange={(e) => setNewReferral({ ...newReferral, recipient: e.target.value })}
                   className="w-full py-2.5 px-3 bg-[#020814] border border-[#D4AF37]/40 rounded-xl text-xs sm:text-sm text-white focus:border-[#F9D678] outline-none"
                 >
-                  <option value="Jijeesh Minerva (Minerva Solutions - Strategic Consulting)">Jijeesh Minerva (Management Consulting & Pest/Digital)</option>
-                  <option value="Sajish Maliyekkal (Maliyekkal Builders - Construction)">Sajish Maliyekkal (Construction & Infra)</option>
-                  <option value="Mahesh Prabudhan (Yessem Facilities - Facility Mgmt)">Mahesh Prabudhan (Facility Management & Logistics)</option>
-                  <option value="Binu T.B. (Equinox Financial - Wealth & Tax)">Binu T.B. (Wealth Advisory & Debt)</option>
-                  <option value="Anjana Sreedharan (Studio Aesthetica - Architecture)">Anjana Sreedharan (Architecture & Interiors)</option>
+                  <option value="Jijeesh Minerva (M/s Eco Pest India • M/s Urban Owls Digital)">Jijeesh Minerva (Pest & Digital Ecosystems)</option>
+                  <option value="Mahesh Prabudhan (Yessem Facilities)">Mahesh Prabudhan (Facility Management)</option>
+                  <option value="Binu T.B. (Global Marketing, Coimbatore)">Binu T.B. (Global Marketing & Trade)</option>
+                  <option value="Vidhu Mezhuveli (Smash Cleaning Company)">Vidhu Mezhuveli (Cleaning Services)</option>
+                  <option value="Nidhi Tomer (Vedic Bricks Academy, Kochi)">Nidhi Tomer (Vedic EdTech & Academy)</option>
+                  <option value="Anjana Sreedharan (Mithrakulam Trust)">Anjana Sreedharan (Social Impact & Trust)</option>
                 </select>
               </div>
 
