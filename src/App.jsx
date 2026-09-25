@@ -1,28 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { X, Shield } from 'lucide-react';
 
-// Executive Floating Navbar & Grand Footer
-import BOCNavbar from './components/BOCNavbar';
-import BOCFooter from './components/BOCFooter';
-import BOCJoinModal from './components/BOCJoinModal';
-import FloatingActionButtons from './components/FloatingActionButtons';
+// Dedicated Kochi Redesign Landing Page
+import KochiLandingPage from './pages/KochiLandingPage';
 
-// Dedicated Platform Pages
-import HomePage from './pages/HomePage';
-import MemberDirectoryPage from './pages/MemberDirectoryPage';
-import ChaptersPage from './pages/ChaptersPage';
-import MembershipPage from './pages/MembershipPage';
-import EventsPage from './pages/EventsPage';
-import EventDetailPage from './pages/EventDetailPage';
-import AboutPage from './pages/AboutPage';
-import SuccessStoriesPage from './pages/SuccessStoriesPage';
-import FAQPage from './pages/FAQPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import DashboardPage from './pages/DashboardPage';
+// Other District Landing Pages
+import KozhikodeLandingPage from './pages/KozhikodeLandingPage';
+import PalakkadLandingPage from './pages/PalakkadLandingPage';
+import ThrissurLandingPage from './pages/ThrissurLandingPage';
+import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
+import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
+import WayanadLandingPage from './pages/WayanadLandingPage';
+import KasaragodLandingPage from './pages/KasaragodLandingPage';
+import KollamLandingPage from './pages/KollamLandingPage';
+import DistrictLandingPage from './pages/DistrictLandingPage';
+
+// Shared Components & Modals
+import CostCalculatorModal from './components/CostCalculatorModal';
+import LeadManagerModal from './components/LeadManagerModal';
+import LeadForm from './components/LeadForm';
+import { DISTRICTS } from './data/districts';
 
 /**
- * Scroll to top automatically whenever the route path changes
+ * Scroll to top automatically whenever the route changes
  */
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,118 +36,231 @@ function ScrollToTop() {
 }
 
 /**
- * Master Application Content Wrapped in Router Context
+ * Main Application Shell with Modal Handlers
  */
 function AppContent() {
-  const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [leadModalState, setLeadModalState] = useState({ open: false, initialData: {} });
+  const [crmModalOpen, setCrmModalOpen] = useState(false);
+  const [calculatorModalOpen, setCalculatorModalOpen] = useState(false);
+
+  const openLeadModal = (initialData = {}) => {
+    setLeadModalState({ open: true, initialData });
+  };
+
+  const closeLeadModal = () => {
+    setLeadModalState({ open: false, initialData: {} });
+  };
 
   return (
-    <div className="min-h-screen w-full max-w-full flex flex-col font-sans selection:bg-[#C9A227] selection:text-[#041126] overflow-x-hidden bg-[#020712] text-slate-100 relative">
+    <div className="min-h-screen w-full flex flex-col font-sans bg-[#020d08] text-slate-100 overflow-x-hidden">
       <ScrollToTop />
 
-      {/* Floating Executive Luxury Navbar */}
-      <BOCNavbar onOpenJoinModal={() => setIsJoinModalOpen(true)} />
-
-      {/* Multi-Page Routes */}
-      <div className="flex-grow w-full max-w-full flex flex-col overflow-x-hidden min-w-0">
+      {/* Main Routes */}
+      <div className="flex-grow w-full flex flex-col">
         <Routes>
-          {/* Main Master Landing Portal (All 14 Modules) */}
+          {/* Default Root / Home — Premium Termite Control Kochi Redesign */}
           <Route 
             path="/" 
-            element={<HomePage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
 
-          {/* Searchable Member Directory (Brief Point 11 & 12) */}
+          {/* Kochi Alias Slugs */}
           <Route 
-            path="/members" 
-            element={<MemberDirectoryPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
-
-          {/* Regional Chapter Explorer (Brief Point 13 & 14) */}
           <Route 
-            path="/chapters" 
-            element={<ChaptersPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
-
-          {/* Membership Tiers & Privileges (Brief Point 6) */}
           <Route 
-            path="/membership" 
-            element={<MembershipPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
-
-          {/* Events Hub & Conclaves (Brief Point 9) */}
           <Route 
-            path="/events" 
-            element={<EventsPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
 
-          {/* Dedicated Event Detail Page (Brief Point 10) */}
+          {/* Kozhikode Landing Page */}
           <Route 
-            path="/events/:id" 
-            element={<EventDetailPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-kozhikode" 
+            element={
+              <KozhikodeLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kozhikode' })} 
+              />
+            } 
           />
 
-          {/* About BOC, Vision & Leadership (Brief Point 5) */}
+          {/* Palakkad Landing Page */}
           <Route 
-            path="/about" 
-            element={<AboutPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-palakkad" 
+            element={
+              <PalakkadLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Palakkad' })} 
+              />
+            } 
           />
 
-          {/* Member Success Stories & ROI Case Studies (Brief Point 20) */}
+          {/* Thrissur Landing Page */}
           <Route 
-            path="/success-stories" 
-            element={<SuccessStoriesPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-thrissur" 
+            element={
+              <ThrissurLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Thrissur' })} 
+              />
+            } 
           />
 
-          {/* Frequently Asked Questions (FAQ) */}
+          {/* Pathanamthitta Landing Page */}
           <Route 
-            path="/faq" 
-            element={<FAQPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            path="/termite-control-pathanamthitta" 
+            element={
+              <PathanamthittaLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Pathanamthitta' })} 
+              />
+            } 
           />
 
-          {/* Member Login Portal (Brief Point 8) */}
+          {/* Alappuzha Landing Page */}
           <Route 
-            path="/login" 
-            element={<LoginPage />} 
+            path="/termite-control-alappuzha" 
+            element={
+              <AlappuzhaLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Alappuzha' })} 
+              />
+            } 
           />
 
-          {/* Comprehensive Multi-Step Registration (Brief Point 7) */}
+          {/* Wayanad Landing Page */}
           <Route 
-            path="/register" 
-            element={<RegisterPage />} 
+            path="/termite-control-wayanad" 
+            element={
+              <WayanadLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Wayanad' })} 
+              />
+            } 
           />
 
-          {/* Member Dashboard & Referral Protocol (Brief Point 9, 10, 18, 19) */}
+          {/* Kasaragod Landing Page */}
           <Route 
-            path="/dashboard" 
-            element={<DashboardPage />} 
+            path="/termite-control-kasaragod" 
+            element={
+              <KasaragodLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kasaragod' })} 
+              />
+            } 
           />
 
-          {/* Fallback route */}
+          {/* Kollam Landing Page */}
+          <Route 
+            path="/termite-control-kollam" 
+            element={
+              <KollamLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kollam' })} 
+              />
+            } 
+          />
+
+          {/* Fallback to Kochi Landing Page */}
           <Route 
             path="*" 
-            element={<HomePage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
           />
         </Routes>
       </div>
 
-      {/* Executive Master Grand Footer */}
-      <BOCFooter onOpenJoinModal={() => setIsJoinModalOpen(true)} />
+      {/* MODAL 1: Free On-Site Inspection Lead Modal */}
+      {leadModalState.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-[#03150e] border border-emerald-500/40 rounded-3xl max-w-lg w-full p-2 relative shadow-2xl max-h-[95vh] overflow-y-auto">
+            <button
+              onClick={closeLeadModal}
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-emerald-950/80 text-slate-300 hover:text-white border border-emerald-700/50 flex items-center justify-center transition"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <LeadForm
+              title={leadModalState.initialData.title || "FREE ON-SITE INSPECTION"}
+              subtitle={leadModalState.initialData.subtitle || "Zero-obligation survey across Kochi & Greater Ernakulam"}
+              defaultLocation={leadModalState.initialData.location || "Kochi (Kakkanad / Marine Drive)"}
+              defaultProblem={leadModalState.initialData.problem || "Termite"}
+              defaultProperty={leadModalState.initialData.propertyType || "Villa"}
+              source="kochi_modal"
+              onSuccess={() => {
+                setTimeout(() => {
+                  // Keep open briefly so user sees the reference ID
+                }, 2000);
+              }}
+            />
+          </div>
+        </div>
+      )}
 
-      {/* Global Floating Action Buttons (Scroll to Top, WhatsApp, Call) — Visible across all modules */}
-      <FloatingActionButtons />
-
-      {/* Interactive Membership Application Modal */}
-      <BOCJoinModal 
-        isOpen={isJoinModalOpen} 
-        onClose={() => setIsJoinModalOpen(false)} 
+      {/* MODAL 2: Interactive Treatment Cost Estimator */}
+      <CostCalculatorModal
+        isOpen={calculatorModalOpen}
+        onClose={() => setCalculatorModalOpen(false)}
+        initialData={{ location: 'Kochi' }}
       />
+
+      {/* MODAL 3: Embedded CRM Database Lead Viewer for Admin */}
+      <LeadManagerModal
+        isOpen={crmModalOpen}
+        onClose={() => setCrmModalOpen(false)}
+      />
+
     </div>
   );
 }
 
 /**
- * Root Application Component
+ * Root Router Wrapper
  */
 export default function App() {
   return (
