@@ -49,6 +49,7 @@ export default function KochiNavbar({
     { id: 'services', label: 'Services', icon: Layers },
     { id: 'locations', label: 'Locations', icon: MapPin },
     { id: 'blog', label: 'Blog', icon: BookOpen },
+    { id: 'faq', label: 'FAQ', icon: HelpCircle },
     { id: 'contact', label: 'Contact', icon: PhoneCall },
   ];
 
