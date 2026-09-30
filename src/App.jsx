@@ -72,6 +72,46 @@ function AppContent() {
 
           {/* Kochi Alias Slugs */}
           <Route 
+            path="/pest-control-kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pestcontrolkochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pest-control" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pest-control-ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
             path="/termite-control-kochi" 
             element={
               <KochiLandingPage 

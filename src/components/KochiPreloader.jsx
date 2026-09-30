@@ -5,17 +5,20 @@ export default function KochiPreloader({ onFinish }) {
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    // Show spinning logo preloader on initial page open
-    const timer = setTimeout(() => {
+    // Quick, smooth spinning logo entrance (800ms display, then fades out smoothly)
+    const fadeTimer = setTimeout(() => {
       setFading(true);
-      const removeTimer = setTimeout(() => {
-        setLoading(false);
-        if (onFinish) onFinish();
-      }, 700);
-      return () => clearTimeout(removeTimer);
-    }, 1800);
+    }, 850);
 
-    return () => clearTimeout(timer);
+    const removeTimer = setTimeout(() => {
+      setLoading(false);
+      if (onFinish) onFinish();
+    }, 1300);
+
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
   }, [onFinish]);
 
   if (!loading) return null;
@@ -31,25 +34,32 @@ export default function KochiPreloader({ onFinish }) {
       <div className="absolute w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute w-[300px] h-[300px] bg-amber-400/10 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Main Spinning Logo Container (similar to Fumitech.in preloader) */}
+      {/* Main Spinning Logo Container (Exact circle, crystal-clear & high-definition) */}
       <div className="relative flex items-center justify-center mb-8">
         
         {/* Outer Rotating Emerald & Gold Orbit Ring (Clockwise) */}
-        <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-2 border-transparent border-t-amber-400 border-r-emerald-400 border-b-emerald-600/30 animate-spin" style={{ animationDuration: '1.4s' }} />
+        <div 
+          className="w-40 h-40 sm:w-48 sm:h-48 aspect-square rounded-full border-2 border-transparent border-t-amber-400 border-r-amber-300 border-b-emerald-400/50 animate-spin shrink-0" 
+          style={{ animationDuration: '1.6s' }} 
+        />
 
         {/* Inner Counter-Rotating Ring (Counter-Clockwise) */}
-        <div className="absolute w-28 h-28 sm:w-36 sm:h-36 rounded-full border-2 border-transparent border-b-amber-300 border-l-emerald-500 border-t-amber-500/30 animate-[spin_2s_linear_infinite_reverse]" />
+        <div 
+          className="absolute w-32 h-32 sm:w-40 sm:h-40 aspect-square rounded-full border-2 border-dashed border-emerald-400/60 animate-[spin_2.5s_linear_infinite_reverse] shrink-0" 
+        />
 
         {/* Radiant Center Glow Aura */}
-        <div className="absolute w-20 h-20 sm:w-28 sm:h-28 bg-gradient-to-tr from-emerald-500/25 to-amber-400/25 rounded-full blur-xl animate-pulse" />
+        <div className="absolute w-28 h-28 sm:w-36 sm:h-36 bg-gradient-to-tr from-emerald-500/30 via-amber-400/30 to-transparent rounded-full blur-2xl animate-pulse shrink-0" />
 
-        {/* Center Eco Pest India Logo with 3D Spin Entrance */}
+        {/* Center Eco Pest India Logo Emblem (Perfect Circle, 100% Clear & Crisp) */}
         <div className="absolute inset-0 flex items-center justify-center p-3 animate-[logo-spin-intro_1.2s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-          <img
-            src="/images/eco-pest-india-logo.png"
-            alt="Eco Pest India Logo"
-            className="w-20 sm:w-24 h-auto object-contain filter drop-shadow-[0_0_15px_rgba(245,199,93,0.4)]"
-          />
+          <div className="w-24 h-24 sm:w-32 sm:h-32 aspect-square rounded-full border-2 border-amber-400 bg-white p-2.5 sm:p-3 flex items-center justify-center shadow-[0_0_35px_rgba(245,199,93,0.7)] ring-4 ring-emerald-500/40 shrink-0 overflow-hidden">
+            <img
+              src="/images/eco-pest-india-logo.png"
+              alt="Eco Pest India Logo"
+              className="w-full h-full object-contain filter drop-shadow-sm select-none"
+            />
+          </div>
         </div>
       </div>
 
@@ -60,12 +70,12 @@ export default function KochiPreloader({ onFinish }) {
           <span>INITIALIZING DEFENSE SYSTEMS</span>
         </div>
 
-        <h2 className="text-xl sm:text-2xl font-serif font-black tracking-tight text-white">
-          Termite Control <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500 bg-clip-text text-transparent">Kochi</span>
+        <h2 className="text-xl sm:text-2xl font-cinzel font-black tracking-wider text-white">
+          ECO PEST <span className="bg-gradient-to-r from-[#FFF5B8] via-[#F5C042] to-[#D49319] bg-clip-text text-transparent">INDIA</span>
         </h2>
 
-        <p className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
-          A Unit of Eco Pest India™ • IS:6313 Certified
+        <p className="text-xs font-sans font-semibold tracking-wider text-emerald-300/90 drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">
+          Safe Home, Healthy Life
         </p>
 
         {/* Animated Progress Bar */}
