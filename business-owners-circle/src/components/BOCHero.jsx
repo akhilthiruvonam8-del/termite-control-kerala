@@ -69,14 +69,14 @@ export default function BOCHero({ onOpenJoinModal }) {
       {/* ===================================================================== */}
       {/* 1. DESKTOP VIEWPORT: 100% UNTOUCHED 2K MASTER CANVAS (1:1 SAMPLE)     */}
       {/* ===================================================================== */}
-      <div className="hidden md:block relative w-full aspect-[2/1] max-w-[2048px] mx-auto select-none shadow-2xl overflow-visible">
+      <div className="hidden md:block relative w-full aspect-[16/9] max-w-[2048px] mx-auto select-none shadow-2xl overflow-visible">
         
         {/* The Exact Master 2K Image from User's Sample Picture (media_1789641252571.jpg) */}
         {/* Highlighted, Radiant Sunset Skyline & Terrace */}
         <img 
           src={bocRooftopBg} 
           alt="Business Owner's Circle Master Experience" 
-          className="w-full h-full object-cover object-[center_center] select-none pointer-events-none contrast-[1.03] saturate-[1.06] brightness-[1.02]"
+          className="w-full h-full object-cover object-[center_center] select-none pointer-events-none"
         />
         {/* Ambient warm sunset radial glow */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-gradient-to-br from-amber-400/20 via-orange-500/10 to-transparent rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
@@ -246,12 +246,12 @@ export default function BOCHero({ onOpenJoinModal }) {
           <img 
             src={bocMobileBg} 
             alt="BOC Rooftop Networking" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none pointer-events-none contrast-[1.03] brightness-[1.02]"
+            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none pointer-events-none"
           />
 
-          {/* Directional Soft Scrim Behind Upper Text for crisp readability */}
-          <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-[#020712]/95 via-[#020712]/50 to-transparent pointer-events-none z-[5]" />
-          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
+          {/* Directional Soft Scrim Behind Upper Text for crisp readability (Ends well above faces) */}
+          <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-[#020712]/95 via-[#020712]/60 to-transparent pointer-events-none z-[5]" />
+          <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
 
           {/* Real Typed Web Typography */}
           <div className="relative z-10 px-4 xs:px-5 pt-2 xs:pt-2.5 flex flex-col items-start text-left select-text max-w-sm">
