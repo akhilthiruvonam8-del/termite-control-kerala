@@ -34,8 +34,11 @@ export default function RegisterPage() {
     city: 'Kochi',
     chapter: 'BOC Kochi Central Chapter',
     gstNumber: '',
-    pledgeAccepted: true,
+    agreeTerms: false,
+    agreePrivacy: false,
   });
+  const [consentReceipt, setConsentReceipt] = useState(null);
+  const [step3Error, setStep3Error] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,6 +53,30 @@ export default function RegisterPage() {
     if (step < 3) {
       setStep(step + 1);
     } else {
+      if (!formData.agreeTerms || !formData.agreePrivacy) {
+        setStep3Error('Please agree to both the BOC Membership Terms & Conditions and Privacy Policy to submit your application.');
+        return;
+      }
+      setStep3Error('');
+      const now = new Date();
+      const receipt = {
+        referenceId: `BOC-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`,
+        ...formData,
+        termsAccepted: true,
+        privacyAccepted: true,
+        policyVersion: 'BOC-Charter-2026-v1.0',
+        privacyVersion: 'BOC-Privacy-2026-v1.0',
+        consentTimestamp: now.toISOString(),
+        formattedDate: now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'short' })
+      };
+      try {
+        const existing = JSON.parse(localStorage.getItem('boc_applications') || '[]');
+        existing.unshift(receipt);
+        localStorage.setItem('boc_applications', JSON.stringify(existing));
+      } catch (err) {
+        console.warn('Could not save to localStorage', err);
+      }
+      setConsentReceipt(receipt);
       setSubmitted(true);
     }
   };
@@ -115,6 +142,10 @@ export default function RegisterPage() {
               </p>
               <div className="bg-[#020814] p-4 rounded-xl border border-slate-800 text-xs text-slate-300 text-left mb-6 max-w-md mx-auto space-y-2">
                 <div className="flex justify-between">
+                  <span className="text-slate-400">Application Ref:</span>
+                  <strong className="text-[#F9D678] font-mono">{consentReceipt?.referenceId}</strong>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-slate-400">Selected Category:</span>
                   <strong className="text-[#F9D678]">{formData.category}</strong>
                 </div>
@@ -123,8 +154,20 @@ export default function RegisterPage() {
                   <span>{formData.chapter}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-400">Committee Response:</span>
-                  <span className="text-emerald-400 font-semibold">Within 24 Hours</span>
+                  <span className="text-slate-400">Terms & Conditions:</span>
+                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Accepted (v1.0)
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Privacy Policy:</span>
+                  <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Accepted (v1.0)
+                  </span>
+                </div>
+                <div className="flex justify-between border-t border-white/10 pt-2 text-[11px]">
+                  <span className="text-slate-400">Consent Logged:</span>
+                  <span className="font-mono text-slate-200">{consentReceipt?.formattedDate}</span>
                 </div>
               </div>
               <button
@@ -357,20 +400,100 @@ export default function RegisterPage() {
                     />
                   </div>
 
-                  {/* Ethics Pledge */}
-                  <div className="p-4 rounded-2xl bg-[#020814] border border-[#D4AF37]/35 space-y-2">
-                    <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-300">
+                  {/* Mandatory Consent Checkboxes & Clickable Policy Links */}
+                  <div className="p-4 sm:p-5 rounded-2xl bg-[#020814] border border-[#D4AF37]/35 space-y-3">
+                    
+                    {/* Mandatory Checkbox 1: Terms & Conditions */}
+                    <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-200 select-none group">
                       <input
                         type="checkbox"
-                        name="pledgeAccepted"
-                        checked={formData.pledgeAccepted}
+                        required
+                        name="agreeTerms"
+                        checked={formData.agreeTerms}
                         onChange={handleChange}
-                        className="mt-0.5 rounded border-[#D4AF37] text-[#D4AF37] accent-[#D4AF37]"
+                        className="mt-0.5 rounded border-[#D4AF37] text-[#D4AF37] focus:ring-0 accent-[#D4AF37] cursor-pointer w-4 h-4"
                       />
                       <span className="leading-relaxed">
-                        I affirm that I am the authorized founder/director of this enterprise. I commit to ethical peer collaboration, category trust, and maintaining the high standards of Business Owner's Circle.
+                        I agree to the{' '}
+                        <Link 
+                          to="/terms" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[#F9D678] font-bold underline hover:text-white inline-flex items-center gap-0.5"
+                        >
+                          BOC Membership Terms & Conditions
+                        </Link>. <span className="text-red-400">*</span>
                       </span>
                     </label>
+
+                    {/* Mandatory Checkbox 2: Privacy Policy */}
+                    <label className="flex items-start gap-2.5 cursor-pointer text-xs text-slate-200 select-none group">
+                      <input
+                        type="checkbox"
+                        required
+                        name="agreePrivacy"
+                        checked={formData.agreePrivacy}
+                        onChange={handleChange}
+                        className="mt-0.5 rounded border-[#D4AF37] text-[#D4AF37] focus:ring-0 accent-[#D4AF37] cursor-pointer w-4 h-4"
+                      />
+                      <span className="leading-relaxed">
+                        I agree to the{' '}
+                        <Link 
+                          to="/privacy" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-[#F9D678] font-bold underline hover:text-white inline-flex items-center gap-0.5"
+                        >
+                          BOC Privacy Policy
+                        </Link>. <span className="text-red-400">*</span>
+                      </span>
+                    </label>
+
+                    {/* Clickable Policy Links */}
+                    <div className="pt-2 border-t border-white/5 text-[11px] text-slate-400 flex items-center justify-start gap-2 flex-wrap">
+                      <span className="text-slate-500 font-medium">BOC Policies:</span>
+                      <Link 
+                        to="/terms" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#FCE38A] hover:underline"
+                      >
+                        Terms & Conditions
+                      </Link>
+                      <span>•</span>
+                      <Link 
+                        to="/privacy" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#FCE38A] hover:underline"
+                      >
+                        Privacy Policy
+                      </Link>
+                      <span>•</span>
+                      <Link 
+                        to="/refund-policy" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#FCE38A] hover:underline"
+                      >
+                        Refund Policy
+                      </Link>
+                      <span>•</span>
+                      <Link 
+                        to="/referral-policy" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-[#FCE38A] hover:underline"
+                      >
+                        Referral / Commission Policy
+                      </Link>
+                    </div>
+
+                    {step3Error && (
+                      <div className="p-2.5 rounded-xl bg-red-950/60 border border-red-500/50 text-red-200 text-xs">
+                        {step3Error}
+                      </div>
+                    )}
                   </div>
                 </div>
               )}

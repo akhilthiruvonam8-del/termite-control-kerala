@@ -20,6 +20,10 @@ import FAQPage from './pages/FAQPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
+import ReferralPolicyPage from './pages/ReferralPolicyPage';
 
 /**
  * Scroll to top automatically whenever the route path changes
@@ -120,6 +124,32 @@ function AppContent() {
           <Route 
             path="/dashboard" 
             element={<DashboardPage />} 
+          />
+
+          {/* Official BOC Policy & Charter Pages */}
+          <Route 
+            path="/terms" 
+            element={<TermsPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+          <Route 
+            path="/terms-and-conditions" 
+            element={<TermsPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+          <Route 
+            path="/privacy" 
+            element={<PrivacyPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+          <Route 
+            path="/privacy-policy" 
+            element={<PrivacyPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+          <Route 
+            path="/refund-policy" 
+            element={<RefundPolicyPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
+          />
+          <Route 
+            path="/referral-policy" 
+            element={<ReferralPolicyPage onOpenJoinModal={() => setIsJoinModalOpen(true)} />} 
           />
 
           {/* Fallback route */}

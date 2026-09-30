@@ -434,9 +434,19 @@ export default function BOCFooter({ onOpenJoinModal }) {
         {/* ===================================================================== */}
         <div className="relative pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           
-          {/* Left: Copyright */}
-          <div className="text-slate-400 text-xs sm:text-[13px]">
-            © {new Date().getFullYear()} BOC. All rights reserved.
+          {/* Left: Copyright & Policy Links */}
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-slate-400 text-xs sm:text-[12px] text-center md:text-left">
+            <span>© {new Date().getFullYear()} BOC. All rights reserved.</span>
+            <span className="hidden md:inline text-slate-600">•</span>
+            <div className="flex items-center gap-2.5 flex-wrap justify-center">
+              <Link to="/terms" className="hover:text-[#F9D678] transition-colors">Terms</Link>
+              <span className="text-slate-600">•</span>
+              <Link to="/privacy" className="hover:text-[#F9D678] transition-colors">Privacy</Link>
+              <span className="text-slate-600">•</span>
+              <Link to="/refund-policy" className="hover:text-[#F9D678] transition-colors">Refund Policy</Link>
+              <span className="text-slate-600">•</span>
+              <Link to="/referral-policy" className="hover:text-[#F9D678] transition-colors">Referral Policy</Link>
+            </div>
           </div>
 
           {/* Right: "More Connections. Bigger Opportunities." Script */}
