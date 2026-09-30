@@ -4,7 +4,8 @@
  */
 
 export const PRIMARY_PHONE = "9020040009";
-export const PRIMARY_PHONE_DISPLAY = "9020040009";
+export const PRIMARY_PHONE_DISPLAY = "+91 90200 40009";
+export const SUPPORT_EMAIL = "mailboc@yahoo.com";
 export const WHATSAPP_NUMBER = "919020040009";
 
 export const trackConversion = (eventName, params = {}) => {

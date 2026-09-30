@@ -84,10 +84,10 @@ export default function BOCHeader({ onOpenJoinModal, onNavigate }) {
             {/* Wordmark next to emblem */}
             <div className="flex flex-col text-left">
               <span className="font-cinzel font-bold text-[10px] sm:text-xs lg:text-[14px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6EE] via-[#E2C77D] to-[#C5A059] leading-tight">
-                BUSINESS OWNERS CIRCLE
+                BOC CONNECT
               </span>
               <span className="text-[7.5px] sm:text-[9.5px] tracking-[0.24em] font-semibold text-[#DFC688] uppercase leading-none mt-0.5">
-                EMPOWER TOGETHER
+                CONNECT • COLLABORATE • GROW
               </span>
             </div>
           </a>

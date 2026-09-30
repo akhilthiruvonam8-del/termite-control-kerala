@@ -77,11 +77,11 @@ export default function BOCNavbar({ onOpenJoinModal }) {
               />
             </div>
             <div className="flex flex-col text-left min-w-0">
-              <span className="font-cinzel font-black tracking-wider text-[10.5px] xs:text-[11.5px] sm:text-[13.5px] lg:text-[15px] text-white group-hover:text-[#F9D678] transition-colors leading-tight truncate">
-                BUSINESS OWNERS CIRCLE
+              <span className="font-cinzel font-black tracking-wider text-[13.5px] xs:text-[15px] sm:text-[17px] lg:text-[19px] text-white group-hover:text-[#F9D678] transition-colors leading-tight whitespace-nowrap">
+                BOC <span className="text-[#F9D678]">CONNECT</span>
               </span>
-              <span className="font-cinzel tracking-[0.14em] sm:tracking-[0.22em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-tight mt-0.5 truncate">
-                BUSINESS • OWNERS • CIRCLE
+              <span className="font-cinzel tracking-[0.2em] sm:tracking-[0.28em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-none mt-0.5 whitespace-nowrap">
+                CONNECT • COLLABORATE • GROW
               </span>
             </div>
           </Link>
@@ -164,11 +164,11 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                 <div className="flex items-center gap-2.5">
                   <img src={bocLogoPng} alt="BOC" className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(212,175,55,0.5)]" />
                   <div className="flex flex-col text-left">
-                    <span className="font-cinzel font-bold text-white text-xs tracking-wider">
-                      BUSINESS OWNERS CIRCLE
+                    <span className="font-cinzel font-black text-white text-sm tracking-wider">
+                      BOC <span className="text-[#F9D678]">CONNECT</span>
                     </span>
-                    <span className="text-[7.5px] text-[#C5A059] tracking-widest uppercase">
-                      OFFICIAL NETWORKING PLATFORM
+                    <span className="text-[7.5px] text-[#C5A059] tracking-widest uppercase font-cinzel">
+                      EXECUTIVE BUSINESS NETWORK
                     </span>
                   </div>
                 </div>
