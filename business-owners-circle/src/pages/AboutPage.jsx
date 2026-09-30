@@ -1,36 +1,31 @@
 import React, { useState } from 'react';
 import { 
-  ShieldCheck, 
-  Target, 
-  Eye, 
-  Heart, 
   Users, 
+  Handshake, 
+  TrendingUp, 
   Globe, 
-  Award, 
   ArrowRight,
-  Sparkles,
-  CheckCircle2,
+  Compass,
+  Target,
+  ExternalLink,
+  ChevronRight,
+  ShieldCheck,
   Building2,
   MapPin,
-  TrendingUp,
-  Lock,
-  Compass,
-  Star,
-  Clock,
-  Briefcase,
-  ChevronRight,
-  Handshake,
-  Gem,
+  Share2,
+  Heart,
+  Sparkles,
   Maximize2,
   X
 } from 'lucide-react';
 
-// Assets
+// Core Imagery Assets
 import bocLogoPng from '../assets/boc-logo.png';
-import masterAboutHero from '../assets/boc-about-master-hero.jpg';
-import keralaWaterfrontBg from '../assets/boc-about-kerala-hd.jpg';
+import aboutHeroNets from '../assets/boc-about-hero-nets.jpg';
+import aboutFounderJijeesh from '../assets/boc-about-founder-jijeesh.jpg';
+import aboutVisionBg from '../assets/boc-about-vision-bg.jpg';
 
-// Verified Member Portraits (Jijeesh Minerva Always First)
+// Verified Member Portraits for chapter/network showcase
 import jijeeshImg from '../assets/boc-member-jijeesh-minerva.jpg';
 import sajishImg from '../assets/boc-member-sajish-maliyekkal.jpg';
 import maheshImg from '../assets/boc-member-mahesh-prabudhan.jpg';
@@ -39,92 +34,83 @@ import vidhuImg from '../assets/boc-member-vidhu-mezhuveli.jpg';
 import anjanaImg from '../assets/boc-member-anjana-sreedharan.jpg';
 import nidhiImg from '../assets/boc-member-nidhi-tomer.jpg';
 
+/**
+ * Custom Owl Icon matching Urban Owls Digital Branding
+ */
+function OwlLogoIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="12" fill="#051226"/>
+      <circle cx="17" cy="23" r="8" fill="#FFFFFF" stroke="#051226" strokeWidth="2.5"/>
+      <circle cx="17" cy="23" r="4" fill="#051226"/>
+      <circle cx="18" cy="22" r="1.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="23" r="8" fill="#FFFFFF" stroke="#051226" strokeWidth="2.5"/>
+      <circle cx="31" cy="23" r="4" fill="#051226"/>
+      <circle cx="32" cy="22" r="1.5" fill="#FFFFFF"/>
+      <polygon points="24,26 21,32 27,32" fill="#F5C042"/>
+      <polygon points="11,14 16,7 19,15" fill="#DFC688"/>
+      <polygon points="37,14 32,7 29,15" fill="#DFC688"/>
+    </svg>
+  );
+}
+
+/**
+ * Custom Sprout Icon matching Eco Pest India Branding
+ */
+function LeafLogoIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="12" fill="#ECFDF5" stroke="#10B981" strokeWidth="1.5"/>
+      <path d="M16 33C16 24.5 22 15 33 13C33 24.5 27 34.5 16 33Z" fill="#10B981"/>
+      <path d="M16 33C22 30.5 27 24 31 17" stroke="#D1FAE5" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M22 28.5C24.5 23.5 28.5 20.5 28.5 20.5" stroke="#047857" strokeWidth="1.5" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+/**
+ * AboutPage — Exact 1:1 Match to Master Mockup (media_1790784313478.jpg)
+ * Features:
+ * 1. Master Hero Section: About BOC + Waterfront Coffee Networking with Chinese Fishing Nets
+ * 2. Founder Spotlight: Crisp Jijeesh Minerva Portrait + Bio + Urban Owls Digital & Eco Pest India
+ * 3. Our Vision & Our Mission: Backwaters Boat/Nets Backdrop + 5 Core Value Pillars (Connect, Support, Refer, Collaborate, Grow)
+ * 4. Regional Chapters Network & Council Verification Call to Action
+ */
 export default function AboutPage({ onOpenJoinModal }) {
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
 
-  // 4 Core Master Highlights (Exact from Master Reference)
-  const masterHighlights = [
+  // 5 Core Mission Pillars (Exact 1:1 from media_1790784313478.jpg)
+  const missionPillars = [
     {
       id: 'connect',
       title: 'CONNECT',
-      subtitle: 'with like-minded business owners',
-      icon: Users,
-      desc: 'Build deep, authentic relationships with verified enterprise founders and decision-makers across your region.'
+      icon: Handshake,
+      desc: 'Build meaningful professional relationships.'
+    },
+    {
+      id: 'support',
+      title: 'SUPPORT',
+      icon: Heart,
+      desc: 'Share knowledge, experience and business resources.'
+    },
+    {
+      id: 'refer',
+      title: 'REFER',
+      icon: Share2,
+      desc: 'Create genuine business opportunities for fellow members.'
     },
     {
       id: 'collaborate',
       title: 'COLLABORATE',
-      subtitle: 'on new opportunities',
-      icon: Handshake,
-      desc: 'Form high-value joint ventures, cross-industry packages, and syndicate alliances without internal competition.'
+      icon: Users,
+      desc: 'Build partnerships and work together on opportunities.'
     },
     {
       id: 'grow',
       title: 'GROW',
-      subtitle: 'together as a community',
       icon: TrendingUp,
-      desc: 'Accelerate balance-sheet revenue and company footprint through structured, high-conversion peer referrals.'
-    },
-    {
-      id: 'create',
-      title: 'CREATE',
-      subtitle: 'a bigger impact in the business world',
-      icon: Globe,
-      desc: 'Elevate Kerala’s enterprise stature on the national and global stage through cohesive collective leadership.'
+      desc: 'Create sustainable business growth through a strong professional network.'
     }
-  ];
-
-  // Core Leaders Roster (Jijeesh Minerva is #1 — Strictly 4 Fields Only)
-  const leaders = [
-    {
-      id: 'jijeesh',
-      name: 'Jijeesh Minerva',
-      role: 'Founder & CEO',
-      company: 'M/s Eco Pest India • M/s Urban Owls Digital',
-      photo: jijeeshImg,
-    },
-    {
-      id: 'sajish',
-      name: 'Sajish Maliyekkal',
-      role: '',
-      company: 'Greenline Pest Management',
-      photo: sajishImg,
-    },
-    {
-      id: 'mahesh',
-      name: 'Mahesh Prabudhan',
-      role: '',
-      company: 'Yessem Facilities',
-      photo: maheshImg,
-    },
-    {
-      id: 'binu',
-      name: 'Binu T.B.',
-      role: '',
-      company: 'Global Marketing, Coimbatore',
-      photo: binuImg,
-    },
-    {
-      id: 'vidhu',
-      name: 'Vidhu Mezhuveli',
-      role: 'Founder & CEO',
-      company: 'Smash Cleaning Company',
-      photo: vidhuImg,
-    },
-    {
-      id: 'nidhi',
-      name: 'Nidhi Tomer',
-      role: 'Co-Founder & CEO',
-      company: 'Vedic Bricks Academy, Kochi',
-      photo: nidhiImg,
-    },
-    {
-      id: 'anjana',
-      name: 'Anjana Sreedharan',
-      role: 'General Secretary',
-      company: 'Mithrakulam Trust',
-      photo: anjanaImg,
-    },
   ];
 
   // Statewide Chapters
@@ -134,6 +120,12 @@ export default function AboutPage({ onOpenJoinModal }) {
       tagline: 'Commercial & Infopark Corridor',
       desc: 'Central commercial hub connecting tech, international trade, manufacturing, and financial advisory.',
       membersCount: '150+ Verified Seats',
+    },
+    {
+      name: 'Kottayam Chapter',
+      tagline: 'Plantation & Healthcare Hub',
+      desc: 'Rubber and agro-conglomerates, multi-specialty healthcare systems, and higher education leaders.',
+      membersCount: '40+ Verified Seats',
     },
     {
       name: 'Thiruvananthapuram Chapter',
@@ -154,12 +146,6 @@ export default function AboutPage({ onOpenJoinModal }) {
       membersCount: '25+ Verified Seats',
     },
     {
-      name: 'Kottayam Chapter',
-      tagline: 'Plantation & Healthcare Hub',
-      desc: 'Rubber and agro-conglomerates, multi-specialty healthcare systems, and higher education leaders.',
-      membersCount: '40+ Verified Seats',
-    },
-    {
       name: 'Kollam Chapter',
       tagline: 'Maritime & Agro-Processing',
       desc: 'Port logistics, cashew processing, marine exports, and eco-hospitality enterprises.',
@@ -168,678 +154,442 @@ export default function AboutPage({ onOpenJoinModal }) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-20 sm:pt-24 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#020713] text-white pt-16 sm:pt-20 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative">
       
-      {/* Background Ambient Lighting */}
+      {/* Ambient Glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0A254E]/40 rounded-full blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 space-y-12 sm:space-y-16">
         
         {/* ===================================================================== */}
-        {/* 1. MASTER ABOUT BOC SHOWCASE BANNER                                   */}
+        {/* 1. MASTER ABOUT BOC HERO SHOWCASE (1:1 with media_1790784313478.jpg)   */}
         {/* ===================================================================== */}
-        <div className="mb-14 sm:mb-20">
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_20px_60px_rgba(0,0,0,0.9)] bg-[#020816]">
           
-          {/* Header Title (Clean without 'the backbone of kerala') */}
-          <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
-              About{' '}
-              <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#C9A227] bg-clip-text text-transparent">
-                Business Owners Circle
-              </span>
-            </h1>
-          </div>
-
-          {/* MASTER SHOWCASE: FULL BACKGROUND WITH CRISP ULTRA-HD TYPOGRAPHY */}
-          <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_25px_70px_rgba(0,0,0,0.85)] bg-[#020713] max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[460px] sm:min-h-[520px]">
             
-            {/* Desktop Viewport (md and up): Real Master Background with Left Vector Scrim & Typography */}
-            <div className="hidden md:block relative w-full aspect-[16/9] min-h-[580px] lg:min-h-[640px] overflow-hidden">
+            {/* Left Content Column (100% Vector Typed Typography) */}
+            <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-center relative z-10 bg-gradient-to-b from-[#020816] via-[#020816]/95 to-[#020816] lg:bg-transparent select-text">
               
-              {/* Full Background Image: 100% Natural User Photograph */}
-              <img
-                src={masterAboutHero}
-                alt="Business Owners Circle Kerala Waterfront Meeting"
-                className="absolute inset-0 w-full h-full object-cover object-[center_right] select-none pointer-events-none"
-              />
+              {/* Soft backdrop scrim for desktop */}
+              <div className="hidden lg:block absolute inset-0 -right-24 bg-gradient-to-r from-[#020816] via-[#020816]/95 via-[#020816]/75 to-transparent -z-10 pointer-events-none" />
 
-              {/* Directional Soft Luxury Scrim on Left: Perfectly shields text readability while leaving natural photo ambiance and faces 100% natural */}
-              <div className="absolute inset-y-0 left-0 w-[60%] bg-gradient-to-r from-[#020713]/90 via-[#020713]/65 via-[#020713]/30 to-transparent pointer-events-none" />
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020713]/85 via-[#020713]/25 to-transparent pointer-events-none" />
+              {/* Eyebrow Badge */}
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="font-cinzel text-xs sm:text-[13px] font-bold text-[#FCE38A] tracking-[0.24em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                  ABOUT BOC
+                </span>
+              </div>
 
-              {/* 100% Native Vector Typed Content (Razor Sharp, Infinite Resolution, Never Fuzzy) */}
-              <div className="relative z-10 w-full max-w-[58%] h-full p-8 lg:p-12 flex flex-col justify-between select-text">
-                
-                <div>
-                  {/* BOC Logo & Branding (Official Emblem & Correct Full Form) */}
-                  <div className="flex items-center gap-3.5 mb-5">
-                    <div className="relative shrink-0">
-                      <img 
-                        src={bocLogoPng} 
-                        alt="BOC Official Logo" 
-                        className="w-12 h-12 lg:w-14 lg:h-14 object-contain drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]" 
-                      />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-cinzel font-black tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
-                        BOC
-                      </div>
-                      <div className="text-[10px] sm:text-[11px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.22em] uppercase leading-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                        BUSINESS • OWNERS • CIRCLE
-                      </div>
-                    </div>
-                  </div>
+              {/* Main Heading */}
+              <h1 className="font-serif font-black text-3xl sm:text-5xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+                Business Owner’s<br />Circle
+              </h1>
 
-                  {/* Eyebrow Tag */}
-                  <div className="text-xs font-cinzel font-bold text-[#F9D678] tracking-[0.22em] uppercase mb-2 drop-shadow-[0_1px_3px_rgba(0,0,0,0.9)]">
-                    — ABOUT US
-                  </div>
+              {/* Sub-tagline */}
+              <p className="text-[#FCE38A] font-semibold text-xs sm:text-sm lg:text-[14px] leading-snug mb-4 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                Built for Business Owners. Driven by Connections. Created for Mutual Growth.
+              </p>
 
-                  {/* Main Headline */}
-                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight leading-[1.14] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
-                    More Than a Network,<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_2px_15px_rgba(212,175,55,0.4)]">
-                      We’re a Community.
-                    </span>
-                  </h2>
+              {/* Body Text (Exact words from mockup) */}
+              <div className="space-y-3 text-slate-200 text-xs sm:text-[13px] leading-relaxed mb-6 font-normal">
+                <p>
+                  BOC – Business Owner’s Circle is a professional business community created around a simple belief:
+                  <br />
+                  <span className="text-white font-medium">Business grows better when business owners grow together.</span>
+                </p>
+                <p className="text-slate-300">
+                  BOC brings business owners, entrepreneurs and professionals together to create meaningful connections, share knowledge, support one another, generate business referrals, explore collaborations and create new opportunities.
+                </p>
+              </div>
 
-                  {/* Subtitle Description */}
-                  <p className="text-slate-200 text-xs sm:text-[13px] lg:text-sm leading-relaxed max-w-xl mb-5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)] font-normal">
-                    Business Owners Circle (BOC) is a premium networking platform for entrepreneurs, professionals and business leaders who believe in the power of genuine connections, collaboration and shared growth.
-                  </p>
-
-                  {/* 4 Feature Badges (Ultra-Sharp Native Icons) */}
-                  <div className="grid grid-cols-2 gap-2.5 sm:gap-3 mb-5 max-w-lg">
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
-                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                        <Users className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CONNECT</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">with like-minded business owners</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
-                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                        <Handshake className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">COLLABORATE</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">on new opportunities</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
-                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                        <TrendingUp className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">GROW</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">together as a community</div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-[#030B17]/85 border border-[#D4AF37]/35 shadow-md backdrop-blur-sm">
-                      <div className="w-7 h-7 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
-                        <Globe className="w-3.5 h-3.5" />
-                      </div>
-                      <div>
-                        <div className="text-[11px] font-cinzel font-bold text-[#F9D678] uppercase">CREATE</div>
-                        <div className="text-[10px] text-slate-300 leading-tight">a bigger impact in business</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Signature Script & Action Buttons */}
-                <div>
-                  <div className="mb-4">
-                    <p className="font-serif italic text-base sm:text-lg text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-                      Real People. Real Business. Real Growth.
-                    </p>
-                    <div className="h-[1.5px] w-48 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1" />
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <button
-                      onClick={onOpenJoinModal}
-                      className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-[0_0_20px_rgba(212,175,55,0.6)] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
-                    >
-                      <span>JOIN BOC</span>
-                      <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                    </button>
-
-                    <button
-                      onClick={() => setIsPhotoLightboxOpen(true)}
-                      className="px-4 py-2.5 rounded-full bg-[#030A17]/85 hover:bg-[#030A17] border border-[#D4AF37] text-[#F9D678] font-cinzel font-bold text-xs uppercase tracking-wider backdrop-blur-md shadow-lg transition-all cursor-pointer flex items-center gap-1.5"
-                      title="View Fullscreen"
-                    >
-                      <Maximize2 className="w-3.5 h-3.5" />
-                      <span>Fullscreen View</span>
-                    </button>
-                  </div>
-                </div>
-
+              {/* Golden Core Objective Motto */}
+              <div className="pt-2 border-t border-[#DFC688]/30">
+                <p className="font-cinzel font-black text-xs sm:text-sm lg:text-[15px] text-[#F5C042] tracking-wider drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  Connect. Support. Refer. Collaborate. Grow.
+                </p>
               </div>
 
             </div>
 
-            {/* Mobile Viewport (< md screens): Crisp Portrait Photo + Full HD Responsive Typography */}
-            <div className="md:hidden flex flex-col bg-[#030914]">
-              
-              {/* Photo Area with Natural Master Photo */}
-              <div className="relative w-full h-[240px] xs:h-[270px] overflow-hidden">
-                <img
-                  src={masterAboutHero}
-                  alt="Business Owners Circle Gathering"
-                  className="w-full h-full object-cover object-[center_right] select-none"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030914] via-transparent to-transparent pointer-events-none" />
-                
-                <button
-                  onClick={() => setIsPhotoLightboxOpen(true)}
-                  className="absolute top-3 right-3 px-3 py-1 rounded-full bg-[#030A17]/85 border border-[#D4AF37] text-[#F9D678] text-[10px] font-cinzel font-bold uppercase tracking-wider backdrop-blur-md shadow-md flex items-center gap-1"
-                >
-                  <Maximize2 className="w-3 h-3" />
-                  <span>View Photo</span>
-                </button>
-              </div>
+            {/* Right Photo Column (Executives with Waterfront & Chinese Fishing Nets) */}
+            <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] lg:min-h-full overflow-hidden">
+              <img
+                src={aboutHeroNets}
+                alt="Business Executives Coffee Networking at Kochi Waterfront"
+                className="w-full h-full object-cover object-[center_center] select-none"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020816] via-transparent to-transparent lg:hidden pointer-events-none" />
+              <div className="hidden lg:block absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#020816] to-transparent pointer-events-none" />
 
-              {/* Crisp Mobile Typography Content (Native Vector Text - 100% HD Quality) */}
-              <div className="p-5 xs:p-6 flex flex-col">
-                
-                {/* Logo & Subtitle (Official Emblem & Correct Full Form) */}
-                <div className="flex items-center gap-3 mb-3.5">
-                  <div className="relative shrink-0">
-                    <img 
-                      src={bocLogoPng} 
-                      alt="BOC Official Logo" 
-                      className="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(212,175,55,0.5)]" 
-                    />
-                  </div>
-                  <div>
-                    <div className="text-xl font-cinzel font-black tracking-wider text-white">
-                      BOC
-                    </div>
-                    <div className="text-[9px] font-cinzel font-extrabold text-[#F9D678] tracking-[0.18em] uppercase leading-tight">
-                      BUSINESS • OWNERS • CIRCLE
-                    </div>
-                  </div>
-                </div>
-
-                {/* Eyebrow */}
-                <div className="text-[10.5px] font-cinzel font-bold text-[#F9D678] tracking-[0.2em] uppercase mb-1.5">
-                  — ABOUT US
-                </div>
-
-                {/* Headline */}
-                <h2 className="text-xl xs:text-2xl font-serif font-bold text-white tracking-tight leading-snug mb-2.5">
-                  More Than a Network,<br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
-                    We’re a Community.
-                  </span>
-                </h2>
-
-                {/* Description */}
-                <p className="text-slate-300 text-xs leading-relaxed mb-4">
-                  Business Owners Circle (BOC) is a premium networking platform for entrepreneurs, professionals and business leaders who believe in the power of genuine connections, collaboration and shared growth.
-                </p>
-
-                {/* 4 Pillars Grid (Mobile) */}
-                <div className="grid grid-cols-2 gap-2 mb-4">
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
-                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                      <Users className="w-3 h-3" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">CONNECT</div>
-                      <div className="text-[9px] text-slate-300 leading-tight">with business owners</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
-                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                      <Handshake className="w-3 h-3" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">COLLABORATE</div>
-                      <div className="text-[9px] text-slate-300 leading-tight">on opportunities</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
-                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                      <TrendingUp className="w-3 h-3" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">GROW</div>
-                      <div className="text-[9px] text-slate-300 leading-tight">as a community</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-2 p-2 rounded-lg bg-white/5 border border-[#D4AF37]/25">
-                    <div className="w-6 h-6 rounded-full bg-[#081F42] border border-[#D4AF37] text-[#F9D678] flex items-center justify-center shrink-0 mt-0.5">
-                      <Globe className="w-3 h-3" />
-                    </div>
-                    <div>
-                      <div className="text-[10px] font-cinzel font-bold text-[#F9D678] uppercase">CREATE</div>
-                      <div className="text-[9px] text-slate-300 leading-tight">bigger impact</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Motto */}
-                <div className="mb-4">
-                  <p className="font-serif italic text-sm text-transparent bg-clip-text bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#D4AF37]">
-                    Real People. Real Business. Real Growth.
-                  </p>
-                </div>
-
-                {/* Mobile CTA Button */}
-                <button
-                  onClick={onOpenJoinModal}
-                  className="w-full py-2.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2"
-                >
-                  <span>JOIN BOC</span>
-                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
-                </button>
-
-              </div>
-
+              {/* Fullscreen Photo Lightbox Button */}
+              <button
+                onClick={() => setIsPhotoLightboxOpen(true)}
+                className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-[#030A17]/85 border border-[#D4AF37]/60 text-[#F9D678] text-[11px] font-cinzel font-bold uppercase tracking-wider backdrop-blur-md shadow-lg flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                title="View Fullscreen"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>View Photo</span>
+              </button>
             </div>
 
           </div>
 
         </div>
 
-        {/* ===================================================================== */}
-        {/* 2. THE 4 EXPANDED PILLARS (CONNECT • COLLABORATE • GROW • CREATE)     */}
-        {/* ===================================================================== */}
-        <section className="mb-20 sm:mb-28">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
-            {masterHighlights.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div 
-                  key={item.id}
-                  className="rounded-2xl p-6 sm:p-7 bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(212,175,55,0.2)] flex flex-col justify-between group"
-                >
-                  <div>
-                    {/* Gold Circular Icon */}
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-b from-[#0B254E] to-[#07172C] border-2 border-[#D4AF37] text-[#F9D678] flex items-center justify-center mb-5 shadow-lg group-hover:scale-110 group-hover:border-[#FFE27A] transition-all">
-                      <Icon className="w-6 h-6 stroke-[2.2]" />
-                    </div>
-
-                    <h3 className="font-cinzel font-extrabold text-xl text-white group-hover:text-[#F9D678] transition-colors mb-1 tracking-wider uppercase">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs font-semibold text-[#F9D678] mb-3">
-                      {item.subtitle}
-                    </p>
-                    <p className="text-xs text-slate-300 leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-
-                  <div className="pt-4 mt-5 border-t border-[#D4AF37]/20 flex items-center justify-between">
-                    <span className="text-[10px] uppercase tracking-wider font-cinzel font-bold text-[#DFC688]">
-                      Core Principle
-                    </span>
-                    <button
-                      onClick={onOpenJoinModal}
-                      className="text-[11px] font-bold text-[#F9D678] group-hover:text-white flex items-center gap-1 transition-colors cursor-pointer"
-                    >
-                      <span>Join</span>
-                      <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
 
         {/* ===================================================================== */}
-        {/* 3. FOUNDING CIRCLE & PEER LEADERSHIP SHOWCASE (JIJEESH SIR ALWAYS #1) */}
+        {/* 2. FOUNDER SPOTLIGHT: JIJEESH MINERVA (1:1 with media_1790784313478)  */}
         {/* ===================================================================== */}
-        <section id="leadership" className="mb-20 sm:mb-28 pt-8">
+        <section className="rounded-2xl sm:rounded-3xl bg-[#FAF8F5] text-[#0A192F] p-6 sm:p-10 lg:p-14 border border-slate-200 shadow-xl overflow-hidden">
           
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#071D3E] border border-[#D4AF37]/50 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.2em] uppercase mb-3">
-              <Gem className="w-3.5 h-3.5 text-[#F9D678]" />
-              <span>THE FOUNDING CIRCLE & EXECUTIVE ROSTER</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Founder Photo Card with Attached Dark Navy Box */}
+            <div className="lg:col-span-5 flex flex-col">
+              <div className="rounded-2xl overflow-hidden border border-slate-300 shadow-2xl bg-[#020B1A]">
+                
+                {/* Jijeesh Minerva Crystal-Clear HD Portrait */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={aboutFounderJijeesh}
+                    alt="Jijeesh Minerva - Founder, BOC Business Owner's Circle"
+                    className="w-full h-full object-cover object-[center_top] select-none"
+                  />
+                  {/* Subtle top/bottom rim for contrast */}
+                  <div className="absolute inset-0 ring-1 ring-inset ring-black/5 pointer-events-none" />
+                </div>
+
+                {/* Attached Dark Navy Bottom Box (Exact 1:1 from Mockup) */}
+                <div className="p-5 sm:p-6 bg-[#020B1A] text-left select-text">
+                  <h3 className="font-serif font-black text-xl sm:text-2xl text-white tracking-wide">
+                    Jijeesh Minerva
+                  </h3>
+                  <p className="font-cinzel text-xs font-bold text-[#FCE38A] tracking-wider uppercase mt-1 mb-2.5">
+                    Founder, BOC – Business Owner’s Circle
+                  </p>
+                  <div className="h-[1px] w-full bg-white/15 mb-2.5" />
+                  <p className="text-[11px] sm:text-xs text-slate-300 font-medium">
+                    Founder – Urban Owls Digital &nbsp;|&nbsp; Owner – Eco Pest India
+                  </p>
+                </div>
+
+              </div>
             </div>
-            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-4">
-              Guided by Kerala’s Proven Business Leaders
-            </h2>
-            
-            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-              Every member represents peer-verified credibility, industry authority, and absolute category exclusivity. 
-              Led by strategic veterans with decades of enterprise experience, BOC drives statewide commerce with unyielding ethics.
-            </p>
-          </div>
 
-          {/* Members Grid (Jijeesh Minerva Always First — Strictly 4 Fields Only) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {leaders.map((leader, index) => {
-              const isFirst = index === 0;
-              return (
-                <div
-                  key={leader.id}
-                  className={`rounded-2xl p-6 transition-all duration-300 flex flex-col justify-between group overflow-hidden ${
-                    isFirst 
-                      ? 'bg-gradient-to-b from-[#0B254E] via-[#07172C] to-[#040E1E] border-2 border-[#E5C45A] shadow-[0_15px_40px_rgba(212,175,55,0.22)]' 
-                      : 'bg-gradient-to-b from-[#06172E] to-[#040E1E] border border-[#D4AF37]/35 hover:border-[#F9D678] hover:shadow-[0_10px_30px_rgba(212,175,55,0.15)]'
-                  }`}
-                >
-                  <div className="flex flex-col items-center text-center">
-                    {/* Photo */}
-                    <div className="relative mb-4">
-                      <img
-                        src={leader.photo}
-                        alt={`${leader.name} - ${leader.company}`}
-                        className="w-24 h-24 rounded-2xl object-cover object-top border-2 border-[#D4AF37] shadow-lg group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-
-                    {/* Name */}
-                    <h3 className="font-serif font-bold text-lg text-white group-hover:text-[#F9D678] transition-colors mb-1">
-                      {leader.name}
-                    </h3>
-
-                    {/* Position / Role */}
-                    {leader.role && (
-                      <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
-                        {leader.role}
-                      </p>
-                    )}
-
-                    {/* Company Detail */}
-                    <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
-                      {leader.company}
-                    </p>
-                  </div>
-
-                  {/* Connect Profile Button */}
-                  <div className="pt-4 mt-4 border-t border-slate-800/80">
-                    <button
-                      onClick={onOpenJoinModal}
-                      className="w-full py-2 px-3 rounded-full bg-gradient-to-r from-[#F9D678] to-[#D4AF37] hover:from-[#FFF3C4] hover:to-[#F5C75D] text-[#07172C] font-cinzel font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Connect via BOC</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                </div>
-              );
-            })}
-          </div>
-
-          {/* View Full Directory Callout */}
-          <div className="text-center">
-            <button
-              onClick={onOpenJoinModal}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#06172E] hover:bg-[#0B2548] border border-[#D4AF37] text-white font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all cursor-pointer"
-            >
-              <span>Explore Statewide Member Roster & Apply →</span>
-            </button>
-          </div>
-
-        </section>
-
-        {/* ===================================================================== */}
-        {/* 4. THE GENESIS STORY OF BOC (THE BACKBONE NARRATIVE)                 */}
-        {/* ===================================================================== */}
-        <section className="mb-20 sm:mb-28 py-14 px-6 sm:px-12 rounded-3xl bg-gradient-to-b from-[#06172E] via-[#041024] to-[#06172E] border border-[#C9A227]/30 relative overflow-hidden">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Story Text */}
-            <div className="lg:col-span-7 space-y-5">
+            {/* Right Column: Founder Narrative & Business Interests */}
+            <div className="lg:col-span-7 flex flex-col justify-center select-text">
               
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#071D3E] border border-[#D4AF37]/40 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.2em] uppercase">
-                <Compass className="w-3.5 h-3.5 text-[#F9D678]" />
-                <span>OUR FOUNDING GENESIS</span>
+              {/* Eyebrow */}
+              <div className="text-[11px] font-cinzel font-bold text-[#C5A059] tracking-[0.24em] uppercase mb-1">
+                ABOUT THE FOUNDER
               </div>
 
-              <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight leading-tight">
-                Why We Built Business Owners Circle in Kerala
+              {/* Founder Name */}
+              <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#030B17] tracking-tight mb-1">
+                Jijeesh Minerva
               </h2>
 
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                For years, Kerala’s entrepreneurial community faced a recurring hurdle in traditional business networking: 
-                <strong> superficial exchanges, lack of accountability, and direct competitors in the very same room.</strong> Business owners 
-                often hesitated to share opportunities, worried that a competitor sitting nearby would undercut their deal.
+              {/* Role Subtitle */}
+              <p className="font-cinzel text-xs sm:text-[13px] font-bold text-[#C5A059] tracking-wider uppercase mb-5">
+                Founder, BOC – Business Owner’s Circle
               </p>
 
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                In 2020, a group of senior founders in Kochi established <strong>Business Owners Circle (BOC)</strong> to solve this forever. 
-                Our foundational rule: <em>Only ONE verified leader holds each industry specialty per chapter.</em> Zero competition. Total trust. 
-                Every meeting produces genuine economic expansion, pre-qualified referrals, and statewide syndicates.
-              </p>
-
-              <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#030B1A] border border-[#D4AF37]/30">
-                  <CheckCircle2 className="w-4 h-4 text-[#F9D678] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-white font-bold text-xs">100% Protected Exclusivity</h4>
-                    <p className="text-slate-400 text-[11px] mt-0.5">All chapter inquiries in your domain belong entirely to you.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-2.5 p-3 rounded-xl bg-[#030B1A] border border-[#D4AF37]/30">
-                  <CheckCircle2 className="w-4 h-4 text-[#F9D678] shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-white font-bold text-xs">Peer-Selected Quality</h4>
-                    <p className="text-slate-400 text-[11px] mt-0.5">Rigorous vetting ensures only reputable founders sit in the room.</p>
-                  </div>
-                </div>
+              {/* 5 Founder Narrative Paragraphs (Exact from Mockup) */}
+              <div className="space-y-3.5 text-slate-700 text-xs sm:text-[13.5px] leading-relaxed font-normal">
+                <p>
+                  Jijeesh Minerva is an entrepreneur with experience across business development, digital marketing, brand building and service-based businesses.
+                </p>
+                <p>
+                  He is the Founder of BOC – Business Owner’s Circle, a business community focused on meaningful connections, business support, referrals and collaboration.
+                </p>
+                <p>
+                  He is also the Founder of Urban Owls Digital, a digital marketing and digital growth company, and the Owner of Eco Pest India, a professional pest management business.
+                </p>
+                <p>
+                  Through his entrepreneurial journey across different industries, Jijeesh has developed a strong understanding of the importance of relationships, visibility, trust and business connections.
+                </p>
+                <p>
+                  BOC brings that experience into a community-driven platform designed to help business owners connect with the right people and discover opportunities to grow together.
+                </p>
               </div>
 
-            </div>
-
-            {/* Visual Card (Kerala Waterfront Backdrop) */}
-            <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-2xl">
-                <img 
-                  src={keralaWaterfrontBg} 
-                  alt="Kerala Backwaters Executive Boardroom" 
-                  className="w-full h-72 sm:h-80 object-cover object-center"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020A17] via-[#020A17]/60 to-transparent" />
-                
-                <div className="absolute bottom-0 inset-x-0 p-5">
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#D4AF37] text-[#07172C] font-cinzel font-black text-[9px] uppercase tracking-wider mb-1.5">
-                    Heritage of Commerce
-                  </span>
-                  <h3 className="font-serif font-bold text-base sm:text-lg text-white mb-1">
-                    Kerala Roots, Global Ambition
-                  </h3>
-                  <p className="text-slate-200 text-xs leading-relaxed">
-                    From ancient spice trading ports of Muziris and Cochin to modern tech corridors, Kerala has always traded with the world. 
-                    BOC modernizes that camaraderie for the 21st century.
-                  </p>
+              {/* Section Sub-heading: FOUNDER'S BUSINESS INTERESTS */}
+              <div className="mt-7 pt-5 border-t border-slate-200">
+                <div className="text-[11px] font-cinzel font-black text-slate-500 tracking-[0.22em] uppercase mb-3.5">
+                  FOUNDER’S BUSINESS INTERESTS
                 </div>
+
+                {/* Two Venture Cards Grid (1:1 with media_1790784313478.jpg) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  
+                  {/* Card 1: Urban Owls Digital */}
+                  <div className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#DFC688] hover:shadow-md transition-all group flex items-start gap-3.5">
+                    <div className="shrink-0 mt-0.5">
+                      <OwlLogoIcon className="w-11 h-11" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-[#030B17] group-hover:text-[#B58A36] transition-colors leading-tight">
+                        Urban Owls Digital
+                      </h4>
+                      <p className="text-[11px] text-slate-500 leading-snug mt-1 mb-2">
+                        Digital Marketing • Website Development • Lead Generation • Digital Growth
+                      </p>
+                      <a 
+                        href="https://urbanowls.co" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#030B17] hover:text-[#B58A36] transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5 text-slate-600" />
+                        <span className="underline decoration-slate-300">urbanowls.co</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Eco Pest India */}
+                  <div className="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all group flex items-start gap-3.5">
+                    <div className="shrink-0 mt-0.5">
+                      <LeafLogoIcon className="w-11 h-11" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-[#030B17] group-hover:text-emerald-700 transition-colors leading-tight">
+                        Eco Pest India
+                      </h4>
+                      <p className="text-[11px] text-slate-500 leading-snug mt-1 mb-2">
+                        Professional Pest Management • Termite Control • Pest Management Solutions
+                      </p>
+                      <a 
+                        href="https://ecopestindia.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#030B17] hover:text-emerald-700 transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5 text-slate-600" />
+                        <span className="underline decoration-slate-300">ecopestindia.com</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+
               </div>
+
             </div>
 
           </div>
 
         </section>
 
+
         {/* ===================================================================== */}
-        {/* 5. STATEWIDE CHAPTER ECOSYSTEM                                       */}
+        {/* 3. OUR VISION & OUR MISSION (1:1 with media_1790784313478.jpg)         */}
         {/* ===================================================================== */}
-        <section className="mb-20 sm:mb-28">
+        <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#010612]">
           
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#071D3E] border border-[#D4AF37]/50 text-[#F9D678] text-[11px] font-cinzel font-bold tracking-[0.2em] uppercase mb-3">
-              <Globe className="w-3.5 h-3.5 text-[#F9D678]" />
-              <span>STATEWIDE COMMERCE NETWORK</span>
+          {/* Background: Kochi Waterfront with Traditional Boat & Chinese Fishing Nets at Sunset */}
+          <div className="absolute inset-0">
+            <img
+              src={aboutVisionBg}
+              alt="Kochi Waterfront Boat & Nets"
+              className="w-full h-full object-cover object-left select-none pointer-events-none"
+            />
+            {/* Scrim Overlay that smoothly darkens the right side for clear typography */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#010612]/75 via-[#010612]/92 to-[#010612] pointer-events-none" />
+          </div>
+
+          <div className="relative z-10 p-6 sm:p-10 lg:p-14">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              
+              {/* Left Column: OUR VISION (Col-span 4) */}
+              <div className="lg:col-span-4 select-text">
+                
+                {/* Vision Icon & Heading */}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full border-2 border-[#FCE38A] bg-[#020A17] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.4)]">
+                    <Compass className="w-4 h-4 stroke-[2.4]" />
+                  </div>
+                  <h3 className="font-cinzel font-black tracking-[0.2em] text-sm sm:text-base text-[#FCE38A] uppercase">
+                    OUR VISION
+                  </h3>
+                </div>
+
+                {/* Vision Statement */}
+                <p className="text-slate-200 text-xs sm:text-[13px] leading-relaxed max-w-sm pl-12 font-normal">
+                  To build a trusted business community where every genuine business owner can find connections, support, opportunities and relationships that contribute to sustainable growth.
+                </p>
+
+              </div>
+
+              {/* Right Column: OUR MISSION + 5 Value Pillars (Col-span 8) */}
+              <div className="lg:col-span-8 select-text">
+                
+                {/* Mission Icon & Heading */}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-9 h-9 rounded-full border-2 border-[#FCE38A] bg-[#020A17] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.4)]">
+                    <Target className="w-4 h-4 stroke-[2.4]" />
+                  </div>
+                  <h3 className="font-cinzel font-black tracking-[0.2em] text-sm sm:text-base text-[#FCE38A] uppercase">
+                    OUR MISSION
+                  </h3>
+                </div>
+
+                {/* Mission Introduction */}
+                <p className="text-slate-200 text-xs sm:text-[13px] mb-6 pl-12 font-normal">
+                  To create a professional ecosystem where business owners can:
+                </p>
+
+                {/* 5 Value Pillars Grid (Connect, Support, Refer, Collaborate, Grow) */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-3 text-center">
+                  {missionPillars.map((pillar) => {
+                    const Icon = pillar.icon;
+                    return (
+                      <div 
+                        key={pillar.id}
+                        className="flex flex-col items-center p-3 rounded-xl bg-[#030C1C]/80 border border-[#DFC688]/30 hover:border-[#FCE38A] transition-all group backdrop-blur-sm"
+                      >
+                        {/* Circular Icon */}
+                        <div className="w-10 h-10 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.35)] group-hover:scale-110 group-hover:border-[#FFF5C0] group-hover:text-[#FFF5C0] transition-transform mb-2">
+                          <Icon className="w-4 h-4 stroke-[2.2]" />
+                        </div>
+
+                        {/* Title */}
+                        <h4 className="font-cinzel font-black text-[11px] sm:text-xs text-[#FCE38A] uppercase tracking-wider mb-1">
+                          {pillar.title}
+                        </h4>
+
+                        {/* Description */}
+                        <p className="text-[10px] sm:text-[10.5px] text-slate-300 leading-tight">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white mb-3">
-              6 Chapters • One Unbroken Statewide Circle
+
+          </div>
+
+        </section>
+
+
+        {/* ===================================================================== */}
+        {/* 4. STATEWIDE CHAPTER NETWORK (Regional Leadership Hubs)                */}
+        {/* ===================================================================== */}
+        <section className="pt-4">
+          <div className="text-center max-w-2xl mx-auto mb-10 select-text">
+            <div className="text-xs font-cinzel font-bold text-[#F9D678] tracking-[0.24em] uppercase mb-2">
+              EXPANDING HORIZONS
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+              Statewide Chapter Network
             </h2>
-            <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-              When you join your local chapter, you gain verified cross-chapter visiting rights across all major commercial corridors of Kerala.
+            <p className="text-slate-400 text-xs sm:text-sm mt-2">
+              BOC is establishing active chapters across key commercial hubs in Kerala.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {chapters.map((chap, cIdx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {chapters.map((ch, idx) => (
               <div 
-                key={cIdx} 
-                className="p-6 rounded-2xl bg-gradient-to-b from-[#05142B] to-[#030A17] border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all flex flex-col justify-between"
+                key={idx}
+                className="p-6 rounded-2xl bg-gradient-to-b from-[#051428] to-[#020B17] border border-[#D4AF37]/30 hover:border-[#F9D678] transition-all hover:-translate-y-1 hover:shadow-xl group"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="font-serif font-bold text-lg text-white">{chap.name}</h3>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-[#D4AF37]/20 text-[#F9D678] border border-[#D4AF37]/40">
-                      Active
-                    </span>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-[#F9D678]" />
+                    <h3 className="font-serif font-bold text-lg text-white group-hover:text-[#F9D678] transition-colors">
+                      {ch.name}
+                    </h3>
                   </div>
-                  <div className="text-[11px] text-[#F9D678] font-cinzel font-semibold uppercase tracking-wider mb-2">
-                    {chap.tagline}
-                  </div>
-                  <p className="text-slate-300 text-xs leading-relaxed mb-4">
-                    {chap.desc}
-                  </p>
-                </div>
-                <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
-                  <span>{chap.membersCount}</span>
-                  <span className="text-[#F9D678] font-semibold flex items-center gap-1">
-                    Fortnightly Rhythm <ChevronRight className="w-3 h-3" />
+                  <span className="text-[10px] font-bold text-[#F9D678] px-2.5 py-0.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/30 whitespace-nowrap">
+                    {ch.membersCount}
                   </span>
                 </div>
+                <div className="text-xs font-semibold text-[#DFC688] mb-2">{ch.tagline}</div>
+                <p className="text-xs text-slate-300 leading-relaxed mb-4">{ch.desc}</p>
+                <button
+                  onClick={onOpenJoinModal}
+                  className="w-full py-2 rounded-xl bg-white/5 hover:bg-[#D4AF37] hover:text-[#07172C] border border-[#D4AF37]/30 text-xs font-cinzel font-bold tracking-wider uppercase transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                >
+                  <span>Apply for Chapter</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             ))}
           </div>
-
         </section>
 
-        {/* ===================================================================== */}
-        {/* 6. ETHICS & 4-TIER VETTING PROCESS                                   */}
-        {/* ===================================================================== */}
-        <section className="mb-20 sm:mb-28">
-          <div className="bg-gradient-to-r from-[#071F42] via-[#05142B] to-[#071F42] rounded-3xl border-2 border-[#D4AF37]/60 p-6 sm:p-12 shadow-2xl text-center">
-            
-            <div className="max-w-3xl mx-auto space-y-3 mb-10">
-              <span className="text-xs font-cinzel font-bold text-[#F9D678] tracking-[0.2em] uppercase block">
-                MEMBERSHIP STANDARDS
-              </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-4xl text-white">
-                How A Leader Enters The Circle
-              </h2>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                To protect the economic integrity of every meeting room, BOC enforces a strict 4-stage induction protocol.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
-              <div className="p-4 rounded-xl bg-[#030A17]/80 border border-[#D4AF37]/30">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs flex items-center justify-center mb-2 shadow">
-                  1
-                </div>
-                <h4 className="font-serif font-bold text-sm text-white mb-1">Seat Verification</h4>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Confirmation that your industry specialty is open in your requested chapter.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-[#030A17]/80 border border-[#D4AF37]/30">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs flex items-center justify-center mb-2 shadow">
-                  2
-                </div>
-                <h4 className="font-serif font-bold text-sm text-white mb-1">Peer Due Diligence</h4>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Confidential review by Chapter Membership Committee regarding reputation.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-[#030A17]/80 border border-[#D4AF37]/30">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs flex items-center justify-center mb-2 shadow">
-                  3
-                </div>
-                <h4 className="font-serif font-bold text-sm text-white mb-1">Integrity Pledge</h4>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Acceptance of the BOC Non-Compete Code and meeting commitment.
-                </p>
-              </div>
-
-              <div className="p-4 rounded-xl bg-[#030A17]/80 border border-[#D4AF37]/30">
-                <div className="w-8 h-8 rounded-full bg-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs flex items-center justify-center mb-2 shadow">
-                  4
-                </div>
-                <h4 className="font-serif font-bold text-sm text-white mb-1">Official Induction</h4>
-                <p className="text-slate-300 text-[11px] leading-relaxed">
-                  Exclusive seat locked, statewide directory roster unlocked, chapter voting seat given.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </section>
 
         {/* ===================================================================== */}
-        {/* 7. HIGH-PRESTIGE CLOSING INVITATION (JOIN THE CIRCLE)                 */}
+        {/* 5. CLOSING INVITATION BANNER (Apply for Council Review)               */}
         {/* ===================================================================== */}
-        <section className="mb-10">
-          <div className="bg-gradient-to-r from-[#061836] via-[#041126] to-[#061836] border-2 border-[#D4AF37] rounded-3xl p-8 sm:p-12 text-center shadow-[0_20px_50px_rgba(212,175,55,0.2)]">
-            
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#071B3A] border border-[#D4AF37]/50 text-[#F9D678] text-xs font-cinzel font-bold uppercase tracking-wider mb-4">
-              <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
-              <span>APPLY FOR CATEGORY EXCLUSIVITY</span>
-            </div>
-
-            <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-5xl text-white mb-4">
-              Will Your Competitor Own Your Seat, Or Will You?
+        <section className="rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-[#03132B] via-[#051C3D] to-[#03132B] border-2 border-[#D4AF37]/60 shadow-[0_0_40px_rgba(212,175,55,0.25)] text-center relative overflow-hidden">
+          <div className="relative z-10 max-w-3xl mx-auto select-text">
+            <span className="font-cinzel text-xs font-bold text-[#F9D678] tracking-[0.24em] uppercase">
+              BECOME A MEMBER
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white tracking-tight mt-2 mb-4">
+              Ready to Accelerate Your Business Growth?
             </h2>
-
-            <p className="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-8">
-              Seats in Kochi, Trivandrum, Thrissur, Kozhikode, Kottayam, and Kollam are strictly limited to one leader per industry. 
-              Once a seat is occupied, it cannot be reopened. Apply today to secure your exclusive position.
+            <p className="text-slate-200 text-xs sm:text-sm leading-relaxed mb-8 max-w-2xl mx-auto font-normal">
+              Experience the power of executive business networking with genuine founders, category exclusivity, and verified peer referrals across Kerala.
             </p>
-
-            <button
-              onClick={onOpenJoinModal}
-              className="px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-all cursor-pointer inline-flex items-center gap-2"
-            >
-              <span>Apply to Join Business Owners Circle</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              <button
+                onClick={onOpenJoinModal}
+                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(212,175,55,0.7)] hover:brightness-110 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+              >
+                <span>APPLY FOR MEMBERSHIP</span>
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
+              </button>
+              <a
+                href="tel:+919020040009"
+                className="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/15 border border-[#D4AF37]/50 text-white font-cinzel font-bold text-xs uppercase tracking-wider backdrop-blur-md transition-all flex items-center gap-2"
+              >
+                <span>CONTACT SECRETARIAT</span>
+              </a>
+            </div>
           </div>
         </section>
 
       </div>
 
-      {/* ===================================================================== */}
-      {/* 8. LIGHTBOX FOR ULTRA-HD PHOTO                                        */}
-      {/* ===================================================================== */}
+      {/* Fullscreen Photo Lightbox Modal */}
       {isPhotoLightboxOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-lg animate-fadeIn">
-          <button
-            onClick={() => setIsPhotoLightboxOpen(false)}
-            className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors cursor-pointer z-50"
-            title="Close Fullscreen"
+        <div 
+          onClick={() => setIsPhotoLightboxOpen(false)}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200 cursor-zoom-out"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            className="relative max-w-6xl max-h-[92vh] w-full flex flex-col items-center cursor-default"
           >
-            <X className="w-6 h-6" />
-          </button>
-          
-          <div className="relative max-w-6xl w-full max-h-[90vh] flex flex-col items-center">
-            <img 
-              src={masterAboutHero} 
-              alt="BOC Leadership Fullscreen Master Photograph" 
-              className="max-w-full max-h-[80vh] object-contain rounded-2xl border-2 border-[#D4AF37] shadow-2xl"
+            <button
+              onClick={() => setIsPhotoLightboxOpen(false)}
+              className="absolute -top-12 right-0 p-2 text-white hover:text-[#F9D678] transition-colors cursor-pointer"
+              aria-label="Close Fullscreen View"
+            >
+              <X className="w-7 h-7 stroke-[2.5]" />
+            </button>
+            <img
+              src={aboutHeroNets}
+              alt="Business Owners Circle Waterfront Meeting Fullscreen"
+              className="w-auto h-auto max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border border-[#D4AF37]/40"
             />
-            <div className="text-center mt-4 text-xs font-cinzel font-bold text-[#F9D678] tracking-widest uppercase">
-              Business Owners Circle • Kerala Executive Gathering
+            <div className="mt-3 text-center">
+              <p className="font-serif italic text-base text-[#FCE38A]">
+                Business Owners Circle (BOC) — Waterfront Executive Gathering
+              </p>
             </div>
           </div>
         </div>
