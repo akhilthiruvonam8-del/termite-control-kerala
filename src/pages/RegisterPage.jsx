@@ -25,6 +25,7 @@ export default function RegisterPage() {
     email: '',
     companyName: '',
     category: 'Real Estate & Construction',
+    customCategory: '',
     industry: '',
     yearsInBusiness: '',
     services: '',
@@ -38,7 +39,7 @@ export default function RegisterPage() {
     agreePrivacy: false,
   });
   const [consentReceipt, setConsentReceipt] = useState(null);
-  const [step3Error, setStep3Error] = useState('');
+  const [stepError, setStepError] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,18 +51,32 @@ export default function RegisterPage() {
 
   const handleNext = (e) => {
     e.preventDefault();
+    setStepError('');
+
+    if (step === 2 && formData.category === 'Others' && !formData.customCategory?.trim()) {
+      setStepError('Please specify your Primary Industry / Business Category.');
+      return;
+    }
+
     if (step < 3) {
       setStep(step + 1);
     } else {
       if (!formData.agreeTerms || !formData.agreePrivacy) {
-        setStep3Error('Please agree to both the BOC Membership Terms & Conditions and Privacy Policy to submit your application.');
+        setStepError('Please agree to both the BOC Membership Terms & Conditions and Privacy Policy to submit your application.');
         return;
       }
-      setStep3Error('');
+      setStepError('');
+
+      const displayCategory = formData.category === 'Others'
+        ? (formData.customCategory.trim() ? `${formData.customCategory.trim()} (Other)` : 'Other Category')
+        : formData.category;
+
       const now = new Date();
       const receipt = {
         referenceId: `BOC-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`,
         ...formData,
+        category: displayCategory,
+        customCategory: formData.customCategory?.trim(),
         termsAccepted: true,
         privacyAccepted: true,
         policyVersion: 'BOC-Charter-2026-v1.0',
@@ -147,7 +162,7 @@ export default function RegisterPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Selected Category:</span>
-                  <strong className="text-[#F9D678]">{formData.category}</strong>
+                  <strong className="text-[#F9D678]">{consentReceipt?.category || formData.category}</strong>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400">Chapter Roster:</span>
@@ -307,7 +322,7 @@ export default function RegisterPage() {
 
                   <div>
                     <label className="block text-xs font-cinzel font-bold text-slate-300 uppercase mb-1">
-                      Business Category (For Exclusivity Lock) *
+                      Primary Industry Category (For Exclusivity Lock) *
                     </label>
                     <select
                       name="category"
@@ -326,7 +341,26 @@ export default function RegisterPage() {
                       <option value="Logistics & Supply Chain">Logistics & Supply Chain</option>
                       <option value="Media & Advertising">Media & Advertising</option>
                       <option value="Hospitality & Tourism">Hospitality & Tourism</option>
+                      <option value="Others">Others</option>
                     </select>
+
+                    {formData.category === 'Others' && (
+                      <div className="mt-2.5 animate-in fade-in slide-in-from-top-1">
+                        <label className="block text-[11px] font-cinzel font-bold text-[#F9D678] uppercase mb-1 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-[#F9D678]" />
+                          Specify Your Industry Category *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          name="customCategory"
+                          value={formData.customCategory}
+                          onChange={handleChange}
+                          placeholder="Type your category here (e.g. Solar Energy, Organic Food, Event Management...)"
+                          className="w-full py-2.5 px-3.5 rounded-xl bg-[#020814] border border-[#F9D678] text-white text-xs sm:text-sm focus:border-[#F9D678] focus:ring-1 focus:ring-[#F9D678] outline-none placeholder-slate-400"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <div>
@@ -489,12 +523,20 @@ export default function RegisterPage() {
                       </Link>
                     </div>
 
-                    {step3Error && (
+                    {stepError && (
                       <div className="p-2.5 rounded-xl bg-red-950/60 border border-red-500/50 text-red-200 text-xs">
-                        {step3Error}
+                        {stepError}
                       </div>
                     )}
                   </div>
+                </div>
+              )}
+
+              {/* Step Error Notification for Steps 1 & 2 */}
+              {stepError && step < 3 && (
+                <div className="mt-4 p-3 rounded-xl bg-red-950/70 border border-red-500/50 text-red-200 text-xs flex items-center gap-2">
+                  <span className="font-bold">⚠️</span>
+                  <span>{stepError}</span>
                 </div>
               )}
 

@@ -26,6 +26,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
     fullName: '',
     businessName: '',
     businessCategory: 'IT & Software Solutions',
+    customCategory: '',
     designation: '',
     businessAddress: '',
     cityDistrict: 'Kochi (Ernakulam)',
@@ -55,7 +56,8 @@ export default function BOCJoinModal({ isOpen, onClose }) {
     'Hospitality, Travel & Resorts',
     'Agro-Processing & Plantations',
     'Education, Academies & EdTech',
-    'Legal & Corporate Advisory'
+    'Legal & Corporate Advisory',
+    'Others'
   ];
 
   const districts = [
@@ -73,6 +75,11 @@ export default function BOCJoinModal({ isOpen, onClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (formData.businessCategory === 'Others' && !formData.customCategory.trim()) {
+      setValidationError('Please specify your Primary Industry / Business Category in the field provided.');
+      return;
+    }
+
     if (!formData.agreeTerms || !formData.agreePrivacy) {
       setValidationError('Please agree to both the BOC Membership Terms & Conditions and Privacy Policy to submit your application.');
       return;
@@ -80,10 +87,16 @@ export default function BOCJoinModal({ isOpen, onClose }) {
 
     setValidationError('');
 
+    const recordedCategory = formData.businessCategory === 'Others'
+      ? (formData.customCategory.trim() ? `${formData.customCategory.trim()} (Other)` : 'Other Category')
+      : formData.businessCategory;
+
     const now = new Date();
     const receipt = {
       referenceId: `BOC-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`,
       ...formData,
+      businessCategory: recordedCategory,
+      customCategory: formData.customCategory.trim(),
       termsAccepted: true,
       privacyAccepted: true,
       policyVersion: 'BOC-Charter-2026-v1.0',
@@ -224,7 +237,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
 
                   <div>
                     <label className="block text-[11px] font-cinzel font-bold tracking-wider text-slate-300 uppercase mb-1">
-                      Business Category *
+                      Primary Industry Category *
                     </label>
                     <select
                       value={formData.businessCategory}
@@ -237,6 +250,23 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                         </option>
                       ))}
                     </select>
+
+                    {formData.businessCategory === 'Others' && (
+                      <div className="mt-2 animate-in fade-in slide-in-from-top-1 duration-200">
+                        <label className="block text-[10px] font-cinzel font-bold tracking-wider text-[#F9D678] uppercase mb-1 flex items-center gap-1.5">
+                          <Sparkles className="w-3 h-3 text-[#F9D678]" />
+                          Specify Your Industry Category *
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="Type your category here (e.g. Solar Energy, Organic Food, Event Management...)"
+                          value={formData.customCategory}
+                          onChange={(e) => setFormData({ ...formData, customCategory: e.target.value })}
+                          className="w-full bg-[#020814] border border-[#F9D678] rounded-xl px-3.5 py-2 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#F9D678]"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
 
