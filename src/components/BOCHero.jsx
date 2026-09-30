@@ -70,7 +70,7 @@ export default function BOCHero({ onOpenJoinModal }) {
         <img 
           src={bocRooftopBg} 
           alt="Business Owner's Circle Master Experience" 
-          className="w-full h-full object-cover object-[center_20%] select-none pointer-events-none contrast-[1.14] saturate-[1.25] brightness-[1.08]"
+          className="w-full h-full object-cover object-[center_center] select-none pointer-events-none contrast-[1.03] saturate-[1.06] brightness-[1.02]"
         />
         {/* Ambient warm sunset radial glow */}
         <div className="absolute top-1/4 right-1/4 w-[600px] h-[350px] bg-gradient-to-br from-amber-400/20 via-orange-500/10 to-transparent rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
@@ -240,11 +240,12 @@ export default function BOCHero({ onOpenJoinModal }) {
           <img 
             src={bocMobileBg} 
             alt="BOC Rooftop Networking" 
-            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover object-[center_top] select-none pointer-events-none contrast-[1.03] brightness-[1.02]"
           />
 
           {/* Directional Soft Scrim Behind Upper Text for crisp readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/95 via-[#020712]/45 to-[#010714] pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-[46%] bg-gradient-to-b from-[#020712]/95 via-[#020712]/45 to-transparent pointer-events-none z-[5]" />
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
 
           {/* Real Typed Web Typography */}
           <div className="relative z-10 px-4 xs:px-5 pt-2 xs:pt-2.5 flex flex-col items-start text-left select-text max-w-sm">

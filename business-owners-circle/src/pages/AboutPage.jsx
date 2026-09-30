@@ -157,7 +157,7 @@ export default function AboutPage({ onOpenJoinModal }) {
       name: 'Kottayam Chapter',
       tagline: 'Plantation & Healthcare Hub',
       desc: 'Rubber and agro-conglomerates, multi-specialty healthcare systems, and higher education leaders.',
-      membersCount: '22+ Verified Seats',
+      membersCount: '40+ Verified Seats',
     },
     {
       name: 'Kollam Chapter',

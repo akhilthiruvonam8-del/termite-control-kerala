@@ -58,6 +58,14 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                 <span>JOIN THE CIRCLE TODAY</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
+
+              <a
+                href="tel:+919020040009"
+                className="px-7 py-4 rounded-full bg-[#06142B] border border-[#FFE27A]/60 text-[#FFE27A] hover:bg-[#FFE27A] hover:text-[#041126] font-extrabold text-xs sm:text-sm tracking-wider uppercase transition-all flex items-center gap-2 cursor-pointer shadow-lg"
+              >
+                <Phone className="w-4 h-4 stroke-[2.5]" />
+                <span>ASK ENQUIRY</span>
+              </a>
             </div>
           </div>
         </div>

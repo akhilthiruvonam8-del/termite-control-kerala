@@ -10,16 +10,6 @@ import { ArrowUp, MessageCircle, PhoneCall } from 'lucide-react';
  */
 export default function FloatingActionButtons() {
   const [floatingTooltip, setFloatingTooltip] = useState(null);
-  const [showScrollTop, setShowScrollTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 250);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -28,31 +18,9 @@ export default function FloatingActionButtons() {
   return (
     <aside 
       aria-label="Quick contact and navigation actions"
-      className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-3 pointer-events-auto select-none"
+      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 pointer-events-auto select-none"
     >
-      {/* 1. Scroll to Top Button (Only when scrolled down) */}
-      {showScrollTop && (
-        <div className="relative group animate-in fade-in zoom-in-75 duration-200">
-          <button
-            onClick={scrollToTop}
-            onMouseEnter={() => setFloatingTooltip('top')}
-            onMouseLeave={() => setFloatingTooltip(null)}
-            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#030C1C]/95 hover:bg-gradient-to-tr hover:from-[#DFC688] hover:to-[#FFF3C4] border-2 border-[#DFC688]/80 text-[#DFC688] hover:text-[#041126] shadow-[0_6px_22px_rgba(0,0,0,0.9)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
-            title="Scroll to Top"
-            aria-label="Scroll to top"
-          >
-            <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-          </button>
-          
-          {floatingTooltip === 'top' && (
-            <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#FAF6ED] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-              Scroll to Top
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* 2. WhatsApp Direct Chat Button */}
+      {/* 1. WhatsApp Direct Chat Button */}
       <div className="relative group">
         <a
           href="https://wa.me/919020040009?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
@@ -74,7 +42,7 @@ export default function FloatingActionButtons() {
         )}
       </div>
 
-      {/* 3. Phone Call Secretariat Button */}
+      {/* 2. Phone Call Secretariat Button */}
       <div className="relative group">
         <a
           href="tel:+919020040009"
@@ -90,6 +58,26 @@ export default function FloatingActionButtons() {
         {floatingTooltip === 'call' && (
           <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#DFC688] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
             Call BOC (+91 90200 40009)
+          </div>
+        )}
+      </div>
+
+      {/* 3. Up Arrow (Smooth Scroll to Top) — Always present at bottom right */}
+      <div className="relative group">
+        <button
+          onClick={scrollToTop}
+          onMouseEnter={() => setFloatingTooltip('top')}
+          onMouseLeave={() => setFloatingTooltip(null)}
+          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#030C1C]/95 hover:bg-gradient-to-tr hover:from-[#DFC688] hover:to-[#FFF3C4] border-2 border-[#DFC688] text-[#DFC688] hover:text-[#041126] shadow-[0_6px_22px_rgba(0,0,0,0.9)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
+          title="Scroll to Top"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.8]" />
+        </button>
+        
+        {floatingTooltip === 'top' && (
+          <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#FAF6ED] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
+            Scroll to Top
           </div>
         )}
       </div>

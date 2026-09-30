@@ -7,7 +7,8 @@ import {
   GraduationCap, 
   ShieldCheck, 
   Globe, 
-  ArrowRight 
+  ArrowRight,
+  Phone 
 } from 'lucide-react';
 import bocNetworkingHandshake from '../assets/boc-networking-handshake.jpg';
 import bocHouseboatPalms from '../assets/boc-journey-houseboat-palms.jpg';
@@ -229,16 +230,24 @@ export default function BOCWhyBOC({ onOpenJoinModal }) {
             })}
           </div>
 
-          {/* Centered CTA Pill Button */}
-          <div className="flex justify-center mt-7 relative z-20">
+          {/* Centered CTA Action Buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 mt-7 relative z-20">
             <button
               onClick={onOpenJoinModal}
-              className="inline-flex items-center gap-2.5 px-9 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase border border-[#D4A536]/40 shadow-[0_6px_22px_rgba(8,23,48,0.3)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.45)] active:scale-95 transition-all group cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-8 sm:px-9 py-3.5 rounded-full bg-[#081730] hover:bg-[#0f284e] text-white font-bold text-xs tracking-widest uppercase border border-[#D4A536]/40 shadow-[0_6px_22px_rgba(8,23,48,0.3)] hover:shadow-[0_8px_28px_rgba(8,23,48,0.45)] active:scale-95 transition-all group cursor-pointer"
             >
               <img src={bocLogoPng} alt="BOC Emblem" className="w-5 h-5 object-contain" />
               <span>JOIN THE CIRCLE</span>
               <ArrowRight className="w-4 h-4 text-[#F9D678] group-hover:translate-x-1.5 transition-transform" />
             </button>
+
+            <a
+              href="tel:+919020040009"
+              className="inline-flex items-center gap-2.5 px-7 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-[#DFB85C] via-[#C29023] to-[#996D11] hover:brightness-110 text-[#041126] font-extrabold text-xs tracking-widest uppercase border border-[#FFF3C4] shadow-[0_6px_22px_rgba(194,144,35,0.4)] active:scale-95 transition-all group cursor-pointer"
+            >
+              <Phone className="w-4 h-4 stroke-[2.6] text-[#041126]" />
+              <span>ASK ENQUIRY</span>
+            </a>
           </div>
 
         </div>
