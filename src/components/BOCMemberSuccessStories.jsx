@@ -38,7 +38,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
     {
       id: 'sajish-maliyekkal',
       name: 'Sajish Maliyekkal',
-      role: 'Founder',
+      role: '',
       company: 'Greenline Pest Management',
       photo: sajishPhoto,
       photoPosition: 'center 20%',
@@ -46,7 +46,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
     {
       id: 'mahesh-prabudhan',
       name: 'Mahesh Prabudhan',
-      role: 'CEO',
+      role: '',
       company: 'Yessem Facilities',
       photo: maheshPhoto,
       photoPosition: 'center 14%',
@@ -54,7 +54,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
     {
       id: 'binu-tb',
       name: 'Binu T.B.',
-      role: 'Global Marketing Leader',
+      role: '',
       company: 'Global Marketing, Coimbatore',
       photo: binuPhoto,
       photoPosition: 'center 14%',
@@ -70,7 +70,7 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
     {
       id: 'nidhi-tomer',
       name: 'Nidhi Tomer',
-      role: 'Founder & CEO',
+      role: 'Co-Founder & CEO',
       company: 'Vedic Bricks Academy, Kochi',
       photo: nidhiPhoto,
       photoPosition: 'center 20%',
@@ -243,9 +243,11 @@ export default function BOCMemberSuccessStories({ onOpenJoinModal }) {
                 </h3>
 
                 {/* Role (Position) */}
-                <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
-                  {member.role}
-                </p>
+                {member.role && (
+                  <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
+                    {member.role}
+                  </p>
+                )}
 
                 {/* Company */}
                 <p className="text-xs text-slate-300 line-clamp-2">

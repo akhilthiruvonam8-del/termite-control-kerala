@@ -86,21 +86,21 @@ export default function AboutPage({ onOpenJoinModal }) {
     {
       id: 'sajish',
       name: 'Sajish Maliyekkal',
-      role: 'Founder',
+      role: '',
       company: 'Greenline Pest Management',
       photo: sajishImg,
     },
     {
       id: 'mahesh',
       name: 'Mahesh Prabudhan',
-      role: 'CEO',
+      role: '',
       company: 'Yessem Facilities',
       photo: maheshImg,
     },
     {
       id: 'binu',
       name: 'Binu T.B.',
-      role: 'Global Marketing Leader',
+      role: '',
       company: 'Global Marketing, Coimbatore',
       photo: binuImg,
     },
@@ -114,7 +114,7 @@ export default function AboutPage({ onOpenJoinModal }) {
     {
       id: 'nidhi',
       name: 'Nidhi Tomer',
-      role: 'Founder & CEO',
+      role: 'Co-Founder & CEO',
       company: 'Vedic Bricks Academy, Kochi',
       photo: nidhiImg,
     },
@@ -133,7 +133,7 @@ export default function AboutPage({ onOpenJoinModal }) {
       name: 'Kochi Chapter',
       tagline: 'Commercial & Infopark Corridor',
       desc: 'Central commercial hub connecting tech, international trade, manufacturing, and financial advisory.',
-      membersCount: '36+ Verified Seats',
+      membersCount: '150+ Verified Seats',
     },
     {
       name: 'Thiruvananthapuram Chapter',
@@ -163,7 +163,7 @@ export default function AboutPage({ onOpenJoinModal }) {
       name: 'Kollam Chapter',
       tagline: 'Maritime & Agro-Processing',
       desc: 'Port logistics, cashew processing, marine exports, and eco-hospitality enterprises.',
-      membersCount: '20+ Verified Seats',
+      membersCount: '40+ Verified Seats',
     },
   ];
 
@@ -553,9 +553,11 @@ export default function AboutPage({ onOpenJoinModal }) {
                     </h3>
 
                     {/* Position / Role */}
-                    <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
-                      {leader.role}
-                    </p>
+                    {leader.role && (
+                      <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
+                        {leader.role}
+                      </p>
+                    )}
 
                     {/* Company Detail */}
                     <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">

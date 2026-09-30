@@ -31,21 +31,21 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
     {
       id: 'mem-2',
       name: 'Sajish Maliyekkal',
-      role: 'Founder',
+      role: '',
       company: 'Greenline Pest Management',
       photo: sajishImg,
     },
     {
       id: 'mem-3',
       name: 'Mahesh Prabudhan',
-      role: 'CEO',
+      role: '',
       company: 'Yessem Facilities',
       photo: maheshImg,
     },
     {
       id: 'mem-4',
       name: 'Binu T.B.',
-      role: 'Global Marketing Leader',
+      role: '',
       company: 'Global Marketing, Coimbatore',
       photo: binuImg,
     },
@@ -59,7 +59,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
     {
       id: 'mem-6',
       name: 'Nidhi Tomer',
-      role: 'Founder & CEO',
+      role: 'Co-Founder & CEO',
       company: 'Vedic Bricks Academy, Kochi',
       photo: nidhiImg,
     },
@@ -78,7 +78,7 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
     if (!q) return members;
     return members.filter((member) => 
       member.name.toLowerCase().includes(q) ||
-      member.role.toLowerCase().includes(q) ||
+      (member.role && member.role.toLowerCase().includes(q)) ||
       member.company.toLowerCase().includes(q)
     );
   }, [searchQuery]);
@@ -180,9 +180,11 @@ export default function MemberDirectoryPage({ onOpenJoinModal }) {
                   </h3>
 
                   {/* Position / Role */}
-                  <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
-                    {member.role}
-                  </p>
+                  {member.role && (
+                    <p className="text-xs sm:text-sm font-semibold text-[#F9D678] mb-1">
+                      {member.role}
+                    </p>
+                  )}
 
                   {/* Company Detail */}
                   <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">

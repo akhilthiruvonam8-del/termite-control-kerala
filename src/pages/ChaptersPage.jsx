@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   MapPin, 
   Clock, 
@@ -9,7 +9,9 @@ import {
   ShieldCheck, 
   Sparkles,
   Search,
-  CheckCircle2
+  CheckCircle2,
+  Layers,
+  Globe2
 } from 'lucide-react';
 
 import kochiImg from '../assets/boc-chapter-kochi.jpg';
@@ -18,20 +20,27 @@ import kozhikodeImg from '../assets/boc-chapter-kozhikode.jpg';
 import tvmImg from '../assets/boc-chapter-thiruvananthapuram.jpg';
 import kottayamImg from '../assets/boc-chapter-kottayam.jpg';
 import kollamImg from '../assets/boc-chapter-kollam.jpg';
+import madrasImg from '../assets/boc-chapter-madras.jpg';
+import puneImg from '../assets/boc-chapter-pune.jpg';
 
 export default function ChaptersPage({ onOpenJoinModal }) {
+  const [selectedCircle, setSelectedCircle] = useState('All');
   const [selectedCity, setSelectedCity] = useState('All');
 
   const chapters = [
+    // =========================================================================
+    // KERALA CIRCLE
+    // =========================================================================
     {
       id: 'ch-kochi',
+      circle: 'Kerala Circle',
       city: 'Kochi',
       name: 'BOC Kochi Central Chapter',
       venue: 'Grand Hyatt Kochi Bolgatty',
       meetingDay: 'Every Wednesday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'K. R. Venugopal',
-      membersCount: 48,
+      membersCount: '150+',
       seatsAvailable: 6,
       categories: ['IT & SaaS', 'Real Estate', 'Logistics', 'Interior Design', 'Wealth Advisory'],
       image: kochiImg,
@@ -39,13 +48,14 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     },
     {
       id: 'ch-thrissur',
+      circle: 'Kerala Circle',
       city: 'Thrissur',
       name: 'BOC Thrissur Heritage Chapter',
       venue: 'Hyatt Regency Thrissur',
       meetingDay: 'Every Thursday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'P. M. Joy',
-      membersCount: 42,
+      membersCount: '42',
       seatsAvailable: 8,
       categories: ['Gold & Jewelry Retail', 'Banking & NBFC', 'Healthcare', 'Solar Energy', 'Automobile'],
       image: thrissurImg,
@@ -53,13 +63,14 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     },
     {
       id: 'ch-kozhikode',
+      circle: 'Kerala Circle',
       city: 'Kozhikode',
       name: 'BOC Kozhikode Malabar Chapter',
       venue: 'The Gateway Hotel Beach Road',
       meetingDay: 'Every Tuesday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'Rasheed Ahamed',
-      membersCount: 38,
+      membersCount: '38',
       seatsAvailable: 12,
       categories: ['Export-Import', 'Food & FMCG', 'Textiles', 'EdTech', 'Commercial Infra'],
       image: kozhikodeImg,
@@ -67,13 +78,14 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     },
     {
       id: 'ch-tvm',
+      circle: 'Kerala Circle',
       city: 'Thiruvananthapuram',
       name: 'BOC Capital Chapter',
       venue: 'O by Tamara Trivandrum',
       meetingDay: 'Every Friday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'Dr. Arun Varma',
-      membersCount: 36,
+      membersCount: '36',
       seatsAvailable: 14,
       categories: ['Biotech & Pharma', 'Govt Defense Contracting', 'Media & Broadcasting', 'Hospitality'],
       image: tvmImg,
@@ -81,13 +93,14 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     },
     {
       id: 'ch-kottayam',
+      circle: 'Kerala Circle',
       city: 'Kottayam',
       name: 'BOC Kottayam Royal Chapter',
       venue: 'Windsor Castle Kottayam',
       meetingDay: 'Every Tuesday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'Mathews Cherian',
-      membersCount: 32,
+      membersCount: '32',
       seatsAvailable: 16,
       categories: ['Plantations & Rubber', 'Publishing & Media', 'Agro-Processing', 'Education Groups'],
       image: kottayamImg,
@@ -95,23 +108,80 @@ export default function ChaptersPage({ onOpenJoinModal }) {
     },
     {
       id: 'ch-kollam',
+      circle: 'Kerala Circle',
       city: 'Kollam',
       name: 'BOC Kollam Port City Chapter',
       venue: 'The Raviz Ashtamudi',
       meetingDay: 'Every Thursday',
       meetingTime: '7:00 AM – 8:30 AM',
       director: 'Suresh Babu',
-      membersCount: 28,
-      seatsAvailable: 18,
+      membersCount: '40+',
+      seatsAvailable: 12,
       categories: ['Cashew Processing & Export', 'Maritime & Marine Products', 'Logistics', 'Eco-Tourism'],
       image: kollamImg,
       status: 'Active & Expanding',
     },
+
+    // =========================================================================
+    // TAMIL NADU CIRCLE
+    // =========================================================================
+    {
+      id: 'ch-madras',
+      circle: 'Tamil Nadu Circle',
+      city: 'Madras',
+      name: 'BOC Madras Capital Chapter',
+      venue: 'ITC Grand Chola / Taj Coromandel',
+      meetingDay: 'Every Wednesday',
+      meetingTime: '7:00 AM – 8:30 AM',
+      director: 'K. R. V. Ramanathan',
+      membersCount: '65+',
+      seatsAvailable: 10,
+      categories: ['Automotive & EV', 'SaaS & Enterprise IT', 'Healthcare & MedTech', 'Financial Services', 'Export & Logistics'],
+      image: madrasImg,
+      status: 'Active & Expanding',
+    },
+    {
+      id: 'ch-pune',
+      circle: 'Tamil Nadu Circle',
+      city: 'Pune',
+      name: 'BOC Pune Central Chapter',
+      venue: 'JW Marriott Hotel Pune',
+      meetingDay: 'Every Thursday',
+      meetingTime: '7:00 AM – 8:30 AM',
+      director: 'Aditya Deshmukh',
+      membersCount: '50+',
+      seatsAvailable: 12,
+      categories: ['Auto Components & Precision Eng.', 'IT Hubs & FinTech', 'AgriTech & BioTech', 'Real Estate Infrastructure'],
+      image: puneImg,
+      status: 'Active & Expanding',
+    },
   ];
 
-  const filteredChapters = selectedCity === 'All' 
-    ? chapters 
-    : chapters.filter(c => c.city === selectedCity);
+  // Circle options with counts
+  const circles = [
+    { id: 'All', label: 'All Circles', count: chapters.length },
+    { id: 'Kerala Circle', label: 'Kerala Circle', count: chapters.filter(c => c.circle === 'Kerala Circle').length },
+    { id: 'Tamil Nadu Circle', label: 'Tamil Nadu Circle', count: chapters.filter(c => c.circle === 'Tamil Nadu Circle').length },
+  ];
+
+  // Dynamic available cities based on selected circle
+  const availableCities = useMemo(() => {
+    const list = selectedCircle === 'All' ? chapters : chapters.filter(c => c.circle === selectedCircle);
+    const uniqueCities = Array.from(new Set(list.map(c => c.city)));
+    return ['All', ...uniqueCities];
+  }, [selectedCircle]);
+
+  // Filtered chapters list
+  const filteredChapters = chapters.filter(c => {
+    const matchesCircle = selectedCircle === 'All' || c.circle === selectedCircle;
+    const matchesCity = selectedCity === 'All' || c.city === selectedCity;
+    return matchesCircle && matchesCity;
+  });
+
+  const handleCircleChange = (circleId) => {
+    setSelectedCircle(circleId);
+    setSelectedCity('All'); // Reset city filter when switching circles
+  };
 
   return (
     <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#020713] text-white pt-24 sm:pt-28 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] relative">
@@ -119,40 +189,66 @@ export default function ChaptersPage({ onOpenJoinModal }) {
       {/* Background Lights */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/3 w-[500px] h-[500px] bg-[#D4AF37]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#0E2849]/40 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full min-w-0">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#07172C] border border-[#D4AF37]/60 text-[#F9D678] text-xs font-cinzel font-bold tracking-[0.25em] uppercase mb-4 shadow-[0_0_15px_rgba(212,175,55,0.2)]">
             <Building2 className="w-3.5 h-3.5 text-[#F9D678]" />
             <span>EXECUTIVE CHAPTER NETWORK</span>
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-white tracking-tight mb-4">
-            BOC Regional <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#F5C75D] bg-clip-text text-transparent">Chapters</span>
+            BOC Regional <span className="bg-gradient-to-r from-[#FFF3C4] via-[#FCE38A] to-[#F5C75D] bg-clip-text text-transparent">Circles & Chapters</span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Every BOC chapter operates on strict category exclusivity. 
-            Attend a breakfast conclave as an invited executive guest to explore partnership synergies.
+            Every BOC chapter operates under strict category exclusivity. 
+            Connect with vetted industry leaders across Kerala and Tamil Nadu circles for breakfast conclaves and strategic expansion.
           </p>
         </div>
 
-        {/* City Filter Pills */}
+        {/* 1. Primary Circle Switcher Tabs */}
+        <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
+          {circles.map((cir) => (
+            <button
+              key={cir.id}
+              onClick={() => handleCircleChange(cir.id)}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                selectedCircle === cir.id
+                  ? 'bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] shadow-[0_0_20px_rgba(212,175,55,0.35)] scale-105'
+                  : 'bg-[#05142B] hover:bg-[#0A2244] text-slate-300 border border-[#D4AF37]/30 hover:border-[#D4AF37]/70'
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              <span>{cir.label}</span>
+              <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono ${
+                selectedCircle === cir.id ? 'bg-[#07172C] text-[#F9D678]' : 'bg-white/10 text-slate-400'
+              }`}>
+                {cir.count}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* 2. Secondary City Filter Pills */}
         <div className="flex items-center justify-center gap-2 mb-12 flex-wrap max-w-full px-2">
-          {['All', 'Kochi', 'Thrissur', 'Kozhikode', 'Thiruvananthapuram', 'Kottayam', 'Kollam'].map((city) => (
+          {availableCities.map((city) => (
             <button
               key={city}
               onClick={() => setSelectedCity(city)}
-              className={`px-4 py-2 rounded-full text-xs font-cinzel font-semibold tracking-wider transition-all cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-cinzel font-semibold tracking-wider transition-all cursor-pointer ${
                 selectedCity === city
-                  ? 'bg-gradient-to-r from-[#F9D678] to-[#D4AF37] text-[#07172C] font-bold shadow-lg scale-105'
-                  : 'bg-[#05142B] hover:bg-white/10 text-slate-300 border border-slate-800'
+                  ? 'bg-white/20 text-[#F9D678] border border-[#F9D678] shadow-sm'
+                  : 'bg-[#030B18] hover:bg-white/5 text-slate-400 border border-slate-800'
               }`}
             >
-              {city === 'All' ? 'All Kerala Chapters' : `${city} Chapter`}
+              {city === 'All' 
+                ? (selectedCircle === 'All' ? 'All Cities' : `All in ${selectedCircle}`) 
+                : `${city} Chapter`}
             </button>
           ))}
         </div>
@@ -172,14 +268,20 @@ export default function ChaptersPage({ onOpenJoinModal }) {
                     alt={ch.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#051329] via-[#051329]/15 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#051329] via-[#051329]/20 to-transparent" />
                   
-                  {/* Status Badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#07172C]/90 border border-[#D4AF37] text-[#F9D678] text-[10px] font-cinzel font-bold tracking-wider uppercase backdrop-blur-md">
+                  {/* Circle Badge (Top Left) */}
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#07172C]/90 border border-[#D4AF37] text-[#F9D678] text-[10px] font-cinzel font-bold tracking-wider uppercase backdrop-blur-md flex items-center gap-1.5 shadow-md">
+                    <Layers className="w-3 h-3 text-[#F9D678]" />
+                    <span>{ch.circle}</span>
+                  </div>
+
+                  {/* Status Badge (Top Right) */}
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-[#020814]/85 border border-emerald-500/50 text-emerald-400 text-[10px] font-cinzel font-bold tracking-wider uppercase backdrop-blur-md">
                     {ch.status}
                   </div>
 
-                  {/* City Badge */}
+                  {/* City Badge (Bottom Left) */}
                   <div className="absolute bottom-3 left-5">
                     <span className="text-xl font-serif font-bold text-white block">
                       {ch.city}
@@ -265,12 +367,12 @@ export default function ChaptersPage({ onOpenJoinModal }) {
               Want to Launch a BOC Chapter in Your City or Country?
             </h3>
             <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
-              BOC is expanding across major business districts in India, the Middle East, Europe, and North America. 
+              BOC is expanding across major business districts in Kerala, Tamil Nadu, across India, and globally. 
               Partner with the BOC Secretariat as a Chapter Founding Director.
             </p>
             <button
               onClick={onOpenJoinModal}
-              className="px-5 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all max-w-full"
+              className="px-5 sm:px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-bold text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:scale-105 transition-all max-w-full cursor-pointer"
             >
               Apply as Chapter Founding Leader →
             </button>

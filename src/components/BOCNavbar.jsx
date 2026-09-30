@@ -41,9 +41,9 @@ export default function BOCNavbar({ onOpenJoinModal }) {
     { name: 'About BOC', path: '/about' },
     { name: 'Membership', path: '/membership' },
     { name: 'Chapters', path: '/chapters' },
-    { name: 'Members Directory', path: '/members' },
+    { name: 'Members Directory', line1: 'Members', line2: 'Directory', path: '/members' },
     { name: 'Events', path: '/events' },
-    { name: 'Success Stories', path: '/success-stories' },
+    { name: 'Success Stories', line1: 'Success', line2: 'Stories', path: '/success-stories' },
     { name: 'FAQ', path: '/faq' },
   ];
 
@@ -67,7 +67,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
           {/* Left: Brand Identity & Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 sm:gap-3 group cursor-pointer min-w-0 flex-1 mr-2"
+            className="flex items-center gap-2 sm:gap-3 group cursor-pointer shrink-0"
           >
             <div className="relative flex-shrink-0">
               <img 
@@ -86,21 +86,30 @@ export default function BOCNavbar({ onOpenJoinModal }) {
             </div>
           </Link>
 
-          {/* Center: Desktop Navigation Links (Uniform Executive Styling) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-1.5">
+          {/* Center: Desktop Navigation Links (Uniform Executive Styling & Generous Spacing) */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2.5 mx-auto">
             {navLinks.map((link) => {
               const active = isActive(link.path);
+              const isTwoLine = Boolean(link.line1 && link.line2);
+
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wider transition-all uppercase font-cinzel ${
+                  className={`relative px-2.5 xl:px-3 py-1 rounded-lg text-xs font-semibold tracking-wider transition-all uppercase font-cinzel flex flex-col items-center justify-center text-center min-h-[38px] ${
                     active 
                       ? 'text-[#F9D678] font-bold' 
                       : 'text-slate-200 hover:text-[#F9D678] hover:bg-white/5 font-medium'
                   }`}
                 >
-                  <span>{link.name}</span>
+                  {isTwoLine ? (
+                    <span className="flex flex-col items-center justify-center leading-[1.12]">
+                      <span className="whitespace-nowrap text-[11px] xl:text-[12px]">{link.line1}</span>
+                      <span className="whitespace-nowrap text-[11px] xl:text-[12px]">{link.line2}</span>
+                    </span>
+                  ) : (
+                    <span className="whitespace-nowrap text-[11px] xl:text-[12px] leading-tight">{link.name}</span>
+                  )}
                   {active && (
                     <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gradient-to-r from-transparent via-[#F9D678] to-transparent rounded-full shadow-[0_0_8px_#F9D678]" />
                   )}
@@ -110,7 +119,7 @@ export default function BOCNavbar({ onOpenJoinModal }) {
           </nav>
 
           {/* Right: Desktop Action Buttons (JOIN BOC) */}
-          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
             <button
               onClick={onOpenJoinModal}
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] hover:from-white hover:to-[#F9D678] text-[#07172C] font-black text-xs tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:brightness-110 active:scale-95 transition-all cursor-pointer font-cinzel"
