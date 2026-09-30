@@ -80,8 +80,8 @@ export default function BOCNavbar({ onOpenJoinModal }) {
               <span className="font-cinzel font-black tracking-wider text-[13.5px] xs:text-[15px] sm:text-[17px] lg:text-[19px] text-white group-hover:text-[#F9D678] transition-colors leading-tight whitespace-nowrap">
                 BOC <span className="text-[#F9D678]">CONNECT</span>
               </span>
-              <span className="font-cinzel tracking-[0.2em] sm:tracking-[0.28em] text-[6.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-none mt-0.5 whitespace-nowrap">
-                CONNECT • COLLABORATE • GROW
+              <span className="font-cinzel tracking-[0.12em] xs:tracking-[0.16em] sm:tracking-[0.2em] text-[6.5px] xs:text-[7.5px] sm:text-[8px] text-[#D4AF37] uppercase font-bold leading-none mt-0.5 whitespace-nowrap">
+                BUSINESS OWNER’S CIRCLE
               </span>
             </div>
           </Link>

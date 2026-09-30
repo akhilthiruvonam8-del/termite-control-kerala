@@ -86,8 +86,8 @@ export default function BOCHeader({ onOpenJoinModal, onNavigate }) {
               <span className="font-cinzel font-bold text-[10px] sm:text-xs lg:text-[14px] tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FAF6EE] via-[#E2C77D] to-[#C5A059] leading-tight">
                 BOC CONNECT
               </span>
-              <span className="text-[7.5px] sm:text-[9.5px] tracking-[0.24em] font-semibold text-[#DFC688] uppercase leading-none mt-0.5">
-                CONNECT • COLLABORATE • GROW
+              <span className="text-[7px] sm:text-[9px] tracking-[0.14em] sm:tracking-[0.2em] font-semibold text-[#DFC688] uppercase leading-none mt-0.5 whitespace-nowrap">
+                BUSINESS OWNER’S CIRCLE
               </span>
             </div>
           </a>
