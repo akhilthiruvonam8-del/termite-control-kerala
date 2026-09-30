@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import bocRooftopBg from '../assets/boc-rooftop-bg.jpg';
 import bocMobileBg from '../assets/boc-mobile-bg.jpg';
 import bocLogoPng from '../assets/boc-logo.png';
@@ -40,8 +40,25 @@ export default function BOCHero({ onOpenJoinModal }) {
     { id: 'community', label: 'STRONGER COMMUNITY', icon: Users, desc: 'A fraternity where you never build alone.' },
   ];
 
+  // Dynamic mobile viewport height calculation (resolves 100vh / 100dvh browser address bar quirks across iOS and Android)
+  useEffect(() => {
+    const updateMobileHeight = () => {
+      const vh = window.innerHeight;
+      document.documentElement.style.setProperty('--mobile-hero-vh', `${vh}px`);
+    };
+
+    updateMobileHeight();
+    window.addEventListener('resize', updateMobileHeight);
+    window.addEventListener('orientationchange', updateMobileHeight);
+
+    return () => {
+      window.removeEventListener('resize', updateMobileHeight);
+      window.removeEventListener('orientationchange', updateMobileHeight);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full flex flex-col bg-[#020712] text-slate-100 select-none overflow-x-hidden">
+    <div className="relative w-full flex flex-col bg-[#020712] text-slate-100 select-none overflow-x-hidden md:overflow-visible">
       
       {/* ===================================================================== */}
       {/* 1. DESKTOP VIEWPORT: 100% UNTOUCHED 2K MASTER CANVAS (1:1 SAMPLE)     */}
@@ -206,10 +223,18 @@ export default function BOCHero({ onOpenJoinModal }) {
       {/* EXACT 1-PAGE FIT (100dvh): Fits completely on single mobile screen    */}
       {/* Zero overflow, Zero bottom cut-off, Zero peeking into next section   */}
       {/* ===================================================================== */}
-      <div className="md:hidden relative w-full h-[100dvh] max-h-[100dvh] flex flex-col justify-between bg-[#020712] text-slate-100 pt-[52px] sm:pt-14 overflow-hidden select-none">
+      <div 
+        className="md:hidden relative w-full flex flex-col justify-between bg-[#020712] text-slate-100 overflow-hidden select-none"
+        style={{
+          height: 'var(--mobile-hero-vh, 100svh)',
+          minHeight: 'var(--mobile-hero-vh, 100svh)',
+          maxHeight: 'var(--mobile-hero-vh, 100svh)',
+          paddingTop: '54px',
+        }}
+      >
         
         {/* Main Hero Visual & Typography (Takes exact remaining viewport space) */}
-        <div className="relative flex-1 w-full overflow-hidden flex flex-col justify-between">
+        <div className="relative flex-1 min-h-0 w-full overflow-hidden flex flex-col justify-between">
           
           {/* Background Image: Vivid, Ultra-Sharp 8K Crystal-Clear Networking */}
           <img 
@@ -219,22 +244,22 @@ export default function BOCHero({ onOpenJoinModal }) {
           />
 
           {/* Directional Soft Scrim Behind Upper Text for crisp readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/92 via-[#020712]/45 to-[#010714] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#020712]/95 via-[#020712]/45 to-[#010714] pointer-events-none" />
 
           {/* Real Typed Web Typography */}
-          <div className="relative z-10 px-4 xs:px-5 pt-2.5 xs:pt-3 flex flex-col items-start text-left select-text max-w-sm">
+          <div className="relative z-10 px-4 xs:px-5 pt-2 xs:pt-2.5 flex flex-col items-start text-left select-text max-w-sm">
             
             {/* Sub-Badge: Clean BOC */}
             <div className="flex items-center gap-2 mb-1">
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-              <span className="font-cinzel font-bold text-[9.5px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
+              <span className="font-cinzel font-bold text-[9px] xs:text-[9.5px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
                 BOC
               </span>
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
             </div>
 
             {/* Main Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
-            <h1 className="font-serif font-black tracking-tight text-[19px] xs:text-[21px] leading-[1.14] mb-1">
+            <h1 className="font-serif font-black tracking-tight text-[18px] xs:text-[20px] leading-[1.14] mb-1">
               <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)]">
                 REFER. COLLABORATE.
               </span>
@@ -245,7 +270,7 @@ export default function BOCHero({ onOpenJoinModal }) {
             </h1>
 
             {/* Subtitle description */}
-            <p className="text-[#E2E8F0] text-[10px] xs:text-[10.5px] font-normal leading-relaxed mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[280px] line-clamp-3">
+            <p className="text-[#E2E8F0] text-[9.5px] xs:text-[10px] font-normal leading-relaxed mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[280px] line-clamp-3">
               A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
             </p>
 
@@ -253,7 +278,7 @@ export default function BOCHero({ onOpenJoinModal }) {
             <div className="w-full flex items-center select-none">
               <button
                 onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-                className="py-1.5 px-5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[11px] tracking-wider uppercase shadow-[0_0_20px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer group"
+                className="py-1.5 px-4.5 xs:px-5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[10.5px] xs:text-[11px] tracking-wider uppercase shadow-[0_0_20px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer group"
               >
                 <span className="font-black whitespace-nowrap">EXPLORE</span>
                 <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
@@ -263,12 +288,12 @@ export default function BOCHero({ onOpenJoinModal }) {
           </div>
 
           {/* Center/Lower visual space letting the business leaders shine */}
-          <div className="relative z-10 w-full h-4 pointer-events-none" />
+          <div className="relative z-10 w-full flex-1 min-h-[16px] pointer-events-none" />
 
         </div>
 
         {/* 3 Mobile Pillars Floating Dock (Locked cleanly at the base of the single mobile screen) */}
-        <div className="shrink-0 w-full px-2 pt-2 pb-2 bg-[#010714] border-t border-[#DFC688]/30 z-20">
+        <div className="shrink-0 w-full px-2 pt-1.5 pb-2 bg-[#010714] border-t border-[#DFC688]/30 z-20">
           <div className="grid grid-cols-3 gap-1 text-center">
             
             {/* Pillar 1: Business Connections */}
@@ -306,7 +331,7 @@ export default function BOCHero({ onOpenJoinModal }) {
           {/* Scroll Down Indicator */}
           <div 
             onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex justify-center mt-1.5 cursor-pointer group select-none"
+            className="flex justify-center mt-1 cursor-pointer group select-none"
           >
             <div className="flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#020A17]/85 border border-[#FCE38A]/60 backdrop-blur-md shadow-[0_0_10px_rgba(252,227,138,0.2)] group-hover:border-[#FCE38A] group-hover:scale-105 transition-all">
               <span className="text-[8px] xs:text-[8.5px] tracking-[0.16em] uppercase font-cinzel font-bold text-[#FCE38A]">

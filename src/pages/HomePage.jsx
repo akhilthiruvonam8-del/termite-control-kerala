@@ -100,7 +100,7 @@ export default function HomePage({ onOpenJoinModal }) {
   ];
 
   return (
-    <main className="flex-grow flex flex-col items-center justify-center bg-[#020712] w-full">
+    <main className="flex-grow w-full flex flex-col bg-[#020712]">
       {/* 1. Hero Showcase */}
       <BOCHero onOpenJoinModal={onOpenJoinModal} />
 
