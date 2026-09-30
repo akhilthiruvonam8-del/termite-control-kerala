@@ -21,7 +21,6 @@ import tvmImg from '../assets/boc-chapter-thiruvananthapuram.jpg';
 import kottayamImg from '../assets/boc-chapter-kottayam.jpg';
 import kollamImg from '../assets/boc-chapter-kollam.jpg';
 import madrasImg from '../assets/boc-chapter-madras.jpg';
-import puneImg from '../assets/boc-chapter-pune.jpg';
 
 export default function ChaptersPage({ onOpenJoinModal }) {
   const [selectedCircle, setSelectedCircle] = useState('All');
@@ -138,21 +137,6 @@ export default function ChaptersPage({ onOpenJoinModal }) {
       seatsAvailable: 10,
       categories: ['Automotive & EV', 'SaaS & Enterprise IT', 'Healthcare & MedTech', 'Financial Services', 'Export & Logistics'],
       image: madrasImg,
-      status: 'Active & Expanding',
-    },
-    {
-      id: 'ch-pune',
-      circle: 'Tamil Nadu Circle',
-      city: 'Pune',
-      name: 'BOC Pune Central Chapter',
-      venue: 'JW Marriott Hotel Pune',
-      meetingDay: 'Every Thursday',
-      meetingTime: '7:00 AM – 8:30 AM',
-      director: 'Aditya Deshmukh',
-      membersCount: '50+',
-      seatsAvailable: 12,
-      categories: ['Auto Components & Precision Eng.', 'IT Hubs & FinTech', 'AgriTech & BioTech', 'Real Estate Infrastructure'],
-      image: puneImg,
       status: 'Active & Expanding',
     },
   ];

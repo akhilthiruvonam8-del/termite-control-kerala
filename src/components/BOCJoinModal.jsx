@@ -68,7 +68,6 @@ export default function BOCJoinModal({ isOpen, onClose }) {
     'Kottayam',
     'Kollam',
     'Madras (Chennai)',
-    'Pune',
     'Other District / City'
   ];
 

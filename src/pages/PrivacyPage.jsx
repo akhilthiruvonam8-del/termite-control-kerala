@@ -33,7 +33,7 @@ This Privacy Policy applies to all applicants, registered members, guests attend
       title: '3. PURPOSE OF PROCESSING',
       content: `We collect and process your information exclusively for legitimate business community operations:
 • Processing and vetting executive membership applications against our strict Category Exclusivity charter.
-• Administering regional chapters (Kochi, Thrissur, Kozhikode, Thiruvananthapuram, Kottayam, Kollam, Madras, Pune, etc.).
+• Administering regional chapters (Kochi, Thrissur, Kozhikode, Thiruvananthapuram, Kottayam, Kollam, Madras, etc.).
 • Facilitating verified B2B referrals, member-to-member introductions, and partnership syndicates.
 • Publishing verified business credentials in the BOC Executive Member Directory for peer networking.
 • Sending official conclave schedules, category availability alerts, and executive circulars via WhatsApp, SMS, Phone, and Email.
