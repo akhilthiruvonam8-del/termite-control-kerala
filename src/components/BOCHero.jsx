@@ -43,17 +43,23 @@ export default function BOCHero({ onOpenJoinModal }) {
   // Dynamic mobile viewport height calculation (resolves 100vh / 100dvh browser address bar quirks across iOS and Android)
   useEffect(() => {
     const updateMobileHeight = () => {
-      const vh = window.innerHeight;
+      const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
       document.documentElement.style.setProperty('--mobile-hero-vh', `${vh}px`);
     };
 
     updateMobileHeight();
     window.addEventListener('resize', updateMobileHeight);
     window.addEventListener('orientationchange', updateMobileHeight);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', updateMobileHeight);
+    }
 
     return () => {
       window.removeEventListener('resize', updateMobileHeight);
       window.removeEventListener('orientationchange', updateMobileHeight);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener('resize', updateMobileHeight);
+      }
     };
   }, []);
 
@@ -229,14 +235,14 @@ export default function BOCHero({ onOpenJoinModal }) {
           height: 'var(--mobile-hero-vh, 100svh)',
           minHeight: 'var(--mobile-hero-vh, 100svh)',
           maxHeight: 'var(--mobile-hero-vh, 100svh)',
-          paddingTop: '54px',
+          paddingTop: '50px',
         }}
       >
         
         {/* Main Hero Visual & Typography (Takes exact remaining viewport space) */}
         <div className="relative flex-1 min-h-0 w-full overflow-hidden flex flex-col justify-between">
           
-          {/* Background Image: Vivid, Ultra-Sharp 8K Crystal-Clear Networking */}
+          {/* Background Image: Vivid, Ultra-Sharp Crystal-Clear Networking */}
           <img 
             src={bocMobileBg} 
             alt="BOC Rooftop Networking" 
@@ -244,8 +250,8 @@ export default function BOCHero({ onOpenJoinModal }) {
           />
 
           {/* Directional Soft Scrim Behind Upper Text for crisp readability */}
-          <div className="absolute top-0 left-0 right-0 h-[46%] bg-gradient-to-b from-[#020712]/95 via-[#020712]/45 to-transparent pointer-events-none z-[5]" />
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
+          <div className="absolute top-0 left-0 right-0 h-[48%] bg-gradient-to-b from-[#020712]/95 via-[#020712]/50 to-transparent pointer-events-none z-[5]" />
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
 
           {/* Real Typed Web Typography */}
           <div className="relative z-10 px-4 xs:px-5 pt-2 xs:pt-2.5 flex flex-col items-start text-left select-text max-w-sm">
@@ -253,14 +259,14 @@ export default function BOCHero({ onOpenJoinModal }) {
             {/* Sub-Badge: Clean BOC */}
             <div className="flex items-center gap-2 mb-1">
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-              <span className="font-cinzel font-bold text-[9px] xs:text-[9.5px] tracking-[0.24em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
-                BOC
+              <span className="font-cinzel font-bold text-[8.5px] xs:text-[9px] tracking-[0.22em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
+                BUSINESS OWNERS CIRCLE
               </span>
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
             </div>
 
             {/* Main Headline: REFER. COLLABORATE. SUPPORT. GROW. */}
-            <h1 className="font-serif font-black tracking-tight text-[18px] xs:text-[20px] leading-[1.14] mb-1">
+            <h1 className="font-serif font-black tracking-tight text-[17px] xs:text-[19px] leading-[1.12] mb-1">
               <span className="text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)]">
                 REFER. COLLABORATE.
               </span>
@@ -271,58 +277,65 @@ export default function BOCHero({ onOpenJoinModal }) {
             </h1>
 
             {/* Subtitle description */}
-            <p className="text-[#E2E8F0] text-[9.5px] xs:text-[10px] font-normal leading-relaxed mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[280px] line-clamp-3">
+            <p className="text-[#E2E8F0] text-[8.5px] xs:text-[9px] font-normal leading-relaxed mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[275px] line-clamp-2">
               A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
             </p>
 
-            {/* Action Button: EXPLORE */}
-            <div className="w-full flex items-center select-none">
+            {/* Action Buttons: JOIN THE CIRCLE & EXPLORE */}
+            <div className="flex items-center gap-2 select-none w-full max-w-[280px]">
+              <button
+                onClick={onOpenJoinModal}
+                className="py-1.5 px-3 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[9px] xs:text-[9.5px] tracking-wider uppercase shadow-[0_0_15px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1 cursor-pointer"
+              >
+                <span className="whitespace-nowrap font-black">JOIN THE CIRCLE</span>
+                <ArrowRight className="w-3 h-3 stroke-[3] text-[#030B17]" />
+              </button>
               <button
                 onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-                className="py-1.5 px-4.5 xs:px-5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-[#030B17] font-black text-[10.5px] xs:text-[11px] tracking-wider uppercase shadow-[0_0_20px_rgba(245,192,66,0.6)] hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer group"
+                className="py-1.5 px-3 rounded-full bg-[#030D1D]/80 backdrop-blur-md border border-[#DFC688] hover:border-[#FFF0B3] text-[#FCE38A] font-bold text-[9px] xs:text-[9.5px] tracking-wider uppercase flex items-center justify-center gap-1 cursor-pointer active:scale-95 transition-all"
               >
-                <span className="font-black whitespace-nowrap">EXPLORE</span>
-                <ArrowRight className="w-3.5 h-3.5 stroke-[3] text-[#030B17] group-hover:translate-x-1 transition-transform" />
+                <span className="whitespace-nowrap font-bold">EXPLORE</span>
+                <ArrowRight className="w-3 h-3 stroke-[2.2] text-[#DFC688]" />
               </button>
             </div>
 
           </div>
 
           {/* Center/Lower visual space letting the business leaders shine */}
-          <div className="relative z-10 w-full flex-1 min-h-[16px] pointer-events-none" />
+          <div className="relative z-10 w-full flex-1 min-h-[12px] pointer-events-none" />
 
         </div>
 
         {/* 3 Mobile Pillars Floating Dock (Locked cleanly at the base of the single mobile screen) */}
-        <div className="shrink-0 w-full px-2 pt-1.5 pb-2 bg-[#010714] border-t border-[#DFC688]/30 z-20">
+        <div className="shrink-0 w-full px-2 pt-1 pb-1 bg-[#010714] border-t border-[#DFC688]/30 z-20">
           <div className="grid grid-cols-3 gap-1 text-center">
             
             {/* Pillar 1: Business Connections */}
-            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1 cursor-pointer group px-0.5">
-              <div className="w-8 h-8 xs:w-9 xs:h-9 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
+            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-0.5 cursor-pointer group px-0.5">
+              <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
                 <Handshake className="w-3.5 h-3.5 xs:w-4 xs:h-4 stroke-[2.4]" />
               </div>
-              <span className="text-[8.5px] xs:text-[9px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+              <span className="text-[7.5px] xs:text-[8px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                 BUSINESS<br />CONNECTIONS
               </span>
             </div>
 
             {/* Pillar 2: Diverse Industries */}
-            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1 cursor-pointer group border-x border-[#DFC688]/30 px-0.5">
-              <div className="w-8 h-8 xs:w-9 xs:h-9 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
+            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-0.5 cursor-pointer group border-x border-[#DFC688]/30 px-0.5">
+              <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
                 <Building2 className="w-3.5 h-3.5 xs:w-4 xs:h-4 stroke-[2.4]" />
               </div>
-              <span className="text-[8.5px] xs:text-[9px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+              <span className="text-[7.5px] xs:text-[8px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                 DIVERSE<br />INDUSTRIES
               </span>
             </div>
 
             {/* Pillar 3: More Opportunities */}
-            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-1 cursor-pointer group px-0.5">
-              <div className="w-8 h-8 xs:w-9 xs:h-9 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
+            <div onClick={onOpenJoinModal} className="flex flex-col items-center gap-0.5 cursor-pointer group px-0.5">
+              <div className="w-7 h-7 xs:w-8 xs:h-8 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.45)] group-hover:scale-105 transition-transform">
                 <Star className="w-3.5 h-3.5 xs:w-4 xs:h-4 stroke-[2.4]" />
               </div>
-              <span className="text-[8.5px] xs:text-[9px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+              <span className="text-[7.5px] xs:text-[8px] font-black tracking-wider text-white uppercase leading-tight drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
                 MORE<br />OPPORTUNITIES
               </span>
             </div>
@@ -332,13 +345,13 @@ export default function BOCHero({ onOpenJoinModal }) {
           {/* Scroll Down Indicator */}
           <div 
             onClick={() => (document.getElementById('what-is-boc') || document.getElementById('why-boc'))?.scrollIntoView({ behavior: 'smooth' })}
-            className="flex justify-center mt-1 cursor-pointer group select-none"
+            className="flex justify-center mt-0.5 cursor-pointer group select-none"
           >
-            <div className="flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#020A17]/85 border border-[#FCE38A]/60 backdrop-blur-md shadow-[0_0_10px_rgba(252,227,138,0.2)] group-hover:border-[#FCE38A] group-hover:scale-105 transition-all">
-              <span className="text-[8px] xs:text-[8.5px] tracking-[0.16em] uppercase font-cinzel font-bold text-[#FCE38A]">
+            <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#020A17]/90 border border-[#FCE38A]/60 backdrop-blur-md shadow-[0_0_10px_rgba(252,227,138,0.2)] group-hover:border-[#FCE38A] group-hover:scale-105 transition-all">
+              <span className="text-[7.5px] xs:text-[8px] tracking-[0.16em] uppercase font-cinzel font-bold text-[#FCE38A]">
                 Scroll to Explore
               </span>
-              <ChevronDown className="w-2.5 h-2.5 xs:w-3 xs:h-3 text-[#FCE38A] animate-bounce" />
+              <ChevronDown className="w-2.5 h-2.5 text-[#FCE38A] animate-bounce" />
             </div>
           </div>
 
