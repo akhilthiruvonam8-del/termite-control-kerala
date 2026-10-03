@@ -388,7 +388,7 @@ export const faqData = [
     category: 'partnerships',
     categoryName: '05. Partnerships & Contact',
     question: 'How can I contact the BOC team?',
-    answer: 'You can contact the BOC team through the contact form, email, phone number or other official communication channels listed on the website.'
+    answer: 'You can contact the BOC team directly via official email at bocconnect.in@gmail.com, phone at +91 90200 40009, or through the contact forms and admissions helpline on the website.'
   },
   {
     id: 48,

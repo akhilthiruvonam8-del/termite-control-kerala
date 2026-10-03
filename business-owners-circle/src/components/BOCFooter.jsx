@@ -111,9 +111,21 @@ export default function BOCFooter({ onOpenJoinModal }) {
               </div>
 
               {/* Description */}
-              <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-6 font-normal max-w-sm">
+              <p className="text-slate-300 text-xs sm:text-[13px] leading-relaxed mb-4 font-normal max-w-sm">
                 BOC is a global business networking platform that connects entrepreneurs, professionals and changemakers to create meaningful opportunities and lasting partnerships.
               </p>
+
+              {/* Quick Contact Email Pill */}
+              <div className="mb-5">
+                <a 
+                  href="mailto:bocconnect.in@gmail.com"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#05142B] border border-[#D4AF37]/50 hover:border-[#F9D678] text-[#FCE38A] hover:text-white text-xs font-semibold transition-all shadow-sm group cursor-pointer"
+                  title="Official BOC Secretariat Email"
+                >
+                  <Mail className="w-3.5 h-3.5 text-[#F9D678] group-hover:scale-110 transition-transform" />
+                  <span>bocconnect.in@gmail.com</span>
+                </a>
+              </div>
 
               {/* Social Media Icons */}
               <div className="flex items-center gap-3 mb-6">
@@ -285,20 +297,32 @@ export default function BOCFooter({ onOpenJoinModal }) {
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#F9D678] shrink-0" />
-                <a href="mailto:bocconnect.in@gmail.com" className="hover:text-[#F9D678] transition-colors">
+              <a 
+                href="mailto:bocconnect.in@gmail.com" 
+                className="flex items-center gap-2.5 group cursor-pointer text-slate-200 hover:text-[#F9D678] transition-colors"
+                title="Send email to BOC Secretariat (bocconnect.in@gmail.com)"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#071D3A] border border-[#D4AF37]/50 flex items-center justify-center text-[#F9D678] group-hover:scale-110 group-hover:bg-[#D4AF37] group-hover:text-[#041126] transition-all shrink-0 shadow-sm">
+                  <Mail className="w-3.5 h-3.5" />
+                </div>
+                <span className="font-semibold underline underline-offset-4 decoration-[#D4AF37]/50 group-hover:decoration-[#F9D678] break-all">
                   bocconnect.in@gmail.com
-                </a>
-              </div>
+                </span>
+              </a>
 
               {/* Phone */}
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#F9D678] shrink-0" />
-                <a href="tel:+919020040009" className="hover:text-[#F9D678] transition-colors font-medium">
+              <a 
+                href="tel:+919020040009" 
+                className="flex items-center gap-2.5 group cursor-pointer text-slate-200 hover:text-[#F9D678] transition-colors"
+                title="Call BOC Secretariat (+91 90200 40009)"
+              >
+                <div className="w-7 h-7 rounded-lg bg-[#071D3A] border border-[#D4AF37]/50 flex items-center justify-center text-[#F9D678] group-hover:scale-110 group-hover:bg-[#D4AF37] group-hover:text-[#041126] transition-all shrink-0 shadow-sm">
+                  <Phone className="w-3.5 h-3.5" />
+                </div>
+                <span className="font-medium font-cinzel tracking-wider">
                   +91 90200 40009
-                </a>
-              </div>
+                </span>
+              </a>
 
               {/* Website */}
               <div className="flex items-center gap-2.5">

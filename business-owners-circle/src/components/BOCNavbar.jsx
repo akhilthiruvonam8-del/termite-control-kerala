@@ -5,7 +5,8 @@ import {
   X, 
   User, 
   ArrowRight, 
-  Phone
+  Phone,
+  Mail
 } from 'lucide-react';
 import bocLogoPng from '../assets/boc-logo.png';
 
@@ -232,9 +233,21 @@ export default function BOCNavbar({ onOpenJoinModal }) {
                 <User className="w-3.5 h-3.5 text-[#F9D678]" />
                 <span>MEMBER PORTAL LOGIN</span>
               </Link>
-              <div className="text-center pt-2 text-[11px] text-slate-400">
-                <span>Admissions Desk: </span>
-                <a href="tel:+919020040009" className="text-[#F9D678] font-semibold">9020040009</a>
+              <div className="text-center pt-2 text-[11px] text-slate-400 space-y-1.5">
+                <div className="flex items-center justify-center gap-1.5">
+                  <span>Admissions Desk: </span>
+                  <a href="tel:+919020040009" className="text-[#F9D678] font-bold hover:underline">+91 90200 40009</a>
+                </div>
+                <div>
+                  <a 
+                    href="mailto:bocconnect.in@gmail.com" 
+                    className="text-[#FCE38A] font-semibold hover:underline inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#05142B] border border-[#D4AF37]/40"
+                    title="Official BOC Admissions & Secretariat Email"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#F9D678]" />
+                    <span>bocconnect.in@gmail.com</span>
+                  </a>
+                </div>
               </div>
             </div>
 

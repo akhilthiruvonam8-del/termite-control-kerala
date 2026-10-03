@@ -13,6 +13,7 @@ import {
   Heart,
   Sparkles,
   Maximize2,
+  Mail,
   X
 } from 'lucide-react';
 
@@ -326,6 +327,19 @@ export default function AboutPage({ onOpenJoinModal }) {
 
                 </div>
 
+                {/* Official Secretariat Email Contact */}
+                <div className="mt-5 pt-4 border-t border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+                  <span className="text-slate-500 font-medium">BOC Chapter Secretariat & Admissions:</span>
+                  <a 
+                    href="mailto:bocconnect.in@gmail.com"
+                    className="inline-flex items-center gap-2 font-bold text-[#030B17] hover:text-[#B58A36] transition-colors group cursor-pointer"
+                    title="Send email to BOC Secretariat"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#B58A36] group-hover:scale-110 transition-transform" />
+                    <span className="underline decoration-[#B58A36]/40">bocconnect.in@gmail.com</span>
+                  </a>
+                </div>
+
               </div>
 
             </div>
@@ -554,8 +568,16 @@ export default function AboutPage({ onOpenJoinModal }) {
                   </div>
                 </div>
 
-                {/* Quick Action Button */}
-                <div className="flex items-center gap-2.5">
+                {/* Quick Action Button & Direct Email Contact */}
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <a
+                    href="mailto:bocconnect.in@gmail.com"
+                    className="px-3.5 py-2 rounded-xl bg-[#030E1F] border border-[#DFC688]/40 hover:border-[#F9D678] text-[#FCE38A] hover:text-white font-sans text-xs font-semibold transition-all cursor-pointer flex items-center gap-2 shadow-sm group"
+                    title="Send email to BOC Secretariat"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-[#F9D678] group-hover:scale-110 transition-transform" />
+                    <span>bocconnect.in@gmail.com</span>
+                  </a>
                   <button
                     onClick={onOpenJoinModal}
                     className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#F9D678] via-[#E5BF55] to-[#D4AF37] text-[#07172C] font-cinzel font-black text-xs uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5"
