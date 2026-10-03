@@ -10,6 +10,16 @@ import { ArrowUp, MessageCircle, PhoneCall } from 'lucide-react';
  */
 export default function FloatingActionButtons() {
   const [floatingTooltip, setFloatingTooltip] = useState(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 250);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -18,7 +28,7 @@ export default function FloatingActionButtons() {
   return (
     <aside 
       aria-label="Quick contact and navigation actions"
-      className="fixed bottom-3 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 pointer-events-auto select-none"
+      className="fixed bottom-16 right-2.5 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 pointer-events-auto select-none"
     >
       {/* 1. WhatsApp Direct Chat Button */}
       <div className="relative group">
@@ -62,25 +72,27 @@ export default function FloatingActionButtons() {
         )}
       </div>
 
-      {/* 3. Up Arrow (Smooth Scroll to Top) — Always present at bottom right */}
-      <div className="relative group">
-        <button
-          onClick={scrollToTop}
-          onMouseEnter={() => setFloatingTooltip('top')}
-          onMouseLeave={() => setFloatingTooltip(null)}
-          className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#030C1C]/95 hover:bg-gradient-to-tr hover:from-[#DFC688] hover:to-[#FFF3C4] border-2 border-[#DFC688] text-[#DFC688] hover:text-[#041126] shadow-[0_6px_22px_rgba(0,0,0,0.9)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
-          title="Scroll to Top"
-          aria-label="Scroll to top"
-        >
-          <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.8]" />
-        </button>
-        
-        {floatingTooltip === 'top' && (
-          <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#FAF6ED] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-            Scroll to Top
-          </div>
-        )}
-      </div>
+      {/* 3. Up Arrow (Smooth Scroll to Top) — Appears when scrolled */}
+      {showScrollTop && (
+        <div className="relative group animate-in fade-in zoom-in-75 duration-200">
+          <button
+            onClick={scrollToTop}
+            onMouseEnter={() => setFloatingTooltip('top')}
+            onMouseLeave={() => setFloatingTooltip(null)}
+            className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#030C1C]/95 hover:bg-gradient-to-tr hover:from-[#DFC688] hover:to-[#FFF3C4] border-2 border-[#DFC688] text-[#DFC688] hover:text-[#041126] shadow-[0_6px_22px_rgba(0,0,0,0.9)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-md"
+            title="Scroll to Top"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.8]" />
+          </button>
+          
+          {floatingTooltip === 'top' && (
+            <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#FAF6ED] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
+              Scroll to Top
+            </div>
+          )}
+        </div>
+      )}
     </aside>
   );
 }
