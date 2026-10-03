@@ -51,7 +51,7 @@ This Privacy Policy applies to all applicants, registered members, guests attend
       content: `By applying to BOC, you consent to receive direct business communications via:
 • Official WhatsApp announcements from the BOC Secretariat (+91 90200 40009).
 • Direct phone calls for category verification and admissions committee interviews.
-• Email digests and official receipts from mailboc@yahoo.com.
+• Email digests and official receipts from bocconnect.in@gmail.com.
 • Emergency schedule updates for breakfast conclaves and chapter meetings.
 
 Members may update their contact preferences or opt out of promotional broadcasts at any time, while essential administrative notifications regarding active membership remain mandatory.`
@@ -84,7 +84,7 @@ Members may update their contact preferences or opt out of promotional broadcast
       content: `For any privacy inquiries, data correction requests, or policy clarifications, please contact the BOC Secretariat:
 
 BOC Secretariat & Grievance Redressal
-Email: mailboc@yahoo.com
+Email: bocconnect.in@gmail.com
 Phone / WhatsApp: +91 90200 40009
 Operating Base: Kochi, Kerala, India`
     }

@@ -7,10 +7,8 @@ import {
   Globe, 
   ArrowRight, 
   Check, 
-  Linkedin, 
   Instagram, 
   Facebook, 
-  Youtube,
   Send,
   Sparkles
 } from 'lucide-react';
@@ -118,51 +116,26 @@ export default function BOCFooter({ onOpenJoinModal }) {
               </p>
 
               {/* Social Media Icons */}
-              <div className="flex items-center gap-2.5 mb-6">
+              <div className="flex items-center gap-3 mb-6">
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.facebook.com/profile.php?id=61594862495094&sfnsn=scwspwa&mibextid=RUbZ1f" 
                   target="_blank" 
-                  rel="noreferrer" 
-                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all shadow-sm"
-                  aria-label="LinkedIn"
+                  rel="noopener noreferrer" 
+                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-[#041126] hover:bg-[#F9D678] flex items-center justify-center transition-all shadow-sm group"
+                  aria-label="Facebook"
+                  title="Follow BOC on Facebook"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Facebook className="w-4 h-4 fill-current group-hover:scale-110 transition-transform" />
                 </a>
                 <a 
                   href="https://instagram.com" 
                   target="_blank" 
-                  rel="noreferrer" 
-                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all shadow-sm"
+                  rel="noopener noreferrer" 
+                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-[#041126] hover:bg-[#F9D678] flex items-center justify-center transition-all shadow-sm group"
                   aria-label="Instagram"
+                  title="Follow BOC on Instagram"
                 >
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://facebook.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all shadow-sm"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://youtube.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all shadow-sm"
-                  aria-label="YouTube"
-                >
-                  <Youtube className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://x.com" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="w-8 h-8 rounded-full border border-[#D4AF37]/60 hover:border-[#F9D678] text-[#F9D678] hover:text-white hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all shadow-sm"
-                  aria-label="X"
-                >
-                  <XIcon className="w-3.5 h-3.5" />
+                  <Instagram className="w-4 h-4 group-hover:scale-110 transition-transform" />
                 </a>
               </div>
             </div>
@@ -314,8 +287,8 @@ export default function BOCFooter({ onOpenJoinModal }) {
               {/* Email */}
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#F9D678] shrink-0" />
-                <a href="mailto:mailboc@yahoo.com" className="hover:text-[#F9D678] transition-colors">
-                  mailboc@yahoo.com
+                <a href="mailto:bocconnect.in@gmail.com" className="hover:text-[#F9D678] transition-colors">
+                  bocconnect.in@gmail.com
                 </a>
               </div>
 
@@ -339,21 +312,26 @@ export default function BOCFooter({ onOpenJoinModal }) {
                   <span className="text-[11px] font-cinzel text-slate-400 uppercase tracking-wider">Follow Us</span>
                   <div className="h-[1px] flex-grow bg-[#D4AF37]/40" />
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all">
-                    <Linkedin className="w-3 h-3" />
+                <div className="flex items-center gap-2">
+                  <a 
+                    href="https://www.facebook.com/profile.php?id=61594862495094&sfnsn=scwspwa&mibextid=RUbZ1f" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-7 h-7 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:text-[#041126] hover:bg-[#F9D678] flex items-center justify-center transition-all shadow-sm"
+                    aria-label="Facebook"
+                    title="Follow BOC on Facebook"
+                  >
+                    <Facebook className="w-3.5 h-3.5 fill-current" />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all">
-                    <Instagram className="w-3 h-3" />
-                  </a>
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all">
-                    <Facebook className="w-3 h-3" />
-                  </a>
-                  <a href="https://youtube.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all">
-                    <Youtube className="w-3 h-3" />
-                  </a>
-                  <a href="https://x.com" target="_blank" rel="noreferrer" className="w-6 h-6 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:bg-[#D4AF37]/20 flex items-center justify-center transition-all">
-                    <XIcon className="w-2.5 h-2.5" />
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="w-7 h-7 rounded-full border border-[#D4AF37]/50 text-[#F9D678] hover:text-[#041126] hover:bg-[#F9D678] flex items-center justify-center transition-all shadow-sm"
+                    aria-label="Instagram"
+                    title="Follow BOC on Instagram"
+                  >
+                    <Instagram className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>

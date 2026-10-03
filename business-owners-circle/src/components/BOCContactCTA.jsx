@@ -121,8 +121,8 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                 </div>
                 <div>
                   <div className="text-xs text-slate-400">Official Admissions Desk</div>
-                  <a href="mailto:mailboc@yahoo.com" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
-                    mailboc@yahoo.com
+                  <a href="mailto:bocconnect.in@gmail.com" className="text-sm font-bold text-white hover:text-[#FFE27A] transition-colors">
+                    bocconnect.in@gmail.com
                   </a>
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function BOCContactCTA({ onOpenJoinModal }) {
                       </label>
                       <input
                         type="email"
-                        placeholder="mailboc@yahoo.com"
+                        placeholder="bocconnect.in@gmail.com"
                         value={contactForm.email}
                         onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
                         className="w-full bg-[#030A18] border border-[#C9A227]/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-[#FFE27A]"

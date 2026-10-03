@@ -481,7 +481,7 @@ Any legal dispute relating to BOC shall be subject to the jurisdiction of the co
             </span>
             <span className="flex items-center gap-1.5">
               <Mail className="w-3.5 h-3.5 text-[#F9D678]" />
-              <a href="mailto:mailboc@yahoo.com" className="hover:text-[#F9D678]">mailboc@yahoo.com</a>
+              <a href="mailto:bocconnect.in@gmail.com" className="hover:text-[#F9D678]">bocconnect.in@gmail.com</a>
             </span>
           </div>
         </div>

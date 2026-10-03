@@ -544,7 +544,7 @@ export default function EventDetailPage({ onOpenJoinModal }) {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="mailboc@yahoo.com"
+                      placeholder="bocconnect.in@gmail.com"
                       className="w-full bg-[#020814] border border-[#D4AF37]/40 rounded-xl py-2.5 px-3.5 text-xs sm:text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-[#F9D678] transition-colors"
                     />
                   </div>

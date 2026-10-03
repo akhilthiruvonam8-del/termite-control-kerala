@@ -517,7 +517,7 @@ export default function BOCJoinModal({ isOpen, onClose }) {
                   <span>Admissions Helpline: </span>
                   <a href="tel:+919020040009" className="text-[#FCE38A] font-bold hover:underline">+91 90200 40009</a>
                   <span className="mx-1.5">•</span>
-                  <a href="mailto:mailboc@yahoo.com" className="text-[#FCE38A] font-bold hover:underline">mailboc@yahoo.com</a>
+                  <a href="mailto:bocconnect.in@gmail.com" className="text-[#FCE38A] font-bold hover:underline">bocconnect.in@gmail.com</a>
                 </div>
 
               </form>

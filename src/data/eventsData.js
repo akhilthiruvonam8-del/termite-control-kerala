@@ -83,7 +83,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'Roopesh Pathalil / Executive Desk'
     },
@@ -151,7 +151,7 @@ export const eventsData = [
         company: 'Business Owners Circle',
         photo: nidhiPhoto,
         phone: '+91 90200 40009',
-        email: 'mailboc@yahoo.com',
+        email: 'bocconnect.in@gmail.com',
         bio: 'Senior strategist spearheading regional business chapter expansion, entrepreneur admissions, and inter-chapter commercial trade agreements across South India and the GCC.'
       }
     ],
@@ -175,7 +175,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'Nidhi Tomer (VP - Business Strategist)'
     },
@@ -259,7 +259,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'BOC Central Secretariat'
     },
@@ -332,7 +332,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'BOC Presidential Council'
     },
@@ -410,7 +410,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'Kochi Chapter Secretary'
     },
@@ -488,7 +488,7 @@ export const eventsData = [
     contactInfo: {
       helpline: '9020040009',
       phone: '+91 90200 40009',
-      email: 'mailboc@yahoo.com',
+      email: 'bocconnect.in@gmail.com',
       website: 'www.boc.li',
       coordinator: 'Thrissur Chapter Director'
     },

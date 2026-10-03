@@ -275,7 +275,7 @@ export default function RegisterPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="mailboc@yahoo.com"
+                      placeholder="bocconnect.in@gmail.com"
                       className="w-full py-2.5 px-3.5 rounded-xl bg-[#020814] border border-[#D4AF37]/40 text-white text-xs sm:text-sm focus:border-[#F9D678] outline-none"
                     />
                   </div>

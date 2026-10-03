@@ -29,9 +29,9 @@ export default function BOCMicroFooter({ isLight = false }) {
             <span>9020040009</span>
           </a>
           <span className="text-slate-600">•</span>
-          <a href="mailto:mailboc@yahoo.com" className="hover:text-[#FCE38A] transition-colors flex items-center gap-1">
+          <a href="mailto:bocconnect.in@gmail.com" className="hover:text-[#FCE38A] transition-colors flex items-center gap-1">
             <Mail className="w-3 h-3 text-[#FCE38A]" />
-            <span>mailboc@yahoo.com</span>
+            <span>bocconnect.in@gmail.com</span>
           </a>
         </div>
 

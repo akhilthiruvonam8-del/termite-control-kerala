@@ -277,7 +277,7 @@ export default function BOCHero({ onOpenJoinModal }) {
             </h1>
 
             {/* Subtitle description */}
-            <p className="text-[#E2E8F0] text-[8.5px] xs:text-[9.5px] font-normal leading-relaxed mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[320px] xs:max-w-[340px]">
+            <p className="text-[#E2E8F0] text-[9px] xs:text-[9.5px] font-normal leading-relaxed mb-2.5 drop-shadow-[0_2px_10px_rgba(0,0,0,1)] max-w-[335px] xs:max-w-[360px] w-full">
               A professional business community where entrepreneurs, business owners and professionals connect, exchange genuine opportunities and grow together.
             </p>
 

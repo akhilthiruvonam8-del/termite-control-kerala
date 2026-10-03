@@ -52,13 +52,13 @@ export default function RefundPolicyPage({ onOpenJoinModal }) {
     {
       title: '7. REFUND CLAIM PROCEDURE & SECRETARIAT CONTACT',
       content: `To submit an eligible refund request or inquire regarding payment status:
-• Send an official email to mailboc@yahoo.com containing your Applicant Reference ID, Registered Enterprise Name, and bank transfer transaction details.
+• Send an official email to bocconnect.in@gmail.com containing your Applicant Reference ID, Registered Enterprise Name, and bank transfer transaction details.
 • Our finance committee will review and provide a written resolution within 3 business days.
 
 Direct Contact:
 BOC Finance & Secretariat
 Phone / WhatsApp: +91 90200 40009
-Email: mailboc@yahoo.com`
+Email: bocconnect.in@gmail.com`
     }
   ];
 
