@@ -1,34 +1,105 @@
 import React, { useState } from 'react';
 import { 
+  Users, 
+  Handshake, 
+  TrendingUp, 
+  Globe, 
   ArrowRight,
+  Compass,
+  Target,
+  ExternalLink,
+  ChevronRight,
+  Share2,
+  Heart,
+  Sparkles,
   Maximize2,
-  X,
-  Sparkles
+  X
 } from 'lucide-react';
 
 // Core Imagery Assets
 import bocLogoPng from '../assets/boc-logo.png';
+import aboutHeroNets from '../assets/boc-about-hero-nets.jpg';
 import aboutFounderJijeesh from '../assets/boc-about-founder-jijeesh.jpg';
-import founderJijeeshFull from '../assets/boc-founder-jijeesh-full.jpg';
+import aboutVisionBg from '../assets/boc-about-vision-bg.jpg';
+
+// Master Module 2 Assets
+import ecoPestLogo from '../assets/eco-pest-india-logo.png';
+import founderOfficeWorkHd from '../assets/boc-founder-office-work-hd.jpg';
+import founderMessageCard from '../assets/boc-about-founder-message-master.jpg';
 import founderSignaturePng from '../assets/boc-founder-signature.png';
 
 /**
- * AboutPage — Exclusive Official "A Message from the Founder" Master Module
- * Standalone, elegant, uncluttered presentation of BOC — Business Owner's Circle
+ * Custom Owl Icon matching Urban Owls Digital Branding
+ */
+function OwlLogoIcon({ className = "w-6 h-6" }) {
+  return (
+    <svg className={className} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="48" height="48" rx="12" fill="#051226"/>
+      <circle cx="17" cy="23" r="8" fill="#FFFFFF" stroke="#051226" strokeWidth="2.5"/>
+      <circle cx="17" cy="23" r="4" fill="#051226"/>
+      <circle cx="18" cy="22" r="1.5" fill="#FFFFFF"/>
+      <circle cx="31" cy="23" r="8" fill="#FFFFFF" stroke="#051226" strokeWidth="2.5"/>
+      <circle cx="31" cy="23" r="4" fill="#051226"/>
+      <circle cx="32" cy="22" r="1.5" fill="#FFFFFF"/>
+      <polygon points="24,26 21,32 27,32" fill="#F5C042"/>
+      <polygon points="11,14 16,7 19,15" fill="#DFC688"/>
+      <polygon points="37,14 32,7 29,15" fill="#DFC688"/>
+    </svg>
+  );
+}
+
+/**
+ * AboutPage — Exclusive 2-Module Master Presentation
+ * Directly matches the two master designs provided:
+ * Module 1 (media_1790784313478.jpg):
+ *   - About BOC Hero & Waterfront Coffee Gathering
+ *   - About the Founder: Jijeesh Minerva, Bio & Ventures (Urban Owls Digital + Official Eco Pest India)
+ *   - Our Vision & Our Mission (5 Value Pillars: Connect, Support, Refer, Collaborate, Grow)
+ * Module 2 (media_1791014967902.jpg):
+ *   - A Message from the Founder: Full Personal Narrative, Golden Quote, Core Pillars, Golden Signature & Executive Office HD Visual
  * 
- * Contains exclusively:
- * - BOC Kochi Branding & Official Message Badge
- * - A Message from the Founder: Jijeesh Minerva
- * - Authentic 100% Unaltered HD Portrait with Natural Zoom (Hands in pockets, 3:4 framing)
- * - Golden Quote Box: "Business Owners Can Help Business Owners Grow."
- * - Core 5 Pillars: Connect. Support. Refer. Collaborate. Grow.
- * - Golden Signature Graphic & Direct "Join The Circle" Action
+ * All other extra/legacy sections are deleted.
  */
 export default function AboutPage({ onOpenJoinModal }) {
-  const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
+  const [isHeroLightboxOpen, setIsHeroLightboxOpen] = useState(false);
+  const [isMaster2LightboxOpen, setIsMaster2LightboxOpen] = useState(false);
+
+  // 5 Core Mission Pillars (Matching Module 1)
+  const missionPillars = [
+    {
+      id: 'connect',
+      title: 'CONNECT',
+      icon: Handshake,
+      desc: 'Build meaningful professional relationships.'
+    },
+    {
+      id: 'support',
+      title: 'SUPPORT',
+      icon: Heart,
+      desc: 'Share knowledge, experience and business resources.'
+    },
+    {
+      id: 'refer',
+      title: 'REFER',
+      icon: Share2,
+      desc: 'Create genuine business opportunities for fellow members.'
+    },
+    {
+      id: 'collaborate',
+      title: 'COLLABORATE',
+      icon: Users,
+      desc: 'Build partnerships and work together on opportunities.'
+    },
+    {
+      id: 'grow',
+      title: 'GROW',
+      icon: TrendingUp,
+      desc: 'Create sustainable business growth through a strong professional network.'
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-[#020713] text-white pt-20 sm:pt-24 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative flex flex-col justify-center">
+    <div className="min-h-screen bg-[#020713] text-white pt-16 sm:pt-20 pb-20 selection:bg-[#D4AF37] selection:text-[#07172C] w-full max-w-full overflow-x-hidden relative">
       
       {/* Ambient Atmospheric Glows */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -36,10 +107,324 @@ export default function AboutPage({ onOpenJoinModal }) {
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#0A254E]/40 rounded-full blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 w-full">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 space-y-12 sm:space-y-16">
         
         {/* ===================================================================== */}
-        {/* MASTER "A MESSAGE FROM THE FOUNDER" MODULE                            */}
+        {/* MODULE 1 — PART 1: ABOUT BOC HERO SHOWCASE (media_1790784313478.jpg)   */}
+        {/* ===================================================================== */}
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_20px_60px_rgba(0,0,0,0.9)] bg-[#020816]">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch min-h-[460px] sm:min-h-[520px]">
+            
+            {/* Left Content Column */}
+            <div className="lg:col-span-6 p-6 sm:p-10 lg:p-12 flex flex-col justify-center relative z-10 bg-gradient-to-b from-[#020816] via-[#020816]/95 to-[#020816] lg:bg-transparent select-text">
+              
+              {/* Soft backdrop scrim for desktop */}
+              <div className="hidden lg:block absolute inset-0 -right-24 bg-gradient-to-r from-[#020816] via-[#020816]/95 via-[#020816]/75 to-transparent -z-10 pointer-events-none" />
+
+              {/* Eyebrow Badge */}
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="font-cinzel text-xs sm:text-[13px] font-bold text-[#FCE38A] tracking-[0.24em] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                  ABOUT BOC
+                </span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="font-serif font-black text-3xl sm:text-5xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)]">
+                Business Owner’s<br />Circle
+              </h1>
+
+              {/* Sub-tagline */}
+              <p className="text-[#FCE38A] font-semibold text-xs sm:text-sm lg:text-[14px] leading-snug mb-4 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
+                Built for Business Owners. Driven by Connections. Created for Mutual Growth.
+              </p>
+
+              {/* Body Text (Exact words from mockup) */}
+              <div className="space-y-3 text-slate-200 text-xs sm:text-[13px] leading-relaxed mb-6 font-normal">
+                <p>
+                  BOC – Business Owner’s Circle is a professional business community created around a simple belief:
+                  <br />
+                  <span className="text-white font-medium">Business grows better when business owners grow together.</span>
+                </p>
+                <p className="text-slate-300">
+                  BOC brings business owners, entrepreneurs and professionals together to create meaningful connections, share knowledge, support one another, generate business referrals, explore collaborations and create new opportunities.
+                </p>
+              </div>
+
+              {/* Golden Core Objective Motto */}
+              <div className="pt-2 border-t border-[#DFC688]/30">
+                <p className="font-cinzel font-black text-xs sm:text-sm lg:text-[15px] text-[#F5C042] tracking-wider drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+                  Connect. Support. Refer. Collaborate. Grow.
+                </p>
+              </div>
+
+            </div>
+
+            {/* Right Photo Column (Executives with Waterfront & Chinese Fishing Nets) */}
+            <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[340px] lg:min-h-full overflow-hidden">
+              <img
+                src={aboutHeroNets}
+                alt="Business Executives Coffee Networking at Kochi Waterfront"
+                className="w-full h-full object-cover object-[center_center] select-none"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020816] via-transparent to-transparent lg:hidden pointer-events-none" />
+              <div className="hidden lg:block absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#020816] to-transparent pointer-events-none" />
+
+              {/* Fullscreen Photo Lightbox Button */}
+              <button
+                onClick={() => setIsHeroLightboxOpen(true)}
+                className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-[#030A17]/85 border border-[#D4AF37]/60 text-[#F9D678] text-[11px] font-cinzel font-bold uppercase tracking-wider backdrop-blur-md shadow-lg flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                title="View Fullscreen"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span>View Photo</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* ===================================================================== */}
+        {/* MODULE 1 — PART 2: FOUNDER SPOTLIGHT (media_1790784313478.jpg)        */}
+        {/* ===================================================================== */}
+        <section className="rounded-2xl sm:rounded-3xl bg-[#FAF8F5] text-[#0A192F] p-6 sm:p-10 lg:p-14 border border-slate-200 shadow-xl overflow-hidden">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Founder Photo Card with Attached Dark Navy Box */}
+            <div className="lg:col-span-5 flex flex-col">
+              <div className="rounded-2xl overflow-hidden border border-slate-300 shadow-2xl bg-[#020B1A]">
+                
+                {/* Jijeesh Minerva Crystal-Clear HD Portrait — Reduced Zoom 3:4 Natural Framing */}
+                <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#020B1A]">
+                  <img
+                    src={aboutFounderJijeesh}
+                    alt="Jijeesh Minerva - Founder, BOC Business Owner's Circle"
+                    className="w-full h-full object-cover object-[center_top] select-none"
+                  />
+                  <div className="absolute inset-0 ring-1 ring-inset ring-black/5 pointer-events-none" />
+                </div>
+
+                {/* Attached Dark Navy Bottom Box */}
+                <div className="p-5 sm:p-6 bg-[#020B1A] text-left select-text">
+                  <h3 className="font-serif font-black text-xl sm:text-2xl text-white tracking-wide">
+                    Jijeesh Minerva
+                  </h3>
+                  <p className="font-cinzel text-xs font-bold text-[#FCE38A] tracking-wider uppercase mt-1 mb-2.5">
+                    Founder, BOC – Business Owner’s Circle
+                  </p>
+                  <div className="h-[1px] w-full bg-white/15 mb-2.5" />
+                  <p className="text-[11px] sm:text-xs text-slate-300 font-medium">
+                    Founder – Urban Owls Digital &nbsp;|&nbsp; Owner – Eco Pest India
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            {/* Right Column: Founder Narrative & Business Interests */}
+            <div className="lg:col-span-7 flex flex-col justify-center select-text">
+              
+              {/* Eyebrow */}
+              <div className="text-[11px] font-cinzel font-bold text-[#C5A059] tracking-[0.24em] uppercase mb-1">
+                ABOUT THE FOUNDER
+              </div>
+
+              {/* Founder Name */}
+              <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#030B17] tracking-tight mb-1">
+                Jijeesh Minerva
+              </h2>
+
+              {/* Role Subtitle */}
+              <p className="font-cinzel text-xs sm:text-[13px] font-bold text-[#C5A059] tracking-wider uppercase mb-5">
+                Founder, BOC – Business Owner’s Circle
+              </p>
+
+              {/* 5 Founder Narrative Paragraphs (Exact from Mockup) */}
+              <div className="space-y-3.5 text-slate-700 text-xs sm:text-[13.5px] leading-relaxed font-normal">
+                <p>
+                  Jijeesh Minerva is an entrepreneur with experience across business development, digital marketing, brand building and service-based businesses.
+                </p>
+                <p>
+                  He is the Founder of BOC – Business Owner’s Circle, a business community focused on meaningful connections, business support, referrals and collaboration.
+                </p>
+                <p>
+                  He is also the Founder of Urban Owls Digital, a digital marketing and digital growth company, and the Owner of Eco Pest India, a professional pest management business.
+                </p>
+                <p>
+                  Through his entrepreneurial journey across different industries, Jijeesh has developed a strong understanding of the importance of relationships, visibility, trust and business connections.
+                </p>
+                <p>
+                  BOC brings that experience into a community-driven platform designed to help business owners connect with the right people and discover opportunities to grow together.
+                </p>
+              </div>
+
+              {/* Section Sub-heading: FOUNDER'S BUSINESS INTERESTS */}
+              <div className="mt-7 pt-5 border-t border-slate-200">
+                <div className="text-[11px] font-cinzel font-black text-slate-500 tracking-[0.22em] uppercase mb-3.5">
+                  FOUNDER’S BUSINESS INTERESTS
+                </div>
+
+                {/* Two Venture Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  
+                  {/* Card 1: Urban Owls Digital */}
+                  <div className="p-4 rounded-xl border border-slate-200 bg-white hover:border-[#DFC688] hover:shadow-md transition-all group flex items-start gap-3.5">
+                    <div className="shrink-0 mt-0.5">
+                      <OwlLogoIcon className="w-11 h-11" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-[#030B17] group-hover:text-[#B58A36] transition-colors leading-tight">
+                        Urban Owls Digital
+                      </h4>
+                      <p className="text-[11px] text-slate-500 leading-snug mt-1 mb-2">
+                        Digital Marketing • Website Development • Lead Generation • Digital Growth
+                      </p>
+                      <a 
+                        href="https://urbanowls.co" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#030B17] hover:text-[#B58A36] transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5 text-slate-600" />
+                        <span className="underline decoration-slate-300">urbanowls.co</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Official Eco Pest India with Actual Logo */}
+                  <div className="p-4 rounded-xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all group flex items-start gap-3.5">
+                    <div className="shrink-0 w-12 h-12 flex items-center justify-center bg-white rounded-lg border border-slate-100 shadow-xs p-1">
+                      <img 
+                        src={ecoPestLogo} 
+                        alt="Eco Pest India Logo" 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-bold text-sm text-[#030B17] group-hover:text-emerald-700 transition-colors leading-tight">
+                        Eco Pest India
+                      </h4>
+                      <p className="text-[11px] text-slate-500 leading-snug mt-1 mb-2">
+                        Professional Pest Management • Termite Control • Pest Management Solutions
+                      </p>
+                      <a 
+                        href="https://ecopestindia.com" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#030B17] hover:text-emerald-700 transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5 text-slate-600" />
+                        <span className="underline decoration-slate-300">ecopestindia.com</span>
+                        <ExternalLink className="w-3 h-3 text-slate-400 group-hover:translate-x-0.5 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ===================================================================== */}
+        {/* MODULE 1 — PART 3: OUR VISION & OUR MISSION (media_1790784313478.jpg) */}
+        {/* ===================================================================== */}
+        <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-2xl bg-[#010612]">
+          
+          {/* Background: Kochi Waterfront Boat & Chinese Fishing Nets */}
+          <div className="absolute inset-0">
+            <img
+              src={aboutVisionBg}
+              alt="Kochi Waterfront Boat & Nets"
+              className="w-full h-full object-cover object-left select-none pointer-events-none"
+            />
+            {/* Scrim Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#010612]/75 via-[#010612]/92 to-[#010612] pointer-events-none" />
+          </div>
+
+          <div className="relative z-10 p-6 sm:p-10 lg:p-14">
+            
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+              
+              {/* Left Column: OUR VISION */}
+              <div className="lg:col-span-4 select-text">
+                
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full border-2 border-[#FCE38A] bg-[#020A17] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.4)]">
+                    <Compass className="w-4 h-4 stroke-[2.4]" />
+                  </div>
+                  <h3 className="font-cinzel font-black tracking-[0.2em] text-sm sm:text-base text-[#FCE38A] uppercase">
+                    OUR VISION
+                  </h3>
+                </div>
+
+                <p className="text-slate-200 text-xs sm:text-[13px] leading-relaxed max-w-sm pl-12 font-normal">
+                  To build a trusted business community where every genuine business owner can find connections, support, opportunities and relationships that contribute to sustainable growth.
+                </p>
+
+              </div>
+
+              {/* Right Column: OUR MISSION + 5 Value Pillars */}
+              <div className="lg:col-span-8 select-text">
+                
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-9 h-9 rounded-full border-2 border-[#FCE38A] bg-[#020A17] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.4)]">
+                    <Target className="w-4 h-4 stroke-[2.4]" />
+                  </div>
+                  <h3 className="font-cinzel font-black tracking-[0.2em] text-sm sm:text-base text-[#FCE38A] uppercase">
+                    OUR MISSION
+                  </h3>
+                </div>
+
+                <p className="text-slate-200 text-xs sm:text-[13px] mb-6 pl-12 font-normal">
+                  To create a professional ecosystem where business owners can:
+                </p>
+
+                {/* 5 Value Pillars Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-3 text-center">
+                  {missionPillars.map((pillar) => {
+                    const Icon = pillar.icon;
+                    return (
+                      <div 
+                        key={pillar.id}
+                        className="flex flex-col items-center p-3 rounded-xl bg-[#030C1C]/80 border border-[#DFC688]/30 hover:border-[#FCE38A] transition-all group backdrop-blur-sm"
+                      >
+                        <div className="w-10 h-10 rounded-full bg-[#020A17] border-2 border-[#FCE38A] flex items-center justify-center text-[#FCE38A] shadow-[0_0_12px_rgba(252,227,138,0.35)] group-hover:scale-110 group-hover:border-[#FFF5C0] group-hover:text-[#FFF5C0] transition-transform mb-2">
+                          <Icon className="w-4 h-4 stroke-[2.2]" />
+                        </div>
+
+                        <h4 className="font-cinzel font-black text-[11px] sm:text-xs text-[#FCE38A] uppercase tracking-wider mb-1">
+                          {pillar.title}
+                        </h4>
+
+                        <p className="text-[10px] sm:text-[10.5px] text-slate-300 leading-tight">
+                          {pillar.desc}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* ===================================================================== */}
+        {/* MODULE 2: A MESSAGE FROM THE FOUNDER (media_1791014967902.jpg)        */}
         {/* ===================================================================== */}
         <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-[#D4AF37]/50 shadow-[0_25px_70px_rgba(0,0,0,0.95)] bg-[#020B1A]">
           
@@ -89,9 +474,9 @@ export default function AboutPage({ onOpenJoinModal }) {
                 </div>
 
                 {/* Founder Name */}
-                <h1 className="font-serif font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+                <h2 className="font-serif font-black text-3xl sm:text-4xl lg:text-5xl text-white tracking-tight leading-[1.1] mb-1.5 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   Jijeesh Minerva
-                </h1>
+                </h2>
 
                 {/* Subtitle */}
                 <p className="font-cinzel text-xs sm:text-sm font-bold text-[#FCE38A] tracking-wider uppercase mb-6">
@@ -169,7 +554,7 @@ export default function AboutPage({ onOpenJoinModal }) {
                   </div>
                 </div>
 
-                {/* Quick Action Buttons */}
+                {/* Quick Action Button */}
                 <div className="flex items-center gap-2.5">
                   <button
                     onClick={onOpenJoinModal}
@@ -183,12 +568,12 @@ export default function AboutPage({ onOpenJoinModal }) {
 
             </div>
 
-            {/* Right Column: Authentic HD Founder Portrait (Exact Face, Reduced Zoom, Zero Alteration) */}
+            {/* Right Column: Founder in Executive Office (media_1791014967902.jpg Visual) */}
             <div className="lg:col-span-5 relative flex flex-col justify-center min-h-[460px] sm:min-h-[600px] lg:min-h-full bg-[#020B1A] overflow-hidden">
               
               <img
-                src={aboutFounderJijeesh}
-                alt="Jijeesh Minerva - Founder, BOC Business Owner's Circle"
+                src={founderOfficeWorkHd}
+                alt="Jijeesh Minerva in Executive Office Work Setting"
                 className="w-full h-full object-cover object-[center_top] select-none"
               />
               
@@ -200,18 +585,18 @@ export default function AboutPage({ onOpenJoinModal }) {
               <div className="absolute top-4 left-4 sm:top-6 sm:left-6 px-3.5 py-1.5 rounded-full bg-[#020B1A]/85 border border-[#D4AF37]/60 backdrop-blur-md shadow-xl flex items-center gap-2">
                 <Sparkles className="w-3.5 h-3.5 text-[#FCE38A]" />
                 <span className="font-cinzel text-[11px] font-bold text-[#FCE38A] uppercase tracking-wider">
-                  Founder & Visionary
+                  Executive Work Desk • Kochi
                 </span>
               </div>
 
-              {/* Fullscreen Photo Lightbox Button */}
+              {/* Fullscreen Master Presentation Lightbox Button */}
               <button
-                onClick={() => setIsPhotoLightboxOpen(true)}
+                onClick={() => setIsMaster2LightboxOpen(true)}
                 className="absolute bottom-4 right-4 px-3.5 py-2 rounded-full bg-[#020B1A]/85 border border-[#D4AF37]/60 text-[#F9D678] text-[11px] font-cinzel font-bold uppercase tracking-wider backdrop-blur-md shadow-xl flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-                title="View Full Resolution HD Photo"
+                title="View Full Master Card"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
-                <span>View Full HD</span>
+                <span>View Full Card</span>
               </button>
 
             </div>
@@ -222,34 +607,62 @@ export default function AboutPage({ onOpenJoinModal }) {
 
       </div>
 
-      {/* Founder Authentic HD Portrait Full-Resolution Lightbox Modal */}
-      {isPhotoLightboxOpen && (
+      {/* Hero Waterfront Photo Lightbox Modal */}
+      {isHeroLightboxOpen && (
         <div 
-          onClick={() => setIsPhotoLightboxOpen(false)}
+          onClick={() => setIsHeroLightboxOpen(false)}
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200 cursor-zoom-out"
         >
           <div 
             onClick={(e) => e.stopPropagation()} 
-            className="relative max-w-4xl max-h-[92vh] w-full flex flex-col items-center cursor-default"
+            className="relative max-w-6xl max-h-[92vh] w-full flex flex-col items-center cursor-default"
           >
             <button
-              onClick={() => setIsPhotoLightboxOpen(false)}
+              onClick={() => setIsHeroLightboxOpen(false)}
               className="absolute -top-12 right-0 p-2 text-white hover:text-[#F9D678] transition-colors cursor-pointer"
               aria-label="Close Fullscreen View"
             >
               <X className="w-7 h-7 stroke-[2.5]" />
             </button>
             <img
-              src={founderJijeeshFull}
-              alt="Jijeesh Minerva Full HD Portrait"
-              className="w-auto h-auto max-h-[84vh] max-w-full rounded-2xl object-contain shadow-2xl border border-[#D4AF37]/40"
+              src={aboutHeroNets}
+              alt="Business Owners Circle Waterfront Gathering Fullscreen"
+              className="w-auto h-auto max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border border-[#D4AF37]/40"
             />
             <div className="mt-3 text-center">
-              <p className="font-serif font-bold text-lg text-white">
-                Jijeesh Minerva
+              <p className="font-serif italic text-base text-[#FCE38A]">
+                Business Owners Circle (BOC) — Waterfront Executive Gathering
               </p>
-              <p className="font-cinzel text-xs text-[#FCE38A] uppercase tracking-wider">
-                Founder, BOC – Business Owner’s Circle
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Master 2 Card Lightbox Modal */}
+      {isMaster2LightboxOpen && (
+        <div 
+          onClick={() => setIsMaster2LightboxOpen(false)}
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-in fade-in duration-200 cursor-zoom-out"
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()} 
+            className="relative max-w-6xl max-h-[92vh] w-full flex flex-col items-center cursor-default"
+          >
+            <button
+              onClick={() => setIsMaster2LightboxOpen(false)}
+              className="absolute -top-12 right-0 p-2 text-white hover:text-[#F9D678] transition-colors cursor-pointer"
+              aria-label="Close Fullscreen View"
+            >
+              <X className="w-7 h-7 stroke-[2.5]" />
+            </button>
+            <img
+              src={founderMessageCard}
+              alt="A Message from the Founder Full Presentation"
+              className="w-auto h-auto max-h-[82vh] max-w-full rounded-2xl object-contain shadow-2xl border border-[#D4AF37]/40"
+            />
+            <div className="mt-3 text-center">
+              <p className="font-serif italic text-base text-[#FCE38A]">
+                A Message from the Founder — Jijeesh Minerva (BOC – Business Owner’s Circle)
               </p>
             </div>
           </div>
