@@ -235,7 +235,7 @@ export default function BOCHero({ onOpenJoinModal }) {
           height: 'var(--mobile-hero-vh, 100svh)',
           minHeight: 'var(--mobile-hero-vh, 100svh)',
           maxHeight: 'var(--mobile-hero-vh, 100svh)',
-          paddingTop: '50px',
+          paddingTop: '68px',
         }}
       >
         
@@ -250,16 +250,16 @@ export default function BOCHero({ onOpenJoinModal }) {
           />
 
           {/* Directional Soft Scrim Behind Upper Text for crisp readability (Ends well above faces) */}
-          <div className="absolute top-0 left-0 right-0 h-36 bg-gradient-to-b from-[#020712]/95 via-[#020712]/60 to-transparent pointer-events-none z-[5]" />
+          <div className="absolute top-0 left-0 right-0 h-44 bg-gradient-to-b from-[#020712]/95 via-[#020712]/60 to-transparent pointer-events-none z-[5]" />
           <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-[#010714] to-transparent pointer-events-none z-[5]" />
 
           {/* Real Typed Web Typography */}
-          <div className="relative z-10 px-4 xs:px-5 pt-2 xs:pt-2.5 flex flex-col items-start text-left select-text max-w-sm">
+          <div className="relative z-10 px-4 xs:px-5 pt-2.5 xs:pt-3 flex flex-col items-start text-left select-text max-w-sm">
             
             {/* Sub-Badge: Clean BOC */}
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1.5">
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
-              <span className="font-cinzel font-bold text-[8.5px] xs:text-[9px] tracking-[0.22em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
+              <span className="font-cinzel font-bold text-[8.5px] xs:text-[9.5px] tracking-[0.22em] text-[#DFC688] uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,1)] whitespace-nowrap">
                 BUSINESS OWNERS CIRCLE
               </span>
               <span className="w-5 h-[1.5px] bg-[#DFC688]" />
