@@ -325,10 +325,15 @@ export default function BOCFooter({ onOpenJoinModal }) {
               </a>
 
               {/* Website */}
-              <div className="flex items-center gap-2.5">
+              <a 
+                href="https://www.bocconnect.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center gap-2.5 text-slate-300 hover:text-[#F9D678] transition-colors cursor-pointer"
+              >
                 <Globe className="w-4 h-4 text-[#F9D678] shrink-0" />
-                <span className="text-slate-300">www.boc.com</span>
-              </div>
+                <span>www.bocconnect.in</span>
+              </a>
 
               {/* Follow Us mini bar */}
               <div className="pt-3">
