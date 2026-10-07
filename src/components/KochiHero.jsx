@@ -12,7 +12,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
   const slides = [
     {
       id: 1,
-      image: '/images/hero-slide-1-waterfront.jpg',
+      image: '/images/hero-slide-1-protected-home.jpg',
       tag: 'MARINE DRIVE & BOLGATTY',
       title: 'Waterfront & Luxury Villa Defense',
       desc: 'Deep subterranean barrier and odorless borer protection for Marine Drive, Bolgatty & Kochi waterfront residences.'
