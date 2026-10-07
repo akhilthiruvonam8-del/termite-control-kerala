@@ -18,6 +18,13 @@ export default function KochiHero({ onOpenInspectionModal }) {
       desc: 'Deep subterranean barrier and odorless borer protection for Marine Drive, Bolgatty & Kochi waterfront residences.'
     },
     {
+      id: 6,
+      image: '/images/hero-slide-pet-safe-shield.jpg',
+      tag: '100% PET-SAFE & ECO-FRIENDLY DEFENSE',
+      title: 'Child & Pet-Safe Green Pest Protection',
+      desc: 'Odorless, non-toxic herbal and green chemistry safe for families and pets across all Kochi residences.'
+    },
+    {
       id: 2,
       image: '/images/hero-slide-2-torch-inspect.jpg',
       tag: 'KAKKANAD & INFOPARK TECH CORRIDOR',
