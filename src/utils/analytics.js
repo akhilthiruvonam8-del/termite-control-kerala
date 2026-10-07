@@ -5,7 +5,7 @@
 
 export const PRIMARY_PHONE = "9020040009";
 export const PRIMARY_PHONE_DISPLAY = "+91 90200 40009";
-export const SUPPORT_EMAIL = "bocconnect.in@gmail.com";
+export const SUPPORT_EMAIL = "ecopestindia@gmail.com";
 export const WHATSAPP_NUMBER = "919020040009";
 
 export const trackConversion = (eventName, params = {}) => {
@@ -48,14 +48,14 @@ export const trackConversion = (eventName, params = {}) => {
  */
 export const getWhatsAppLink = (context = {}) => {
   const { location, service, propertyType, message } = context;
-  let text = "Hi, I need termite control / wood borer treatment. Please provide details.";
+  let text = "Hi Eco Pest India, I need pest control / termite treatment. Please provide details.";
   
   if (location && service) {
-    text = `Hi TermiteControl.me, I am looking for ${service} in ${location}. Please provide inspection and quotation details.`;
+    text = `Hi Eco Pest India, I am looking for ${service} in ${location}. Please provide inspection and quotation details.`;
   } else if (location) {
-    text = `Hi TermiteControl.me, I need termite / wood borer treatment for my property in ${location}. Please share consultation and inspection details.`;
+    text = `Hi Eco Pest India, I need pest / termite treatment for my property in ${location}. Please share consultation and inspection details.`;
   } else if (service) {
-    text = `Hi, I need information regarding ${service}. Please contact me.`;
+    text = `Hi Eco Pest India, I need information regarding ${service}. Please contact me.`;
   } else if (message) {
     text = message;
   }

@@ -270,31 +270,9 @@ export default function KochiNavbar({
       {/* 3. Mobile View Slide-Down Drawer Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-[#020e09]/98 backdrop-blur-2xl border-b border-emerald-800/60 shadow-2xl animate-in slide-in-from-top duration-200 max-h-[85vh] overflow-y-auto">
-          <div className="px-4 pt-3 pb-6 space-y-3.5">
+          <div className="px-4 pt-3.5 pb-6 space-y-3.5">
             
-            {/* Header in Drawer with Round Eco Pest India Logo */}
-            <div className="flex items-center justify-between pb-3 border-b border-emerald-900/50">
-              <div className="flex items-center space-x-2.5">
-                <div className="w-11 h-11 rounded-full border-2 border-amber-400 bg-white p-1.5 flex items-center justify-center shadow-md shrink-0">
-                  <img 
-                    src="/images/eco-pest-india-logo.png" 
-                    alt="Eco Pest India Logo" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div>
-                  <p className="text-xs font-cinzel font-black text-white">
-                    ECO PEST <span className="bg-gradient-to-r from-amber-200 to-amber-400 bg-clip-text text-transparent">INDIA</span>
-                  </p>
-                  <p className="text-[10px] font-sans font-semibold text-emerald-300">Safe Home, Healthy Life</p>
-                </div>
-              </div>
-              <span className="px-2.5 py-1 rounded-full bg-emerald-950 border border-emerald-500/40 text-[9px] font-mono font-bold text-amber-300">
-                Govt. CIB&RC Certified
-              </span>
-            </div>
-
-            {/* 8 Navigation Links Grid for Mobile: Home, About, Services, Locations, Blog, Gallery, FAQ, Contact */}
+            {/* Navigation Links Grid for Mobile: Home, About, Services, Locations */}
             <div className="grid grid-cols-2 gap-2 text-xs font-semibold">
               {navLinks.map((link) => {
                 const IconComponent = link.icon;
