@@ -3,17 +3,16 @@ import {
   ChevronLeft, 
   ChevronRight, 
   ArrowRight,
-  Award,
-  ChevronDown
+  Award
 } from 'lucide-react';
 
 export default function KochiHero({ onOpenInspectionModal }) {
-  // 6 HD Background Slides matching user's exact images & branding tailored specifically for Kochi
+  // 6 HD Background Slides with dedicated 3:4 un-zoomed mobile portrait versions + 16:9 widescreen desktop versions
   const slides = [
     {
       id: 1,
       image: '/images/hero-slide-1-protected-home.jpg',
-      mobilePos: 'object-center',
+      mobileImage: '/images/hero-slide-1-mobile.jpg',
       tag: 'MARINE DRIVE & BOLGATTY',
       title: 'Waterfront & Luxury Villa Defense',
       desc: 'Deep subterranean barrier and odorless borer protection for Marine Drive, Bolgatty & Kochi waterfront residences.'
@@ -21,7 +20,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
     {
       id: 6,
       image: '/images/hero-slide-pet-safe-shield.jpg',
-      mobilePos: 'object-[54%_center] sm:object-center',
+      mobileImage: '/images/hero-slide-pet-mobile.jpg',
       tag: '100% PET-SAFE & ECO-FRIENDLY DEFENSE',
       title: 'Child & Pet-Safe Green Pest Protection',
       desc: 'Odorless, non-toxic herbal and green chemistry safe for families and pets across all Kochi residences.'
@@ -29,7 +28,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
     {
       id: 2,
       image: '/images/hero-slide-2-torch-inspect.jpg',
-      mobilePos: 'object-[46%_center] sm:object-center',
+      mobileImage: '/images/hero-slide-2-mobile.jpg',
       tag: 'KAKKANAD & INFOPARK TECH CORRIDOR',
       title: 'Precision Acoustic & Wall Inspection',
       desc: 'Advanced acoustic and thermal scanning to pinpoint hidden termite colonies across Kakkanad tech campuses and high-rises.'
@@ -37,7 +36,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
     {
       id: 3,
       image: '/images/hero-slide-3-indoor-inject.jpg',
-      mobilePos: 'object-[64%_center] sm:object-center',
+      mobileImage: '/images/hero-slide-3-mobile.jpg',
       tag: 'PANAMPILLY NAGAR & KADAVANTHRA',
       title: '100% Odorless Skirting & Gel Treatment',
       desc: 'Govt. CIB&RC certified odorless micro-injection protecting premium woodwork in Panampilly Nagar, Kadavanthra & Thevara.'
@@ -45,7 +44,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
     {
       id: 4,
       image: '/images/hero-slide-4-termite-macro.jpg',
-      mobilePos: 'object-center',
+      mobileImage: '/images/hero-slide-4-mobile.jpg',
       tag: 'EDAPPALLY, PALARIVATTOM & ALUVA',
       title: 'Subterranean Colony & Pest Eradication',
       desc: 'IS:6313 certified chemical barrier creating an impenetrable perimeter across Edappally, Palarivattom & Aluva.'
@@ -53,7 +52,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
     {
       id: 5,
       image: '/images/hero-slide-5-commercial-van.jpg',
-      mobilePos: 'object-[56%_center] sm:object-center',
+      mobileImage: '/images/hero-slide-5-mobile.jpg',
       tag: 'FORT KOCHI, VYTTILA & MARADU',
       title: 'Commercial Towers, Heritage & Showrooms',
       desc: 'Rapid response units equipped for Fort Kochi heritage estates, MG Road showrooms, Vyttila & Maradu commercial spaces.'
@@ -104,17 +103,16 @@ export default function KochiHero({ onOpenInspectionModal }) {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
-
   return (
     <section 
-      className="relative w-full min-h-[calc(100dvh-82px)] sm:min-h-[calc(100vh-88px)] flex flex-col justify-between bg-[#020e09] overflow-hidden select-none"
+      className="relative w-full h-[calc(100dvh-82px)] sm:h-[calc(100vh-88px)] md:h-[calc(100vh-96px)] flex flex-col justify-between bg-[#020e09] overflow-hidden select-none"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       aria-label="Eco Pest India Master Hero Experience"
     >
       {/* ===================================================================== */}
-      {/* 1. FULL BACKGROUND PICTURE CAROUSEL (Un-Zoomed Mobile + 2K HD Laptop) */}
+      {/* 1. FULL-PAGE BACKGROUND PICTURE CAROUSEL (Un-Zoomed 3:4 Mobile Fit)   */}
       {/* ===================================================================== */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
         {slides.map((slide, index) => {
@@ -126,44 +124,34 @@ export default function KochiHero({ onOpenInspectionModal }) {
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
             >
-              {/* Mobile Ambient Backdrop Layer (prevents harsh bars while keeping top text readable) */}
-              <img
-                src={slide.image}
-                alt=""
-                aria-hidden="true"
-                className="sm:hidden absolute inset-0 w-full h-full object-cover object-center blur-md brightness-[0.36] saturate-125 scale-105 pointer-events-none"
-                loading={index === 0 ? 'eager' : 'lazy'}
-              />
-
-              {/* Main Crisp HD Image: Un-zoomed 16:10 natural widescreen framing on mobile, full-bleed on desktop */}
-              <div className="absolute inset-x-0 top-[29%] aspect-[16/11] xs:aspect-[16/10] sm:inset-0 sm:aspect-auto sm:h-full overflow-hidden [mask-image:linear-gradient(to_bottom,transparent_0%,black_12%,black_88%,transparent_100%)] sm:[mask-image:none]">
+              <picture className="block w-full h-full">
+                <source media="(max-width: 639px)" srcSet={slide.mobileImage} />
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  className={`w-full h-full object-cover ${slide.mobilePos} transform-gpu transition-all duration-[6000ms] ease-out will-change-transform brightness-[1.05] contrast-[1.08] saturate-[1.18] filter ${
-                    isActive ? 'scale-100 sm:scale-[1.05]' : 'scale-100'
+                  className={`w-full h-full object-cover object-center transform-gpu transition-all duration-[6000ms] ease-out will-change-transform brightness-[1.04] contrast-[1.06] saturate-[1.15] filter ${
+                    isActive ? 'scale-100 sm:scale-[1.04]' : 'scale-100'
                   }`}
                   loading={index === 0 ? 'eager' : 'lazy'}
                   fetchpriority={index === 0 ? 'high' : 'auto'}
                 />
-              </div>
+              </picture>
             </div>
           );
         })}
       </div>
 
-      {/* Ultra-Light, Crystal-Clear Scrim: 85%+ of the image is 100% natural, bright & vivid */}
-      <div className="absolute inset-0 z-15 bg-gradient-to-r from-black/85 via-black/40 to-transparent pointer-events-none hidden sm:block" />
-      <div className="absolute top-0 inset-x-0 h-[34%] bg-gradient-to-b from-black/80 via-black/40 to-transparent pointer-events-none z-15 sm:hidden" />
-      <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-black/75 to-transparent pointer-events-none z-15 sm:hidden" />
+      {/* Subtle top-left / top readability scrim so background stays 100% clear & vibrant */}
+      <div className="absolute inset-0 z-15 bg-gradient-to-r from-black/80 via-black/35 to-transparent pointer-events-none hidden sm:block" />
+      <div className="absolute top-0 inset-x-0 h-[42%] bg-gradient-to-b from-black/75 via-black/35 to-transparent pointer-events-none z-15 sm:hidden" />
 
       {/* ===================================================================== */}
       {/* 2. WRITINGS & BUTTONS LAYERED DIRECTLY ON TOP OF THE BACKGROUND       */}
       {/* ===================================================================== */}
-      <div className="relative z-20 w-full h-full flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-5 xs:pt-7 sm:pt-6 md:pt-8 pb-4 sm:pb-6">
+      <div className="relative z-20 w-full h-full flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between pt-4 xs:pt-5 sm:pt-7 md:pt-10 pb-4 sm:pb-6">
         
-        {/* Main Hero Typography & Action Buttons (Moved down safely for mobile clearance) */}
-        <div className="max-w-2xl lg:max-w-3xl mt-1 xs:mt-2 sm:mt-1 text-left">
+        {/* Main Hero Typography & Action Buttons */}
+        <div className="max-w-2xl lg:max-w-3xl mt-1 sm:mt-2 text-left">
           
           {/* Service Tag */}
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-950/85 border border-emerald-500/50 text-amber-300 text-[9px] sm:text-xs font-mono font-bold uppercase tracking-wider mb-1 sm:mb-1.5 backdrop-blur-md shadow">
@@ -171,7 +159,7 @@ export default function KochiHero({ onOpenInspectionModal }) {
             <span>{slides[currentSlide].tag}</span>
           </div>
 
-          {/* Grand Headline: ECO PEST INDIA (All Solid White) */}
+          {/* Grand Headline: ECO PEST INDIA */}
           <h1 className="font-cinzel font-black text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white tracking-tight leading-[1.08] mb-1 sm:mb-1.5 drop-shadow-[0_4px_24px_rgba(0,0,0,1)] [text-shadow:_0_2px_14px_rgba(0,0,0,0.95)]">
             ECO PEST INDIA
           </h1>
@@ -188,7 +176,6 @@ export default function KochiHero({ onOpenInspectionModal }) {
 
           {/* Quick Action CTA Button Floating on Image */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Primary Golden CTA Button */}
             <button
               onClick={() => onOpenInspectionModal && onOpenInspectionModal({ service: slides[currentSlide].title, location: 'Kochi' })}
               className="px-5 sm:px-7 py-2 sm:py-3.5 rounded-full bg-gradient-to-r from-[#FFE58F] via-[#F5C042] to-[#D49319] border border-[#FFF6C7] text-slate-950 font-black text-xs sm:text-sm tracking-wider uppercase shadow-[0_0_25px_rgba(245,192,66,0.65)] hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 cursor-pointer group"
@@ -200,10 +187,9 @@ export default function KochiHero({ onOpenInspectionModal }) {
 
         </div>
 
-        {/* Bottom Slide Dots (Mobile) & Subtle Scroll Down Prompt */}
-        <div className="self-center z-25 flex flex-col items-center gap-2 pb-1">
-          {/* Interactive Slide Dots on Mobile */}
-          <div className="flex sm:hidden items-center gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
+        {/* Bottom Slide Dots */}
+        <div className="self-center z-25 flex items-center justify-center pb-1">
+          <div className="flex items-center gap-1.5 bg-black/45 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
             {slides.map((s, idx) => (
               <button
                 key={s.id}
@@ -217,25 +203,11 @@ export default function KochiHero({ onOpenInspectionModal }) {
               />
             ))}
           </div>
-
-          <div 
-            onClick={() => {
-              const el = document.getElementById('about');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="flex flex-col items-center cursor-pointer group opacity-85 hover:opacity-100 transition-opacity"
-            aria-label="Scroll down to About Us"
-          >
-            <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-white/70 group-hover:text-amber-300 transition-colors">
-              Scroll
-            </span>
-            <ChevronDown className="w-4 h-4 text-amber-400 animate-bounce -mt-0.5" />
-          </div>
         </div>
 
       </div>
 
-      {/* Desktop Frosted Glass Prev / Next Arrows (Hidden on mobile to avoid cluttering content) */}
+      {/* Desktop Frosted Glass Prev / Next Arrows */}
       <button
         onClick={prevSlide}
         aria-label="Previous Image"

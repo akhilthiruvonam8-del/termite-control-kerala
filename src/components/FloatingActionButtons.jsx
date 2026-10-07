@@ -28,19 +28,19 @@ export default function FloatingActionButtons() {
   return (
     <aside 
       aria-label="Quick contact and navigation actions"
-      className="fixed bottom-16 right-2.5 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 pointer-events-auto select-none"
+      className="fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-center gap-2 sm:gap-2.5 pointer-events-auto select-none"
     >
       {/* 1. WhatsApp Direct Chat Button */}
       <div className="relative group">
         <a
-          href="https://wa.me/919020040009?text=Hi%20Business%20Owners%20Circle%2C%20I%20am%20interested%20in%20joining%20the%20executive%20network."
+          href="https://wa.me/919020040009?text=Hi%20Eco%20Pest%20India%2C%20I%20would%20like%20to%20book%20a%20free%20pest%20inspection%20in%20Kochi."
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => setFloatingTooltip('wa')}
           onMouseLeave={() => setFloatingTooltip(null)}
           className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-[0_6px_25px_rgba(37,211,102,0.6)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-          title="Chat with BOC on WhatsApp (+91 90200 40009)"
-          aria-label="WhatsApp BOC (+91 90200 40009)"
+          title="Chat with Eco Pest India on WhatsApp (+91 90200 40009)"
+          aria-label="WhatsApp Eco Pest India (+91 90200 40009)"
         >
           <MessageCircle className="w-5 h-5 sm:w-5.5 sm:h-5.5 fill-current" />
         </a>
@@ -52,22 +52,22 @@ export default function FloatingActionButtons() {
         )}
       </div>
 
-      {/* 2. Phone Call Secretariat Button */}
+      {/* 2. Phone Call Button */}
       <div className="relative group">
         <a
           href="tel:+919020040009"
           onMouseEnter={() => setFloatingTooltip('call')}
           onMouseLeave={() => setFloatingTooltip(null)}
           className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#C5A059] via-[#E5C45A] to-[#FFF3C4] text-[#041126] shadow-[0_6px_25px_rgba(223,198,136,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer border border-[#FFF3C4]/60"
-          title="Call BOC Secretariat (+91 90200 40009)"
-          aria-label="Call BOC Secretariat (+91 90200 40009)"
+          title="Call Eco Pest India (+91 90200 40009)"
+          aria-label="Call Eco Pest India (+91 90200 40009)"
         >
           <PhoneCall className="w-5 h-5 sm:w-5.5 sm:h-5.5 stroke-[2.5]" />
         </a>
 
         {floatingTooltip === 'call' && (
           <div className="absolute right-[115%] top-1/2 -translate-y-1/2 mr-2 px-2.5 py-1 rounded-lg bg-[#041126] border border-[#DFC688]/50 text-[10px] text-[#DFC688] font-bold whitespace-nowrap shadow-lg pointer-events-none animate-in fade-in duration-150">
-            Call BOC (+91 90200 40009)
+            Call (+91 90200 40009)
           </div>
         )}
       </div>
