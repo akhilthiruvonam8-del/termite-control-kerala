@@ -4,7 +4,6 @@ import KochiHero from '../components/KochiHero';
 import AboutUsSection from '../components/AboutUsSection';
 import KochiServicesSection from '../components/KochiServicesSection';
 import KochiLocationsSection from '../components/KochiLocationsSection';
-import KochiBlogSection from '../components/KochiBlogSection';
 import KochiFaqSection from '../components/KochiFaqSection';
 import KochiContactSection from '../components/KochiContactSection';
 import KochiPreloader from '../components/KochiPreloader';
@@ -62,7 +61,7 @@ export default function KochiLandingPage({ onOpenInspectionModal }) {
       }
     });
 
-    const sectionIds = ['home', 'about', 'services', 'locations', 'blog', 'faq', 'contact'];
+    const sectionIds = ['home', 'about', 'services', 'locations', 'faq', 'contact'];
 
     // Check URL hash on initial load
     const hash = window.location.hash.replace('#', '');
@@ -147,17 +146,12 @@ export default function KochiLandingPage({ onOpenInspectionModal }) {
           <KochiLocationsSection onOpenInspectionModal={onOpenInspectionModal} />
         </div>
 
-        {/* MODULE 5: BLOG SECTION */}
-        <div id="blog" className="w-full">
-          <KochiBlogSection onOpenInspectionModal={onOpenInspectionModal} />
-        </div>
-
-        {/* MODULE 6: FAQ SECTION */}
+        {/* MODULE 5: FAQ SECTION */}
         <div id="faq" className="w-full">
           <KochiFaqSection onOpenInspectionModal={onOpenInspectionModal} />
         </div>
 
-        {/* MODULE 7: CONTACT US SECTION & EXECUTIVE FOOTER */}
+        {/* MODULE 6: CONTACT US SECTION & EXECUTIVE FOOTER */}
         <KochiContactSection onOpenInspectionModal={onOpenInspectionModal} />
 
       </main>

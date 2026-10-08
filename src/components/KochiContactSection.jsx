@@ -386,7 +386,6 @@ export default function KochiContactSection({ onOpenInspectionModal }) {
                 <li><button onClick={() => scrollToSection('about')} className="hover:text-amber-300 transition cursor-pointer">About Us</button></li>
                 <li><button onClick={() => scrollToSection('services')} className="hover:text-amber-300 transition cursor-pointer">Services</button></li>
                 <li><button onClick={() => scrollToSection('locations')} className="hover:text-amber-300 transition cursor-pointer">Locations</button></li>
-                <li><button onClick={() => scrollToSection('blog')} className="hover:text-amber-300 transition cursor-pointer">Blog</button></li>
                 <li><button onClick={() => scrollToSection('faq')} className="hover:text-amber-300 transition cursor-pointer">FAQ</button></li>
                 <li><button onClick={() => scrollToSection('contact')} className="hover:text-amber-300 transition cursor-pointer">Contact Us</button></li>
               </ul>
