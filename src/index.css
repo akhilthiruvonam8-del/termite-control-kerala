@@ -5,9 +5,10 @@
 @layer base {
   html,
   body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     scroll-behavior: smooth;
-    background-color: #041126;
+    background-color: #FAF8F2;
+    color: #11291D;
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
@@ -15,6 +16,7 @@
     margin: 0;
     padding: 0;
     -webkit-overflow-scrolling: touch;
+    -webkit-tap-highlight-color: transparent;
   }
 
   #root {
@@ -26,125 +28,74 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    background-color: #FAF8F2;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-  }
-
-  .font-serif-luxury {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
-
-  .font-script {
-    font-family: 'Caveat', cursive, sans-serif;
+    font-family: 'Poppins', 'Inter', system-ui, sans-serif;
   }
 }
 
 @layer utilities {
-  /* Luxury Gold Gradients */
+  /* Warm Gold Gradients */
   .text-gold-gradient {
-    background: linear-gradient(135deg, #FBF4D9 0%, #E5C45A 35%, #C9A227 70%, #987819 100%);
+    background: linear-gradient(135deg, #ECC876 0%, #D6AD55 40%, #B88F35 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .text-gold-shimmer {
-    background: linear-gradient(90deg, #C9A227 0%, #FFF3C4 50%, #C9A227 100%);
-    background-size: 200% auto;
+  .text-forest-gradient {
+    background: linear-gradient(135deg, #145C3D 0%, #27865B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: goldShimmer 4s linear infinite;
   }
 
-  .bg-gold-metallic {
-    background: linear-gradient(135deg, #E5C45A 0%, #C9A227 50%, #A88316 100%);
+  .bg-gold-gradient {
+    background: linear-gradient(135deg, #E5C45A 0%, #D6AD55 50%, #B88F35 100%);
   }
 
-  .bg-gold-metallic-hover {
-    background: linear-gradient(135deg, #F0D577 0%, #D8B132 50%, #B89018 100%);
+  .bg-forest-gradient {
+    background: linear-gradient(135deg, #0C3423 0%, #145C3D 60%, #1B734D 100%);
   }
 
-  .border-gold-subtle {
-    border-color: rgba(201, 162, 39, 0.25);
+  /* Glass Card */
+  .glass-card-light {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(226, 235, 229, 0.8);
   }
 
-  .border-gold-glow {
-    border-color: rgba(229, 196, 90, 0.5);
-    box-shadow: 0 0 15px rgba(201, 162, 39, 0.25);
-  }
-
-  /* Executive Glassmorphism */
-  .glass-navy-card {
-    background: rgba(7, 27, 58, 0.65);
+  .glass-card-dark {
+    background: rgba(12, 52, 35, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(201, 162, 39, 0.18);
+    border: 1px solid rgba(214, 173, 85, 0.25);
   }
 
-  .glass-navy-card-hover {
-    transition: all 0.3s ease;
+  /* Hide scrollbar for tabs */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-  .glass-navy-card-hover:hover {
-    background: rgba(7, 27, 58, 0.85);
-    border-color: rgba(229, 196, 90, 0.45);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(201, 162, 39, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .glass-navy-nav {
-    background: rgba(4, 17, 38, 0.82);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
-@keyframes goldShimmer {
-  to {
-    background-position: 200% center;
-  }
-}
-
-/* Custom Executive Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #041126;
+  background: #FAF8F2;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9A227;
-  border-radius: 4px;
+  background: #27865B;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #E5C45A;
+  background: #145C3D;
 }
 
-/* Preloader & Logo Spin Keyframes matching Fumitech.in style */
-@keyframes logo-spin-intro {
-  0% {
-    transform: scale(0.2) rotate(-360deg);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.15) rotate(20deg);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes preloader-bar {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
