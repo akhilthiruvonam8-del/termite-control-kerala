@@ -1,228 +1,311 @@
-import React, { useState } from 'react';
-import ViewportBar from './components/ViewportBar';
-import VeeduXHomePage from './pages/VeeduXHomePage';
-import MobileBottomNav from './components/MobileBottomNav';
-import PropertyDetailModal from './components/PropertyDetailModal';
-import SearchFilterModal from './components/SearchFilterModal';
-import PostPropertyModal from './components/PostPropertyModal';
-import SavedPropertiesDrawer from './components/SavedPropertiesDrawer';
-import AuthModal from './components/AuthModal';
-import UserProfileModal from './components/UserProfileModal';
-import AdminModerationModal from './components/AdminModerationModal';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { X, Shield } from 'lucide-react';
 
-export default function App() {
-  // Viewport mode: 'mobile' (default per user prompt), 'tablet', 'desktop'
-  const [viewMode, setViewMode] = useState('mobile');
+// Dedicated Kochi Redesign Landing Page
+import KochiLandingPage from './pages/KochiLandingPage';
 
-  // Active bottom nav tab: 'home' | 'search' | 'saved' | 'profile'
-  const [activeNavTab, setActiveNavTab] = useState('home');
+// Other District Landing Pages
+import KozhikodeLandingPage from './pages/KozhikodeLandingPage';
+import PalakkadLandingPage from './pages/PalakkadLandingPage';
+import ThrissurLandingPage from './pages/ThrissurLandingPage';
+import PathanamthittaLandingPage from './pages/PathanamthittaLandingPage';
+import AlappuzhaLandingPage from './pages/AlappuzhaLandingPage';
+import WayanadLandingPage from './pages/WayanadLandingPage';
+import KasaragodLandingPage from './pages/KasaragodLandingPage';
+import KollamLandingPage from './pages/KollamLandingPage';
+import DistrictLandingPage from './pages/DistrictLandingPage';
 
-  // Modals & Drawers state
-  const [selectedProperty, setSelectedProperty] = useState(null);
-  const [searchModalOpen, setSearchModalOpen] = useState(false);
-  const [postPropertyModalOpen, setPostPropertyModalOpen] = useState(false);
-  const [savedDrawerOpen, setSavedDrawerOpen] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(false);
-  const [profileModalOpen, setProfileModalOpen] = useState(false);
-  const [adminModalOpen, setAdminModalOpen] = useState(false);
+// Shared Components & Modals
+import CostCalculatorModal from './components/CostCalculatorModal';
+import LeadManagerModal from './components/LeadManagerModal';
+import LeadForm from './components/LeadForm';
+import { DISTRICTS } from './data/districts';
 
-  // User state (sample authenticated user)
-  const [user, setUser] = useState({
-    name: 'Govind Menon',
-    phone: '+91 98471 99220',
-    email: 'govind.menon@gmail.com',
-  });
+/**
+ * Scroll to top automatically whenever the route changes
+ */
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-  // Saved properties (initial sample bookmarks)
-  const [savedIds, setSavedIds] = useState(['vx-101', 'vx-103']);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
 
-  // Filters state
-  const [filters, setFilters] = useState({
-    purpose: 'all',
-    district: 'All Kerala',
-    locality: '',
-    category: 'all',
-    minPrice: '',
-    maxPrice: '',
-    landAreaCentsMin: '',
-    landAreaCentsMax: '',
-    bhk: 'all',
-    sortBy: 'newest',
-    directOwnerOnly: false,
-    verifiedOnly: false,
-  });
+  return null;
+}
 
-  const toggleSave = (propertyId) => {
-    setSavedIds((prev) =>
-      prev.includes(propertyId)
-        ? prev.filter((id) => id !== propertyId)
-        : [...prev, propertyId]
-    );
+/**
+ * Main Application Shell with Modal Handlers
+ */
+function AppContent() {
+  const [leadModalState, setLeadModalState] = useState({ open: false, initialData: {} });
+  const [crmModalOpen, setCrmModalOpen] = useState(false);
+  const [calculatorModalOpen, setCalculatorModalOpen] = useState(false);
+
+  const openLeadModal = (initialData = {}) => {
+    setLeadModalState({ open: true, initialData });
   };
 
-  const handleBottomNavChange = (tab) => {
-    setActiveNavTab(tab);
-    if (tab === 'search') {
-      setSearchModalOpen(true);
-    } else if (tab === 'saved') {
-      setSavedDrawerOpen(true);
-    } else if (tab === 'profile') {
-      if (user) {
-        setProfileModalOpen(true);
-      } else {
-        setAuthModalOpen(true);
-      }
-    }
+  const closeLeadModal = () => {
+    setLeadModalState({ open: false, initialData: {} });
   };
 
   return (
-    <div className="min-h-screen bg-[#F0EDE4] flex flex-col font-sans selection:bg-[#D6AD55] selection:text-[#0C3423]">
-      {/* Top Device Viewport Switcher Toolbar */}
-      <ViewportBar viewMode={viewMode} setViewMode={setViewMode} />
+    <div className="min-h-screen w-full flex flex-col font-sans bg-[#020d08] text-slate-100 overflow-x-hidden">
+      <ScrollToTop />
 
-      {/* Main Container according to View Mode */}
-      <main className="flex-grow flex items-start justify-center p-0 md:py-6 overflow-x-hidden">
-        {viewMode === 'mobile' ? (
-          /* Mobile Frame Simulation (390px iPhone standard) */
-          <div className="w-full max-w-[420px] min-h-[844px] bg-[#FAF8F2] md:rounded-[40px] md:shadow-[0_25px_60px_-15px_rgba(20,92,61,0.3)] md:border-[8px] md:border-[#0C3423] overflow-hidden relative flex flex-col transition-all">
-            {/* Simulated Phone Status Bar on desktop preview */}
-            <div className="hidden md:flex items-center justify-between px-6 pt-3 pb-1 text-slate-800 text-[11px] font-bold bg-[#FAF8F2] select-none">
-              <span>9:41</span>
-              <div className="w-20 h-4 bg-slate-900 rounded-full mx-auto" />
-              <div className="flex items-center gap-1.5">
-                <span>5G</span>
-                <span>100%</span>
-              </div>
-            </div>
-
-            {/* Mobile Home Screen Content */}
-            <div className="flex-grow overflow-y-auto">
-              <VeeduXHomePage
-                onSelectProperty={(prop) => setSelectedProperty(prop)}
-                onOpenSearch={() => setSearchModalOpen(true)}
-                onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-                onOpenAuth={() => setAuthModalOpen(true)}
-                onOpenProfile={() => setProfileModalOpen(true)}
-                onOpenSaved={() => setSavedDrawerOpen(true)}
-                savedIds={savedIds}
-                onToggleSave={toggleSave}
-                user={user}
+      {/* Main Routes */}
+      <div className="flex-grow w-full flex flex-col">
+        <Routes>
+          {/* Default Root / Home — Premium Termite Control Kochi Redesign */}
+          <Route 
+            path="/" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
               />
-            </div>
+            } 
+          />
 
-            {/* Fixed Bottom Mobile Navigation Bar */}
-            <MobileBottomNav
-              activeTab={activeNavTab}
-              setActiveTab={handleBottomNavChange}
-              savedCount={savedIds.length}
-              onOpenPostProperty={() => setPostPropertyModalOpen(true)}
+          {/* Kochi Alias Slugs */}
+          <Route 
+            path="/pest-control-kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pestcontrolkochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pest-control" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/pest-control-ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/termite-control-kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/kochi" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/termite-control-ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+          <Route 
+            path="/ernakulam" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+
+          {/* Kozhikode Landing Page */}
+          <Route 
+            path="/termite-control-kozhikode" 
+            element={
+              <KozhikodeLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kozhikode' })} 
+              />
+            } 
+          />
+
+          {/* Palakkad Landing Page */}
+          <Route 
+            path="/termite-control-palakkad" 
+            element={
+              <PalakkadLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Palakkad' })} 
+              />
+            } 
+          />
+
+          {/* Thrissur Landing Page */}
+          <Route 
+            path="/termite-control-thrissur" 
+            element={
+              <ThrissurLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Thrissur' })} 
+              />
+            } 
+          />
+
+          {/* Pathanamthitta Landing Page */}
+          <Route 
+            path="/termite-control-pathanamthitta" 
+            element={
+              <PathanamthittaLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Pathanamthitta' })} 
+              />
+            } 
+          />
+
+          {/* Alappuzha Landing Page */}
+          <Route 
+            path="/termite-control-alappuzha" 
+            element={
+              <AlappuzhaLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Alappuzha' })} 
+              />
+            } 
+          />
+
+          {/* Wayanad Landing Page */}
+          <Route 
+            path="/termite-control-wayanad" 
+            element={
+              <WayanadLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Wayanad' })} 
+              />
+            } 
+          />
+
+          {/* Kasaragod Landing Page */}
+          <Route 
+            path="/termite-control-kasaragod" 
+            element={
+              <KasaragodLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kasaragod' })} 
+              />
+            } 
+          />
+
+          {/* Kollam Landing Page */}
+          <Route 
+            path="/termite-control-kollam" 
+            element={
+              <KollamLandingPage 
+                onOpenLeadModal={openLeadModal} 
+                onOpenInspectionModal={() => openLeadModal({ location: 'Kollam' })} 
+              />
+            } 
+          />
+
+          {/* Fallback to Kochi Landing Page */}
+          <Route 
+            path="*" 
+            element={
+              <KochiLandingPage 
+                onOpenInspectionModal={openLeadModal}
+                onOpenCrmModal={() => setCrmModalOpen(true)}
+                onOpenCalculatorModal={() => setCalculatorModalOpen(true)}
+              />
+            } 
+          />
+        </Routes>
+      </div>
+
+      {/* MODAL 1: Free On-Site Inspection Lead Modal */}
+      {leadModalState.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-[#03150e] border border-emerald-500/40 rounded-3xl max-w-lg w-full p-2 relative shadow-2xl max-h-[95vh] overflow-y-auto">
+            <button
+              onClick={closeLeadModal}
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-emerald-950/80 text-slate-300 hover:text-white border border-emerald-700/50 flex items-center justify-center transition"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <LeadForm
+              title={leadModalState.initialData.title || "FREE ON-SITE INSPECTION"}
+              subtitle={leadModalState.initialData.subtitle || "Zero-obligation survey across Kochi & Greater Ernakulam"}
+              defaultLocation={leadModalState.initialData.location || "Kochi (Kakkanad / Marine Drive)"}
+              defaultProblem={leadModalState.initialData.problem || "Termite"}
+              defaultProperty={leadModalState.initialData.propertyType || "Villa"}
+              source="kochi_modal"
+              onSuccess={() => {
+                setTimeout(() => {
+                  // Keep open briefly so user sees the reference ID
+                }, 2000);
+              }}
             />
           </div>
-        ) : viewMode === 'tablet' ? (
-          /* Tablet Frame Simulation (768px iPad) */
-          <div className="w-full max-w-[768px] min-h-[900px] bg-[#FAF8F2] md:rounded-[32px] md:shadow-2xl md:border-[6px] md:border-[#0C3423] overflow-hidden relative flex flex-col transition-all">
-            <div className="flex-grow overflow-y-auto">
-              <VeeduXHomePage
-                onSelectProperty={(prop) => setSelectedProperty(prop)}
-                onOpenSearch={() => setSearchModalOpen(true)}
-                onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-                onOpenAuth={() => setAuthModalOpen(true)}
-                onOpenProfile={() => setProfileModalOpen(true)}
-                onOpenSaved={() => setSavedDrawerOpen(true)}
-                savedIds={savedIds}
-                onToggleSave={toggleSave}
-                user={user}
-              />
-            </div>
+        </div>
+      )}
 
-            <MobileBottomNav
-              activeTab={activeNavTab}
-              setActiveTab={handleBottomNavChange}
-              savedCount={savedIds.length}
-              onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-            />
-          </div>
-        ) : (
-          /* Full Responsive Desktop View */
-          <div className="w-full min-h-screen bg-[#FAF8F2] relative flex flex-col">
-            <VeeduXHomePage
-              onSelectProperty={(prop) => setSelectedProperty(prop)}
-              onOpenSearch={() => setSearchModalOpen(true)}
-              onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-              onOpenAuth={() => setAuthModalOpen(true)}
-              onOpenProfile={() => setProfileModalOpen(true)}
-              onOpenSaved={() => setSavedDrawerOpen(true)}
-              savedIds={savedIds}
-              onToggleSave={toggleSave}
-              user={user}
-            />
-
-            {/* Bottom Nav on small screen sizes */}
-            <div className="md:hidden">
-              <MobileBottomNav
-                activeTab={activeNavTab}
-                setActiveTab={handleBottomNavChange}
-                savedCount={savedIds.length}
-                onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-              />
-            </div>
-          </div>
-        )}
-      </main>
-
-      {/* Global Interactive Modals & Drawers */}
-      <PropertyDetailModal
-        property={selectedProperty}
-        onClose={() => setSelectedProperty(null)}
-        isSaved={selectedProperty ? savedIds.includes(selectedProperty.id) : false}
-        onToggleSave={toggleSave}
+      {/* MODAL 2: Interactive Treatment Cost Estimator */}
+      <CostCalculatorModal
+        isOpen={calculatorModalOpen}
+        onClose={() => setCalculatorModalOpen(false)}
+        initialData={{ location: 'Kochi' }}
       />
 
-      <SearchFilterModal
-        isOpen={searchModalOpen}
-        onClose={() => setSearchModalOpen(false)}
-        filters={filters}
-        setFilters={setFilters}
-        onApplyFilters={() => {}}
+      {/* MODAL 3: Embedded CRM Database Lead Viewer for Admin */}
+      <LeadManagerModal
+        isOpen={crmModalOpen}
+        onClose={() => setCrmModalOpen(false)}
       />
 
-      <PostPropertyModal
-        isOpen={postPropertyModalOpen}
-        onClose={() => setPostPropertyModalOpen(false)}
-        onListingSubmitted={(listing) => {
-          console.log('Submitted listing:', listing);
-        }}
-      />
-
-      <SavedPropertiesDrawer
-        isOpen={savedDrawerOpen}
-        onClose={() => setSavedDrawerOpen(false)}
-        savedIds={savedIds}
-        onToggleSave={toggleSave}
-        onSelectProperty={(prop) => setSelectedProperty(prop)}
-      />
-
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-        onLoginSuccess={(loggedInUser) => setUser(loggedInUser)}
-      />
-
-      <UserProfileModal
-        isOpen={profileModalOpen}
-        onClose={() => setProfileModalOpen(false)}
-        user={user}
-        onLogout={() => setUser(null)}
-        onOpenPostProperty={() => setPostPropertyModalOpen(true)}
-        onOpenSaved={() => setSavedDrawerOpen(true)}
-        onOpenAdmin={() => setAdminModalOpen(true)}
-        savedCount={savedIds.length}
-      />
-
-      <AdminModerationModal
-        isOpen={adminModalOpen}
-        onClose={() => setAdminModalOpen(false)}
-      />
     </div>
+  );
+}
+
+/**
+ * Root Router Wrapper
+ */
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }

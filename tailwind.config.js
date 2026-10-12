@@ -36,23 +36,6 @@ export default {
           },
           lightBg: '#F5F7FA',
           darkText: '#111827',
-        },
-        veedux: {
-          forest: '#145C3D',
-          forestDark: '#0C3423',
-          forestLight: '#1B734D',
-          emerald: '#27865B',
-          emeraldLight: '#34A872',
-          gold: '#D6AD55',
-          goldDark: '#B88F35',
-          goldLight: '#F3E1B7',
-          cream: '#FAF8F2',
-          creamDark: '#EFECE2',
-          creamWarm: '#F5F2E9',
-          surface: '#FFFFFF',
-          textMain: '#11291D',
-          textMuted: '#587265',
-          border: '#E2EBE5',
         }
       },
       fontFamily: {
