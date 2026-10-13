@@ -1,233 +1,186 @@
 import React from 'react';
-import { Shield, Phone, MessageCircle, MapPin, Heart, Database, ArrowUp } from 'lucide-react';
-import { PRIMARY_PHONE_DISPLAY, handlePhoneClick, handleWhatsAppClick } from '../utils/analytics';
-import { DISTRICTS } from '../data/districts';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  ShieldCheck,
+  CheckCircle2,
+  ExternalLink,
+  Heart,
+} from 'lucide-react';
+import VeeduXLogo from './VeeduXLogo';
+import { useApp } from '../context/AppContext';
+import { KERALA_DISTRICTS } from '../data/locations';
 
-export default function Footer({ currentPath = '/', onNavigate, onOpenCrmModal }) {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+export default function Footer() {
+  const { navigateTo, setSearchFilters } = useApp();
+
+  const handleLocationClick = (districtName) => {
+    setSearchFilters((prev) => ({ ...prev, district: districtName }));
+    navigateTo('search');
   };
 
-  // Determine local office address based on current page
-  let officeAddress = "Offices: Wayanad (Sultan Bathery) • Kollam (Polayathodu) • Alappuzha (Central) • Thrissur (Kuttoor) • Palakkad (Chandra Nagar) • Pathanamthitta (Mezhuveli) • Kozhikode (Pavamani Rd)";
-  if (currentPath.includes('wayanad') || currentPath.includes('bathery') || currentPath.includes('kalpetta') || currentPath.includes('mananthavady') || currentPath.includes('vythiri') || currentPath.includes('meppadi')) {
-    officeAddress = "Wayanad District Office: Eco Pest India, Near St. Mary's College, Kuppadi, Sultan Bathery, Wayanad, Kerala - 673592";
-  } else if (currentPath.includes('kollam') || currentPath.includes('quilon') || currentPath.includes('karunagappally') || currentPath.includes('kottarakkara') || currentPath.includes('punalur') || currentPath.includes('paravur')) {
-    officeAddress = "Kollam District Office: Eco Pest India, Near DYFI Youth Centre, Polayathodu, Kollam, Kerala - 691001";
-  } else if (currentPath.includes('alappuzha') || currentPath.includes('alleppey') || currentPath.includes('cherthala') || currentPath.includes('chengannur') || currentPath.includes('kayamkulam') || currentPath.includes('mavelikara') || currentPath.includes('harippad')) {
-    officeAddress = "Alappuzha District Office: Eco Pest India, Alappuzha Central Dispatch (Serving All 6 Municipalities & 72 Panchayats), Kerala - 688001";
-  } else if (currentPath.includes('pathanamthitta') || currentPath.includes('pathanam-thitta')) {
-    officeAddress = "Pathanamthitta Office: Eco Pest India, Mezhuveli P.O., Pathanamthitta District, Kerala - 689507";
-  } else if (currentPath.includes('thrissur') || currentPath.includes('trissur')) {
-    officeAddress = "Thrissur Office: Veluthath Building, Pamboor, Kuttoor P.O., Thrissur, Kerala - 680013";
-  } else if (currentPath.includes('palakkad')) {
-    officeAddress = "Palakkad Office: 13 A, 1st Floor, Safa Building, Pirivusala, Chandra Nagar, Palakkad - 678007";
-  } else if (currentPath.includes('kozhikode')) {
-    officeAddress = "Kozhikode Office: Pavamani Road, Near Malabar Gold & Diamonds, Kozhikode, Kerala - 673004";
-  }
+  const handleTypeClick = (typeId) => {
+    setSearchFilters((prev) => ({ ...prev, propertyType: typeId }));
+    navigateTo('search');
+  };
 
   return (
-    <footer className="bg-slate-950 text-slate-400 text-xs pt-16 pb-12 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          
-          {/* Col 1 & 2: Brand, Parent Company, Intro, Contact CTA */}
+    <footer className="bg-[#0C3423] text-white pt-14 pb-24 md:pb-12 border-t border-[#27865B]/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-12">
+        {/* Top Brand Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white font-bold">
-                <Shield className="w-5 h-5" />
-              </div>
-              <span className="text-2xl font-extrabold text-white font-display">
-                Termite<span className="text-emerald-500">Control</span><span className="text-amber-500 font-bold">.me</span>
-              </span>
-            </div>
-
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-              A Unit of Eco Pest India
+            <VeeduXLogo variant="light" size="lg" />
+            <p className="text-xs sm:text-sm text-emerald-100/80 leading-relaxed max-w-sm">
+              VeeduX is Kerala's dedicated property marketplace built for buyers, NRI investors, families, and direct owners. Search residential plots in Cents, luxury waterfront villas, flats, and commercial properties with 100% verified titles.
             </p>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-sm">
-              Professional Termite Control & Wood Borer Treatment Across Kerala. Protecting homes, luxury villas, apartments, and commercial complexes with odorless, guaranteed chemistry.
-            </p>
-
-            <div className="pt-2 space-y-2">
-              <div className="flex items-center space-x-2 text-slate-200">
-                <Phone className="w-4 h-4 text-emerald-400" />
-                <span className="font-bold">Call / WhatsApp:</span>
-                <button 
-                  onClick={() => handlePhoneClick('footer')}
-                  className="text-emerald-400 hover:text-emerald-300 font-bold text-sm underline"
-                >
-                  {PRIMARY_PHONE_DISPLAY}
-                </button>
+            <div className="space-y-2 text-xs text-emerald-100/90 pt-1">
+              <div className="flex items-center gap-2">
+                <MapPin size={15} className="text-[#D6AD55] flex-shrink-0" />
+                <span>VeeduX Tower, Infopark Expressway, Kakkanad, Kochi, Kerala 682030</span>
               </div>
-
-              <div className="flex items-start space-x-2 text-slate-300 text-[11px]">
-                <MapPin className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5" />
-                <span>{officeAddress}</span>
+              <div className="flex items-center gap-2">
+                <Phone size={15} className="text-[#D6AD55] flex-shrink-0" />
+                <span>Direct Helpline: +91 98471 22345 / +91 94470 12345</span>
               </div>
-            </div>
-
-            <div className="flex items-center space-x-3 pt-2">
-              <button
-                onClick={() => handlePhoneClick('footer_btn')}
-                className="px-3.5 py-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold rounded-lg transition"
-              >
-                Call {PRIMARY_PHONE_DISPLAY}
-              </button>
-              <button
-                onClick={() => handleWhatsAppClick('footer_btn')}
-                className="px-3.5 py-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold rounded-lg transition flex items-center space-x-1"
-              >
-                <MessageCircle className="w-3.5 h-3.5 fill-white" />
-                <span>WhatsApp</span>
-              </button>
+              <div className="flex items-center gap-2">
+                <Mail size={15} className="text-[#D6AD55] flex-shrink-0" />
+                <span>General Enquiries: support@veedux.com</span>
+              </div>
             </div>
           </div>
 
-          {/* Col 3: Quick Links */}
+          {/* Quick Property Types */}
           <div className="space-y-3">
-            <p className="text-sm font-bold text-white uppercase tracking-wider font-display">
-              Quick Links
-            </p>
-            <ul className="space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#D6AD55]">
+              Property Types
+            </h4>
+            <ul className="space-y-2 text-xs text-emerald-100/70">
               <li>
-                <button onClick={() => onNavigate('/')} className="hover:text-emerald-400 transition">
-                  Home
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition">
-                  Our Services
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#wood-borer')} className="hover:text-emerald-400 transition">
-                  Wood Borer Treatment
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#signs')} className="hover:text-emerald-400 transition">
-                  Signs of Termites
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#how-it-works')} className="hover:text-emerald-400 transition">
-                  How It Works
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#locations')} className="hover:text-emerald-400 transition">
-                  Kerala Locations
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#faq')} className="hover:text-emerald-400 transition">
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#contact')} className="hover:text-emerald-400 transition">
-                  Contact Us
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Services */}
-          <div className="space-y-3">
-            <p className="text-sm font-bold text-white uppercase tracking-wider font-display">
-              Services
-            </p>
-            <ul className="space-y-2">
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Termite Control
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Anti-Termite Treatment
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#wood-borer')} className="hover:text-emerald-400 transition text-left">
-                  Wood Borer Treatment
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Pre-Construction (IS:6313)
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Post-Construction Drill-Seal
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Residential Termite Control
-                </button>
-              </li>
-              <li>
-                <button onClick={() => onNavigate('/#services')} className="hover:text-emerald-400 transition text-left">
-                  Commercial Termite Control
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 5: Locations (All 14 Districts) */}
-          <div className="space-y-3">
-            <p className="text-sm font-bold text-white uppercase tracking-wider font-display flex items-center justify-between">
-              <span>Districts</span>
-              <span className="text-[10px] text-emerald-400 font-normal">All 14 Covered</span>
-            </p>
-            <div className="grid grid-cols-2 gap-x-2 gap-y-1.5">
-              {DISTRICTS.map((d) => (
                 <button
-                  key={d.id}
-                  onClick={() => onNavigate(`/${d.slug}`)}
-                  className="text-slate-400 hover:text-emerald-400 transition text-left text-[11px]"
+                  onClick={() => handleTypeClick('land-plots')}
+                  className="hover:text-white transition-colors text-left"
                 >
-                  {d.name}
+                  Land & Plots (സ്ഥലം & പ്ലോട്ടുകൾ)
                 </button>
-              ))}
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('villas')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Luxury Villas (വില്ലകൾ)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('houses')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Independent Houses (വീടുകൾ)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('apartments')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Apartments & Flats (ഫ്ലാറ്റുകൾ)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('commercial')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Commercial Buildings (വാണിജ്യ കെട്ടിടങ്ങൾ)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('shops')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Shops & Retail Spaces (കടകൾ)
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleTypeClick('rentals')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Rental Homes & PGs (വാടക വീടുകൾ)
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Kerala Districts & Hotspots */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#D6AD55]">
+              Popular Locations
+            </h4>
+            <ul className="space-y-2 text-xs text-emerald-100/70">
+              {['Ernakulam', 'Thiruvananthapuram', 'Thrissur', 'Kozhikode', 'Kottayam', 'Alappuzha', 'Kannur', 'Wayanad'].map(
+                (dist) => (
+                  <li key={dist}>
+                    <button
+                      onClick={() => handleLocationClick(dist)}
+                      className="hover:text-white transition-colors text-left"
+                    >
+                      Properties in {dist}
+                    </button>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+
+          {/* Trust & Legal Help */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#D6AD55]">
+              Kerala Land Trust
+            </h4>
+            <ul className="space-y-2 text-xs text-emerald-100/70">
+              <li className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D6AD55]" />
+                <span>RERA Kerala Verified</span>
+              </li>
+              <li className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D6AD55]" />
+                <span>Survey Map & Thandapper</span>
+              </li>
+              <li className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D6AD55]" />
+                <span>Zero Hidden Brokerage</span>
+              </li>
+              <li className="flex items-center gap-1.5">
+                <CheckCircle2 size={13} className="text-[#D6AD55]" />
+                <span>NRI Assisted Escrow</span>
+              </li>
+            </ul>
+
+            <div className="pt-2">
+              <button
+                onClick={() => navigateTo('post')}
+                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-[#D6AD55] to-[#ECC876] text-[#0C3423] font-bold text-xs hover:opacity-95 transition-opacity"
+              >
+                Post Your Property Free
+              </button>
             </div>
-            <p className="text-[10px] text-slate-500 pt-2">
-              Serving Kozhikode, Kochi, Thiruvananthapuram, Thrissur, Kannur, Kollam, Kottayam, Palakkad, Malappuram, Alappuzha, Pathanamthitta, Idukki, Wayanad, Kasaragod & all Kerala municipalities.
-            </p>
-          </div>
-
-        </div>
-
-        {/* Bottom Legal & CRM Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-[11px]">
-          <div className="flex items-center space-x-1">
-            <span>© {new Date().getFullYear()}</span>
-            <span className="font-bold text-slate-300">TermiteControl.me</span>
-            <span>— A Unit of Eco Pest India. All Rights Reserved.</span>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <button 
-              onClick={onOpenCrmModal}
-              className="text-slate-400 hover:text-emerald-400 transition flex items-center space-x-1 underline"
-            >
-              <Database className="w-3 h-3" />
-              <span>CRM Database</span>
-            </button>
-            <span>•</span>
-            <button onClick={scrollToTop} className="hover:text-white transition flex items-center space-x-1">
-              <span>Back to top</span>
-              <ArrowUp className="w-3 h-3" />
-            </button>
           </div>
         </div>
 
+        {/* Bottom Copyright & Disclaimer */}
+        <div className="pt-8 border-t border-[#27865B]/30 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-100/60 text-center sm:text-left">
+          <p>© 2026 VeeduX Technologies India Pvt Ltd. All rights reserved.</p>
+          <p className="text-[11px]">
+            Designed with Kerala pride. Every Property. One Place.
+          </p>
+        </div>
       </div>
     </footer>
   );
