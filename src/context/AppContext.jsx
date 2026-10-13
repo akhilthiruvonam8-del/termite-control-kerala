@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { INITIAL_PROPERTIES } from '../data/veeduxData';
+import { updateMetaTags } from '../utils/seo';
 
 const AppContext = createContext(null);
 
@@ -7,6 +8,7 @@ export function AppProvider({ children }) {
   // Navigation & Active View: 'home' | 'search' | 'details' | 'post' | 'account' | 'admin'
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedPropertyId, setSelectedPropertyId] = useState(null);
+  const [activeAccountTab, setActiveAccountTab] = useState('profile'); // 'profile' | 'my-properties' | 'saved' | 'enquiries' | 'messages' | 'notifications' | 'settings'
 
   // Properties state (dynamic, supports posting & admin review)
   const [properties, setProperties] = useState(INITIAL_PROPERTIES);
@@ -97,13 +99,197 @@ export function AppProvider({ children }) {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState('login'); // 'login' | 'signup'
 
-  // Scroll to top on page navigation
-  const navigateTo = (page, propertyId = null) => {
-    setCurrentPage(page);
-    if (propertyId) {
-      setSelectedPropertyId(propertyId);
+  // Currently inspected property object
+  const activeProperty = properties.find((p) => p.id === selectedPropertyId) || properties[0];
+
+  // Helper to sync state from current browser location
+  const parseRouteFromLocation = useCallback(() => {
+    if (typeof window === 'undefined') return;
+
+    const pathname = window.location.pathname.toLowerCase();
+    const searchParams = new URLSearchParams(window.location.search);
+    const propIdParam = searchParams.get('property') || searchParams.get('id');
+
+    // 1. Home
+    if (pathname === '/' || pathname === '/home' || pathname === '') {
+      setCurrentPage('home');
+      updateMetaTags({
+        title: 'VeeduX — Every Property. One Place. | Kerala Real Estate Marketplace',
+        description: 'Find your dream property in Kerala. Buy, sell, or rent land, plots, villas, houses, apartments, and commercial properties across all 14 districts in Kerala.',
+      });
+      return;
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // 2. Search
+    if (pathname.startsWith('/search') || pathname.startsWith('/properties')) {
+      setCurrentPage('search');
+      updateMetaTags({
+        title: 'Search Kerala Properties | Buy & Rent Land, Villas, Flats | VeeduX',
+        description: 'Search verified land, houses, flats, and commercial properties in Kochi, Kozhikode, Thrissur, Trivandrum, and all 14 Kerala districts.',
+      });
+      return;
+    }
+
+    // 3. Property Details (/property/:id or /details/:id)
+    if (pathname.startsWith('/property/') || pathname.startsWith('/details/')) {
+      const parts = pathname.split('/');
+      const id = parts[2] || propIdParam;
+      if (id) {
+        setSelectedPropertyId(id);
+      }
+      setCurrentPage('details');
+      return;
+    }
+
+    // 4. Post Property (/post or /sell or /post-property)
+    if (pathname.startsWith('/post') || pathname.startsWith('/sell')) {
+      setCurrentPage('post');
+      updateMetaTags({
+        title: 'Post Property Free in Kerala | Sell & Rent Houses, Land | VeeduX',
+        description: 'List your Kerala property for free on VeeduX. Connect directly with genuine verified buyers and NRI investors.',
+      });
+      return;
+    }
+
+    // 5. Saved Properties
+    if (pathname.startsWith('/saved') || pathname.startsWith('/favorites')) {
+      setCurrentPage('account');
+      setActiveAccountTab('saved');
+      updateMetaTags({
+        title: 'Saved Properties | VeeduX Kerala',
+        description: 'View your shortlisted Kerala properties, villas, and plots.',
+      });
+      return;
+    }
+
+    // 6. User Account, Profile, My Listings, Enquiries, Messages
+    if (pathname.startsWith('/my-listings') || pathname.startsWith('/my-properties')) {
+      setCurrentPage('account');
+      setActiveAccountTab('my-properties');
+      return;
+    }
+
+    if (pathname.startsWith('/enquiries')) {
+      setCurrentPage('account');
+      setActiveAccountTab('enquiries');
+      return;
+    }
+
+    if (pathname.startsWith('/messages')) {
+      setCurrentPage('account');
+      setActiveAccountTab('messages');
+      return;
+    }
+
+    if (pathname.startsWith('/profile') || pathname.startsWith('/account')) {
+      setCurrentPage('account');
+      setActiveAccountTab('profile');
+      return;
+    }
+
+    // 7. Admin Moderation
+    if (pathname.startsWith('/admin')) {
+      setCurrentPage('admin');
+      updateMetaTags({
+        title: 'Admin Moderation Dashboard | VeeduX Kerala',
+        description: 'Moderate, review, and approve incoming Kerala property listings.',
+      });
+      return;
+    }
+
+    // 8. Auth routes
+    if (pathname.startsWith('/login')) {
+      setAuthMode('login');
+      setAuthModalOpen(true);
+      return;
+    }
+    if (pathname.startsWith('/signup')) {
+      setAuthMode('signup');
+      setAuthModalOpen(true);
+      return;
+    }
+
+    // Fallback to home
+    setCurrentPage('home');
+  }, []);
+
+  // Sync route on mount and browser popstate (Back/Forward)
+  useEffect(() => {
+    parseRouteFromLocation();
+
+    const handlePopState = () => {
+      parseRouteFromLocation();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [parseRouteFromLocation]);
+
+  // Navigate function with URL history pushState
+  const navigateTo = (page, propertyId = null, accountTab = null) => {
+    setCurrentPage(page);
+
+    let targetUrl = '/';
+
+    if (page === 'home') {
+      targetUrl = '/';
+      updateMetaTags({
+        title: 'VeeduX — Every Property. One Place. | Kerala Real Estate Marketplace',
+        description: 'Find your dream property in Kerala. Buy, sell, or rent land, plots, villas, houses, apartments, and commercial properties.',
+      });
+    } else if (page === 'search') {
+      targetUrl = '/search';
+      updateMetaTags({
+        title: 'Search Kerala Properties | Buy & Rent Land, Villas, Flats | VeeduX',
+        description: 'Search verified land, houses, flats, and commercial properties across all 14 Kerala districts on VeeduX.',
+      });
+    } else if (page === 'details') {
+      const id = propertyId || (activeProperty ? activeProperty.id : 'vx-101');
+      setSelectedPropertyId(id);
+      targetUrl = `/property/${id}`;
+      const found = properties.find((p) => p.id === id);
+      if (found) {
+        updateMetaTags({
+          title: `${found.title} (${found.price}) | VeeduX Kerala`,
+          description: found.description || `View full details, amenities, and seller contact for ${found.title} on VeeduX.`,
+          image: found.images?.[0],
+        });
+      }
+    } else if (page === 'post') {
+      targetUrl = '/post';
+      updateMetaTags({
+        title: 'Post Property Free in Kerala | Sell & Rent Houses, Land | VeeduX',
+        description: 'List your Kerala property for free on VeeduX. Connect directly with genuine verified buyers.',
+      });
+    } else if (page === 'account') {
+      if (accountTab) {
+        setActiveAccountTab(accountTab);
+        if (accountTab === 'saved') targetUrl = '/saved';
+        else if (accountTab === 'my-properties') targetUrl = '/my-listings';
+        else if (accountTab === 'enquiries') targetUrl = '/enquiries';
+        else if (accountTab === 'messages') targetUrl = '/messages';
+        else targetUrl = '/account';
+      } else {
+        targetUrl = '/account';
+      }
+      updateMetaTags({
+        title: 'My Account & Saved Properties | VeeduX Kerala',
+        description: 'Manage your Kerala listings, saved bookmarks, and buyer enquiries.',
+      });
+    } else if (page === 'admin') {
+      targetUrl = '/admin';
+      updateMetaTags({
+        title: 'Admin Moderation Dashboard | VeeduX Kerala',
+        description: 'Moderate, review, and approve incoming Kerala property listings.',
+      });
+    }
+
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname !== targetUrl) {
+        window.history.pushState({ page, propertyId, accountTab }, '', targetUrl);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Toggle Save Property
@@ -178,9 +364,6 @@ export function AppProvider({ children }) {
     ]);
   };
 
-  // Currently inspected property object
-  const activeProperty = properties.find((p) => p.id === selectedPropertyId) || properties[0];
-
   return (
     <AppContext.Provider
       value={{
@@ -195,6 +378,8 @@ export function AppProvider({ children }) {
         toggleSave,
         user,
         setUser,
+        activeAccountTab,
+        setActiveAccountTab,
         searchFilters,
         setSearchFilters,
         reportedListings,

@@ -160,7 +160,7 @@ export default function Navbar() {
 
           {/* Saved Properties */}
           <button
-            onClick={() => navigateTo('account')}
+            onClick={() => navigateTo('account', null, 'saved')}
             className="relative p-2 rounded-full hover:bg-slate-100 text-slate-600 hover:text-[#145C3D] transition-colors hidden sm:block"
             title="Saved Properties"
           >
@@ -194,7 +194,7 @@ export default function Navbar() {
           {/* User Account / Profile */}
           {user ? (
             <button
-              onClick={() => navigateTo('account')}
+              onClick={() => navigateTo('account', null, 'profile')}
               className="flex items-center gap-2 p-1 sm:px-3 sm:py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-bold text-slate-800 transition-colors"
             >
               <img
@@ -306,7 +306,7 @@ export default function Navbar() {
 
             <button
               onClick={() => {
-                navigateTo('account');
+                navigateTo('account', null, 'saved');
                 setMobileMenuOpen(false);
               }}
               className="text-xs font-bold text-[#145C3D]"

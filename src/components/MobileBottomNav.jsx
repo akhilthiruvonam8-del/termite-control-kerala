@@ -3,7 +3,10 @@ import { Home, Search, PlusCircle, Heart, User } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export default function MobileBottomNav() {
-  const { currentPage, navigateTo, savedIds } = useApp();
+  const { currentPage, navigateTo, savedIds, activeAccountTab } = useApp();
+
+  const isSavedActive = currentPage === 'account' && activeAccountTab === 'saved';
+  const isProfileActive = currentPage === 'account' && activeAccountTab !== 'saved';
 
   return (
     <nav
@@ -63,21 +66,21 @@ export default function MobileBottomNav() {
 
         {/* Saved */}
         <button
-          onClick={() => navigateTo('account')}
+          onClick={() => navigateTo('account', null, 'saved')}
           className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
-            currentPage === 'account'
+            isSavedActive
               ? 'text-[#145C3D] font-bold'
               : 'text-slate-500 hover:text-[#145C3D]'
           }`}
         >
           <div className="relative">
-            <Heart size={22} strokeWidth={currentPage === 'account' ? 2.5 : 1.8} />
+            <Heart size={22} strokeWidth={isSavedActive ? 2.5 : 1.8} />
             {savedIds.length > 0 && (
               <span className="absolute -top-1.5 -right-2 bg-[#D6AD55] text-[#0C3423] text-[9px] font-black rounded-full h-4 min-w-[16px] px-1 flex items-center justify-center shadow-xs">
                 {savedIds.length}
               </span>
             )}
-            {currentPage === 'account' && (
+            {isSavedActive && (
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#D6AD55] rounded-full" />
             )}
           </div>
@@ -86,15 +89,18 @@ export default function MobileBottomNav() {
 
         {/* Profile */}
         <button
-          onClick={() => navigateTo('account')}
+          onClick={() => navigateTo('account', null, 'profile')}
           className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
-            currentPage === 'account'
+            isProfileActive
               ? 'text-[#145C3D] font-bold'
               : 'text-slate-500 hover:text-[#145C3D]'
           }`}
         >
           <div className="relative">
-            <User size={22} strokeWidth={currentPage === 'account' ? 2.5 : 1.8} />
+            <User size={22} strokeWidth={isProfileActive ? 2.5 : 1.8} />
+            {isProfileActive && (
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#D6AD55] rounded-full" />
+            )}
           </div>
           <span className="text-[10px] mt-0.5 tracking-tight">Profile</span>
         </button>

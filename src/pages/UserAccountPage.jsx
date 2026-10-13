@@ -31,9 +31,22 @@ export default function UserAccountPage() {
     notifications,
     setNotifications,
     navigateTo,
+    activeAccountTab,
+    setActiveAccountTab,
   } = useApp();
 
-  const [activeTab, setActiveTab] = useState('profile'); // 'profile' | 'my-properties' | 'saved' | 'enquiries' | 'messages' | 'notifications' | 'settings'
+  const activeTab = activeAccountTab || 'profile';
+  const setActiveTab = (tab) => {
+    setActiveAccountTab(tab);
+    let target = '/account';
+    if (tab === 'saved') target = '/saved';
+    else if (tab === 'my-properties') target = '/my-listings';
+    else if (tab === 'enquiries') target = '/enquiries';
+    else if (tab === 'messages') target = '/messages';
+    if (typeof window !== 'undefined' && window.location.pathname !== target) {
+      window.history.pushState(null, '', target);
+    }
+  };
 
   // User's own properties
   const myProperties = properties.filter(

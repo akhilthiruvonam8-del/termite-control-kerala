@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="forestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#1B734D" />
+      <stop offset="50%" stopColor="#145C3D" />
+      <stop offset="100%" stopColor="#0B3E26" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#F5D88C" />
+      <stop offset="50%" stopColor="#D6AD55" />
+      <stop offset="100%" stopColor="#B3862A" />
+    </linearGradient>
+    <linearGradient id="palmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#2BB075" />
+      <stop offset="100%" stopColor="#145C3D" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded pill -->
+  <rect width="100" height="100" rx="22" fill="#FAF8F2" />
+
+  <!-- House Roof & Gable -->
+  <path d="M 14 36 L 28 66 L 36 63 L 24 40 L 50 20 L 62 28 L 68 22 L 50 10 Z" fill="url(#forestGrad)" />
+  <path d="M 50 20 L 78 44 L 72 50 L 50 30 L 36 41 L 33 36 Z" fill="url(#forestGrad)" />
+
+  <!-- 4-Pane Warm Gold Window -->
+  <g transform="translate(43, 29)">
+    <rect x="0" y="0" width="5.5" height="5.5" rx="1" fill="url(#goldGrad)" />
+    <rect x="7" y="0" width="5.5" height="5.5" rx="1" fill="url(#goldGrad)" />
+    <rect x="0" y="7" width="5.5" height="5.5" rx="1" fill="url(#goldGrad)" />
+    <rect x="7" y="7" width="5.5" height="5.5" rx="1" fill="url(#goldGrad)" />
+  </g>
+
+  <!-- Coconut Palm -->
+  <g transform="translate(62, 7)">
+    <path d="M 8 26 C 9 18 12 11 15 5 C 13.8 11 11.5 18 11 26 Z" fill="url(#forestGrad)" />
+    <path d="M 15 5 C 19 0 25 3 28 8 C 24 6 18 7 15 5 Z" fill="url(#palmGrad)" />
+    <path d="M 15 5 C 21 8 25 15 26 21 C 23 16 19 12 15 5 Z" fill="url(#palmGrad)" />
+    <path d="M 15 5 C 14 0 9 0 5 4 C 8 5 12 5 15 5 Z" fill="url(#palmGrad)" />
+    <path d="M 15 5 C 9 7 4 13 3 19 C 7 15 11 11 15 5 Z" fill="url(#palmGrad)" />
+  </g>
+
+  <!-- Golden Kerala Wave / Foundation -->
+  <path d="M 18 74 C 36 78 48 64 64 61 C 76 59 86 64 92 70 C 84 66 74 65 64 66 C 48 69 34 82 18 74 Z" fill="url(#goldGrad)" />
+  <path d="M 24 81 C 42 85 54 73 70 70 C 82 68 88 72 90 74 C 84 71 74 72 68 74 C 50 79 38 88 24 81 Z" fill="url(#goldGrad)" opacity="0.8" />
+</svg>
