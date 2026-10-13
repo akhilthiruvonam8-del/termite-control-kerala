@@ -78,6 +78,10 @@ export default function PropertyCard({ property }) {
 
         {/* Top Badges */}
         <div className="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5 items-center z-10">
+          <span className="inline-flex items-center gap-1 bg-[#D6AD55] text-[#0C3423] text-[9px] font-black px-2 py-0.5 rounded-full shadow-xs tracking-wider uppercase">
+            Demo Listing
+          </span>
+
           {property.verified && (
             <span className="inline-flex items-center gap-1 bg-[#145C3D]/95 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
               <ShieldCheck size={11} className="text-[#D6AD55]" />
@@ -86,7 +90,7 @@ export default function PropertyCard({ property }) {
           )}
 
           {property.directOwner && (
-            <span className="inline-flex items-center gap-1 bg-[#D6AD55] text-[#0C3423] text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">
+            <span className="inline-flex items-center gap-1 bg-white/90 backdrop-blur-md text-[#145C3D] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
               Direct Owner
             </span>
           )}
@@ -164,10 +168,17 @@ export default function PropertyCard({ property }) {
             {property.title}
           </h3>
 
-          {/* Location */}
-          <div className="flex items-center gap-1 text-slate-500 text-xs mt-1">
-            <MapPin size={13} className="text-[#27865B] flex-shrink-0" />
-            <span className="truncate">{property.location || property.locality}</span>
+          {/* Location & District */}
+          <div className="flex items-center justify-between gap-1 text-xs mt-1">
+            <div className="flex items-center gap-1 text-slate-500 min-w-0">
+              <MapPin size={13} className="text-[#27865B] flex-shrink-0" />
+              <span className="truncate">{property.location || property.locality}</span>
+            </div>
+            {property.district && (
+              <span className="text-[10px] font-bold text-[#145C3D] bg-emerald-50 border border-emerald-200/70 px-1.5 py-0.5 rounded-md flex-shrink-0">
+                {property.district}
+              </span>
+            )}
           </div>
         </div>
 

@@ -33,6 +33,7 @@ export function AppProvider({ children }) {
     query: '',
     purpose: 'all', // 'all' | 'sell' | 'rent'
     district: 'All Kerala',
+    city: 'All Cities',
     locality: '',
     propertyType: 'all', // all | land-plots | houses | villas | apartments | flats | commercial | shops | offices | rentals
     minPrice: '',

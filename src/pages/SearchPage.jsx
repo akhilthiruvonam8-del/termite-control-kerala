@@ -15,16 +15,36 @@ import {
   Car,
   ShieldCheck,
   Compass,
+  ChevronRight,
+  Layers,
 } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import { useApp } from '../context/AppContext';
 import { PROPERTY_TYPES } from '../data/veeduxData';
-import { KERALA_DISTRICTS } from '../data/locations';
+import {
+  KERALA_DISTRICTS,
+  getCitiesByDistrict,
+  POPULAR_KERALA_CITIES,
+  STATE_INFO,
+} from '../data/locations';
 
 export default function SearchPage() {
   const { properties, searchFilters, setSearchFilters, navigateTo } = useApp();
   const [viewMode, setViewMode] = useState('list'); // 'list' | 'map'
   const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
+
+  // Available cities based on selected district
+  const availableCities = useMemo(() => {
+    if (!searchFilters.district || searchFilters.district === 'All Kerala') {
+      return POPULAR_KERALA_CITIES.map((c) => ({
+        id: c.id,
+        name: c.name,
+        type: 'Popular Hub',
+        district: c.district,
+      }));
+    }
+    return getCitiesByDistrict(searchFilters.district);
+  }, [searchFilters.district]);
 
   // Filter handlers
   const handleResetFilters = () => {
@@ -32,6 +52,7 @@ export default function SearchPage() {
       query: '',
       purpose: 'all',
       district: 'All Kerala',
+      city: 'All Cities',
       locality: '',
       propertyType: 'all',
       minPrice: '',
@@ -76,6 +97,17 @@ export default function SearchPage() {
       result = result.filter((p) => p.district.toLowerCase().includes(searchFilters.district.toLowerCase()));
     }
 
+    // 3b. City
+    if (searchFilters.city && searchFilters.city !== 'All Cities') {
+      const c = searchFilters.city.toLowerCase();
+      result = result.filter(
+        (p) =>
+          p.location.toLowerCase().includes(c) ||
+          (p.city && p.city.toLowerCase().includes(c)) ||
+          (p.locality && p.locality.toLowerCase().includes(c))
+      );
+    }
+
     // 4. Locality
     if (searchFilters.locality?.trim()) {
       const loc = searchFilters.locality.toLowerCase();
@@ -95,6 +127,26 @@ export default function SearchPage() {
     if (searchFilters.maxPrice) {
       const max = Number(searchFilters.maxPrice);
       result = result.filter((p) => p.priceNumber <= max);
+    }
+
+    // 6b. Land Area in Cents (min / max)
+    if (searchFilters.landAreaMin) {
+      const minCents = Number(searchFilters.landAreaMin);
+      result = result.filter((p) => (p.landAreaCents !== undefined ? p.landAreaCents >= minCents : true));
+    }
+    if (searchFilters.landAreaMax) {
+      const maxCents = Number(searchFilters.landAreaMax);
+      result = result.filter((p) => (p.landAreaCents !== undefined ? p.landAreaCents <= maxCents : true));
+    }
+
+    // 6c. Built-Up Area in Sq.Ft (min / max)
+    if (searchFilters.builtUpMin) {
+      const minSq = Number(searchFilters.builtUpMin);
+      result = result.filter((p) => (p.builtUpSqFt !== undefined ? p.builtUpSqFt >= minSq : true));
+    }
+    if (searchFilters.builtUpMax) {
+      const maxSq = Number(searchFilters.builtUpMax);
+      result = result.filter((p) => (p.builtUpSqFt !== undefined ? p.builtUpSqFt <= maxSq : true));
     }
 
     // 7. Bedrooms
@@ -143,7 +195,7 @@ export default function SearchPage() {
       <div className="flex items-center justify-between pb-3 border-b border-[#E2EBE5]">
         <div className="flex items-center gap-2">
           <SlidersHorizontal size={18} className="text-[#145C3D]" />
-          <h3 className="font-bold text-sm text-slate-900">Filters</h3>
+          <h3 className="font-bold text-sm text-slate-900">Search Filters</h3>
         </div>
         <button
           onClick={handleResetFilters}
@@ -153,6 +205,30 @@ export default function SearchPage() {
           <span>Reset All</span>
         </button>
       </div>
+
+      {/* One-click "Search Across Kerala" Reset Button */}
+      <button
+        type="button"
+        onClick={() =>
+          setSearchFilters((prev) => ({
+            ...prev,
+            district: 'All Kerala',
+            city: 'All Cities',
+            locality: '',
+          }))
+        }
+        className={`w-full py-2.5 px-3 rounded-2xl text-xs font-bold flex items-center justify-between border transition-all ${
+          searchFilters.district === 'All Kerala'
+            ? 'bg-[#145C3D] text-white border-[#145C3D] shadow-xs'
+            : 'bg-emerald-50 text-[#145C3D] border-emerald-200 hover:bg-emerald-100'
+        }`}
+      >
+        <span className="flex items-center gap-1.5">
+          <Compass size={14} className={searchFilters.district === 'All Kerala' ? 'text-[#D6AD55]' : 'text-[#27865B]'} />
+          Search Across All Kerala
+        </span>
+        <span className="text-[10px] opacity-80 font-bold">14 ജില്ലകൾ</span>
+      </button>
 
       {/* Purpose: Buy / Rent */}
       <div>
@@ -180,37 +256,71 @@ export default function SearchPage() {
         </div>
       </div>
 
-      {/* Kerala District */}
+      {/* Kerala District Selector (14 Districts) */}
       <div>
-        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
-          Kerala District (ജില്ല)
+        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2 flex items-center justify-between">
+          <span>Kerala District (ജില്ല)</span>
+          <span className="text-[10px] text-emerald-700 font-bold">14 Districts</span>
         </label>
         <select
           value={searchFilters.district}
-          onChange={(e) => setSearchFilters((prev) => ({ ...prev, district: e.target.value }))}
-          className="w-full bg-[#FAF8F2] p-3 rounded-2xl text-xs font-semibold text-slate-800 border border-[#E2EBE5] focus:outline-none"
+          onChange={(e) => {
+            const newDist = e.target.value;
+            setSearchFilters((prev) => ({
+              ...prev,
+              district: newDist,
+              city: 'All Cities',
+            }));
+          }}
+          className="w-full bg-[#FAF8F2] p-3 rounded-2xl text-xs font-semibold text-slate-800 border border-[#E2EBE5] focus:outline-none focus:border-[#145C3D]"
         >
           <option value="All Kerala">All Kerala (All 14 Districts)</option>
           {KERALA_DISTRICTS.map((d) => (
             <option key={d.id} value={d.name}>
-              {d.name} ({d.malayalam})
+              {d.name} ({d.malayalam}) — {d.region}
             </option>
           ))}
         </select>
       </div>
 
-      {/* Locality Search */}
+      {/* Cascading City / Town Selector */}
+      <div>
+        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2 flex items-center justify-between">
+          <span>City / Town / Municipality</span>
+          {searchFilters.district !== 'All Kerala' && (
+            <span className="text-[10px] text-slate-500 font-semibold">{searchFilters.district}</span>
+          )}
+        </label>
+        <select
+          value={searchFilters.city || 'All Cities'}
+          onChange={(e) => setSearchFilters((prev) => ({ ...prev, city: e.target.value }))}
+          className="w-full bg-[#FAF8F2] p-3 rounded-2xl text-xs font-semibold text-slate-800 border border-[#E2EBE5] focus:outline-none focus:border-[#145C3D]"
+        >
+          <option value="All Cities">
+            {searchFilters.district === 'All Kerala'
+              ? 'All Kerala Cities & Towns'
+              : `All Cities in ${searchFilters.district}`}
+          </option>
+          {availableCities.map((c) => (
+            <option key={c.id} value={c.name}>
+              {c.name} {c.type ? `(${c.type})` : ''}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Locality & Landmark Search */}
       <div>
         <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
-          City / Locality
+          Locality / Landmark
         </label>
         <div className="relative">
           <input
             type="text"
-            placeholder="E.g. Kakkanad, Marine Drive..."
+            placeholder="E.g. Kakkanad, Pattom, Marine Drive, Infopark..."
             value={searchFilters.locality || ''}
             onChange={(e) => setSearchFilters((prev) => ({ ...prev, locality: e.target.value }))}
-            className="w-full bg-[#FAF8F2] p-3 pl-9 rounded-2xl text-xs font-medium text-slate-800 border border-[#E2EBE5] focus:outline-none"
+            className="w-full bg-[#FAF8F2] p-3 pl-9 rounded-2xl text-xs font-medium text-slate-800 border border-[#E2EBE5] focus:outline-none focus:border-[#145C3D]"
           />
           <MapPin size={15} className="absolute left-3 top-3.5 text-slate-400" />
         </div>
@@ -273,6 +383,53 @@ export default function SearchPage() {
         </div>
       </div>
 
+      {/* Land Area in Cents (Kerala standard measurement) */}
+      <div>
+        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2 flex items-center justify-between">
+          <span>Land Area (Cents - സെന്റ്)</span>
+          <span className="text-[10px] text-slate-400">1 Cent ≈ 435.6 sq.ft</span>
+        </label>
+        <div className="grid grid-cols-2 gap-2">
+          <input
+            type="number"
+            placeholder="Min Cents"
+            value={searchFilters.landAreaMin || ''}
+            onChange={(e) => setSearchFilters((prev) => ({ ...prev, landAreaMin: e.target.value }))}
+            className="w-full bg-[#FAF8F2] p-2.5 rounded-xl text-xs border border-[#E2EBE5] focus:outline-none"
+          />
+          <input
+            type="number"
+            placeholder="Max Cents"
+            value={searchFilters.landAreaMax || ''}
+            onChange={(e) => setSearchFilters((prev) => ({ ...prev, landAreaMax: e.target.value }))}
+            className="w-full bg-[#FAF8F2] p-2.5 rounded-xl text-xs border border-[#E2EBE5] focus:outline-none"
+          />
+        </div>
+      </div>
+
+      {/* Built-Up Area in Sq.Ft */}
+      <div>
+        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
+          Built-Up Area (Sq.Ft)
+        </label>
+        <div className="grid grid-cols-2 gap-2">
+          <input
+            type="number"
+            placeholder="Min Sq.Ft"
+            value={searchFilters.builtUpMin || ''}
+            onChange={(e) => setSearchFilters((prev) => ({ ...prev, builtUpMin: e.target.value }))}
+            className="w-full bg-[#FAF8F2] p-2.5 rounded-xl text-xs border border-[#E2EBE5] focus:outline-none"
+          />
+          <input
+            type="number"
+            placeholder="Max Sq.Ft"
+            value={searchFilters.builtUpMax || ''}
+            onChange={(e) => setSearchFilters((prev) => ({ ...prev, builtUpMax: e.target.value }))}
+            className="w-full bg-[#FAF8F2] p-2.5 rounded-xl text-xs border border-[#E2EBE5] focus:outline-none"
+          />
+        </div>
+      </div>
+
       {/* Bedrooms (BHK) */}
       <div>
         <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
@@ -290,6 +447,28 @@ export default function SearchPage() {
               }`}
             >
               {b === 'all' ? 'Any' : `${b}+`}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Bathrooms */}
+      <div>
+        <label className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
+          Bathrooms
+        </label>
+        <div className="flex gap-1.5">
+          {['all', '1', '2', '3', '4'].map((ba) => (
+            <button
+              key={ba}
+              onClick={() => setSearchFilters((prev) => ({ ...prev, bathrooms: ba }))}
+              className={`flex-1 py-2 rounded-xl text-xs font-bold border transition-all ${
+                searchFilters.bathrooms === ba
+                  ? 'bg-[#145C3D] text-white border-[#145C3D]'
+                  : 'bg-[#FAF8F2] text-slate-700 border-[#E2EBE5]'
+              }`}
+            >
+              {ba === 'all' ? 'Any' : `${ba}+`}
             </button>
           ))}
         </div>
@@ -405,39 +584,155 @@ export default function SearchPage() {
           </div>
         </div>
 
-        {/* Active Filter Pills Bar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar text-[11px]">
-          <span className="font-bold text-[#145C3D]">
-            {filteredList.length} Properties Found
-          </span>
-          {searchFilters.district !== 'All Kerala' && (
-            <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1">
-              <span>{searchFilters.district}</span>
+        {/* Location Hierarchy Breadcrumbs & Filter Pills Bar */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-2.5 space-y-2">
+          {/* Breadcrumb row: Kerala → District → City → Locality */}
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 overflow-x-auto no-scrollbar pt-1">
+            <button
+              onClick={() =>
+                setSearchFilters((prev) => ({
+                  ...prev,
+                  district: 'All Kerala',
+                  city: 'All Cities',
+                  locality: '',
+                }))
+              }
+              className="text-[#145C3D] hover:underline font-bold flex items-center gap-1 flex-shrink-0"
+            >
+              <Compass size={13} className="text-[#D6AD55]" />
+              <span>Kerala</span>
+            </button>
+            <ChevronRight size={11} className="text-slate-400 flex-shrink-0" />
+
+            <button
+              onClick={() =>
+                setSearchFilters((prev) => ({
+                  ...prev,
+                  city: 'All Cities',
+                  locality: '',
+                }))
+              }
+              className={`hover:underline flex-shrink-0 ${
+                searchFilters.district !== 'All Kerala'
+                  ? 'text-[#145C3D] font-bold'
+                  : 'text-slate-600'
+              }`}
+            >
+              {searchFilters.district || 'All Districts (14)'}
+            </button>
+
+            {searchFilters.city && searchFilters.city !== 'All Cities' && (
+              <>
+                <ChevronRight size={11} className="text-slate-400 flex-shrink-0" />
+                <button
+                  onClick={() => setSearchFilters((prev) => ({ ...prev, locality: '' }))}
+                  className="text-[#145C3D] font-bold hover:underline flex-shrink-0"
+                >
+                  {searchFilters.city}
+                </button>
+              </>
+            )}
+
+            {searchFilters.locality && (
+              <>
+                <ChevronRight size={11} className="text-slate-400 flex-shrink-0" />
+                <span className="text-slate-900 font-bold bg-[#FAF8F2] px-2 py-0.5 rounded-md border border-[#E2EBE5] flex-shrink-0">
+                  {searchFilters.locality}
+                </span>
+              </>
+            )}
+          </div>
+
+          {/* Active Filter Badges */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar text-[11px]">
+            <span className="font-bold text-[#145C3D] flex-shrink-0 mr-1">
+              {filteredList.length} Properties
+            </span>
+
+            {searchFilters.district !== 'All Kerala' && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>District: {searchFilters.district}</span>
+                <button
+                  onClick={() =>
+                    setSearchFilters((prev) => ({
+                      ...prev,
+                      district: 'All Kerala',
+                      city: 'All Cities',
+                    }))
+                  }
+                >
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {searchFilters.city && searchFilters.city !== 'All Cities' && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>City: {searchFilters.city}</span>
+                <button
+                  onClick={() => setSearchFilters((prev) => ({ ...prev, city: 'All Cities' }))}
+                >
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {searchFilters.locality && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>Locality: {searchFilters.locality}</span>
+                <button
+                  onClick={() => setSearchFilters((prev) => ({ ...prev, locality: '' }))}
+                >
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {searchFilters.purpose !== 'all' && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>For {searchFilters.purpose === 'sell' ? 'Buy' : 'Rent'}</span>
+                <button onClick={() => setSearchFilters((prev) => ({ ...prev, purpose: 'all' }))}>
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {searchFilters.propertyType !== 'all' && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>Type: {searchFilters.propertyType}</span>
+                <button
+                  onClick={() => setSearchFilters((prev) => ({ ...prev, propertyType: 'all' }))}
+                >
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {searchFilters.landAreaMin && (
+              <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1 flex-shrink-0">
+                <span>≥ {searchFilters.landAreaMin} Cents</span>
+                <button
+                  onClick={() => setSearchFilters((prev) => ({ ...prev, landAreaMin: '' }))}
+                >
+                  <X size={11} />
+                </button>
+              </span>
+            )}
+
+            {(searchFilters.district !== 'All Kerala' ||
+              searchFilters.city !== 'All Cities' ||
+              searchFilters.locality ||
+              searchFilters.purpose !== 'all' ||
+              searchFilters.propertyType !== 'all' ||
+              searchFilters.query) && (
               <button
-                onClick={() => setSearchFilters((prev) => ({ ...prev, district: 'All Kerala' }))}
+                onClick={handleResetFilters}
+                className="text-[11px] text-slate-500 hover:text-rose-600 font-bold underline ml-2 flex-shrink-0"
               >
-                <X size={11} />
+                Clear All
               </button>
-            </span>
-          )}
-          {searchFilters.purpose !== 'all' && (
-            <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1">
-              <span>For {searchFilters.purpose === 'sell' ? 'Buy' : 'Rent'}</span>
-              <button onClick={() => setSearchFilters((prev) => ({ ...prev, purpose: 'all' }))}>
-                <X size={11} />
-              </button>
-            </span>
-          )}
-          {searchFilters.propertyType !== 'all' && (
-            <span className="bg-emerald-50 text-[#145C3D] px-2.5 py-0.5 rounded-full border border-emerald-200 font-semibold flex items-center gap-1">
-              <span>{searchFilters.propertyType}</span>
-              <button
-                onClick={() => setSearchFilters((prev) => ({ ...prev, propertyType: 'all' }))}
-              >
-                <X size={11} />
-              </button>
-            </span>
-          )}
+            )}
+          </div>
         </div>
       </div>
 

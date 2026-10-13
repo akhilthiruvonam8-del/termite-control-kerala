@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { PROPERTY_TYPES } from '../data/veeduxData';
-import { KERALA_DISTRICTS } from '../data/locations';
+import { KERALA_DISTRICTS, getCitiesByDistrict } from '../data/locations';
 
 export default function PostPropertyPage() {
   const { submitNewListing, navigateTo } = useApp();
@@ -48,6 +48,7 @@ export default function PostPropertyPage() {
     furnishing: 'Semi-Furnished',
     parking: '2 Covered Cars',
     district: 'Ernakulam',
+    city: 'Kakkanad',
     location: 'Kakkanad, Kochi',
     locality: 'Near Infopark Expressway',
     price: '₹ 95 Lakhs',
@@ -348,24 +349,32 @@ export default function PostPropertyPage() {
                       Step 4: Location & Map Pin
                     </h2>
                     <p className="text-xs text-slate-500 mt-0.5">
-                      Select your Kerala district and key landmark.
+                      Select your Kerala district, municipality/city, and landmark.
                     </p>
                   </div>
 
                   <div>
                     <label className="text-xs font-bold text-slate-700 block mb-1">
-                      Kerala District *
+                      Kerala District (14 ജില്ലകൾ) *
                     </label>
                     <select
                       value={formData.district}
-                      onChange={(e) =>
-                        setFormData({ ...formData, district: e.target.value })
-                      }
-                      className="w-full text-xs p-3 rounded-2xl border border-slate-300 bg-[#FAF8F2]"
+                      onChange={(e) => {
+                        const newDist = e.target.value;
+                        const towns = getCitiesByDistrict(newDist);
+                        const firstTown = towns[0]?.name || '';
+                        setFormData({
+                          ...formData,
+                          district: newDist,
+                          city: firstTown,
+                          location: `${firstTown}, ${newDist}`,
+                        });
+                      }}
+                      className="w-full text-xs p-3 rounded-2xl border border-slate-300 bg-[#FAF8F2] focus:outline-none focus:border-[#145C3D]"
                     >
                       {KERALA_DISTRICTS.map((d) => (
                         <option key={d.id} value={d.name}>
-                          {d.name} ({d.malayalam})
+                          {d.name} ({d.malayalam}) — {d.region}
                         </option>
                       ))}
                     </select>
@@ -373,30 +382,78 @@ export default function PostPropertyPage() {
 
                   <div>
                     <label className="text-xs font-bold text-slate-700 block mb-1">
-                      Locality & Landmark *
+                      City / Town / Municipality *
+                    </label>
+                    <select
+                      value={formData.city || ''}
+                      onChange={(e) => {
+                        const newCity = e.target.value;
+                        setFormData({
+                          ...formData,
+                          city: newCity,
+                          location: `${formData.locality || newCity}, ${formData.district}`,
+                        });
+                      }}
+                      className="w-full text-xs p-3 rounded-2xl border border-slate-300 bg-[#FAF8F2] focus:outline-none focus:border-[#145C3D]"
+                    >
+                      {getCitiesByDistrict(formData.district).map((c) => (
+                        <option key={c.id} value={c.name}>
+                          {c.name} {c.type ? `(${c.type})` : ''}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-bold text-slate-700 block mb-1">
+                      Locality, Ward & Key Landmark *
                     </label>
                     <input
                       type="text"
-                      placeholder="E.g. Kakkanad, near Infopark Main Gate"
+                      placeholder="E.g. Near Infopark Main Gate, Expressway Jn"
                       value={formData.locality}
                       onChange={(e) =>
                         setFormData({
                           ...formData,
                           locality: e.target.value,
-                          location: `${e.target.value}, ${formData.district}`,
+                          location: `${e.target.value || formData.city}, ${formData.district}`,
                         })
                       }
-                      className="w-full text-xs p-3 rounded-2xl border border-slate-300 bg-[#FAF8F2] focus:outline-none"
+                      className="w-full text-xs p-3 rounded-2xl border border-slate-300 bg-[#FAF8F2] focus:outline-none focus:border-[#145C3D]"
                     />
                   </div>
 
-                  <div className="bg-[#FAF8F2] p-4 rounded-2xl border border-[#E2EBE5] text-center space-y-1">
-                    <MapPin size={24} className="text-[#145C3D] mx-auto animate-bounce" />
-                    <p className="text-xs font-bold text-slate-800">
-                      GPS Map Pin Automatically Set
+                  {/* Location Breadcrumb Preview */}
+                  <div className="bg-[#FAF8F2] p-3.5 rounded-2xl border border-[#E2EBE5] space-y-1.5">
+                    <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                      Hierarchical Address Preview:
+                    </span>
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] flex-wrap">
+                      <span>Kerala</span>
+                      <span className="text-slate-300">→</span>
+                      <span>{formData.district}</span>
+                      {formData.city && (
+                        <>
+                          <span className="text-slate-300">→</span>
+                          <span>{formData.city}</span>
+                        </>
+                      )}
+                      {formData.locality && (
+                        <>
+                          <span className="text-slate-300">→</span>
+                          <span className="text-slate-800">{formData.locality}</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="bg-emerald-50/70 p-3.5 rounded-2xl border border-emerald-200 text-center space-y-1">
+                    <MapPin size={22} className="text-[#145C3D] mx-auto animate-bounce" />
+                    <p className="text-xs font-bold text-[#145C3D]">
+                      GPS Coordinates Automatically Configured
                     </p>
-                    <p className="text-[11px] text-slate-500">
-                      Location set to: {formData.locality || formData.district}
+                    <p className="text-[11px] text-slate-600">
+                      Pin drop target: {formData.locality || formData.city || formData.district}
                     </p>
                   </div>
                 </div>

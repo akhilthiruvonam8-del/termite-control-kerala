@@ -13,10 +13,11 @@ import {
   Building2,
   Home,
   SlidersHorizontal,
+  Compass,
 } from 'lucide-react';
 import VeeduXLogo from './VeeduXLogo';
 import { useApp } from '../context/AppContext';
-import { KERALA_DISTRICTS } from '../data/locations';
+import { KERALA_DISTRICTS, POPULAR_KERALA_CITIES } from '../data/locations';
 
 export default function Navbar() {
   const {
@@ -32,16 +33,34 @@ export default function Navbar() {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [districtDropdownOpen, setDistrictDropdownOpen] = useState(false);
+  const [locationSearch, setLocationSearch] = useState('');
+  const [selectedRegion, setSelectedRegion] = useState('all');
 
   const unreadNotifications = notifications.filter((n) => !n.read).length;
 
-  const handleDistrictChange = (districtName) => {
-    setSearchFilters((prev) => ({ ...prev, district: districtName }));
+  const handleDistrictChange = (districtName, cityName = 'All Cities') => {
+    setSearchFilters((prev) => ({
+      ...prev,
+      district: districtName,
+      city: cityName,
+    }));
     setDistrictDropdownOpen(false);
+    setLocationSearch('');
     if (currentPage !== 'search') {
       navigateTo('search');
     }
   };
+
+  const filteredDistricts = KERALA_DISTRICTS.filter((d) => {
+    const matchesRegion = selectedRegion === 'all' || d.region.toLowerCase().includes(selectedRegion.toLowerCase());
+    const q = locationSearch.toLowerCase().trim();
+    const matchesSearch =
+      !q ||
+      d.name.toLowerCase().includes(q) ||
+      d.malayalam.includes(q) ||
+      (d.cities && d.cities.some((c) => c.name.toLowerCase().includes(q)));
+    return matchesRegion && matchesSearch;
+  });
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#E2EBE5] transition-all">
@@ -55,38 +74,96 @@ export default function Navbar() {
             <VeeduXLogo size="md" />
           </button>
 
-          {/* Quick Kerala District Selector (Desktop) */}
+          {/* Quick Kerala District & City Selector (Desktop) */}
           <div className="hidden lg:relative lg:block">
             <button
               onClick={() => setDistrictDropdownOpen(!districtDropdownOpen)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-semibold text-slate-800 transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-semibold text-slate-800 transition-colors shadow-2xs"
             >
               <MapPin size={14} className="text-[#27865B]" />
-              <span>{searchFilters.district || 'All Kerala'}</span>
+              <span className="font-bold text-[#145C3D]">
+                {searchFilters.district === 'All Kerala'
+                  ? 'Kerala (All Districts)'
+                  : searchFilters.city && searchFilters.city !== 'All Cities'
+                  ? `${searchFilters.city}, ${searchFilters.district}`
+                  : searchFilters.district}
+              </span>
               <ChevronDown size={12} className="text-slate-400" />
             </button>
 
             {districtDropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-[#E2EBE5] py-2 z-50 animate-in fade-in max-h-80 overflow-y-auto">
-                <div className="px-3 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                  Select Kerala District
+              <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-[#E2EBE5] p-3 z-50 animate-in fade-in">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-100 mb-2">
+                  <div className="flex items-center gap-1 text-[11px] font-black text-[#145C3D] uppercase tracking-wider">
+                    <Compass size={13} className="text-[#D6AD55]" />
+                    <span>Select Kerala Location</span>
+                  </div>
+                  <span className="text-[10px] text-slate-400 font-bold">14 Districts</span>
                 </div>
+
+                {/* Search input inside dropdown */}
+                <div className="relative mb-2">
+                  <input
+                    type="text"
+                    placeholder="Search district or city..."
+                    value={locationSearch}
+                    onChange={(e) => setLocationSearch(e.target.value)}
+                    className="w-full bg-[#FAF8F2] pl-7 pr-3 py-1.5 rounded-xl text-xs border border-slate-200 focus:outline-none focus:border-[#145C3D]"
+                  />
+                  <Search size={12} className="absolute left-2.5 top-2.5 text-slate-400" />
+                </div>
+
+                {/* Region pills */}
+                <div className="flex items-center gap-1 pb-2 mb-2 border-b border-slate-100 text-[10px] font-bold">
+                  {['all', 'South', 'Central', 'North'].map((reg) => (
+                    <button
+                      key={reg}
+                      type="button"
+                      onClick={() => setSelectedRegion(reg)}
+                      className={`px-2 py-0.5 rounded-md transition-colors ${
+                        selectedRegion === reg
+                          ? 'bg-[#145C3D] text-white'
+                          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                      }`}
+                    >
+                      {reg === 'all' ? 'All Kerala' : `${reg} Kerala`}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Reset / All Kerala primary button */}
                 <button
-                  onClick={() => handleDistrictChange('All Kerala')}
-                  className="w-full text-left px-3.5 py-2 text-xs font-semibold hover:bg-emerald-50 hover:text-[#145C3D] flex items-center justify-between"
+                  onClick={() => handleDistrictChange('All Kerala', 'All Cities')}
+                  className="w-full text-left px-3 py-2 rounded-xl text-xs font-bold bg-emerald-50 text-[#145C3D] hover:bg-emerald-100 flex items-center justify-between mb-2 transition-colors"
                 >
-                  <span>All Kerala (All 14 Districts)</span>
+                  <span className="flex items-center gap-1.5">
+                    <MapPin size={13} />
+                    Search Across Kerala (All 14 Districts)
+                  </span>
+                  <span className="text-[10px] text-[#27865B] font-bold">എല്ലാ ജില്ലകളും</span>
                 </button>
-                {KERALA_DISTRICTS.map((d) => (
-                  <button
-                    key={d.id}
-                    onClick={() => handleDistrictChange(d.name)}
-                    className="w-full text-left px-3.5 py-2 text-xs font-medium hover:bg-emerald-50 hover:text-[#145C3D] flex items-center justify-between"
-                  >
-                    <span>{d.name}</span>
-                    <span className="text-[10px] text-slate-400">{d.malayalam}</span>
-                  </button>
-                ))}
+
+                {/* List of Districts */}
+                <div className="max-h-56 overflow-y-auto no-scrollbar space-y-0.5 pr-1">
+                  {filteredDistricts.length === 0 ? (
+                    <p className="text-center py-4 text-xs text-slate-400">No districts match "{locationSearch}"</p>
+                  ) : (
+                    filteredDistricts.map((d) => (
+                      <div key={d.id} className="group">
+                        <button
+                          onClick={() => handleDistrictChange(d.name, 'All Cities')}
+                          className="w-full text-left px-2.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-slate-100 text-slate-800 flex items-center justify-between transition-colors"
+                        >
+                          <div>
+                            <span className="text-slate-900 group-hover:text-[#145C3D] font-bold">{d.name}</span>
+                            <span className="text-[10px] text-slate-400 ml-1.5">({d.region})</span>
+                          </div>
+                          <span className="text-[10px] text-slate-500 font-medium">{d.malayalam}</span>
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
             )}
           </div>

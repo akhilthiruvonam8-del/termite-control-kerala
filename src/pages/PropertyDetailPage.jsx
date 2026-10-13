@@ -38,6 +38,7 @@ export default function PropertyDetailPage() {
     toggleSave,
     reportListing,
     addEnquiry,
+    setSearchFilters,
   } = useApp();
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -170,13 +171,66 @@ export default function PropertyDetailPage() {
         </div>
       </div>
 
+      {/* Location Hierarchy Breadcrumbs */}
+      <div className="bg-[#FAF8F2] border-b border-[#E2EBE5] px-4 sm:px-6 py-2.5">
+        <div className="max-w-7xl mx-auto flex items-center justify-between text-xs text-slate-500 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <button
+              onClick={() => {
+                setSearchFilters((prev) => ({ ...prev, district: 'All Kerala', city: 'All Cities' }));
+                navigateTo('search');
+              }}
+              className="text-[#145C3D] hover:underline font-bold flex items-center gap-1"
+            >
+              <Compass size={13} className="text-[#D6AD55]" />
+              <span>Kerala</span>
+            </button>
+            <ChevronRight size={12} className="text-slate-300" />
+            <button
+              onClick={() => {
+                setSearchFilters((prev) => ({ ...prev, district: activeProperty.district, city: 'All Cities' }));
+                navigateTo('search');
+              }}
+              className="hover:underline font-bold text-slate-800"
+            >
+              {activeProperty.district}
+            </button>
+            <ChevronRight size={12} className="text-slate-300" />
+            <span className="font-semibold text-slate-600">{activeProperty.location}</span>
+          </div>
+
+          <div className="hidden sm:inline-flex items-center gap-1.5 bg-amber-50 text-amber-800 text-[11px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200 flex-shrink-0">
+            <Sparkles size={12} className="text-[#D6AD55]" />
+            <span>Demo Property Listing</span>
+          </div>
+        </div>
+      </div>
+
       {copiedLink && (
         <div className="bg-[#145C3D] text-white text-xs py-2 px-4 text-center font-bold animate-in slide-in-from-top">
           Link copied to clipboard! Share with family or buyers.
         </div>
       )}
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+        {/* Demo Listing Verification Banner */}
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 flex items-center justify-between gap-3 text-xs text-amber-900 shadow-2xs">
+          <div className="flex items-center gap-2.5">
+            <span className="w-7 h-7 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center font-bold text-xs flex-shrink-0">
+              ℹ
+            </span>
+            <div>
+              <span className="font-bold">Demo Listing for Preview & Evaluation</span>
+              <p className="text-[11px] text-amber-800">
+                All production listings on VeeduX undergo physical inspection, title-deed cross-check, and owner verification.
+              </p>
+            </div>
+          </div>
+          <span className="hidden md:inline text-[10px] font-black uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2.5 py-1 rounded-md flex-shrink-0">
+            Demo Listing
+          </span>
+        </div>
+
         {/* Gallery & Video Tour Showcase */}
         <section className="bg-white rounded-3xl overflow-hidden border border-[#E2EBE5] shadow-sm">
           <div className="relative aspect-[16/9] sm:aspect-[21/9] bg-slate-900 group">

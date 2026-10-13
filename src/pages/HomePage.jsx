@@ -19,11 +19,18 @@ import {
   Store,
   Briefcase,
   Layers,
+  Compass,
+  TreePalm,
+  Trees,
 } from 'lucide-react';
 import PropertyCard from '../components/PropertyCard';
 import { useApp } from '../context/AppContext';
-import { CATEGORIES, POPULAR_LOCATIONS, TRUST_FEATURES } from '../data/veeduxData';
-import { KERALA_DISTRICTS } from '../data/locations';
+import { CATEGORIES, TRUST_FEATURES } from '../data/veeduxData';
+import {
+  KERALA_DISTRICTS,
+  POPULAR_KERALA_CITIES,
+  STATE_INFO,
+} from '../data/locations';
 
 export default function HomePage() {
   const { properties, navigateTo, searchFilters, setSearchFilters } = useApp();
@@ -33,6 +40,12 @@ export default function HomePage() {
   const [heroType, setHeroType] = useState('all');
   const [heroLocation, setHeroLocation] = useState('All Kerala');
   const [heroBudget, setHeroBudget] = useState('any');
+
+  // District filter tab
+  const [districtRegionTab, setDistrictRegionTab] = useState('all'); // 'all' | 'South Kerala' | 'Central Kerala' | 'North Kerala'
+
+  // Popular cities filter tab
+  const [cityFilterTab, setCityFilterTab] = useState('all'); // 'all' | 'kochi' | 'trivandrum' | 'malabar' | 'central' | 'highland'
 
   const handleHeroSearch = (e) => {
     e.preventDefault();
@@ -66,15 +79,66 @@ export default function HomePage() {
     }
   };
 
+  const handleDistrictClick = (districtName) => {
+    setSearchFilters((prev) => ({
+      ...prev,
+      district: districtName,
+      city: 'All Cities',
+      locality: '',
+    }));
+    navigateTo('search');
+  };
+
+  const handleCityClick = (cityName, districtName) => {
+    setSearchFilters((prev) => ({
+      ...prev,
+      district: districtName || 'All Kerala',
+      city: cityName,
+      locality: '',
+    }));
+    navigateTo('search');
+  };
+
+  // Approved properties
+  const validProperties = properties.filter(
+    (p) => p.approvalStatus !== 'pending' && p.approvalStatus !== 'rejected'
+  );
+
   // Featured Properties (Approved only)
-  const featuredProperties = properties
-    .filter((p) => p.featured && p.approvalStatus !== 'pending' && p.approvalStatus !== 'rejected')
-    .slice(0, 6);
+  const featuredProperties = validProperties.filter((p) => p.featured).slice(0, 6);
 
   // Recently Added Properties
-  const recentProperties = properties
-    .filter((p) => p.approvalStatus !== 'pending' && p.approvalStatus !== 'rejected')
-    .slice(0, 6);
+  const recentProperties = validProperties.slice(0, 6);
+
+  // Filtered districts by region
+  const displayedDistricts =
+    districtRegionTab === 'all'
+      ? KERALA_DISTRICTS
+      : KERALA_DISTRICTS.filter((d) => d.region === districtRegionTab);
+
+  // Filtered popular cities by cluster
+  const displayedCities = POPULAR_KERALA_CITIES.filter((c) => {
+    if (cityFilterTab === 'all') return true;
+    if (cityFilterTab === 'kochi') return c.districtId === 'ernakulam';
+    if (cityFilterTab === 'trivandrum') return c.districtId === 'thiruvananthapuram';
+    if (cityFilterTab === 'malabar')
+      return ['kozhikode', 'kannur', 'kasaragod', 'malappuram'].includes(c.districtId);
+    if (cityFilterTab === 'central')
+      return ['thrissur', 'kottayam', 'alappuzha', 'kollam', 'palakkad'].includes(c.districtId);
+    if (cityFilterTab === 'highland')
+      return ['wayanad', 'idukki', 'pathanamthitta'].includes(c.districtId);
+    return true;
+  });
+
+  // Category specific slices
+  const landListings = validProperties.filter((p) => p.propertyType === 'land-plots').slice(0, 3);
+  const homesListings = validProperties
+    .filter((p) => ['villas', 'houses', 'apartments', 'flats'].includes(p.propertyType))
+    .slice(0, 3);
+  const rentalListings = validProperties.filter((p) => p.purpose === 'rent').slice(0, 3);
+  const commercialListings = validProperties
+    .filter((p) => ['commercial', 'shops', 'offices'].includes(p.propertyType))
+    .slice(0, 3);
 
   return (
     <div className="w-full bg-[#FAF8F2] text-[#11291D]">
@@ -106,7 +170,7 @@ export default function HomePage() {
               Find Your Perfect Property
             </h1>
             <p className="text-sm sm:text-lg md:text-xl text-emerald-100/90 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-sm">
-              Buy, sell or rent properties across Kerala.
+              Buy, sell or rent properties across all 14 districts in Kerala.
             </p>
           </div>
 
@@ -207,7 +271,7 @@ export default function HomePage() {
                   onChange={(e) => setHeroLocation(e.target.value)}
                   className="w-full bg-transparent text-xs font-bold text-slate-800 focus:outline-none cursor-pointer"
                 >
-                  <option value="All Kerala">All Kerala (All Districts)</option>
+                  <option value="All Kerala">All Kerala (All 14 Districts)</option>
                   {KERALA_DISTRICTS.map((d) => (
                     <option key={d.id} value={d.name}>
                       {d.name} ({d.malayalam})
@@ -256,7 +320,9 @@ export default function HomePage() {
                 'Plots in Cents',
                 'Marine Drive Flats',
                 'Technopark Rentals',
+                'Wayanad Estates',
                 'Thrissur Land',
+                'Munnar Retreats',
               ].map((tag) => (
                 <button
                   key={tag}
@@ -331,8 +397,164 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. FEATURED PROPERTIES SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
+      {/* 3. EXPLORE PROPERTIES BY DISTRICT (ALL 14 DISTRICTS OF KERALA) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] uppercase tracking-wider">
+              <Compass size={15} className="text-[#D6AD55]" />
+              <span>Across God's Own Country</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Explore Properties by District (14 ജില്ലകൾ)
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Select any of Kerala's 14 districts to find land, villas, apartments and commercial hubs
+            </p>
+          </div>
+
+          {/* Region Tabs */}
+          <div className="flex items-center gap-1.5 bg-white p-1 rounded-2xl border border-[#E2EBE5] shadow-2xs overflow-x-auto no-scrollbar">
+            {[
+              { id: 'all', label: 'All 14 Districts' },
+              { id: 'South Kerala', label: 'South Kerala' },
+              { id: 'Central Kerala', label: 'Central Kerala' },
+              { id: 'North Kerala', label: 'North Kerala' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setDistrictRegionTab(tab.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                  districtRegionTab === tab.id
+                    ? 'bg-[#145C3D] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* 14 Districts Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3.5 sm:gap-4">
+          {displayedDistricts.map((district) => (
+            <div
+              key={district.id}
+              onClick={() => handleDistrictClick(district.name)}
+              className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+            >
+              <div className="aspect-[16/10] overflow-hidden relative bg-slate-900">
+                <img
+                  src={district.image}
+                  alt={district.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <div className="absolute top-2 left-2 bg-black/40 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md border border-white/20">
+                  {district.region}
+                </div>
+                <div className="absolute bottom-2 left-2 right-2 text-white">
+                  <h3 className="font-bold text-xs sm:text-sm leading-tight flex items-center justify-between">
+                    <span>{district.name}</span>
+                  </h3>
+                  <p className="text-[10px] text-emerald-200 font-medium">
+                    {district.malayalam}
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3 text-xs flex flex-col justify-between flex-grow space-y-1.5">
+                <p className="text-[11px] text-slate-500 line-clamp-2 leading-relaxed">
+                  {district.description}
+                </p>
+                <div className="pt-1.5 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-[#145C3D]">
+                  <span>Explore {district.name}</span>
+                  <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. POPULAR CITIES & GROWTH CENTERS IN KERALA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#D6AD55] uppercase tracking-wider">
+              <Sparkles size={14} />
+              <span>High Demand Growth Corridors</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Popular Cities & Towns Across Kerala
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Explore key real estate hotspots from Kochi IT corridor to Wayanad countryside retreats
+            </p>
+          </div>
+
+          {/* City Cluster Filters */}
+          <div className="flex items-center gap-1.5 bg-white p-1 rounded-2xl border border-[#E2EBE5] shadow-2xs overflow-x-auto no-scrollbar">
+            {[
+              { id: 'all', label: 'All Cities (30+)' },
+              { id: 'kochi', label: 'Kochi Metro' },
+              { id: 'trivandrum', label: 'Trivandrum' },
+              { id: 'malabar', label: 'Malabar' },
+              { id: 'central', label: 'Central' },
+              { id: 'highland', label: 'Highlands & Hills' },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setCityFilterTab(tab.id)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+                  cityFilterTab === tab.id
+                    ? 'bg-[#145C3D] text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Popular Cities Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4">
+          {displayedCities.map((city) => (
+            <div
+              key={city.id}
+              onClick={() => handleCityClick(city.name, city.district)}
+              className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+            >
+              <div className="aspect-[4/3] overflow-hidden relative bg-slate-900">
+                <img
+                  src={city.image}
+                  alt={city.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <span className="absolute bottom-2 left-2 text-white font-bold text-xs sm:text-sm truncate">
+                  {city.name}
+                </span>
+                <span className="absolute top-2 right-2 bg-black/40 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+                  {city.district}
+                </span>
+              </div>
+
+              <div className="p-2.5 text-xs flex flex-col justify-between flex-grow">
+                <div>
+                  <p className="text-[10px] text-slate-400 font-medium truncate">{city.tag}</p>
+                  <p className="text-[#145C3D] font-bold text-[11px] mt-0.5">{city.propertiesCount}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. FEATURED PROPERTIES SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 mb-6">
           <div>
             <div className="flex items-center gap-1.5 text-xs font-bold text-[#D6AD55] uppercase tracking-wider">
@@ -363,8 +585,165 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. SELLER / NRI CTA BANNER */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
+      {/* 6. LAND & PLOTS ACROSS KERALA (SPECIAL SECTION FOR LAND IN CENTS & ACRES) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="bg-gradient-to-br from-[#FAF8F2] via-emerald-50/50 to-white rounded-3xl p-6 sm:p-10 border border-[#E2EBE5] shadow-xs">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <div className="inline-flex items-center gap-1.5 bg-[#145C3D]/10 text-[#145C3D] px-3 py-1 rounded-full text-xs font-bold mb-2">
+                <LandPlot size={14} className="text-[#D6AD55]" />
+                <span>സെന്റ് & ഏക്കർ പ്ലോട്ടുകൾ</span>
+              </div>
+              <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight">
+                Land & Plots Across Kerala
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-600 mt-1 max-w-2xl">
+                Find clear-deed residential plots in Cents, road-frontage commercial land, rubber estates, coconut groves, and hill-station land with verified survey boundary documentation.
+              </p>
+            </div>
+
+            <button
+              onClick={() => {
+                setSearchFilters((prev) => ({ ...prev, propertyType: 'land-plots' }));
+                navigateTo('search');
+              }}
+              className="px-5 py-2.5 rounded-2xl bg-[#145C3D] hover:bg-[#0C3423] text-white text-xs font-bold transition-all shadow-md flex items-center gap-2"
+            >
+              <span>Explore All Plots</span>
+              <ArrowRight size={14} />
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            {landListings.length > 0 ? (
+              landListings.map((property) => (
+                <PropertyCard key={property.id} property={property} />
+              ))
+            ) : (
+              <div className="col-span-3 text-center py-8 bg-white rounded-2xl border border-slate-200">
+                <p className="text-xs font-bold text-slate-700">Explore residential plots and plantations across Kerala</p>
+                <button
+                  onClick={() => {
+                    setSearchFilters((prev) => ({ ...prev, propertyType: 'land-plots' }));
+                    navigateTo('search');
+                  }}
+                  className="mt-3 px-4 py-2 bg-[#145C3D] text-white rounded-xl text-xs font-bold"
+                >
+                  View Land Listings
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. HOMES & APARTMENTS (HOUSES, VILLAS, FLATS) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] uppercase tracking-wider">
+              <HomeIcon size={14} className="text-[#D6AD55]" />
+              <span>Modern & Heritage Living</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Homes & Apartments (വീടുകളും ഫ്ലാറ്റുകളും)
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Gated villas, Nalukettu traditional architecture, and waterfront sky residences
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              setSearchFilters((prev) => ({ ...prev, propertyType: 'villas' }));
+              navigateTo('search');
+            }}
+            className="text-xs font-bold text-[#145C3D] hover:underline flex items-center gap-1"
+          >
+            <span>View all homes & flats</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {homesListings.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </section>
+
+      {/* 8. RENTAL PROPERTIES SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] uppercase tracking-wider">
+              <KeyRound size={14} className="text-[#D6AD55]" />
+              <span>Flexible Leases & Furnished Stays</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Rental Properties Across Kerala
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              Family homes, bachelor apartments near Technopark/Infopark, and commercial lease spaces
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              setSearchFilters((prev) => ({ ...prev, purpose: 'rent' }));
+              navigateTo('search');
+            }}
+            className="text-xs font-bold text-[#145C3D] hover:underline flex items-center gap-1"
+          >
+            <span>View all rentals</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {rentalListings.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </section>
+
+      {/* 9. COMMERCIAL PROPERTIES & SHOPS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] uppercase tracking-wider">
+              <Building size={14} className="text-[#D6AD55]" />
+              <span>Business & Retail Expansion</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Commercial Properties, Shops & Offices
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500 mt-1">
+              High-ROI commercial towers, national highway frontage showrooms, and corporate tech offices
+            </p>
+          </div>
+
+          <button
+            onClick={() => {
+              setSearchFilters((prev) => ({ ...prev, propertyType: 'commercial' }));
+              navigateTo('search');
+            }}
+            className="text-xs font-bold text-[#145C3D] hover:underline flex items-center gap-1"
+          >
+            <span>View commercial spaces</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {commercialListings.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))}
+        </div>
+      </section>
+
+      {/* 10. SELLER / NRI CTA BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-[#0C3423] via-[#145C3D] to-[#27865B] text-white p-6 sm:p-10 shadow-2xl border border-[#D6AD55]/30">
           <div className="relative z-10 max-w-xl space-y-3.5">
             <span className="bg-[#D6AD55] text-[#0C3423] text-[10px] font-black uppercase px-3 py-1 rounded-full tracking-wider shadow-xs">
@@ -402,15 +781,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. RECENTLY ADDED PROPERTIES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-12 sm:mt-16">
+      {/* 11. RECENTLY ADDED NEAR YOU */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
         <div className="flex items-end justify-between mb-6">
           <div>
-            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight">
-              Recently Added Across Kerala
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#145C3D] uppercase tracking-wider">
+              <MapPin size={14} className="text-[#27865B]" />
+              <span>Real-Time Updates</span>
+            </div>
+            <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight mt-0.5">
+              Recently Added Near You
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
-              Fresh listings updated in real time from owners and certified builders
+              Fresh listings updated in real time from owners and certified builders across Kerala
             </p>
           </div>
         </div>
@@ -422,49 +805,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. POPULAR KERALA LOCATIONS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
-        <div className="text-center max-w-xl mx-auto mb-8">
-          <h2 className="text-xl sm:text-3xl font-black text-[#11291D] tracking-tight">
-            Popular Locations Across Kerala
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Explore property hotspots with real market prices and high appreciation potential
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3 sm:gap-4">
-          {POPULAR_LOCATIONS.map((loc) => (
-            <div
-              key={loc.name}
-              onClick={() => {
-                setSearchFilters((prev) => ({ ...prev, district: loc.district }));
-                navigateTo('search');
-              }}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] shadow-xs hover:shadow-lg cursor-pointer transition-all flex flex-col"
-            >
-              <div className="aspect-[16/10] overflow-hidden relative bg-slate-900">
-                <img
-                  src={loc.image}
-                  alt={loc.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <span className="absolute bottom-2 left-2 text-white font-bold text-xs sm:text-sm truncate">
-                  {loc.name}
-                </span>
-              </div>
-              <div className="p-3 text-xs space-y-0.5">
-                <p className="text-slate-500 text-[11px] truncate">{loc.propertiesCount}</p>
-                <p className="text-[#145C3D] font-bold truncate">{loc.startingPrice}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 7. TRUST & WHY VEEDUX SECTION */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20">
+      {/* 12. TRUST & WHY VEEDUX SECTION */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-14 sm:mt-20 mb-12 sm:mb-16">
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2EBE5] shadow-sm">
           <div className="text-center max-w-lg mx-auto mb-8">
             <span className="text-xs font-bold uppercase text-[#D6AD55] tracking-widest">
