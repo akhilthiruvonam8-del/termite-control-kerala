@@ -278,15 +278,9 @@ export default function Navbar() {
                 onClick={() => navigateTo('account', null, 'profile')}
                 className="flex items-center gap-2 p-1 sm:px-3 sm:py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-bold text-slate-800 transition-colors shadow-2xs"
               >
-                <img
-                  src={user.avatar || '/images/akhil-profile.png'}
-                  alt={user.name}
-                  className="w-7 h-7 rounded-full object-cover border border-[#27865B]"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80';
-                  }}
-                />
+                <div className="w-7 h-7 rounded-full bg-[#145C3D] text-[#D6AD55] flex items-center justify-center text-xs font-black shadow-xs">
+                  {user.name ? user.name.charAt(0).toUpperCase() : <User size={14} />}
+                </div>
                 <span className="hidden md:inline max-w-[80px] truncate">{user.name}</span>
                 {user.isDemo && (
                   <span className="hidden lg:inline text-[9px] bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.2 rounded-sm font-bold">
@@ -352,15 +346,9 @@ export default function Navbar() {
           ) : (
             <div className="bg-[#FAF8F2] p-3 rounded-2xl border border-[#E2EBE5] flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <img
-                  src={user.avatar || '/images/akhil-profile.png'}
-                  alt={user.name}
-                  className="w-10 h-10 rounded-full object-cover border border-[#27865B]"
-                  onError={(e) => {
-                    e.currentTarget.src =
-                      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80';
-                  }}
-                />
+                <div className="w-10 h-10 rounded-full bg-[#145C3D] text-[#D6AD55] flex items-center justify-center text-sm font-black shadow-xs">
+                  {user.name ? user.name.charAt(0).toUpperCase() : <User size={18} />}
+                </div>
                 <div>
                   <p className="text-xs font-bold text-slate-900">{user.name}</p>
                   <p className="text-[10px] text-slate-500">{user.phone || user.email}</p>

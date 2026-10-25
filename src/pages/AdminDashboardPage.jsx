@@ -361,11 +361,17 @@ export default function AdminDashboardPage() {
                       className="p-4 rounded-2xl bg-[#FAF8F2] border border-[#E2EBE5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
                     >
                       <div className="flex items-center gap-3">
-                        <img
-                          src={p.images?.[0]}
-                          alt={p.title}
-                          className="w-20 h-20 rounded-2xl object-cover"
-                        />
+                        {p.images?.[0] ? (
+                          <img
+                            src={p.images[0]}
+                            alt={p.title}
+                            className="w-20 h-20 rounded-2xl object-cover"
+                          />
+                        ) : (
+                          <div className="w-20 h-20 rounded-2xl bg-emerald-100/70 text-[#145C3D] flex items-center justify-center flex-shrink-0">
+                            <Home size={28} />
+                          </div>
+                        )}
                         <div>
                           <span className="font-black text-sm text-[#145C3D]">{p.price}</span>
                           <h4 className="font-bold text-xs text-slate-900">{p.title}</h4>
@@ -436,11 +442,17 @@ export default function AdminDashboardPage() {
                       className="p-3.5 rounded-2xl bg-[#FAF8F2] border border-[#E2EBE5] flex items-center justify-between"
                     >
                       <div className="flex items-center gap-3">
-                        <img
-                          src={p.images?.[0] || '/images/kochi-nri-villa.jpg'}
-                          alt={p.title}
-                          className="w-14 h-14 rounded-xl object-cover"
-                        />
+                        {p.images?.[0] ? (
+                          <img
+                            src={p.images[0]}
+                            alt={p.title}
+                            className="w-14 h-14 rounded-xl object-cover"
+                          />
+                        ) : (
+                          <div className="w-14 h-14 rounded-xl bg-emerald-100/70 text-[#145C3D] flex items-center justify-center">
+                            <Home size={20} />
+                          </div>
+                        )}
                         <div>
                           <span className="font-black text-xs text-[#145C3D]">{p.price}</span>
                           <h4 className="font-bold text-xs text-slate-900">{p.title}</h4>

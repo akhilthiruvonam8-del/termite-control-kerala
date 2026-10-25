@@ -80,7 +80,7 @@ export default function AuthModal({ isOpen, onClose, onLoginSuccess }) {
           phone: phone ? `+91 ${phone}` : '+91 86060 24704',
           email: email?.trim() || 'akhil.demo@veedux.com',
           role: role || 'owner',
-          avatar: '/images/akhil-profile.png',
+          avatar: null,
           memberSince: 'Member since 2024',
           isVerified: true,
           isDemo: true, // Flagged so AppContext knows this is not a Supabase auth session

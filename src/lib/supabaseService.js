@@ -51,7 +51,7 @@ export function transformPropertyRow(row) {
     .map((img) => img.image_url)
     .filter(Boolean);
 
-  const fallbackImages = ['/images/kochi-nri-villa.jpg'];
+  const fallbackImages = [];
 
   const numericPrice = Number(row.price) || 0;
   const formattedPrice =
@@ -111,9 +111,7 @@ export function transformPropertyRow(row) {
       phone: row.contact_phone || '+91 98470 00000',
       whatsapp: (row.contact_whatsapp || row.contact_phone || '9847000000').replace(/[^0-9]/g, ''),
       memberSince: row.seller_profile?.member_since || 'VeeduX Member',
-      avatar:
-        row.seller_profile?.avatar_url ||
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+      avatar: row.seller_profile?.avatar_url || null,
       isVerified: Boolean(row.seller_profile?.is_verified),
     },
   };
@@ -235,7 +233,7 @@ export async function createPropertyInSupabase(propertyFormData, imageFiles = []
     // If no real images uploaded, fallback to any string URLs from form or default
     if (finalPhotoUrls.length === 0) {
       const existingUrls = (propertyFormData.photos || []).filter((p) => typeof p === 'string');
-      finalPhotoUrls = existingUrls.length > 0 ? existingUrls : ['/images/kochi-nri-villa.jpg'];
+      finalPhotoUrls = existingUrls.length > 0 ? existingUrls : [];
     }
 
     // 2. Prepare database payload
@@ -659,7 +657,7 @@ export async function syncUserProfile(authUser, additionalData = {}) {
       avatar_url:
         additionalData.avatarUrl ||
         authUser.user_metadata?.avatar_url ||
-        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+        null,
     };
 
     const { data, error } = await supabase

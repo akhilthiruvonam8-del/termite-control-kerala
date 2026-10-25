@@ -11,7 +11,7 @@ export const updateMetaTags = (options = {}) => {
       description = "Buy, sell or rent land, houses, villas, apartments, flats, commercial buildings, and shops across Kerala with confidence on VeeduX.",
       keywords = "kerala real estate, buy house in kerala, land for sale kerala, villas kochi, flats kozhikode, properties thrissur, veedux",
       canonicalUrl,
-      image = "/images/alappuzha-waterfront-villa.jpg",
+      image = "/favicon.svg",
       siteName = "VeeduX Kerala",
     } = options;
 

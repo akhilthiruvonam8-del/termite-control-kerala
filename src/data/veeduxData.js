@@ -1,6 +1,6 @@
 /**
  * VeeduX Official Real Estate Marketplace Data
- * Supports 9 property types across Kerala with authentic images & specifications.
+ * Supports 9 property types across Kerala with authentic specifications.
  */
 
 export const PROPERTY_TYPES = [
@@ -22,7 +22,6 @@ export const CATEGORIES = [
     types: ['land-plots'],
     malayalam: 'സ്ഥലം & പ്ലോട്ടുകൾ',
     count: '3,150+ Properties',
-    image: '/images/kollam-hero-nature.jpg',
     description: 'Residential plots in Cents, estate plantations & prime road-frontage land',
   },
   {
@@ -31,7 +30,6 @@ export const CATEGORIES = [
     types: ['houses', 'villas'],
     malayalam: 'വീടുകൾ & വില്ലകൾ',
     count: '2,240+ Properties',
-    image: '/images/kochi-nri-villa.jpg',
     description: 'Contemporary villas, traditional Nalukettu & gated community homes',
   },
   {
@@ -40,7 +38,6 @@ export const CATEGORIES = [
     types: ['apartments', 'flats'],
     malayalam: 'അപ്പാർട്ട്‌മെന്റുകൾ & ഫ്ലാറ്റുകൾ',
     count: '2,680+ Properties',
-    image: '/images/kochi-waterfront-luxury.jpg',
     description: 'Luxury high-rises, waterfront sky apartments & budget friendly flats',
   },
   {
@@ -49,7 +46,6 @@ export const CATEGORIES = [
     types: ['commercial'],
     malayalam: 'വാണിജ്യ കെട്ടിടങ്ങൾ',
     count: '720+ Properties',
-    image: '/images/service-commercial.jpg',
     description: 'Commercial towers, multi-storey complexes & logistics warehouses',
   },
   {
@@ -58,7 +54,6 @@ export const CATEGORIES = [
     types: ['shops', 'offices'],
     malayalam: 'കടകൾ & ഓഫീസുകൾ',
     count: '980+ Properties',
-    image: '/images/kozhikode-office.jpg',
     description: 'Prime highway retail showrooms, corporate offices & tech spaces',
   },
   {
@@ -67,7 +62,6 @@ export const CATEGORIES = [
     types: ['rentals'],
     malayalam: 'വാടക വീടുകൾ & ഫ്ലാറ്റുകൾ',
     count: '1,890+ Properties',
-    image: '/images/alappuzha-cottage-homes.jpg',
     description: 'Fully furnished apartments, family homes & commercial lease spaces',
   },
 ];
@@ -85,7 +79,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Metro & Financial Capital',
     propertiesCount: '2,840+ Properties',
     startingPrice: '₹ 45 Lakhs onwards',
-    image: '/images/kochi-waterfront-luxury.jpg',
   },
   {
     name: 'Kakkanad (SmartCity)',
@@ -93,7 +86,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'IT Corridors & Villas',
     propertiesCount: '1,420+ Properties',
     startingPrice: '₹ 65 Lakhs onwards',
-    image: '/images/kochi-nri-villa.jpg',
   },
   {
     name: 'Thiruvananthapuram',
@@ -101,7 +93,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Technopark & Capital City',
     propertiesCount: '1,960+ Properties',
     startingPrice: '₹ 42 Lakhs onwards',
-    image: '/images/service-residential.jpg',
   },
   {
     name: 'Thrissur',
@@ -109,7 +100,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Cultural Hub & Gold City',
     propertiesCount: '1,420+ Properties',
     startingPrice: '₹ 38 Lakhs onwards',
-    image: '/images/blog-family-home.jpg',
   },
   {
     name: 'Kozhikode',
@@ -117,7 +107,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Cyberpark & Coastal Living',
     propertiesCount: '1,210+ Properties',
     startingPrice: '₹ 35 Lakhs onwards',
-    image: '/images/kozhikode-office.jpg',
   },
   {
     name: 'Alappuzha',
@@ -125,7 +114,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Venice of the East & Lakefront',
     propertiesCount: '740+ Properties',
     startingPrice: '₹ 6.5 Lakhs / Cent',
-    image: '/images/alappuzha-waterfront-villa.jpg',
   },
   {
     name: 'Kottayam',
@@ -133,7 +121,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Rubber Estates & Heritage',
     propertiesCount: '890+ Properties',
     startingPrice: '₹ 40 Lakhs onwards',
-    image: '/images/alappuzha-traditional-house.jpg',
   },
   {
     name: 'Kannur',
@@ -141,7 +128,6 @@ export const POPULAR_LOCATIONS = [
     tag: 'Coastal & Commercial Hub',
     propertiesCount: '490+ Properties',
     startingPrice: '₹ 32 Lakhs onwards',
-    image: '/images/alappuzha-cottage-resort.jpg',
   },
 ];
 

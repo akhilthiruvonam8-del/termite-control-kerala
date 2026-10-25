@@ -157,9 +157,7 @@ export function AppProvider({ children }) {
             phone: syncedProfile?.phone || authUser.phone || authUser.user_metadata?.phone || '',
             email: authUser.email || '',
             role: syncedProfile?.role || 'buyer',
-            avatar:
-              syncedProfile?.avatar_url ||
-              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+            avatar: syncedProfile?.avatar_url || null,
             memberSince: syncedProfile?.member_since || 'Member since 2024',
             isVerified: Boolean(syncedProfile?.is_verified),
             isDemo: false,
@@ -202,9 +200,7 @@ export function AppProvider({ children }) {
           phone: syncedProfile?.phone || authUser.phone || authUser.user_metadata?.phone || '',
           email: authUser.email || '',
           role: syncedProfile?.role || 'buyer',
-          avatar:
-            syncedProfile?.avatar_url ||
-            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+          avatar: syncedProfile?.avatar_url || null,
           memberSince: syncedProfile?.member_since || 'Member since 2024',
           isVerified: Boolean(syncedProfile?.is_verified),
           isDemo: false,
@@ -463,7 +459,7 @@ export function AppProvider({ children }) {
       images:
         newPropData.photos && newPropData.photos.length > 0
           ? newPropData.photos
-          : ['/images/kochi-nri-villa.jpg'],
+          : [],
       seller: {
         id: user?.id || 'usr-local',
         name: user?.name || newPropData.sellerName || 'Property Owner',
@@ -471,9 +467,7 @@ export function AppProvider({ children }) {
         phone: user?.phone || newPropData.sellerPhone || '+91 98470 00000',
         whatsapp: (newPropData.sellerWhatsapp || user?.phone || '9847000000').replace(/[^0-9]/g, ''),
         memberSince: 'VeeduX Member',
-        avatar:
-          user?.avatar ||
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+        avatar: user?.avatar || null,
       },
     };
     setProperties((prev) => [newProperty, ...prev]);

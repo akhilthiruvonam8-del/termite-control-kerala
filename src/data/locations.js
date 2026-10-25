@@ -26,7 +26,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Thiruvananthapuram",
     region: "South Kerala",
     description: "Capital city, Technopark IT hub, royal heritage and coastal beaches",
-    image: "/images/service-residential.jpg",
     cities: [
       {
         id: "trivandrum-city",
@@ -138,7 +137,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kollam",
     region: "South Kerala",
     description: "Ashtamudi Lake backwaters, port city, and cashew trade center",
-    image: "/images/kollam-hero-nature.jpg",
     cities: [
       {
         id: "kollam-city",
@@ -206,7 +204,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Pathanamthitta",
     region: "South Kerala",
     description: "NRI hub, serene rubber plantations, riverfront lands, and Sabarimala gateway",
-    image: "/images/blog-section-bg.jpg",
     cities: [
       {
         id: "thiruvalla",
@@ -285,7 +282,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Alappuzha",
     region: "South-Central Kerala",
     description: "Vembanad backwaters, houseboats, heritage villas, and NH 66 corridor",
-    image: "/images/alappuzha-waterfront-villa.jpg",
     cities: [
       {
         id: "alappuzha-city",
@@ -353,7 +349,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kottayam",
     region: "Central Kerala",
     description: "Educational hub, publishing legacy, scenic plantations, and Vembanad lakefront",
-    image: "/images/alappuzha-traditional-house.jpg",
     cities: [
       {
         id: "kottayam-town",
@@ -431,7 +426,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Painavu",
     region: "Highlands",
     description: "Cardamom hills, tea estates, cool climate hill stations, and eco-resort acreage",
-    image: "/images/kollam-hero-nature.jpg",
     cities: [
       {
         id: "munnar",
@@ -498,7 +492,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kakkanad",
     region: "Central Kerala",
     description: "Kerala's commercial capital, Kochi metro, IT SmartCity, seaport, and luxury high-rises",
-    image: "/images/kochi-waterfront-luxury.jpg",
     cities: [
       {
         id: "kochi",
@@ -654,7 +647,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Thrissur",
     region: "Central Kerala",
     description: "Cultural capital, Pooram festival, gold jewelry market, and elite villas",
-    image: "/images/blog-family-home.jpg",
     cities: [
       {
         id: "thrissur-city",
@@ -737,7 +729,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Palakkad",
     region: "Central Kerala",
     description: "Palakkad gap gateway, windmill hills, historic agraharams, and industrial corridors",
-    image: "/images/palakkad-office.jpg",
     cities: [
       {
         id: "palakkad-town",
@@ -792,7 +783,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Malappuram",
     region: "North-Central Kerala",
     description: "Rapidly growing urban centers, medical city Perinthalmanna, and Calicut airport belt",
-    image: "/images/service-nri-villa.jpg",
     cities: [
       {
         id: "malappuram-city",
@@ -868,7 +858,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kozhikode",
     region: "North Kerala",
     description: "Cyberpark IT hub, historic beach promenade, Malabar culinary & trade capital",
-    image: "/images/kozhikode-office.jpg",
     cities: [
       {
         id: "kozhikode-city",
@@ -940,7 +929,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kalpetta",
     region: "Highlands",
     description: "Misty mountain peaks, coffee and tea plantations, waterfalls, and eco-resort retreats",
-    image: "/images/wayanad-luxury-hero.jpg",
     cities: [
       {
         id: "kalpetta",
@@ -1018,7 +1006,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kannur",
     region: "North Kerala",
     description: "International airport, pristine drive-in beaches, handloom heritage, and coastal villas",
-    image: "/images/alappuzha-cottage-resort.jpg",
     cities: [
       {
         id: "kannur-city",
@@ -1087,7 +1074,6 @@ export const KERALA_DISTRICTS = [
     headquarters: "Kasaragod",
     region: "North Kerala",
     description: "Bekal luxury beach tourism, historic forts, 12 rivers, and coastal lands",
-    image: "/images/kasaragod-luxury-hero.jpg",
     cities: [
       {
         id: "kasaragod-town",
@@ -1158,7 +1144,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Metro & Waterfront Capital",
     propertiesCount: "3,120+ Listings",
-    image: "/images/kochi-waterfront-luxury.jpg",
   },
   {
     id: "kakkanad",
@@ -1167,7 +1152,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Infopark IT & SmartCity",
     propertiesCount: "1,840+ Listings",
-    image: "/images/kochi-nri-villa.jpg",
   },
   {
     id: "edappally",
@@ -1176,7 +1160,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Lulu Mall & Metro Hub",
     propertiesCount: "920+ Listings",
-    image: "/images/ernakulam-locations-bg.jpg",
   },
   {
     id: "aluva",
@@ -1185,7 +1168,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Periyar Riverfront & Metro",
     propertiesCount: "740+ Listings",
-    image: "/images/service-residential.jpg",
   },
   {
     id: "vyttila",
@@ -1194,7 +1176,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Mobility Hub & NH Bypass",
     propertiesCount: "810+ Listings",
-    image: "/images/service-commercial.jpg",
   },
   {
     id: "kalamassery",
@@ -1203,7 +1184,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "CUSAT University & Metro",
     propertiesCount: "630+ Listings",
-    image: "/images/blog-family-home.jpg",
   },
   {
     id: "thrippunithura",
@@ -1212,7 +1192,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Royal Palace Town & Metro",
     propertiesCount: "580+ Listings",
-    image: "/images/alappuzha-traditional-house.jpg",
   },
   {
     id: "maradu",
@@ -1221,7 +1200,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "ernakulam",
     tag: "Kundannoor Bypass & Hotels",
     propertiesCount: "490+ Listings",
-    image: "/images/alappuzha-waterfront-villa.jpg",
   },
 
   // Thiruvananthapuram
@@ -1232,7 +1210,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thiruvananthapuram",
     tag: "Capital City & Kowdiar Posh",
     propertiesCount: "2,250+ Listings",
-    image: "/images/service-residential.jpg",
   },
   {
     id: "kazhakkoottam",
@@ -1241,7 +1218,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thiruvananthapuram",
     tag: "Technopark Phase 1-3",
     propertiesCount: "1,150+ Listings",
-    image: "/images/kozhikode-office.jpg",
   },
   {
     id: "pattom",
@@ -1250,7 +1226,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thiruvananthapuram",
     tag: "Commercial Core & Schools",
     propertiesCount: "620+ Listings",
-    image: "/images/service-commercial.jpg",
   },
   {
     id: "sreekaryam",
@@ -1259,7 +1234,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thiruvananthapuram",
     tag: "CET College & NH Bypass",
     propertiesCount: "430+ Listings",
-    image: "/images/blog-family-home.jpg",
   },
 
   // Kozhikode
@@ -1270,7 +1244,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kozhikode",
     tag: "Cyberpark & Beach Coast",
     propertiesCount: "1,890+ Listings",
-    image: "/images/kozhikode-office.jpg",
   },
   {
     id: "thondayad",
@@ -1279,7 +1252,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kozhikode",
     tag: "NH Bypass Flyover Hub",
     propertiesCount: "540+ Listings",
-    image: "/images/service-commercial.jpg",
   },
   {
     id: "ramanattukara",
@@ -1288,7 +1260,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kozhikode",
     tag: "Airport Road Corridor",
     propertiesCount: "480+ Listings",
-    image: "/images/blog-section-bg.jpg",
   },
 
   // Thrissur
@@ -1299,7 +1270,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thrissur",
     tag: "Cultural Capital & Punkunnam",
     propertiesCount: "1,620+ Listings",
-    image: "/images/blog-family-home.jpg",
   },
   {
     id: "guruvayur",
@@ -1308,7 +1278,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thrissur",
     tag: "Temple Town Apartments",
     propertiesCount: "510+ Listings",
-    image: "/images/alappuzha-traditional-house2.jpg",
   },
   {
     id: "kunnamkulam",
@@ -1317,7 +1286,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "thrissur",
     tag: "Trade & Commercial Town",
     propertiesCount: "390+ Listings",
-    image: "/images/palakkad-office.jpg",
   },
 
   // Central & South Kerala
@@ -1328,7 +1296,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kottayam",
     tag: "Kanjikuzhy & Rubber Estates",
     propertiesCount: "940+ Listings",
-    image: "/images/alappuzha-traditional-house.jpg",
   },
   {
     id: "alappuzha",
@@ -1337,7 +1304,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "alappuzha",
     tag: "Punnamada Backwaters & Lake",
     propertiesCount: "820+ Listings",
-    image: "/images/alappuzha-waterfront-villa.jpg",
   },
   {
     id: "kollam",
@@ -1346,7 +1312,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kollam",
     tag: "Ashtamudi Lakefront",
     propertiesCount: "710+ Listings",
-    image: "/images/kollam-hero-nature.jpg",
   },
   {
     id: "palakkad",
@@ -1355,7 +1320,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "palakkad",
     tag: "Chandranagar Colony & Gap",
     propertiesCount: "680+ Listings",
-    image: "/images/palakkad-office.jpg",
   },
   {
     id: "malappuram",
@@ -1364,7 +1328,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "malappuram",
     tag: "Manjeri & Perinthalmanna",
     propertiesCount: "760+ Listings",
-    image: "/images/service-nri-villa.jpg",
   },
   {
     id: "kannur",
@@ -1373,7 +1336,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kannur",
     tag: "Payyambalam & Airport Zone",
     propertiesCount: "630+ Listings",
-    image: "/images/alappuzha-cottage-resort.jpg",
   },
   {
     id: "kasaragod",
@@ -1382,7 +1344,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "kasaragod",
     tag: "Bekal Luxury Beach Tourism",
     propertiesCount: "420+ Listings",
-    image: "/images/kasaragod-luxury-hero.jpg",
   },
 
   // Countryside & Highlands
@@ -1393,7 +1354,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "idukki",
     tag: "Misty Tea Estates & Resorts",
     propertiesCount: "380+ Listings",
-    image: "/images/wayanad-heritage-tharavad.jpg",
   },
   {
     id: "thodupuzha",
@@ -1402,7 +1362,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "idukki",
     tag: "Commercial Gateway Town",
     propertiesCount: "490+ Listings",
-    image: "/images/service-residential.jpg",
   },
   {
     id: "vythiri",
@@ -1411,7 +1370,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "wayanad",
     tag: "Lakkidi Rainforest Retreats",
     propertiesCount: "340+ Listings",
-    image: "/images/wayanad-luxury-hero.jpg",
   },
   {
     id: "kalpetta",
@@ -1420,7 +1378,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "wayanad",
     tag: "Wayanad District Capital",
     propertiesCount: "410+ Listings",
-    image: "/images/wayanad-plantation-home.jpg",
   },
   {
     id: "thiruvalla",
@@ -1429,7 +1386,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "pathanamthitta",
     tag: "NRI Residential Capital",
     propertiesCount: "590+ Listings",
-    image: "/images/blog-section-bg.jpg",
   },
   {
     id: "adoor",
@@ -1438,7 +1394,6 @@ export const POPULAR_KERALA_CITIES = [
     districtId: "pathanamthitta",
     tag: "MC Road Growth Junction",
     propertiesCount: "320+ Listings",
-    image: "/images/service-commercial.jpg",
   },
 ];
 

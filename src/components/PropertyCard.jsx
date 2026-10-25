@@ -59,29 +59,38 @@ export default function PropertyCard({ property }) {
     window.open(`tel:${property.seller?.phone}`, '_self');
   };
 
+  const hasImages = Boolean(property.images && property.images.length > 0 && property.images[currentImgIdx]);
+
   return (
     <article
       onClick={handleCardClick}
       className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E2EBE5] shadow-[0_4px_16px_rgba(20,92,61,0.06)] hover:shadow-[0_12px_28px_rgba(20,92,61,0.12)] transition-all duration-300 cursor-pointer flex flex-col relative"
     >
-      {/* Property Image & Overlay Badges */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-slate-900 select-none">
-        <img
-          src={property.images?.[currentImgIdx] || '/images/kochi-nri-villa.jpg'}
-          alt={property.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
-
-        {/* Gradient shadow for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+      {/* Property Header & Overlay Badges */}
+      <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-[#0C3423] via-[#145C3D] to-[#1a4a35] select-none flex items-center justify-center">
+        {hasImages ? (
+          <>
+            <img
+              src={property.images[currentImgIdx]}
+              alt={property.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              loading="lazy"
+            />
+            {/* Gradient shadow for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
+          </>
+        ) : (
+          <div className="text-center p-4 text-emerald-100/90 space-y-1.5">
+            <div className="w-11 h-11 rounded-2xl bg-white/10 mx-auto flex items-center justify-center text-[#D6AD55] shadow-xs">
+              <Eye size={22} />
+            </div>
+            <p className="text-[11px] font-bold text-white uppercase tracking-wider">{property.categoryName || 'Verified Property'}</p>
+            <p className="text-[10px] text-emerald-200">{property.district} • {property.location}</p>
+          </div>
+        )}
 
         {/* Top Badges */}
         <div className="absolute top-2.5 left-2.5 flex flex-wrap gap-1.5 items-center z-10">
-          <span className="inline-flex items-center gap-1 bg-[#D6AD55] text-[#0C3423] text-[9px] font-black px-2 py-0.5 rounded-full shadow-xs tracking-wider uppercase">
-            Demo Listing
-          </span>
-
           {property.verified && (
             <span className="inline-flex items-center gap-1 bg-[#145C3D]/95 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
               <ShieldCheck size={11} className="text-[#D6AD55]" />
@@ -213,11 +222,17 @@ export default function PropertyCard({ property }) {
         {/* Seller Info & Quick Direct Contact Buttons */}
         <div className="flex items-center justify-between pt-2 border-t border-[#E2EBE5] gap-2">
           <div className="flex items-center gap-2 min-w-0">
-            <img
-              src={property.seller?.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'}
-              alt={property.seller?.name || 'Seller'}
-              className="w-7 h-7 rounded-full object-cover border border-[#27865B]/30 flex-shrink-0"
-            />
+            {property.seller?.avatar ? (
+              <img
+                src={property.seller.avatar}
+                alt={property.seller?.name || 'Seller'}
+                className="w-7 h-7 rounded-full object-cover border border-[#27865B]/30 flex-shrink-0"
+              />
+            ) : (
+              <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#145C3D] to-[#27865B] text-white flex items-center justify-center text-[10px] font-black border border-[#27865B]/30 flex-shrink-0">
+                {(property.seller?.name || 'O').charAt(0).toUpperCase()}
+              </div>
+            )}
             <div className="truncate">
               <p className="text-xs font-bold text-slate-800 truncate leading-tight">
                 {property.seller?.name || 'Direct Owner'}

@@ -95,15 +95,9 @@ export default function UserAccountPage() {
         {user ? (
           <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E2EBE5] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4 text-center sm:text-left">
-              <img
-                src={user.avatar || '/images/akhil-profile.png'}
-                alt={user.name}
-                className="w-16 h-16 rounded-full object-cover border-2 border-[#145C3D]"
-                onError={(e) => {
-                  e.currentTarget.src =
-                    'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80';
-                }}
-              />
+              <div className="w-16 h-16 rounded-full bg-[#145C3D] text-[#D6AD55] flex items-center justify-center text-2xl font-black shadow-md border-2 border-[#27865B]">
+                {user.name ? user.name.charAt(0).toUpperCase() : <User size={28} />}
+              </div>
               <div>
                 <div className="flex items-center justify-center sm:justify-start gap-1.5">
                   <h1 className="text-xl sm:text-2xl font-black text-slate-900">
@@ -301,11 +295,17 @@ export default function UserAccountPage() {
                         className="p-4 rounded-2xl bg-[#FAF8F2] border border-[#E2EBE5] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
                       >
                         <div className="flex items-center gap-3">
-                          <img
-                            src={p.images?.[0]}
-                            alt={p.title}
-                            className="w-16 h-16 rounded-xl object-cover"
-                          />
+                          {p.images && p.images.length > 0 && p.images[0] ? (
+                            <img
+                              src={p.images[0]}
+                              alt={p.title}
+                              className="w-16 h-16 rounded-xl object-cover"
+                            />
+                          ) : (
+                            <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#145C3D] to-[#27865B] flex items-center justify-center text-[#D6AD55] shadow-xs flex-shrink-0">
+                              <Home size={22} />
+                            </div>
+                          )}
                           <div>
                             <span className="font-black text-sm text-[#145C3D]">
                               {p.price}

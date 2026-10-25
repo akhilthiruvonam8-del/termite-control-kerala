@@ -213,32 +213,15 @@ export default function PropertyDetailPage() {
       )}
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
-        {/* Demo Listing Verification Banner */}
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200/80 rounded-2xl p-3.5 flex items-center justify-between gap-3 text-xs text-amber-900 shadow-2xs">
-          <div className="flex items-center gap-2.5">
-            <span className="w-7 h-7 rounded-full bg-amber-200 text-amber-900 flex items-center justify-center font-bold text-xs flex-shrink-0">
-              ℹ
-            </span>
-            <div>
-              <span className="font-bold">Demo Listing for Preview & Evaluation</span>
-              <p className="text-[11px] text-amber-800">
-                All production listings on VeeduX undergo physical inspection, title-deed cross-check, and owner verification.
-              </p>
-            </div>
-          </div>
-          <span className="hidden md:inline text-[10px] font-black uppercase tracking-wider bg-amber-200/70 text-amber-900 px-2.5 py-1 rounded-md flex-shrink-0">
-            Demo Listing
-          </span>
-        </div>
-
         {/* Gallery & Video Tour Showcase */}
         <section className="bg-white rounded-3xl overflow-hidden border border-[#E2EBE5] shadow-sm">
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] bg-slate-900 group">
-            <img
-              src={activeProperty.images?.[activeImageIndex] || '/images/kochi-nri-villa.jpg'}
-              alt={activeProperty.title}
-              className="w-full h-full object-cover transition-all duration-300"
-            />
+          {activeProperty.images && activeProperty.images.length > 0 && activeProperty.images[activeImageIndex] ? (
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] bg-slate-900 group">
+              <img
+                src={activeProperty.images[activeImageIndex]}
+                alt={activeProperty.title}
+                className="w-full h-full object-cover transition-all duration-300"
+              />
 
             {/* Carousel Navigation Arrows */}
             {activeProperty.images && activeProperty.images.length > 1 && (
@@ -296,6 +279,19 @@ export default function PropertyDetailPage() {
               </div>
             </div>
           </div>
+        ) : (
+            <div className="bg-gradient-to-br from-[#0C3423] via-[#145C3D] to-[#1a4a35] p-8 sm:p-12 text-white text-center space-y-3">
+              <span className="inline-block bg-[#D6AD55] text-[#0C3423] text-xs font-black uppercase px-3 py-1 rounded-full tracking-wider">
+                {activeProperty.categoryName || 'Verified Property'}
+              </span>
+              <h2 className="text-xl sm:text-3xl font-black max-w-3xl mx-auto">
+                {activeProperty.title}
+              </h2>
+              <p className="text-xs sm:text-sm text-emerald-100 max-w-xl mx-auto">
+                {activeProperty.location || activeProperty.locality || activeProperty.district}
+              </p>
+            </div>
+          )}
 
           {/* Thumbnails Row */}
           {activeProperty.images && activeProperty.images.length > 1 && (
@@ -481,11 +477,17 @@ export default function PropertyDetailPage() {
             <div className="bg-white rounded-3xl p-6 border border-[#E2EBE5] shadow-lg space-y-6">
               {/* Seller Profile Header */}
               <div className="flex items-center gap-3 pb-4 border-b border-[#E2EBE5]">
-                <img
-                  src={activeProperty.seller?.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80'}
-                  alt={activeProperty.seller?.name || 'Seller'}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-[#D6AD55]"
-                />
+                {activeProperty.seller?.avatar ? (
+                  <img
+                    src={activeProperty.seller.avatar}
+                    alt={activeProperty.seller?.name || 'Seller'}
+                    className="w-14 h-14 rounded-full object-cover border-2 border-[#D6AD55]"
+                  />
+                ) : (
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#145C3D] to-[#27865B] text-white flex items-center justify-center text-lg font-black border-2 border-[#D6AD55] shadow-xs">
+                    {(activeProperty.seller?.name || 'O').charAt(0).toUpperCase()}
+                  </div>
+                )}
                 <div>
                   <div className="flex items-center gap-1">
                     <span className="font-bold text-slate-900 text-sm">
@@ -578,11 +580,15 @@ export default function PropertyDetailPage() {
               </button>
             </div>
             <div className="aspect-video bg-slate-900 rounded-2xl overflow-hidden flex flex-col items-center justify-center relative text-white">
-              <img
-                src={activeProperty.images?.[0]}
-                alt="Walkthrough"
-                className="w-full h-full object-cover filter brightness-50"
-              />
+              {activeProperty.images && activeProperty.images.length > 0 && activeProperty.images[0] ? (
+                <img
+                  src={activeProperty.images[0]}
+                  alt="Walkthrough"
+                  className="w-full h-full object-cover filter brightness-50"
+                />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-[#0C3423] via-[#145C3D] to-[#0A2619] opacity-80" />
+              )}
               <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2">
                 <div className="w-14 h-14 rounded-full bg-[#145C3D] flex items-center justify-center shadow-xl animate-pulse">
                   <Play size={24} className="text-[#D6AD55] fill-[#D6AD55] ml-1" />

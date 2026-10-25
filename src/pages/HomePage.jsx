@@ -144,16 +144,8 @@ export default function HomePage() {
     <div className="w-full bg-[#FAF8F2] text-[#11291D]">
       {/* 1. HERO SECTION: Authentic Kerala Atmosphere */}
       <section className="relative overflow-hidden bg-[#0C3423] text-white pt-8 pb-16 sm:pb-20 sm:pt-14 px-4 sm:px-6">
-        {/* Realistic Kerala Landscape Background */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/alappuzha-waterfront-villa.jpg"
-            alt="Authentic Kerala Waterfront Home"
-            className="w-full h-full object-cover object-center scale-105 filter brightness-75 contrast-105"
-          />
-          {/* Subtle gradient overlay to make text pop while keeping photography authentic */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0C3423] via-[#0C3423]/60 to-black/40" />
-        </div>
+        {/* Rich Kerala Emerald Background */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#0C3423] via-[#145C3D] to-[#0A2619]" />
 
         <div className="max-w-5xl mx-auto relative z-10 text-center space-y-6">
           {/* Authentic Kerala Badge */}
@@ -369,27 +361,27 @@ export default function HomePage() {
               <div
                 key={cat.id}
                 onClick={() => handleCategoryClick(cat.id)}
-                className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
+                className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col p-4 text-center justify-between"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden relative bg-slate-100">
-                  <img
-                    src={cat.image}
-                    alt={cat.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <span className="absolute bottom-2 left-2 right-2 text-white text-[10px] font-bold bg-[#145C3D]/85 backdrop-blur-xs px-2 py-0.5 rounded-md text-center truncate">
-                    {cat.count}
-                  </span>
+                <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#145C3D] mx-auto flex items-center justify-center group-hover:bg-[#145C3D] group-hover:text-white transition-colors duration-300 shadow-2xs">
+                  {cat.id === 'land-plots' ? <LandPlot size={22} /> :
+                   cat.id === 'houses-villas' ? <HomeIcon size={22} /> :
+                   cat.id === 'apartments-flats' ? <Building2 size={22} /> :
+                   cat.id === 'commercial' ? <Building size={22} /> :
+                   cat.id === 'shops-offices' ? <Store size={22} /> :
+                   <KeyRound size={22} />}
                 </div>
 
-                <div className="p-3 flex flex-col justify-between flex-grow">
+                <div className="mt-3">
                   <h3 className="font-bold text-xs text-slate-900 group-hover:text-[#145C3D] leading-tight">
                     {cat.name}
                   </h3>
                   <p className="text-[10px] text-slate-400 mt-1 truncate">
                     {cat.malayalam}
                   </p>
+                  <span className="inline-block mt-2 text-[10px] font-bold text-[#145C3D] bg-emerald-50 px-2 py-0.5 rounded-md">
+                    {cat.count}
+                  </span>
                 </div>
               </div>
             ))}
@@ -442,21 +434,18 @@ export default function HomePage() {
             <div
               key={district.id}
               onClick={() => handleDistrictClick(district.name)}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+              className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
             >
-              <div className="aspect-[16/10] overflow-hidden relative bg-slate-900">
-                <img
-                  src={district.image}
-                  alt={district.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                <div className="absolute top-2 left-2 bg-black/40 backdrop-blur-xs text-white text-[10px] font-bold px-2 py-0.5 rounded-md border border-white/20">
-                  {district.region}
+              <div className="bg-gradient-to-br from-[#0C3423] to-[#145C3D] p-3.5 text-white flex flex-col justify-between relative">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-white/10 text-emerald-100 border border-white/15">
+                    {district.region}
+                  </span>
+                  <Compass size={14} className="text-[#D6AD55]" />
                 </div>
-                <div className="absolute bottom-2 left-2 right-2 text-white">
-                  <h3 className="font-bold text-xs sm:text-sm leading-tight flex items-center justify-between">
-                    <span>{district.name}</span>
+                <div className="mt-3">
+                  <h3 className="font-black text-xs sm:text-sm leading-tight text-white">
+                    {district.name}
                   </h3>
                   <p className="text-[10px] text-emerald-200 font-medium">
                     {district.malayalam}
@@ -527,18 +516,12 @@ export default function HomePage() {
               onClick={() => handleCityClick(city.name, city.district)}
               className="group bg-white rounded-2xl overflow-hidden border border-[#E2EBE5] hover:border-[#145C3D] shadow-xs hover:shadow-lg transition-all duration-300 cursor-pointer flex flex-col"
             >
-              <div className="aspect-[4/3] overflow-hidden relative bg-slate-900">
-                <img
-                  src={city.image}
-                  alt={city.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <span className="absolute bottom-2 left-2 text-white font-bold text-xs sm:text-sm truncate">
-                  {city.name}
-                </span>
-                <span className="absolute top-2 right-2 bg-black/40 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
+              <div className="bg-gradient-to-br from-[#145C3D] to-[#1E3A2F] p-3 text-white flex flex-col justify-between">
+                <span className="self-end bg-black/30 backdrop-blur-xs text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">
                   {city.district}
+                </span>
+                <span className="font-bold text-xs sm:text-sm text-white truncate mt-2">
+                  {city.name}
                 </span>
               </div>
 
@@ -827,15 +810,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-
-          {/* Authentic Kerala House Accent image */}
-          <div className="absolute right-0 bottom-0 top-0 w-2/5 opacity-20 pointer-events-none hidden md:block">
-            <img
-              src="/images/kochi-nri-villa.jpg"
-              alt="Kerala House"
-              className="w-full h-full object-cover object-left"
-            />
-          </div>
         </div>
       </section>
 
@@ -857,9 +831,22 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {recentProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          {recentProperties.length > 0 ? (
+            recentProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8 bg-white rounded-2xl border border-slate-200 space-y-2">
+              <p className="text-xs font-bold text-slate-700">No recently added properties</p>
+              <p className="text-[11px] text-slate-500">Post your property free to connect directly with Kerala buyers.</p>
+              <button
+                onClick={() => navigateTo('post')}
+                className="mt-2 px-4 py-2 bg-[#145C3D] hover:bg-[#0C3423] text-white rounded-xl text-xs font-bold"
+              >
+                Post Your Property Free
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
