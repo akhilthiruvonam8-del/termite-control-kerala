@@ -14,6 +14,7 @@ import {
   Home,
   SlidersHorizontal,
   Compass,
+  LogOut,
 } from 'lucide-react';
 import VeeduXLogo from './VeeduXLogo';
 import { useApp } from '../context/AppContext';
@@ -26,6 +27,8 @@ export default function Navbar() {
     savedIds,
     user,
     setAuthModalOpen,
+    setAuthMode,
+    logout,
     searchFilters,
     setSearchFilters,
     notifications,
@@ -268,25 +271,49 @@ export default function Navbar() {
             <span>Post Property Free</span>
           </button>
 
-          {/* User Account / Profile */}
+          {/* User Account / Login / Sign Up */}
           {user ? (
-            <button
-              onClick={() => navigateTo('account', null, 'profile')}
-              className="flex items-center gap-2 p-1 sm:px-3 sm:py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-bold text-slate-800 transition-colors"
-            >
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className="w-7 h-7 rounded-full object-cover border border-[#27865B]"
-              />
-              <span className="hidden md:inline max-w-[80px] truncate">{user.name}</span>
-            </button>
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <button
+                onClick={() => navigateTo('account', null, 'profile')}
+                className="flex items-center gap-2 p-1 sm:px-3 sm:py-1.5 rounded-full bg-[#FAF8F2] hover:bg-[#F0EDE4] border border-[#E2EBE5] text-xs font-bold text-slate-800 transition-colors shadow-2xs"
+              >
+                <img
+                  src={user.avatar || '/images/akhil-profile.png'}
+                  alt={user.name}
+                  className="w-7 h-7 rounded-full object-cover border border-[#27865B]"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80';
+                  }}
+                />
+                <span className="hidden md:inline max-w-[80px] truncate">{user.name}</span>
+                {user.isDemo && (
+                  <span className="hidden lg:inline text-[9px] bg-amber-100 text-amber-900 border border-amber-300 px-1.5 py-0.2 rounded-sm font-bold">
+                    Demo
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={logout}
+                title="Log Out"
+                className="hidden sm:flex items-center justify-center p-2 rounded-full text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                aria-label="Log Out"
+              >
+                <LogOut size={16} />
+              </button>
+            </div>
           ) : (
             <button
-              onClick={() => setAuthModalOpen(true)}
-              className="px-3.5 py-1.5 rounded-full border border-[#145C3D] text-[#145C3D] hover:bg-[#145C3D] hover:text-white text-xs font-bold transition-all"
+              onClick={() => {
+                setAuthMode('login');
+                setAuthModalOpen(true);
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#145C3D] text-white hover:bg-[#0C3423] text-xs sm:text-sm font-bold shadow-sm transition-all active:scale-95 whitespace-nowrap"
+              title="Login or Sign Up to VeeduX"
             >
-              Log In
+              <User size={14} className="text-[#D6AD55]" />
+              <span>Login / Sign Up</span>
             </button>
           )}
 
@@ -304,6 +331,65 @@ export default function Navbar() {
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-b border-[#E2EBE5] px-4 py-4 space-y-3 shadow-xl animate-in slide-in-from-top-2">
+          {/* User Account / Login Banner in Mobile Menu */}
+          {!user ? (
+            <div className="bg-gradient-to-r from-emerald-50 to-[#FAF8F2] p-3.5 rounded-2xl border border-emerald-100 flex items-center justify-between gap-3">
+              <div>
+                <p className="text-xs font-bold text-slate-800">Welcome to VeeduX</p>
+                <p className="text-[11px] text-slate-500">Sign in to save properties & contact sellers</p>
+              </div>
+              <button
+                onClick={() => {
+                  setAuthMode('login');
+                  setAuthModalOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="px-3.5 py-2 rounded-xl bg-[#145C3D] text-white text-xs font-bold shadow-sm hover:bg-[#0C3423] transition-all whitespace-nowrap"
+              >
+                Login / Sign Up
+              </button>
+            </div>
+          ) : (
+            <div className="bg-[#FAF8F2] p-3 rounded-2xl border border-[#E2EBE5] flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <img
+                  src={user.avatar || '/images/akhil-profile.png'}
+                  alt={user.name}
+                  className="w-10 h-10 rounded-full object-cover border border-[#27865B]"
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80';
+                  }}
+                />
+                <div>
+                  <p className="text-xs font-bold text-slate-900">{user.name}</p>
+                  <p className="text-[10px] text-slate-500">{user.phone || user.email}</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => {
+                    navigateTo('account', null, 'profile');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="px-2.5 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-bold text-slate-700"
+                >
+                  Profile
+                </button>
+                <button
+                  onClick={() => {
+                    logout();
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-1.5 rounded-lg text-rose-600 hover:bg-rose-50"
+                  title="Log Out"
+                >
+                  <LogOut size={16} />
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Location picker */}
           <div className="bg-[#FAF8F2] p-3 rounded-2xl border border-[#E2EBE5]">
             <span className="text-[10px] font-bold uppercase text-slate-400 block mb-1">
@@ -381,15 +467,29 @@ export default function Navbar() {
               <span>Admin Moderation</span>
             </button>
 
-            <button
-              onClick={() => {
-                navigateTo('account', null, 'saved');
-                setMobileMenuOpen(false);
-              }}
-              className="text-xs font-bold text-[#145C3D]"
-            >
-              My Account & Saved ({savedIds.length})
-            </button>
+            {user ? (
+              <button
+                onClick={() => {
+                  navigateTo('account', null, 'saved');
+                  setMobileMenuOpen(false);
+                }}
+                className="text-xs font-bold text-[#145C3D]"
+              >
+                Saved Properties ({savedIds.length})
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setAuthMode('login');
+                  setAuthModalOpen(true);
+                  setMobileMenuOpen(false);
+                }}
+                className="text-xs font-bold text-[#145C3D] flex items-center gap-1"
+              >
+                <User size={13} />
+                <span>Login / Sign Up</span>
+              </button>
+            )}
           </div>
         </div>
       )}

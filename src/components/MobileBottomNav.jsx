@@ -3,7 +3,15 @@ import { Home, Search, PlusCircle, Heart, User } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export default function MobileBottomNav() {
-  const { currentPage, navigateTo, savedIds, activeAccountTab } = useApp();
+  const {
+    currentPage,
+    navigateTo,
+    savedIds,
+    activeAccountTab,
+    user,
+    setAuthModalOpen,
+    setAuthMode,
+  } = useApp();
 
   const isSavedActive = currentPage === 'account' && activeAccountTab === 'saved';
   const isProfileActive = currentPage === 'account' && activeAccountTab !== 'saved';
@@ -87,9 +95,16 @@ export default function MobileBottomNav() {
           <span className="text-[10px] mt-0.5 tracking-tight">Saved</span>
         </button>
 
-        {/* Profile */}
+        {/* Profile / Login */}
         <button
-          onClick={() => navigateTo('account', null, 'profile')}
+          onClick={() => {
+            if (!user) {
+              setAuthMode('login');
+              setAuthModalOpen(true);
+            } else {
+              navigateTo('account', null, 'profile');
+            }
+          }}
           className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
             isProfileActive
               ? 'text-[#145C3D] font-bold'
@@ -102,7 +117,7 @@ export default function MobileBottomNav() {
               <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#D6AD55] rounded-full" />
             )}
           </div>
-          <span className="text-[10px] mt-0.5 tracking-tight">Profile</span>
+          <span className="text-[10px] mt-0.5 tracking-tight">{user ? 'Profile' : 'Login'}</span>
         </button>
       </div>
     </nav>

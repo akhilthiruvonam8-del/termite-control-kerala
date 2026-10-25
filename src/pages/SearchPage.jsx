@@ -824,12 +824,20 @@ export default function SearchPage() {
                     Try broadening your filters or reset to browse all verified Kerala properties.
                   </p>
                 </div>
-                <button
-                  onClick={handleResetFilters}
-                  className="px-5 py-2.5 bg-[#145C3D] text-white text-xs font-bold rounded-xl shadow-md hover:bg-[#0C3423] transition-colors"
-                >
-                  Reset All Filters
-                </button>
+                <div className="flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    onClick={handleResetFilters}
+                    className="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-colors"
+                  >
+                    Reset All Filters
+                  </button>
+                  <button
+                    onClick={() => navigateTo('post')}
+                    className="px-5 py-2.5 bg-[#145C3D] hover:bg-[#0C3423] text-white text-xs font-bold rounded-xl shadow-md transition-colors"
+                  >
+                    Post Property Free
+                  </button>
+                </div>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

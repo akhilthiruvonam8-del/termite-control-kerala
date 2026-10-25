@@ -1,6 +1,24 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { INITIAL_PROPERTIES } from '../data/veeduxData';
 import { updateMetaTags } from '../utils/seo';
+import { saveEnquiry } from '../utils/storage';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import {
+  fetchPropertiesFromSupabase,
+  createPropertyInSupabase,
+  updatePropertyApprovalInSupabase,
+  isUuid,
+  fetchUserBookmarksFromSupabase,
+  toggleBookmarkInSupabase,
+  submitEnquiryToSupabase,
+  fetchUserEnquiriesFromSupabase,
+  submitReportToSupabase,
+  fetchReportsFromSupabase,
+  fetchNotificationsFromSupabase,
+  getUserProfile,
+  syncUserProfile,
+  signOutFromSupabase,
+} from '../lib/supabaseService';
 
 const AppContext = createContext(null);
 
@@ -10,23 +28,14 @@ export function AppProvider({ children }) {
   const [selectedPropertyId, setSelectedPropertyId] = useState(null);
   const [activeAccountTab, setActiveAccountTab] = useState('profile'); // 'profile' | 'my-properties' | 'saved' | 'enquiries' | 'messages' | 'notifications' | 'settings'
 
-  // Properties state (dynamic, supports posting & admin review)
+  // Properties state (dynamic, supports Supabase backend + local fallback)
   const [properties, setProperties] = useState(INITIAL_PROPERTIES);
 
   // Saved / Bookmarked property IDs
-  const [savedIds, setSavedIds] = useState(['vx-101', 'vx-103', 'vx-108']);
+  const [savedIds, setSavedIds] = useState([]);
 
-  // Logged-in User (Demo user logged in by default for seamless UX)
-  const [user, setUser] = useState({
-    id: 'usr-kerala-01',
-    name: 'Govind Menon',
-    phone: '+91 98471 99220',
-    email: 'govind.menon@veedux.com',
-    role: 'buyer', // 'buyer' | 'owner' | 'admin'
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    memberSince: 'Member since 2024',
-    isVerified: true,
-  });
+  // Logged-in User (null initially; populated from active Supabase session or upon Login)
+  const [user, setUser] = useState(null);
 
   // Global Search & Filters
   const [searchFilters, setSearchFilters] = useState({
@@ -52,56 +61,167 @@ export function AppProvider({ children }) {
   });
 
   // Reported listings for Admin
-  const [reportedListings, setReportedListings] = useState([
-    {
-      id: 'rep-01',
-      propertyId: 'vx-102',
-      propertyTitle: 'Marine Drive Luxury 3 BHK Waterfront High-Rise Apartment',
-      reason: 'Seller contacted via phone claims price increased by 10 Lakhs',
-      reportedBy: 'Naveen P. (+91 94471 88220)',
-      date: '2 hours ago',
-      status: 'investigating',
-    },
-  ]);
+  const [reportedListings, setReportedListings] = useState([]);
 
   // Enquiries list
-  const [enquiries, setEnquiries] = useState([
-    {
-      id: 'enq-01',
-      propertyId: 'vx-101',
-      propertyTitle: 'Modern Luxury Villa for Sale in Kakkanad',
-      buyerName: 'Anand Varma',
-      buyerPhone: '+91 94470 11223',
-      message: 'Interested in a physical site visit this Saturday 11 AM.',
-      date: 'Today, 10:15 AM',
-      status: 'new',
-    },
-  ]);
+  const [enquiries, setEnquiries] = useState([]);
 
   // Notifications
-  const [notifications, setNotifications] = useState([
-    {
-      id: 'notif-01',
-      title: 'New Price Drop!',
-      message: 'A 4 BHK Villa in Kakkanad price dropped to ₹85 Lakhs.',
-      time: '1 hour ago',
-      read: false,
-    },
-    {
-      id: 'notif-02',
-      title: 'Welcome to VeeduX',
-      message: 'Explore over 8,000+ verified properties across Kerala.',
-      time: 'Yesterday',
-      read: true,
-    },
-  ]);
+  const [notifications, setNotifications] = useState([]);
 
   // Auth Modal State
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState('login'); // 'login' | 'signup'
 
+  // Auth feedback notification banner ({ type: 'success' | 'error', message: string })
+  const [authNotice, setAuthNotice] = useState(null);
+
+  useEffect(() => {
+    if (authNotice) {
+      const timer = setTimeout(() => {
+        setAuthNotice(null);
+      }, 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [authNotice]);
+
+
   // Currently inspected property object
-  const activeProperty = properties.find((p) => p.id === selectedPropertyId) || properties[0];
+  const activeProperty = properties.find((p) => p.id === selectedPropertyId) || properties[0] || null;
+
+  // ============================================================================
+  // Supabase Initial Sync (Properties, Active Session, Bookmarks, Enquiries)
+  // ============================================================================
+  useEffect(() => {
+    if (!isSupabaseConfigured || !supabase) return;
+
+    // 1. Fetch live properties from Supabase
+    const loadSupabaseProperties = async () => {
+      try {
+        const { data, error } = await fetchPropertiesFromSupabase({ includeAll: true });
+        if (!error && Array.isArray(data)) {
+          setProperties(data);
+        }
+      } catch (err) {
+        console.warn('[VeeduX] Supabase property fetch error, using local fallback:', err);
+      }
+    };
+
+    loadSupabaseProperties();
+
+    // 2. Sync Supabase Auth Session
+    const checkAuthSession = async () => {
+      try {
+        // Handle PKCE auth code exchange if redirected from Supabase email verification
+        if (typeof window !== 'undefined') {
+          const urlParams = new URLSearchParams(window.location.search);
+          const code = urlParams.get('code');
+          if (code) {
+            console.info('[VeeduX Auth] Detected PKCE auth code in URL, exchanging for session...');
+            const { data: exchangeData, error: exchangeError } = await supabase.auth.exchangeCodeForSession(code);
+            if (exchangeError) {
+              console.warn('[VeeduX Auth] exchangeCodeForSession error:', exchangeError.message);
+            } else if (exchangeData?.session) {
+              console.info('[VeeduX Auth] Code exchanged for session successfully!');
+              setAuthNotice({
+                type: 'success',
+                message: 'Email confirmed successfully! Welcome to VeeduX.',
+              });
+              window.history.replaceState({}, document.title, window.location.pathname);
+            }
+          }
+
+          // Handle auth error redirected in URL hash
+          if (window.location.hash.includes('error_description=')) {
+            const hashParams = new URLSearchParams(window.location.hash.substring(1));
+            const errorDesc = hashParams.get('error_description');
+            if (errorDesc) {
+              setAuthNotice({
+                type: 'error',
+                message: decodeURIComponent(errorDesc.replace(/\+/g, ' ')),
+              });
+              window.history.replaceState({}, document.title, window.location.pathname);
+            }
+          }
+        }
+
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (!error && session?.user) {
+          const authUser = session.user;
+          const { profile } = await getUserProfile(authUser.id);
+          const syncedProfile = profile || (await syncUserProfile(authUser));
+
+          setUser({
+            id: authUser.id,
+            name: syncedProfile?.full_name || authUser.user_metadata?.full_name || 'VeeduX Member',
+            phone: syncedProfile?.phone || authUser.phone || authUser.user_metadata?.phone || '',
+            email: authUser.email || '',
+            role: syncedProfile?.role || 'buyer',
+            avatar:
+              syncedProfile?.avatar_url ||
+              'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+            memberSince: syncedProfile?.member_since || 'Member since 2024',
+            isVerified: Boolean(syncedProfile?.is_verified),
+            isDemo: false,
+          });
+
+          // Fetch user bookmarks & enquiries
+          const { data: userBookmarks } = await fetchUserBookmarksFromSupabase(authUser.id);
+          if (userBookmarks && userBookmarks.length > 0) {
+            setSavedIds(userBookmarks);
+          }
+
+          const { data: userEnquiries } = await fetchUserEnquiriesFromSupabase(authUser.id);
+          if (userEnquiries && userEnquiries.length > 0) {
+            setEnquiries(userEnquiries);
+          }
+
+          const { data: userNotifs } = await fetchNotificationsFromSupabase(authUser.id);
+          if (userNotifs && userNotifs.length > 0) {
+            setNotifications(userNotifs);
+          }
+        }
+      } catch (err) {
+        console.warn('[VeeduX] Supabase session check error:', err);
+      }
+    };
+
+    checkAuthSession();
+
+    // 3. Listen to Supabase Auth State Changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.info(`[VeeduX Auth] onAuthStateChange event: ${event}`);
+      if (session?.user) {
+        const authUser = session.user;
+        const { profile } = await getUserProfile(authUser.id);
+        const syncedProfile = profile || (await syncUserProfile(authUser));
+
+        setUser({
+          id: authUser.id,
+          name: syncedProfile?.full_name || authUser.user_metadata?.full_name || 'VeeduX Member',
+          phone: syncedProfile?.phone || authUser.phone || authUser.user_metadata?.phone || '',
+          email: authUser.email || '',
+          role: syncedProfile?.role || 'buyer',
+          avatar:
+            syncedProfile?.avatar_url ||
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+          memberSince: syncedProfile?.member_since || 'Member since 2024',
+          isVerified: Boolean(syncedProfile?.is_verified),
+          isDemo: false,
+        });
+
+        const { data: userBookmarks } = await fetchUserBookmarksFromSupabase(authUser.id);
+        if (userBookmarks && userBookmarks.length > 0) setSavedIds(userBookmarks);
+      } else if (event === 'SIGNED_OUT' || !session) {
+        console.info('[VeeduX Auth] User signed out or session cleared.');
+        setUser(null);
+      }
+    });
+
+    return () => {
+      subscription?.unsubscribe();
+    };
+  }, []);
 
   // Helper to sync state from current browser location
   const parseRouteFromLocation = useCallback(() => {
@@ -245,10 +365,10 @@ export function AppProvider({ children }) {
         description: 'Search verified land, houses, flats, and commercial properties across all 14 Kerala districts on VeeduX.',
       });
     } else if (page === 'details') {
-      const id = propertyId || (activeProperty ? activeProperty.id : 'vx-101');
+      const id = propertyId || (activeProperty ? activeProperty.id : null);
       setSelectedPropertyId(id);
-      targetUrl = `/property/${id}`;
-      const found = properties.find((p) => p.id === id);
+      targetUrl = id ? `/property/${id}` : '/search';
+      const found = id ? properties.find((p) => p.id === id) : null;
       if (found) {
         updateMetaTags({
           title: `${found.title} (${found.price}) | VeeduX Kerala`,
@@ -283,6 +403,14 @@ export function AppProvider({ children }) {
         title: 'Admin Moderation Dashboard | VeeduX Kerala',
         description: 'Moderate, review, and approve incoming Kerala property listings.',
       });
+    } else if (page === 'login') {
+      setAuthMode('login');
+      setAuthModalOpen(true);
+      return;
+    } else if (page === 'signup') {
+      setAuthMode('signup');
+      setAuthModalOpen(true);
+      return;
     }
 
     if (typeof window !== 'undefined') {
@@ -293,76 +421,215 @@ export function AppProvider({ children }) {
     }
   };
 
-  // Toggle Save Property
+  // Toggle Save Property (Optimistic + Supabase Sync)
   const toggleSave = (propertyId) => {
+    const isCurrentlySaved = savedIds.includes(propertyId);
     setSavedIds((prev) =>
-      prev.includes(propertyId)
-        ? prev.filter((id) => id !== propertyId)
-        : [...prev, propertyId]
+      isCurrentlySaved ? prev.filter((id) => id !== propertyId) : [...prev, propertyId]
     );
+
+    if (isSupabaseConfigured && user?.id) {
+      toggleBookmarkInSupabase(user.id, propertyId, isCurrentlySaved).catch((err) =>
+        console.warn('[VeeduX] Error syncing bookmark:', err)
+      );
+    }
   };
 
   // Submit New Property Listing (defaults to pending for admin moderation)
-  const submitNewListing = (newPropData) => {
+  const submitNewListing = async (newPropData, imageFiles = []) => {
+    // 1. Try Supabase backend if configured & user logged in
+    if (isSupabaseConfigured && user?.id) {
+      const { data: createdProp, error } = await createPropertyInSupabase(
+        newPropData,
+        imageFiles,
+        user
+      );
+
+      if (!error && createdProp) {
+        setProperties((prev) => [createdProp, ...prev]);
+        return createdProp;
+      }
+      console.warn('[VeeduX] Supabase insert failed, falling back to local memory:', error?.message);
+    }
+
+    // 2. Safe local fallback
     const newProperty = {
       ...newPropData,
       id: `vx-${Date.now()}`,
       postedAgo: 'Just now',
-      approvalStatus: 'pending', // Pending Admin review!
+      approvalStatus: user?.role === 'admin' ? 'approved' : 'pending',
       featured: false,
       verified: false,
+      images:
+        newPropData.photos && newPropData.photos.length > 0
+          ? newPropData.photos
+          : ['/images/kochi-nri-villa.jpg'],
       seller: {
-        name: user?.name || 'Property Owner',
-        type: 'Direct Owner',
-        phone: user?.phone || '+91 98470 00000',
-        whatsapp: (user?.phone || '9847000000').replace(/[^0-9]/g, ''),
+        id: user?.id || 'usr-local',
+        name: user?.name || newPropData.sellerName || 'Property Owner',
+        type: newPropData.sellerType || 'Direct Owner',
+        phone: user?.phone || newPropData.sellerPhone || '+91 98470 00000',
+        whatsapp: (newPropData.sellerWhatsapp || user?.phone || '9847000000').replace(/[^0-9]/g, ''),
         memberSince: 'VeeduX Member',
-        avatar: user?.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
+        avatar:
+          user?.avatar ||
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
       },
     };
     setProperties((prev) => [newProperty, ...prev]);
     return newProperty;
   };
 
-  // Admin Actions
-  const approveProperty = (id) => {
+  // Re-fetch properties from Supabase and synchronize with local state
+  const refreshProperties = async () => {
+    if (!isSupabaseConfigured || !supabase) return { data: properties, error: null };
+    try {
+      const { data, error } = await fetchPropertiesFromSupabase({ includeAll: true });
+      if (!error && data) {
+        setProperties((prev) => {
+          if (data.length === 0) return prev;
+          const liveIds = new Set(data.map((d) => d.id));
+          const localOnly = prev.filter((p) => !liveIds.has(p.id) && !isUuid(p.id));
+          return [...data, ...localOnly];
+        });
+        return { data, error: null };
+      }
+      return { data: null, error };
+    } catch (err) {
+      console.warn('[VeeduX] refreshProperties warning:', err);
+      return { data: null, error: err };
+    }
+  };
+
+  // Admin Actions (Optimistic + Supabase Sync)
+  const approveProperty = async (id) => {
+    let supabaseResult = { success: true, error: null };
+    if (isSupabaseConfigured) {
+      const res = await updatePropertyApprovalInSupabase(id, 'approved');
+      if (!res.success) {
+        console.error('[VeeduX AppContext] Failed to approve property in Supabase:', res.error);
+        return res;
+      }
+      supabaseResult = res;
+    }
+
+    // Update local state immediately so UI updates
     setProperties((prev) =>
       prev.map((p) => (p.id === id ? { ...p, approvalStatus: 'approved', verified: true } : p))
     );
+
+    // Refresh live properties from Supabase if configured
+    if (isSupabaseConfigured) {
+      await refreshProperties();
+    }
+
+    return supabaseResult;
   };
 
-  const rejectProperty = (id) => {
+  const rejectProperty = async (id) => {
+    let supabaseResult = { success: true, error: null };
+    if (isSupabaseConfigured) {
+      const res = await updatePropertyApprovalInSupabase(id, 'rejected');
+      if (!res.success) {
+        console.error('[VeeduX AppContext] Failed to reject property in Supabase:', res.error);
+        return res;
+      }
+      supabaseResult = res;
+    }
+
     setProperties((prev) =>
       prev.map((p) => (p.id === id ? { ...p, approvalStatus: 'rejected' } : p))
     );
+
+    if (isSupabaseConfigured) {
+      await refreshProperties();
+    }
+
+    return supabaseResult;
   };
 
   const reportListing = (propertyId, reason, contact) => {
     const prop = properties.find((p) => p.id === propertyId);
-    setReportedListings((prev) => [
-      {
-        id: `rep-${Date.now()}`,
+    const newReport = {
+      id: `rep-${Date.now()}`,
+      propertyId,
+      propertyTitle: prop?.title || 'Unknown Property',
+      reason,
+      reportedBy: contact || user?.name || 'Anonymous User',
+      date: 'Just now',
+      status: 'investigating',
+    };
+    setReportedListings((prev) => [newReport, ...prev]);
+
+    if (isSupabaseConfigured) {
+      submitReportToSupabase({
         propertyId,
-        propertyTitle: prop?.title || 'Unknown Property',
+        reporterId: user?.id,
+        reportedBy: newReport.reportedBy,
         reason,
-        reportedBy: contact || user?.name || 'Anonymous User',
-        date: 'Just now',
-        status: 'investigating',
-      },
-      ...prev,
-    ]);
+      }).catch((err) => console.warn('[VeeduX] Report sync error:', err));
+    }
   };
 
   const addEnquiry = (enquiryData) => {
-    setEnquiries((prev) => [
-      {
-        id: `enq-${Date.now()}`,
-        date: 'Just now',
-        status: 'new',
-        ...enquiryData,
-      },
-      ...prev,
-    ]);
+    const newEnquiry = {
+      id: `enq-${Date.now()}`,
+      date: 'Just now',
+      status: 'new',
+      ...enquiryData,
+    };
+    setEnquiries((prev) => [newEnquiry, ...prev]);
+
+    // Store in localStorage
+    saveEnquiry(enquiryData);
+
+    // Sync to Supabase
+    if (isSupabaseConfigured) {
+      submitEnquiryToSupabase({
+        propertyId: enquiryData.propertyId,
+        buyerId: user?.id,
+        buyerName: enquiryData.buyerName,
+        buyerPhone: enquiryData.buyerPhone,
+        message: enquiryData.message,
+        enquiryType: enquiryData.enquiryType || 'general',
+      }).catch((err) => console.warn('[VeeduX] Enquiry sync error:', err));
+    }
+  };
+
+  const logout = async () => {
+    console.info('[VeeduX Auth] Initiating sign out...');
+    const wasDemo = Boolean(user?.isDemo);
+    let res = { success: true, error: null };
+
+    try {
+      if (!wasDemo && isSupabaseConfigured && supabase) {
+        res = await signOutFromSupabase();
+      }
+    } catch (err) {
+      console.error('[VeeduX Auth] Sign out exception:', err);
+      res = { success: false, error: err };
+    } finally {
+      // Clear authenticated user state immediately from AppContext
+      setUser(null);
+    }
+
+    if (res?.success) {
+      setAuthNotice({
+        type: 'success',
+        message: wasDemo
+          ? 'Demo session ended.'
+          : 'Signed out successfully from VeeduX.',
+      });
+      console.info('[VeeduX Auth] Sign out succeeded.');
+    } else {
+      setAuthNotice({
+        type: 'error',
+        message: res?.error?.message || 'Signed out with a network warning.',
+      });
+      console.warn('[VeeduX Auth] Sign out completed with warning:', res?.error);
+    }
+
+    return res;
   };
 
   return (
@@ -379,6 +646,7 @@ export function AppProvider({ children }) {
         toggleSave,
         user,
         setUser,
+        logout,
         activeAccountTab,
         setActiveAccountTab,
         searchFilters,
@@ -393,9 +661,12 @@ export function AppProvider({ children }) {
         setAuthModalOpen,
         authMode,
         setAuthMode,
+        authNotice,
+        setAuthNotice,
         submitNewListing,
         approveProperty,
         rejectProperty,
+        refreshProperties,
         reportListing,
       }}
     >

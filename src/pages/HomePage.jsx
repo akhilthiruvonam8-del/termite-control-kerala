@@ -579,9 +579,30 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {featuredProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          {featuredProperties.length > 0 ? (
+            featuredProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-full bg-white rounded-3xl p-8 sm:p-10 text-center border border-[#E2EBE5] shadow-xs space-y-3">
+              <div className="w-12 h-12 rounded-full bg-emerald-50 text-[#145C3D] flex items-center justify-center mx-auto">
+                <Sparkles size={22} className="text-[#D6AD55]" />
+              </div>
+              <h3 className="text-base font-bold text-slate-800">
+                No featured properties posted yet
+              </h3>
+              <p className="text-xs text-slate-500 max-w-md mx-auto">
+                Be the first to list your villa, plot, or apartment on VeeduX across Kerala with zero broker commission.
+              </p>
+              <button
+                onClick={() => navigateTo('post')}
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-[#145C3D] hover:bg-[#0C3423] text-white text-xs font-bold rounded-xl shadow-md transition-all"
+              >
+                <PlusCircle size={14} />
+                <span>Post Your Property Free</span>
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -620,16 +641,14 @@ export default function HomePage() {
                 <PropertyCard key={property.id} property={property} />
               ))
             ) : (
-              <div className="col-span-3 text-center py-8 bg-white rounded-2xl border border-slate-200">
-                <p className="text-xs font-bold text-slate-700">Explore residential plots and plantations across Kerala</p>
+              <div className="col-span-full text-center py-8 bg-white rounded-2xl border border-slate-200 space-y-2">
+                <p className="text-xs font-bold text-slate-700">No plots or land listings posted yet</p>
+                <p className="text-[11px] text-slate-500">Sell your residential or plantation land in Cents & Acres.</p>
                 <button
-                  onClick={() => {
-                    setSearchFilters((prev) => ({ ...prev, propertyType: 'land-plots' }));
-                    navigateTo('search');
-                  }}
-                  className="mt-3 px-4 py-2 bg-[#145C3D] text-white rounded-xl text-xs font-bold"
+                  onClick={() => navigateTo('post')}
+                  className="mt-2 px-4 py-2 bg-[#145C3D] hover:bg-[#0C3423] text-white rounded-xl text-xs font-bold"
                 >
-                  View Land Listings
+                  Post Land Listing Free
                 </button>
               </div>
             )}
@@ -666,9 +685,22 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {homesListings.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          {homesListings.length > 0 ? (
+            homesListings.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8 bg-white rounded-2xl border border-slate-200 space-y-2">
+              <p className="text-xs font-bold text-slate-700">No houses or apartments posted yet</p>
+              <p className="text-[11px] text-slate-500">Post your house, villa or flat to connect directly with Kerala buyers.</p>
+              <button
+                onClick={() => navigateTo('post')}
+                className="mt-2 px-4 py-2 bg-[#145C3D] hover:bg-[#0C3423] text-white rounded-xl text-xs font-bold"
+              >
+                Post House / Villa Free
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -701,9 +733,22 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {rentalListings.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          {rentalListings.length > 0 ? (
+            rentalListings.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8 bg-white rounded-2xl border border-slate-200 space-y-2">
+              <p className="text-xs font-bold text-slate-700">No rental properties listed yet</p>
+              <p className="text-[11px] text-slate-500">List your rental home or apartment for family or bachelor tenants.</p>
+              <button
+                onClick={() => navigateTo('post')}
+                className="mt-2 px-4 py-2 bg-[#145C3D] hover:bg-[#0C3423] text-white rounded-xl text-xs font-bold"
+              >
+                List Rental Property
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -736,9 +781,22 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {commercialListings.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
+          {commercialListings.length > 0 ? (
+            commercialListings.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-full text-center py-8 bg-white rounded-2xl border border-slate-200 space-y-2">
+              <p className="text-xs font-bold text-slate-700">No commercial spaces listed yet</p>
+              <p className="text-[11px] text-slate-500">List shops, office spaces, or commercial buildings for lease or sale.</p>
+              <button
+                onClick={() => navigateTo('post')}
+                className="mt-2 px-4 py-2 bg-[#145C3D] hover:bg-[#0C3423] text-white rounded-xl text-xs font-bold"
+              >
+                List Commercial Property
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
